@@ -1,0 +1,62 @@
+.profile {
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+}
+
+.profile:hover > img {
+  transition: all .2s ease-in;
+}
+
+.profile:hover > img {
+  transform: scale(1.1);
+}
+
+.category > li:hover > a {
+  color: #00bbff !important;
+}
+
+.category > li.active > a {
+  color: #00bbff !important;
+}
+
+.point-bold {
+  color: #00bbff;
+  border-radius: 50px;
+}
+
+.t-name {
+  font-size: 20px;
+  letter-spacing: -0.5px;
+  line-height: 30px;
+  font-weight: bold;
+  padding: 0px;
+  margin: 0 auto;
+  color: #000;
+  margin-top: 20px;
+}
+.t-company {
+  color: #757575;
+  letter-spacing: -0.2px;
+  font-size: 12px;
+
+  margin-bottom: 4px;
+  margin: 0 auto;
+}
+.card-text {
+  font-size: 16px;
+  letter-spacing: -0.5px;
+  line-height: 30px;
+  margin-top: 10px;
+}
+.btn-group {
+  margin: 0 auto;
+}
+
+.pic {
+  border-radius: 50%;
+  height: 100%;
+}
+.profile-wrap {
+    width: 100%;
+}

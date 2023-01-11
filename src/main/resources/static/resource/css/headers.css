@@ -1,0 +1,33 @@
+header {
+  z-index: 100;
+}
+
+.form-control-dark {
+  border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+header .nav a:not(:last-child):hover {
+  color: #525252 !important
+}
+
+input[type='search'] {
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid #808080;
+}
+
+input[type='search']::placeholder {
+  color: #808080;
+}

@@ -1,0 +1,48 @@
+.days-data {
+    cursor: pointer;
+    margin-right: 14px;
+}
+
+.day {
+    width: 50px; 
+    height: 50px; 
+    line-height: 50px;
+    color: #000;
+}
+
+.days-data.active > .day {
+    color: #fff;
+    background-color: #00bbff;
+}
+
+.days-data.active > .name {
+    color: #00bbff;
+}
+
+.days-data.disabled {
+    pointer-events: none; 
+}
+
+.days-data.disabled > .day {
+    color: #b7b7b7;
+}
+
+.days-data.disabled > .name {
+    color: #b7b7b7;
+}
+
+.times > .time {
+    cursor: pointer;
+}
+
+.times > .time.active,
+.times > .time:hover {
+    color: #00bbff;
+    outline: 2px solid #00bbff;
+    background-color: #fff !important;
+    font-weight: bold;
+}
+
+.times > .time > small {
+    font-size: 12px;
+}

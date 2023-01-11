@@ -1,0 +1,17 @@
+footer a,
+footer span {
+    font-size: 12px;
+    color: gray;
+}
+
+footer svg {
+    color: #adb5bd;
+}
+
+footer .link:hover svg {
+    color: #808080;
+}
+
+footer .link:hover {
+    border-color: #808080 !important;
+}

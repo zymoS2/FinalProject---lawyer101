@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 목록 | 법률서비스 101</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <link rel="stylesheet" href="../resource/css/headers.css">
+    <link rel="stylesheet" href="../resource/css//sidebars.css">
+    <link rel="stylesheet" href="../resource/css/footer.css">
+    <link rel="stylesheet" href="../resource/css/common.css">
+</head>
+<body>
+    <!-- header -->
+    <header class="p-3 text-bg-dark position-sticky top-0">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-light me-2">Login</button>
+                <button type="button" class="btn btn-warning">Sign-up</button>
+            </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- sidebar -->
+    <nav class="sidebar-container">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="height: 100%;">
+            <div class="text-end">
+                <button class="bg-transparent text-light border-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </button>
+            </div>
+            <a href="/" class="d-flex align-items-center my-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="../resource/img/logo.png" alt="로고" width="240px" height="60px">
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                변호사 찾기
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+                예약하기
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                법률 지식IN
+                </a>
+            </li>
+            <li>
+                <a href="#" class="nav-link text-white">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+                법률뉴스
+                </a>
+            </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="w-50 mx-auto">
+            <h2 class="pt-5 pb-4 text-center">예약 목록</h2>
+            <div class="pb-5">
+                <p class="fw-bold">현재 예약</p>
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0">
+                    <div class="list-group list-group-flush scrollarea">
+                        <a href="" class="d-flex align-items-center">
+                            <div class="list-group-item list-group-item-action py-3 lh-sm me-3" aria-current="true">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <div class="d-flex w-50">
+                                        <img src="../resource/img/profile.png" alt="" width="36px" height="36px">
+                                        <div class="ms-2">
+                                            <strong class="mb-1">우영우 변호사</strong>
+                                            <div class="small">한바다 법무법인</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-muted">예약일<span class="ms-2">2023-01-11</span></div>
+                                        <div class="small text-muted">예약시간<span class="ms-2">오전 09:00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btn-sm" style="width: 90px; height: 30px;">환불신청</button>
+                        </a>
+                        <a href="" class="d-flex align-items-center">
+                            <div class="list-group-item list-group-item-action py-3 lh-sm me-3" aria-current="true">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <div class="d-flex w-50">
+                                        <img src="../resource/img/profile.png" alt="" width="36px" height="36px">
+                                        <div class="ms-2">
+                                            <strong class="mb-1">이순진 변호사</strong>
+                                            <div class="small">황금망치 법률사무소</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-muted">예약일<span class="ms-2">2023-01-11</span></div>
+                                        <div class="small text-muted">예약시간<span class="ms-2">오후 01:00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btn-sm" style="width: 90px; height: 30px;">환불신청</button>
+                        </a>
+                        <a href="" class="d-flex align-items-center">
+                            <div class="list-group-item list-group-item-action py-3 lh-sm me-3" aria-current="true">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <div class="d-flex w-50">
+                                        <img src="../resource/img/profile.png" alt="" width="36px" height="36px">
+                                        <div class="ms-2">
+                                            <strong class="mb-1">오진매 변호사</strong>
+                                            <div class="small">오뚜기 법률사무소</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-muted">예약일<span class="ms-2">2023-01-15</span></div>
+                                        <div class="small text-muted">예약시간<span class="ms-2">오후 05:00</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btn-sm" style="width: 90px; height: 30px;">환불신청</button>
+                        </a>           
+                    </div>
+                </div>
+            </div>
+            <div class="pb-5">
+                <p class="fw-bold">지난 예약</p>
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0">
+                    <div class="list-group list-group-flush scrollarea">
+                        <div class="d-flex align-items-center">
+                            <a href="" class="list-group-item list-group-item-action py-3 lh-sm me-3 bg-body-secondary" aria-current="true">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <div class="d-flex w-50">
+                                        <img src="../resource/img/profile.png" alt="" width="36px" height="36px">
+                                        <div class="ms-2">
+                                            <strong class="mb-1">태수미 변호사</strong>
+                                            <div class="small">태산 법무법인</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-muted">예약일<span class="ms-2">2022-12-31</span></div>
+                                        <div class="small text-muted">예약시간<span class="ms-2">오전 09:00</span></div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div style="width: 90px;"></div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="m-0">
+
+    <!-- footer -->
+    <footer class="pt-5 pb-5 container">
+        <div class="d-flex justify-content-between">
+            <div class="w-50">
+                <h4 class="fs-6 fw-bold">공지사항</h4>
+                <ul class="px-0">
+                    <li class="mb-2 d-flex justify-content-between">
+                        <a href="" class="d-inline-block">[안내] 유료상담 예약 시, 전화번호인증 장애 안내 (정상화 완료)</a>
+                        <span class="d-inline-block">2022-12-21</span>
+                    </li>
+                    <li class="mb-2 d-flex justify-content-between">
+                        <a href="">법률서비스101 개인정보처리방침 변경 안내</a>
+                        <span>2022-12-20</span>
+                    </li>
+                    <li class="mb-2 d-flex justify-content-between">
+                        <a href="">[안내] 법률서비스101 내 검색기능 장애 안내 (상담사례, 해결사례, 법률TIP)</a>
+                        <span>2022-11-22</span>
+                    </li>
+                </ul>
+            </div>
+            <table class="w-25" style="height: 80px;">
+                <tr>
+                    <th>마이페이지</th>
+                    <th>고객센터</th>
+                </tr>
+                <tr>
+                    <td><a href="">내 상담 내역</a></td>
+                    <td><a href="">공지사항</a></td>
+                </tr>
+                <tr>
+                    <td><a href="">회원정보수정</a></td>
+                    <td><a href="">자주묻는 질문</a></td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <ul class="p-0 m-1">
+                <li class="d-inline-block"><a href="" class="fw-bold">회사소개</a></li>
+                <li class="d-inline-block"><a href="" class="fw-bold">이용약관</a></li>
+                <li class="d-inline-block"><a href="" class="fw-bold text-danger">개인정보처리방침</a></li>
+                <li class="d-inline-block"><a href="" class="fw-bold">법적책임</a></li>
+                <li class="d-inline-block"><a href="" class="fw-bold">운영정책</a></li>
+                <li class="d-inline-block"><a href="" class="fw-bold">사진촬영안내</a></li>
+            </ul>
+            <span>(주)로엔컴퍼니 서울시 강남구 강남대로 374, 케이스퀘어빌딩 3층 사업자번호 : 264-81-01728 통신판매번호 : 2016-서울서초-0227<br>
+            대표자명 : 김본환 대표번호 : 02-6959-5080 이메일 : cs@lawcompany.co.kr</span>
+        </div>
+        <div class="mt-4">
+            <span>
+                (주)로앤컴퍼니는 대한민국 법률시장의 정보비대칭과 불법 법조브로커를 해소하여 투명하고 공정한 법률시장을 만들기 위해 로톡(LawTalk) 서비스를 제공하고 있습니다. 로톡은 의뢰인회원의 법률상담 내용 및 상담 여부, 법률사건 내용 및 수임 여부, 변호사회원의 선택 등에 대해 일절 관여하지 않아 변호사법 및 기타 관련규정을 준수하고 있으며, 변호사회원이 의뢰인회원에게 제공하는 서비스의 내용과 질에 대해 어떠한 법적책임도 부담하지 않습니다. 또한 회원간의 예약 및 결제정보의 중개서비스 또는 통신판매중개 시스템을 제공할 뿐, 통신판매의 당사자가 아닙니다. 모든 법률상담은 각 변호사회원이 직접 수행하며, 모든 변호사회원은 각 소속 법률사무소, 로펌에서 독립적으로 법률업무를 수행합니다. 그리고 로톡에 가입한 변호사들 상호간에는 어떠한 조직적인 관계가 없음을 밝힙니다. 로톡에 표시된 변호사회원의 정보는 해당 변호사가 직접 제공한 것이며 무단으로 복제, 편집, 전시, 전송, 배포, 판매, 방송, 공연 등에 이용할 수 없습니다.
+            </span>
+        </div>
+        <div class="mt-5 d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-end">
+                <img src="../resource/img/logo.png" alt="로고" width="240px" height="60px">
+                <span class="text-center text-muted d-inline-block ms-3 fw-bold">(C) Law&Company Co., Ltd. ALL RIGHTS RESERVED.</span>
+            </div>
+            <ul class="mb-0 ps-0">
+                <li class="d-inline-block ps-2">
+                    <a href="" class="link d-inline-block p-1 border border-2 rounded-5" style="width: 36px; height: 36px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="d-inline-block ps-2">
+                    <a href="" class="link d-inline-block p-1 border border-2 rounded-5" style="width: 36px; height: 36px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="d-inline-block ps-2">
+                    <a href="" class="link d-inline-block p-1 border border-2 rounded-5" style="width: 36px; height: 36px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

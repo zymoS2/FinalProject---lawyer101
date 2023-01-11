@@ -1,0 +1,110 @@
+textarea {
+    resize: none;
+    font-size: 14px !important;
+}
+
+textarea::placeholder {
+    font-size: 14px;
+}
+
+.card{
+	width: 500px;
+	border: none;
+	border-radius: 15px !important;
+}
+
+.adiv{
+	border-radius: 15px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	height: 62px;
+}
+
+.chat{
+	border: none;
+	background: #bcedff;
+	font-size: 10px;
+	border-radius: 20px;
+}
+
+.bg-white{
+	border: 1px solid #E7E7E9;
+	font-size: 10px;
+	border-radius: 20px;
+}
+
+.myvideo img{
+	border-radius: 20px
+}
+
+.dot{
+	font-weight: bold;
+}
+
+.message-area {
+    position: relative;
+}
+
+.message-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    border: none;
+    background-color: transparent;
+}
+
+.list-group-item-action.active {
+    background-color: #00bbff !important;
+}
+
+.exit-btn {
+	cursor: pointer;
+	transition: all .1s ease-in;
+	background-color: #00bbff;
+}
+
+.exit-btn:hover {
+	background-color: #00a3df;
+	color: #fff !important;
+}
+
+.chat-box {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.chat-box::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+#roomModal {
+	 display: none;
+}
+
+#pwd-box {
+	display: none;
+}
+
+.chat-rooms::-webkit-scrollbar {
+	width: 10px;
+}
+
+.chat-rooms::-webkit-scrollbar-thumb {
+    height: 10%; 
+    background: rgb(0, 187, 255);
+    
+    border-radius: 10px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#pwdModal {
+	 display: none;
+}
+
+.chat-room {
+	cursor: pointer;
+}

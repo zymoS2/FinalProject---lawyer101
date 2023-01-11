@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <link rel="stylesheet" href="../resource/css/headers.css" />
+    <link rel="stylesheet" href="../resource/css/sidebars.css" />
+    <link rel="stylesheet" href="../resource/css/footer.css" />
+    <link rel="stylesheet" href="../resource/css/common.css" />
+
+    <link rel="stylesheet" href="../resource/css/reviewList.css" />
+
+    <title>김준성 변호사 - 의뢰인 후기 | 법률서비스 101</title>
+</head>
+<body>
+    <div class="container d-flex">
+        <!-- sidebar -->
+        <div class="sidebar position-fixed w-100 h-100 top-0 start-0" style="z-index: 200;">
+            <div class="w-100 h-100 top-0 end-0 position-absolute bg-black opacity-25" style="z-index: 201;"></div>
+            <nav class="sidebar-container position-absolute top-0 start-0 vh-100 bg-white" style="width: 320px; z-index: 203;">
+                <div class="d-flex flex-column flex-shrink-0 p-3" style="height: 100%;">
+                    <div class="text-end">
+                        <button class="btn bg-transparent text-secondary border-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="main.html" class="my-3 mb-md-0 mx-auto " style="width: 180px; height: 44px;">
+                        <img src="../resource/img/logo.png" alt="로고" width="100%" height="100%">
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column ">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-secondary" aria-current="page">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+                            변호사 찾기
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-secondary">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            법률 지식IN
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <a href="" class="d-flex justify-content-between fw-bold">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                            <span class="small">
+                                지식IN 글쓰기
+                            </span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </div>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            공지사항
+                        </a>
+                        <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            이용약관
+                        </a>
+                        <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            개인정보처리방침
+                        </a>
+                        <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            회사소개
+                        </a>
+                        <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
+                            <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+                            로톡이야기
+                        </a>
+                    </ul>
+                </div>
+                <div class="dropdown bg-custom position-absolute bottom-0 start-0 w-100 p-3 text-end">
+                    <!-- login -->
+                    <!-- <div>
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong>mdo</strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" href="myPage.html">마이페이지</a></li>
+                            <li><a class="dropdown-item" href="chatList.html">상담 목록</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">로그아웃</a></li>
+                        </ul>
+                    </div> -->
+
+                    <!-- logout -->
+                    <div class="d-inline-block mt-2">
+                        <a href="login.html" class="me-3 text-white fw-bold"><small>로그인</small></a>
+                        <a href="sign-up-landing.html" class="me-3 text-white fw-bold"><small>회원가입</small></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- left -->
+        <div class="w-75 px-5">
+            <!-- header -->
+            <header class="d-flex justify-content-between align-items-center py-4 border-bottom">
+                <ul class="mb-0 ps-0 d-flex align-items-center">
+                <li class="me-4">
+                    <button class="btn p-0 me-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    </button>
+                </li>
+                <li class="me-3"><button class="btn py-3 px-0 text-secondary" onclick="location.href='productDetailPage.html'">변호사홈</button></li>
+                <li class="me-3"><button class="btn py-3 px-0 text-secondary" onclick="location.href='commentList.html'">지식IN 답변</button></li>
+                <li class="me-3 active"><button class="btn py-3 px-0 text-secondary" onclick="location.href='reviewList.html'">의뢰인후기</button></li>
+                </ul>
+                <a href="booking.html" class="text-secondary fw-bold">
+                상담예약
+                </a>
+            </header>
+            <h3 class="fw-bold my-1 py-5 text-center border-top border-bottom">실제 상담을 완료한 <span>221</span>건의 <br><span class="text-custom">의뢰인 후기</span>를 확인하세요.</h3>
+            <div class="border-top py-5">
+                <h5 class="pb-3 border-bottom text-secondary fw-bold">후기 <span>221</span></h5>
+                <ul class="ps-0">
+                    <li class="py-5 border-bottom">
+                        <h5 class="fw-bold">여러 방법을 제시해주시고 가장 가능성이 높은 방법을 추천해주셨어요.</h5>
+                        <p class="small">사건에 대해서 자세하게 물어봐주시고 그에 따른 여러 방법들을 제시해주셨어요. 그중 객관적으로 힘들 것 같은 부분과 그나마 가장 최선일 것 같은 방법도 근거를 설명해주시면서 제안해주셨구요. 그리고 무엇보다 지세훈 변호사님께서 경청해주시고 그에 따른 적합한 해결책을 따뜻하게 전달해주셔서 너무 감사했습니다.</p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="ms-2 fw-bold">4.0</div>
+                        </div>
+                        <p class="small text-secondary mb-0">의뢰인<span class="ms-1">홍길동</span><span class="ms-3">2023.01.01</span></p>
+                    </li>
+                    <li class="py-5 border-bottom">
+                        <h5 class="fw-bold">시원시원한 답변 감사합니다!</h5>
+                        <p class="small">당당함(?)이 느껴지는 시원시원한 답변이라서 좋았어요!</p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                            </div>
+                            <div class="ms-2 fw-bold">5.0</div>
+                        </div>
+                        <p class="small text-secondary mb-0">의뢰인<span class="ms-1">이순신</span><span class="ms-3">2023.01.01</span></p>
+                    </li>
+                    <li class="py-5 border-bottom">
+                        <h5 class="fw-bold">정말 명쾌하게 궁금증을 해결해주십니다</h5>
+                        <p class="small">제가 질문이 워낙 여러개라서 15분이 부족할 줄 알았는데 15분동안 워낙 명쾌하게 설명해주셔서 궁금증이 많이 해소됐습니다 나중에 또 상담할 일이 있다면 바로 상담신청 할게요 감사합니다 ㅎㅎ 👍🏽</p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="ms-2 fw-bold ">3.0</div>
+                        </div>
+                        <p class="small text-secondary mb-0">의뢰인<span class="ms-1">김유신</span><span class="ms-3">2023.01.01</span></p>
+                    </li>
+                    <li class="py-5 border-bottom">
+                        <h5 class="fw-bold">정말 명쾌하게 궁금증을 해결해주십니다</h5>
+                        <p class="small">제가 질문이 워낙 여러개라서 15분이 부족할 줄 알았는데 15분동안 워낙 명쾌하게 설명해주셔서 궁금증이 많이 해소됐습니다 나중에 또 상담할 일이 있다면 바로 상담신청 할게요 감사합니다 ㅎㅎ 👍🏽</p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="ms-2 fw-bold ">3.0</div>
+                        </div>
+                        <p class="small text-secondary mb-0">의뢰인<span class="ms-1">김유신</span><span class="ms-3">2023.01.01</span></p>
+                    </li>
+                    <li class="py-5 border-bottom">
+                        <h5 class="fw-bold">정말 명쾌하게 궁금증을 해결해주십니다</h5>
+                        <p class="small">제가 질문이 워낙 여러개라서 15분이 부족할 줄 알았는데 15분동안 워낙 명쾌하게 설명해주셔서 궁금증이 많이 해소됐습니다 나중에 또 상담할 일이 있다면 바로 상담신청 할게요 감사합니다 ㅎㅎ 👍🏽</p>
+                        <div class="d-flex justify-content-end">
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                    </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="text-custom">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                </svg>
+                            </div>
+                            <div class="ms-2 fw-bold ">3.0</div>
+                        </div>
+                        <p class="small text-secondary mb-0">의뢰인<span class="ms-1">김유신</span><span class="ms-3">2023.01.01</span></p>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-custom w-100">더 보기</button>
+            </div>
+        </div>
+
+        <!-- right -->
+        <div class="pt-4" style="width: 498px;">
+        <div class="text-white text-center py-5" style="background-color: #443736;">
+            <h3 class="fw-bold mb-0"><span>기성용</span> 변호사</h3>
+            <p>법무법인 공명</p>
+        </div>
+        <div class="position-relative" style="height: 640px;">
+            <img src="../resource//img/인물사진(상반신)1.jpg" alt="" width="100%" height="100%"/>
+            <a href="booking.html" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
+            상담예약하기
+            </a>
+        </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

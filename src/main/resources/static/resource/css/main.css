@@ -1,0 +1,15 @@
+.category > a {
+    width: 12.5%;
+}
+
+.category .fs-5 {
+    font-size: 1.1rem !important;
+}
+
+.category > a img {
+    transition: all .2s ease-in;
+}
+
+.category > a:hover img {
+    transform: scale(1.1);
+}
