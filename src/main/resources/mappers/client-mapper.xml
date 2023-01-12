@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.client.model.dao.ClientDao">
+    <resultMap id="clientResultSet" type="ClientVo">
+        <result property="clientNum" column="client_num"/>
+        <result property="clientId" column="client_id"/>
+        <result property="clientPwd" column="client_pwd"/>
+        <result property="clientName" column="client_name"/>
+        <result property="clientBirthyy" column="client_birthyy"/>
+        <result property="clientGender" column="client_gender"/>
+        <result property="clientEmail" column="client_email"/>
+        <result property="clientPhone" column="client_phone"/>
+    </resultMap>
+    <select id="selectClient" resultType="ClientVo" resultMap="clientResultSet">
+        select * from client_TB where Client_num=#{clientNum}
+    </select>
+    <select id="selectAllClients" resultType="ClientVo" resultMap="clientResultSet">
+        select * from client_TB
+    </select>
+</mapper>

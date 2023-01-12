@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.lawyer.model.dao.LawyerDao">
+    <resultMap id="LawyerResultSet" type="LawyerVo">
+        <result property="lawyerNum" column="lawyer_num"/>
+        <result property="lawyerId" column="lawyer_id"/>
+        <result property="lawyerPwd" column="lawyer_pwd"/>
+        <result property="lawyerName" column="lawyer_name"/>
+        <result property="lawyerBirthyy" column="lawyer_birthyy"/>
+        <result property="lawyerGender" column="lawyer_gender"/>
+        <result property="lawyerPhone" column="lawyer_phone"/>
+        <result property="lawyerImg" column="lawyer_img"/>
+        <result property="lawyerEmail" column="lawyer_email"/>
+        <result property="lawyerLicenseNum" column="lawyer_license_num"/>
+        <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+        <association property="companyVo" javaType="CompanyVo">
+            <result property="companyNum" column="company_num"/>
+            <result property="companyName" column="company_name"/>
+            <result property="companyAddress" column="company_address"/>
+            <result property="companyPhone" column="company_phone"/>
+        </association>
+    </resultMap>
+    <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
+        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_num=#{lawyerNum}
+    </select>
+
+    <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
+        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num
+    </select>
+</mapper>
