@@ -1,5 +1,7 @@
 package com.kh.lawservice101.knowledgein.model.vo;
 
+import com.kh.lawservice101.category.model.vo.CategoryVo;
+import com.kh.lawservice101.client.model.vo.ClientVo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +16,7 @@ public class InBoardVo {
     private String inBoardTitle;
     private String inBoardContent;
     private int inBoardCount;
-    private Long categoryNum;
-    private Long clientNum;
+    private CategoryVo categoryVo;
+    private ClientVo clientVo;
     private String writerDate;
 }

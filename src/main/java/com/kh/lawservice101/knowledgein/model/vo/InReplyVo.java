@@ -1,5 +1,6 @@
 package com.kh.lawservice101.knowledgein.model.vo;
 
+import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,6 @@ public class InReplyVo {
     private String replyTitle;
     private String replyContent;
     private String replyDate;
-    private Long lawyerNum;
-    private Long inBoardNum;
+    private LawyerVo lawyerVo;
+    private InBoardVo inBoardVo;
 }

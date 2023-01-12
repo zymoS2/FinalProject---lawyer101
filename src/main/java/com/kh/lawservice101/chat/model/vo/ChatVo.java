@@ -15,5 +15,5 @@ public class ChatVo {
     private String chatContent;
     private char userType;
     private String createdDate;
-    private Long chatRoomNum;
+    private ChatRoomVo chatRoomVo;
 }
