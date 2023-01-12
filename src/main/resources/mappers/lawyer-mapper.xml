@@ -29,4 +29,13 @@
     <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
         select * from lawyer_TB l join company_TB c on l.company_num = c.company_num
     </select>
+
+    <insert id="insertLawyer" parameterType="LawyerVo">
+        INSERT INTO LAWYER_TB (LAWYER_NUM, LAWYER_ID, LAWYER_PWD, LAWYER_NAME, LAWYER_BIRTHYY, LAWYER_GENDER,
+        LAWYER_PHONE,LAWYER_EMAIL,LAWYER_IMG, LAWYER_LICENSE_NUM, LAWYER_INTRO_MSG)
+        VALUES(CLIENT_SEQ.NEXTVAL, #{lawyerId}, #{lawyerPwd}, #{lawyerName}, #{lawyerBirthyy}, #{lawyerGender},
+        #{lawyerPhone}, #{lawyerEmail}, default, #{lawyerLicenseNum}, #{lawyerIntroMsg})
+
+    </insert>
+
 </mapper>
