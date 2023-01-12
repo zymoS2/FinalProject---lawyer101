@@ -1,15 +1,28 @@
 .category > a {
-    width: 12.5%;
+  width: 12.5%;
 }
 
 .category .fs-5 {
-    font-size: 1.1rem !important;
+  font-size: 1.1rem !important;
 }
 
 .category > a img {
-    transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .category > a:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
+.searchForm {
+  position: relative;
+}
+.sidebar-container {
+  transform: translateX(-320px);
+  transition: all 1s;
+}
+.sidebarOpacity {
+  opacity: 0;
+}
+/* .sidebar {
+  display: none;
+} */
