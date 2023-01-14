@@ -68,11 +68,11 @@ textarea::placeholder {
 	color: #fff !important;
 }
 
-.chat-box {
+.chat-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 }
-.chat-box::-webkit-scrollbar {
+.chat-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }
 
@@ -107,4 +107,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .chat-room {
 	cursor: pointer;
+}
+
+@media (max-width: 1400px) {
+	#chat-container {
+		left: 65% !important;
+	}
 }

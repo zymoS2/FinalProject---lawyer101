@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.chat.model.dao.ChatUserDao">
+    <insert id="insertLawyer">
+        INSERT INTO chat_user_tb(chat_room_num, lawyer_num)
+        VALUES (#{chatRoomNum}, #{lawyerNum})
+    </insert>
+
+    <update id="updateClient">
+        UPDATE chat_user_tb SET client_num = #{clientNum} WHERE chat_room_num = #{chatRoomNum}
+    </update>
+</mapper>
