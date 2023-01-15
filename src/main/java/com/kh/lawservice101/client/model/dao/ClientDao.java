@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 @Mapper
 public interface ClientDao {
+    //의뢰인 로그인
+    ClientVo clientLogin(ClientVo clientVo);
     //의뢰인 가입
     void insertClient(ClientVo clientVo);
 

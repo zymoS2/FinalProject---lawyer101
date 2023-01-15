@@ -22,8 +22,34 @@
             <result property="companyPhone" column="company_phone"/>
         </association>
     </resultMap>
+
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_num=#{lawyerNum}
+        SELECT  *
+          FROM  LAWYER_TB L
+                JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+          WHERE  LAWYER_NUM = #{lawyerNum}
+    </select>
+
+    <select id="selectLawyerVo" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT  LAWYER_NUM
+                , LAWYER_ID
+                , LAWYER_PWD
+                , LAWYER_NAME
+                , LAWYER_BIRTHYY
+                , LAWYER_GENDER
+                , LAWYER_PHONE
+                , LAWYER_EMAIL
+                , LAWYER_LICENSE_NUM
+                , LAWYER_INTRO_MSG
+          FROM  LAWYER_TB L
+                LEFT JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+         WHERE  1=1
+        <if test="lawyerNum != null">
+            AND LAWYER_NUM = #{lawyerNum}
+        </if>
+        <if test="lawyerId != null">
+            AND LAWYER_ID = #{lawyerId}
+        </if>
     </select>
 
     <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
@@ -31,11 +57,36 @@
     </select>
 
     <insert id="insertLawyer" parameterType="LawyerVo">
-        INSERT INTO LAWYER_TB (LAWYER_NUM, LAWYER_ID, LAWYER_PWD, LAWYER_NAME, LAWYER_BIRTHYY, LAWYER_GENDER,
-        LAWYER_PHONE,LAWYER_EMAIL,LAWYER_IMG, LAWYER_LICENSE_NUM, LAWYER_INTRO_MSG)
-        VALUES(CLIENT_SEQ.NEXTVAL, #{lawyerId}, #{lawyerPwd}, #{lawyerName}, #{lawyerBirthyy}, #{lawyerGender},
-        #{lawyerPhone}, #{lawyerEmail}, default, #{lawyerLicenseNum}, #{lawyerIntroMsg})
 
+        INSERT INTO LAWYER_TB (
+            LAWYER_NUM
+            , LAWYER_ID
+            , LAWYER_PWD
+            , LAWYER_NAME
+            , LAWYER_BIRTHYY
+            , LAWYER_GENDER
+            , LAWYER_PHONE
+            , LAWYER_EMAIL
+            , LAWYER_LICENSE_NUM
+            , LAWYER_INTRO_MSG
+        ) VALUES(
+            LAWYER_SEQ.NEXTVAL
+            , #{lawyerId}
+            , #{lawyerPwd}
+            , #{lawyerName}
+            , #{lawyerBirthyy}
+            , #{lawyerGender}
+            , #{lawyerPhone}
+            , #{lawyerEmail}
+            , #{lawyerLicenseNum}
+            , #{lawyerIntroMsg}
+        )
     </insert>
+
+    <update id="updateLawyer" parameterType="LawyerVo">
+        UPDATE LAWYER_TB
+        SET COMPANY_NUM = #{companyVo.companyNum}
+        WHERE LAWYER_ID = #{lawyerId}
+    </update>
 
 </mapper>

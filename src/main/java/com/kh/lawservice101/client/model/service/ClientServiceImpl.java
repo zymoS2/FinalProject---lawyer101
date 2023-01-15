@@ -13,6 +13,13 @@ public class ClientServiceImpl implements ClientService {
 
     private final ClientDao clientDao;
 
+
+    //의뢰인 로그인
+    @Override
+    public ClientVo findClientIdPw(ClientVo clientVo) {
+       return clientDao.clientLogin(clientVo);
+
+    }
     //의뢰인 가입
     @Override
     public void saveClient(ClientVo clientVo) {

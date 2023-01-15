@@ -6,6 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CompanyDao {
-    void insertCompany(CompanyVo companyVo);
+    //회사 등록
+    void insertCompany(CompanyVo companyPram);
+
+    //회사 조회
+    CompanyVo findCompany(CompanyVo companyPram);
 }
+
 

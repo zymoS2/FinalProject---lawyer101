@@ -12,7 +12,6 @@
         <link href="/resource/css/common.css" rel="stylesheet">
 
     <script type="text/javascript">
-
     function clientJoin(){
     if(confirm('가입하시겠습니까?')){
 

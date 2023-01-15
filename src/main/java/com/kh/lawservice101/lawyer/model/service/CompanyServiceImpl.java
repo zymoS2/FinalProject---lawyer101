@@ -11,7 +11,13 @@ public class CompanyServiceImpl implements CompanyService {
     private final CompanyDao companyDao;
 
     @Override
-    public void  saveCompany(CompanyVo companyVo) {
-        companyDao.insertCompany(companyVo);
+    public void saveCompany(CompanyVo companyPram) {
+        companyDao.insertCompany(companyPram);
+    }
+
+    //회사 조회
+    public CompanyVo findCompany(CompanyVo companyPram) {
+        CompanyVo companyVo = companyDao.findCompany(companyPram);
+        return companyVo;
     }
 }

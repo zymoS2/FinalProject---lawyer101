@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public interface ClientService {
 
+    //의뢰인 로그인
+    ClientVo findClientIdPw(ClientVo clientVo);
+
     //의뢰인 가입
     void saveClient(ClientVo clientVo);
 

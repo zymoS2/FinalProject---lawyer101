@@ -6,9 +6,14 @@ import java.util.ArrayList;
 
 public interface LawyerService {
 
+    // 변호사 업데이트
+    int updateLawyer(LawyerVo lawyerPram);
 
     //변호사 가입
     void saveLawyer(LawyerVo lawyerVo);
+
+    //변호사 조회
+    LawyerVo findLawyer(LawyerVo lawyerPram);
 
     //변호사 단건 조회
     LawyerVo findLawyer(Long lawyerNum);
