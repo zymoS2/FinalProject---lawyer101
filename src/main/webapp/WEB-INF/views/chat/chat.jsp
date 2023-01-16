@@ -194,24 +194,25 @@
         let stomp;
         const loginUser = "${loginUser}";
 
-        const roomNum = "${chatRoom.chatRoomNum}";
-        const lawyer = "${chatRoom.chatUserVo.lawyerVo}";
-        const userCount = "${chatRoom.userCount}";
-
-        const userType = loginUser === lawyer ? "L" : "C";
-
         function connect() {
             const sockJs = new SockJS("/stomp/chat");
 
             //1. SockJS를 내부에 들고있는 stomp를 내어줌
             stomp = Stomp.over(sockJs);
 
+            const lawyer = "${chatRoom.chatUserVo.lawyerVo}";
+
+            const roomNum = "${chatRoom.chatRoomNum}";
+            const userNum = loginUser === lawyer ? "${chatRoom.chatUserVo.lawyerVo.lawyerNum}" : "${chatRoom.chatUserVo.clientVo.clientNum}";
+            const userType = loginUser === lawyer ? "L" : "C";
+            const userCount = "${chatRoom.userCount}";
+
             //2. connection이 맺어지면 실행
             stomp.connect({}, function (){
                 console.log("STOMP Connection");
 
                 //3. send(path, header, message)로 메세지를 보낼 수 있음
-                stomp.send('/pub/chat/enter', {}, JSON.stringify({chatRoomNum: roomNum, userType: userType, userCount: userCount}));
+                stomp.send('/pub/chat/enter', {}, JSON.stringify({chatRoomNum: roomNum, userNum: userNum, userType: userType, userCount: userCount}));
 
                 //4. subscribe(path, callback)으로 메세지를 받을 수 있음
                 stomp.subscribe("/sub/chat/room/" + roomNum, function (chat) {

@@ -47,7 +47,7 @@
     <select id="selectAll" resultType="ChatRoomVo" resultMap="chatRoomVoResultSet">
         SELECT * FROM chat_room_tb r INNER JOIN chat_user_tb u ON u.chat_room_num = r.chat_room_num
                                      LEFT JOIN lawyer_tb l ON u.lawyer_num = l.lawyer_num
-                                     INNER JOIN company_tb c ON c.company_num = l.company_num
+                                     LEFT JOIN company_tb c ON c.company_num = l.company_num
                                      LEFT JOIN client_tb c ON u.client_num = c.client_num
     </select>
 
@@ -62,7 +62,7 @@
     <select id="selectChatRoom" resultType="ChatRoomVo" resultMap="chatRoomVoResultSet">
         SELECT * FROM chat_room_tb r INNER JOIN chat_user_tb u ON u.chat_room_num = r.chat_room_num
                                      LEFT JOIN lawyer_tb l ON u.lawyer_num = l.lawyer_num
-                                     INNER JOIN company_tb c ON c.company_num = l.company_num
+                                     LEFT JOIN company_tb c ON c.company_num = l.company_num
                                      LEFT JOIN client_tb c ON u.client_num = c.client_num
                                     WHERE r.chat_room_num = #{chatRoomNum}
     </select>

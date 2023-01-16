@@ -15,12 +15,35 @@ public class ChatUserServiceImpl implements ChatUserService {
     private final ChatUserDao chatUserDao;
 
     @Override
+    public void saveChatUser(Long chatRoomNum) {
+        chatUserDao.insertChatUser(chatRoomNum);
+    }
+
+    @Override
     public void addLawyer(Long chatRoomNum, LawyerVo lawyerVo) {
-        chatUserDao.insertLawyer(chatRoomNum, lawyerVo.getLawyerNum());
+        chatUserDao.updateLawyer(chatRoomNum, lawyerVo.getLawyerNum());
     }
 
     @Override
     public void addClient(Long chatRoomNum, ClientVo clientVo) {
         chatUserDao.updateClient(chatRoomNum, clientVo.getClientNum());
+    }
+
+    @Override
+    public void removeChatUser(ChatVo chatVo) {
+        if (chatVo.getUserType() == 'L') {
+            chatUserDao.deleteLawyer(chatVo.getChatRoomNum());
+        } else {
+            chatUserDao.deleteClient(chatVo.getChatRoomNum());
+        }
+    }
+
+    @Override
+    public void addChatUser(ChatVo chatVo) {
+        if (chatVo.getUserType() == 'L') {
+            chatUserDao.updateLawyer(chatVo.getChatRoomNum(), chatVo.getUserNum());
+        } else {
+            chatUserDao.updateClient(chatVo.getChatRoomNum(), chatVo.getUserNum());
+        }
     }
 }

@@ -39,6 +39,13 @@ public class ChatRoomController {
         }
 
         List<ChatRoomVo> chatRoomList = chatRoomService.findAllChatRooms();
+        for (ChatRoomVo chatRoomVo : chatRoomList) {
+            if (chatRoomVo.getChatUserVo().getLawyerVo() == null) {
+                chatRoomService.removeChatRoom(chatRoomVo.getChatRoomNum());
+            }
+        }
+
+        chatRoomList = chatRoomService.findAllChatRooms();
         model.addAttribute("chatRoomList", chatRoomList);
 
         if (error) {
@@ -57,6 +64,7 @@ public class ChatRoomController {
         Long chatRoomNum = chatRoomVo.getChatRoomNum();
         log.info("chatRoomNum={}", chatRoomNum);
 
+        chatUserService.saveChatUser(chatRoomNum);
         chatUserService.addLawyer(chatRoomNum, lawyerVo);
 
         return chatRoomNum;

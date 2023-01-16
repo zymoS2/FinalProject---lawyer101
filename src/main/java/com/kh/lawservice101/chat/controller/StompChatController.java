@@ -4,6 +4,7 @@ import com.kh.lawservice101.chat.model.service.ChatRoomService;
 import com.kh.lawservice101.chat.model.service.ChatService;
 import com.kh.lawservice101.chat.model.service.ChatUserService;
 import com.kh.lawservice101.chat.model.vo.ChatRoomVo;
+import com.kh.lawservice101.chat.model.vo.ChatUserVo;
 import com.kh.lawservice101.chat.model.vo.ChatVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +33,14 @@ public class StompChatController {
     @MessageMapping("/chat/enter")
     public void enter(@ModelAttribute ChatVo chatVo, SimpMessageHeaderAccessor headerAccessor) {
         log.info("chatVo={}", chatVo);
-        ChatRoomVo chatRoomVo = chatRoomService.findChatRoom(chatVo.getChatRoomNum());
 
+        ChatRoomVo chatRoomVo = chatRoomService.findChatRoom(chatVo.getChatRoomNum());
+        ChatUserVo chatUserVo = chatRoomVo.getChatUserVo();
+        if (chatUserVo.getLawyerVo() == null || chatUserVo.getClientVo() == null) {
+            chatUserService.addChatUser(chatVo); // 채팅 유저 등록
+        }
         chatRoomService.incrementUserCount(chatRoomVo.getChatRoomNum()); // 채팅방 유저 + 1
+
         chatRoomVo = chatRoomService.findChatRoom(chatRoomVo.getChatRoomNum());
 
         chatVo = chatService.setChatVo(chatRoomVo, chatVo);
@@ -66,18 +72,15 @@ public class StompChatController {
 
         ChatVo chatVo = (ChatVo) headerAccessor.getSessionAttributes().get("chatVo");
 
-        // 채팅방 유저 -1
-        chatRoomService.decrementUserCount(chatVo.getChatRoomNum());
         ChatRoomVo chatRoom = chatRoomService.findChatRoom(chatVo.getChatRoomNum());
 
         chatVo = chatService.setChatVo(chatRoom, chatVo);
+        chatVo.setChatContent(chatVo.getChatWriter() + "님이 채팅방에서 퇴장하였습니다.");
         log.info("chatVo={}", chatVo);
 
+        chatRoomService.decrementUserCount(chatVo.getChatRoomNum()); // 채팅방 유저 -1
+        chatUserService.removeChatUser(chatVo); // 채팅 유저 제거
 
-        if (chatVo != null) {
-            chatVo.setChatContent(chatVo.getChatWriter() + "님이 채팅방에서 퇴장하였습니다.");
-
-            template.convertAndSend("/sub/chat/room/" + chatVo.getChatRoomNum(), chatVo);
-        }
+        template.convertAndSend("/sub/chat/room/" + chatVo.getChatRoomNum(), chatVo);
     }
 }

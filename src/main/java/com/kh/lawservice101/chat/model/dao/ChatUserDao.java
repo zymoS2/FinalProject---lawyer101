@@ -5,6 +5,13 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface ChatUserDao {
-    Long insertLawyer(@Param("chatRoomNum") Long chatRoomNum, @Param("lawyerNum") Long lawyerNum);
+    Long insertChatUser(Long chatRoomNum);
+    void updateLawyer(@Param("chatRoomNum") Long chatRoomNum, @Param("lawyerNum") Long lawyerNum);
     void updateClient(@Param("chatRoomNum") Long chatRoomNum, @Param("clientNum") Long clientNum);
+
+    void deleteLawyer(Long chatRoomNum);
+
+    void deleteClient(Long chatRoomNum);
+
+    void deleteChatUser(Long chatRoomNum);
 }

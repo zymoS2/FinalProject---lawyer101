@@ -3,12 +3,27 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kh.lawservice101.chat.model.dao.ChatUserDao">
-    <insert id="insertLawyer">
-        INSERT INTO chat_user_tb(chat_room_num, lawyer_num)
-        VALUES (#{chatRoomNum}, #{lawyerNum})
+    <insert id="insertChatUser">
+        INSERT INTO chat_user_tb(chat_room_num, lawyer_num, client_num) VALUES (#{chatRoomNum}, null, null)
     </insert>
+
+    <update id="updateLawyer">
+        UPDATE chat_user_tb SET lawyer_num = #{lawyerNum} WHERE chat_room_num = #{chatRoomNum}
+    </update>
+
+    <update id="deleteLawyer">
+        UPDATE chat_user_tb SET lawyer_num = null WHERE chat_room_num = #{chatRoomNum}
+    </update>
 
     <update id="updateClient">
         UPDATE chat_user_tb SET client_num = #{clientNum} WHERE chat_room_num = #{chatRoomNum}
     </update>
+
+    <update id="deleteClient">
+        UPDATE chat_user_tb SET client_num = null WHERE chat_room_num = #{chatRoomNum}
+    </update>
+
+    <delete id="deleteChatUser">
+        DELETE FROM chat_user_tb WHERE chat_room_num = #{chatRoomNum}
+    </delete>
 </mapper>

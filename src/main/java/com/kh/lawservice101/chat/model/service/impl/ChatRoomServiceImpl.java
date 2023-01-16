@@ -1,8 +1,8 @@
 package com.kh.lawservice101.chat.model.service.impl;
 
 import com.kh.lawservice101.chat.model.dao.ChatRoomDao;
+import com.kh.lawservice101.chat.model.dao.ChatUserDao;
 import com.kh.lawservice101.chat.model.service.ChatRoomService;
-import com.kh.lawservice101.chat.model.service.ChatUserService;
 import com.kh.lawservice101.chat.model.vo.ChatRoomVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ChatRoomServiceImpl implements ChatRoomService {
 
     private final ChatRoomDao chatRoomDao;
-    private final ChatUserService chatUserService;
+    private final ChatUserDao chatUserDao;
 
     @Override
     public List<ChatRoomVo> findAllChatRooms() {
@@ -43,6 +43,7 @@ public class ChatRoomServiceImpl implements ChatRoomService {
     @Override
     public void removeChatRoom(Long chatRoomNum) {
         chatRoomDao.deleteChatRoom(chatRoomNum);
+        chatUserDao.deleteChatUser(chatRoomNum);
     }
 
 }
