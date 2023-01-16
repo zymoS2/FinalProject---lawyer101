@@ -24,8 +24,14 @@ public class MemberController {
 
     @PostMapping("/find-account/find-id")
     public String findIdEmailSend(@RequestParam String findIdEmail) {
-        mailService.mailSend(findIdEmail);
+        mailService.findIdMailSend(findIdEmail);
 
+        return "redirect:/";
+    }
+
+    @PostMapping("/find-account/reset-pwd")
+    public String resetPwdEmailSend(@RequestParam String resetPwdId, @RequestParam String resetPwdEmail) {
+        mailService.resetPwdEmailSend(resetPwdId, resetPwdEmail);
         return "redirect:/";
     }
 }

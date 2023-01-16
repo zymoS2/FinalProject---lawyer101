@@ -13,4 +13,8 @@ public interface LawyerDao {
     ArrayList<LawyerVo> selectAllLawyers();
 
     LawyerVo selectLawyerByEmail(String email);
+
+    LawyerVo selectLawyerByIdAndEmail(String id, String email);
+
+    void updatePassword(String tempPwd, Long lawyerNum);
 }

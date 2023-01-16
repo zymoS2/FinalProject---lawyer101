@@ -36,19 +36,19 @@
                 </div>
             </form>
 
-            <form method="post" id="findPwdForm">
+            <form action="/auth/find-account/reset-pwd" method="post" id="resetPwdForm">
                 <label for="reset-pwd-id" class="fw-bold mt-4 mb-2">비밀번호 찾기</label>
                 <div class="form-group py-3 px-4 bg-white border">
                     <small id="findPwdHelp" class="d-block form-text text-muted py-4">가입 시 등록하신 아이디와 이메일을 입력하세요. <br> 비밀번호 재설정 이메일을 보내드립니다.</small>
 
-                    <input id="reset-pwd-id" type="text" name="id" class="form-control" placeholder="아이디를 입력하세요" required>
-                    <p class="form-text text-danger">아이디를 입력하세요</p>
+                    <input id="reset-pwd-id" type="text" name="resetPwdId" class="form-control" placeholder="아이디를 입력하세요" required>
+                    <p class="form-text text-danger" id="id-errorMsg"></p>
 
-                    <input id="reset-pwd-email" type="text" name="email" class="form-control" placeholder="이메일을 입력하세요" required>
-                    <p class="form-text text-danger">이메일을 입력하세요</p>
+                    <input id="reset-pwd-email" type="text" name="resetPwdEmail" class="form-control" placeholder="이메일을 입력하세요" required>
+                    <p class="form-text text-danger" id="email-errorMsg2"></p>
                 </div>
                 <div class="bg-custom text-center">
-                    <button type="submit" class="btn py-3 fw-bold text-white">[이메일 받기]</button>
+                    <button type="button" class="btn py-3 fw-bold text-white" id="reset-pwd-btn">[이메일 받기]</button>
                 </div>
             </form>
 

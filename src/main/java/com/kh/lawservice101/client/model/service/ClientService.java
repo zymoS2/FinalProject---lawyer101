@@ -12,4 +12,8 @@ public interface ClientService {
     ArrayList<ClientVo> findAllClients();
 
     ClientVo findClientByEmail(String email);
+
+    ClientVo findClientByIdAndEmail(String resetPwdId, String resetPwdEmail);
+
+    void passwordModify(String tempPwd, Long clientNum);
 }
