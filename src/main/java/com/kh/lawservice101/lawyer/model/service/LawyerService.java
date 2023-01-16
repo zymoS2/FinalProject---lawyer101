@@ -13,4 +13,5 @@ public interface LawyerService {
     //변호사 목록 조회
     ArrayList<LawyerVo> findAllLawyers();
 
+    LawyerVo findLawyerByEmail(String email);
 }

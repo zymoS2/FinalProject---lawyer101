@@ -11,4 +11,6 @@ public interface LawyerDao {
     LawyerVo selectLawyer(Long lawyerNum);
 
     ArrayList<LawyerVo> selectAllLawyers();
+
+    LawyerVo selectLawyerByEmail(String email);
 }

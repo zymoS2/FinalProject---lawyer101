@@ -11,4 +11,5 @@ public interface ClientService {
     //변호사 목록 조회
     ArrayList<ClientVo> findAllClients();
 
+    ClientVo findClientByEmail(String email);
 }

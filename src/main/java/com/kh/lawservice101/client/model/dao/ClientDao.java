@@ -13,4 +13,5 @@ public interface ClientDao {
     ArrayList<ClientVo> selectAllClients();
 
 
+    ClientVo selectClientByEmail(String email);
 }

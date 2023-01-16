@@ -12,6 +12,19 @@ spring:
     username: finalpro
     password: 1234
 
+  # mail 관련 설정
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 # mybatis 관련 설정
 mybatis:
   mapper-locations: /mappers/*.xml # mapper.xml 위치 지정

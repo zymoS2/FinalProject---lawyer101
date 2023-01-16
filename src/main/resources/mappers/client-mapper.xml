@@ -19,4 +19,7 @@
     <select id="selectAllClients" resultType="ClientVo" resultMap="clientResultSet">
         select * from client_TB
     </select>
+    <select id="selectClientByEmail" resultType="ClientVo" resultMap="clientResultSet">
+        select * from client_TB where client_email=#{email}
+    </select>
 </mapper>

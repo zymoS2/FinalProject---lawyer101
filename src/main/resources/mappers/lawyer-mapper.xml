@@ -29,4 +29,8 @@
     <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
         select * from lawyer_TB l join company_TB c on l.company_num = c.company_num
     </select>
+
+    <select id="selectLawyerByEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
+        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_email=#{email}
+    </select>
 </mapper>

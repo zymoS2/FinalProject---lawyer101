@@ -25,5 +25,10 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.selectAllClients();
     }
 
+    @Override
+    public ClientVo findClientByEmail(String email) {
+        return clientDao.selectClientByEmail(email);
+    }
+
 
 }
