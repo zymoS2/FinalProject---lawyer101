@@ -27,7 +27,7 @@
   </head>
   <body>
     <!-- header -->
-    <header class="p-3 position-sticky top-0">
+    <header class="p-3 top-0 position-relative z-3">
       <div class="container">
         <button
           class="bg-transparent border-0 text-secondary float-start headerButton"
@@ -92,7 +92,6 @@
           style="width: 50%"
         >
           <div class="searchFormDiv">
-            <!-- <h1>좌표</h1> -->
             <input
               type="search"
               class="form-control form-control-lg pe-5 fw-bold searchFormInput"
@@ -121,11 +120,12 @@
     </header>
 
     <!-- sidebar -->
-    <div class="w-100 h-100 sidebar position-fixed top-0 start-0">
+    <div class="sidebar h-100 w-100 position-fixed top-0 start-0">
       <div
-        class="w-100 h-100 top-0 end-0 position-absolute bg-black sidebarOpacity"
-        style="z-index: 201"
+      class="w-100 h-100 top-0 end-0 position-absolute bg-black sidebarOpacity"
+      style="z-index: 201"
       ></div>
+
       <nav
         class="sidebar-container vh-100 position-absolute top-0 start-0 bg-white"
         style="width: 320px; z-index: 203"
@@ -323,7 +323,7 @@
         class="carousel slide h-100"
         data-bs-ride="carousel"
       >
-        <div class="carousel-indicators h-100">
+        <div class="carousel-indicators">
           <button
             type="button"
             data-bs-target="#carouselExampleCaptions"

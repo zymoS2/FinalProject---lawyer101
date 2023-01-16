@@ -1,9 +1,11 @@
 $(document).ready(function () {
+  var carouselTop = $("#carouselExampleCaptions").get(0).getBoundingClientRect().top;
   $(window).scroll(function () {
     var st = $(this).scrollTop();
-    $(".searchForm>div>h1").text(st);
 
-    if (st > 100) {
+    if (st > carouselTop) {
+      $("header").addClass("active");
+      $("#carouselExampleCaptions").css("margin-top", "153px");
       $(".searchForm").stop().animate(
         {
           top: "-75",
@@ -13,6 +15,8 @@ $(document).ready(function () {
         0.1
       );
     } else {
+      $("header").removeClass("active");
+      $("#carouselExampleCaptions").css("margin-top", "0px");
       $(".searchForm").stop().animate(
         {
           top: "0",
@@ -42,18 +46,18 @@ $(document).ready(function () {
 $(function () {
   $(".headerButton").click(function () {
     $(".sidebar-container").css("transform", "translateX(0)");
-    $(".sidebar").css({ "z-index": 200 });
+    $(".sidebar").css({ "z-index": 200});
     $(".sidebarOpacity").css({ opacity: 0.25 });
   });
   $(".sidebarButton").click(function () {
     $(".sidebar-container").css("transform", "translateX(-320px)");
-    $(".sidebar").css({ "z-index": 0 });
+    $(".sidebar").css({ "z-index": -1 });
     $(".sidebarOpacity").css({ opacity: 0 });
   });
   $(".sidebarOpacity").click(function (e) {
     if (!$(e.target).hasClass("sidebar")) {
       $(".sidebar-container").css("transform", "translateX(-320px)");
-      $(".sidebar").css({ "z-index": 0 });
+      $(".sidebar").css({ "z-index": -1 });
       $(".sidebarOpacity").css({ opacity: 0 });
     }
   });
