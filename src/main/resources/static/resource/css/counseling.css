@@ -1,27 +1,29 @@
 ul {
-    list-style: initial;
+  list-style: initial;
 }
 
 #progressBar {
-    width: 600px !important;
+  width: 600px !important;
 }
 
 #inputFrm {
-    width: 700px;
+  width: 700px;
 }
 
 #exampleFormControlTextarea1 {
-    height: 500px;
-    width: 100%;
-    resize: none;
+  height: 500px;
+  width: 100%;
+  resize: none;
 }
 
 #exampleFormControlTextarea1::placeholder {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 #question {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
+.disnone {
+  display: none;
+}
