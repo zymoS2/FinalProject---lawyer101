@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class InBoardVo {
     private Long inBoardNum;
     private String inBoardTitle;

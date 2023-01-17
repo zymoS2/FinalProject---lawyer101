@@ -11,13 +11,21 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521/xe
     username: finalpro
     password: 1234
+    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #url: jdbc:log4jdbc:oracle:thin:@localhost:1521/xe
 
 # mybatis 관련 설정
 mybatis:
   mapper-locations: /mappers/*.xml # mapper.xml 위치 지정
   type-aliases-package: com.kh.lawservice101.test.model.vo,
-                        com.kh.lawservice101.client.model.vo, com.kh.lawservice101.lawyer.model.vo
+                        com.kh.lawservice101.client.model.vo, 
+                        com.kh.lawservice101.lawyer.model.vo,
+                        com.kh.lawservice101.knowledgein.model.vo
   configuration:
     map-underscore-to-camel-case: true # model 프로퍼티 camel case 설정
     jdbc-type-for-null: varchar # ""값 null 처리
+
+# 포트 변경
+server:
+  port: 9090
 
