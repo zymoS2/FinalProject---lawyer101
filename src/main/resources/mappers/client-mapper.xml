@@ -21,11 +21,11 @@
     </select>
 
     <select id="selectClient" resultType="ClientVo" resultMap="clientResultSet">
-        select * from client_TB where Client_num = #{clientNum}
+        SELECT * FROM CLIENT_TB WHERE CLIENT_NUM = #{clientNum}
     </select>
 
     <select id="selectAllClients" resultType="ClientVo" resultMap="clientResultSet">
-        select * from client_TB
+        SELECT * FROM CLIENT_TB
     </select>
 
     <insert id="insertClient" parameterType="ClientVo">

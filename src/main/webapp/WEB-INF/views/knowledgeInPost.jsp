@@ -20,17 +20,33 @@
     <link rel="stylesheet" href="../resource/css/in_post.css">
 
     <script type="text/javascript">
-    function knowledgeInPost(){
-    if(confirm('등록 하시겠습니까?')){
+        function knowledgeInPost(){
+            if(confirm('등록 하시겠습니까?')){
 
-    document.getElementById('knowledgeInPostForm').setAttribute('action', '/knowledgeInPost/insert.do');
-    document.getElementById('knowledgeInPostForm').submit();
+            var title = document.getElementsByName('inBoardTitle')[0].value;
+            var content = document.getElementsByName('inBoardContent')[0].value;
+            var category = document.getElementsByName('categoryNum')[0].value;
 
-     }
-    }
+            if(title == null || title.length == 0) {
+                alert('제목을 입력하세요');
+                return;
+            }
+             if(content == null || content.length == 0) {
+                 alert('내용을 입력하세요');
+                 return;
+             }
+
+             if(category == null || category.length == 0) {
+                 alert('카테고리를 선택하세요');
+                 return;
+             }
+
+            document.getElementById('knowledgeInPostForm').setAttribute('action', '/knowledgeInPost/insert.do');
+            document.getElementById('knowledgeInPostForm').submit();
+
+             }
+        }
     </script>
-
-
 
 </head>
 <body>
@@ -45,23 +61,23 @@
                 </div>
                 <div class="form-group mb-4">
                     <label class="form-label fw-bold">카테고리</label>
-                    <select name="categoryVo" class="form-select">
+                    <select name="categoryNum" class="form-select">
                         <option value="" disabled selected style="display: none;">선택</option>
-                        <option value="">성범죄</option>
-                        <option value="">재산범죄</option>
-                        <option value="">교통사고/범죄</option>
-                        <option value="">형사절차</option>
-                        <option value="">폭행/협박</option>
-                        <option value="">명예훼손/모욕</option>
-                        <option value="">기타 형사범죄</option>
-                        <option value="">부동산/임대차</option>
-                        <option value="">금전/계약 문제</option>
-                        <option value="">민사절차</option>
-                        <option value="">기타 민사문제</option>
-                        <option value="">가족</option>
-                        <option value="">회사</option>
-                        <option value="">의료/세금/행정</option>
-                        <option value="">IT/지식재산/금융</option>
+                        <option value="1">성범죄</option>
+                        <option value="2">재산범죄</option>
+                        <option value="3">교통사고/범죄</option>
+                        <option value="4">형사절차</option>
+                        <option value="5">폭행/협박</option>
+                        <option value="6">명예훼손/모욕</option>
+                        <option value="7">기타 형사범죄</option>
+                        <option value="8">부동산/임대차</option>
+                        <option value="9">금전/계약 문제</option>
+                        <option value="10">민사절차</option>
+                        <option value="11">기타 민사문제</option>
+                        <option value="12">가족</option>
+                        <option value="13">회사</option>
+                        <option value="14">의료/세금/행정</option>
+                        <option value="15">IT/지식재산/금융</option>
                     </select>
                 </div>
                 <div class="form-group mb-4">

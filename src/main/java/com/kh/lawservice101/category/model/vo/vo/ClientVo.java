@@ -1,8 +1,6 @@
-package com.kh.lawservice101.client.model.vo;
+package com.kh.lawservice101.category.model.vo.vo;
 
 import lombok.*;
-
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -10,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @ToString
 public class ClientVo {
-
     private Long clientNum;
     private String clientId;
     private String clientPwd;

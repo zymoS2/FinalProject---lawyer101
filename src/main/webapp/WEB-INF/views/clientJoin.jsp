@@ -6,7 +6,7 @@
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 
-    <title>clientJoin</title>
+    <title>로그인 | 법률서비스 101</title>
 
         <link href="/resource/css/sign-up.css" rel="stylesheet">
         <link href="/resource/css/common.css" rel="stylesheet">

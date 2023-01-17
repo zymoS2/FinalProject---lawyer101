@@ -4,25 +4,26 @@
 
 <mapper namespace="com.kh.lawservice101.knowledgein.model.dao.InBoardDao">
 
-    <insert id="inBoardUpload"  parameterType="InBoardVo">
+    <insert id="inBoardUpload" parameterType="InBoardVo">
 
         INSERT INTO IN_BOARD_TB (
             IN_BOARD_NUM
             , IN_BOARD_TITLE
             , IN_BOARD_CONTENT
             , IN_BOARD_COUNT
+            , WRITE_DATE
             , CATEGORY_NUM
             , CLIENT_NUM
-            , WRITE_DATE
         ) VALUES(
             IN_BOARD_SEQ.NEXTVAL
             , #{inBoardTitle}
             , #{inBoardContent}
             , #{inBoardCount}
-            , 0
-            , 0
-            ,sysdate
+            , sysdate
+            , #{categoryVo.categoryNum}
+            , #{clientVo.clientNum}
         )
 
     </insert>
+
 </mapper>
