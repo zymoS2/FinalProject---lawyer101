@@ -11,6 +11,21 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521/xe
     username: finalpro
     password: 1234
+    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #url: jdbc:log4jdbc:oracle:thin:@localhost:1521/xe
+
+  # mail 관련 설정
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 # mybatis 관련 설정
 mybatis:
@@ -18,7 +33,16 @@ mybatis:
   type-aliases-package: com.kh.lawservice101.test.model.vo,
                         com.kh.lawservice101.client.model.vo, com.kh.lawservice101.lawyer.model.vo
                       , com.kh.lawservice101.review.model.vo
+                        com.kh.lawservice101.client.model.vo, 
+                        com.kh.lawservice101.lawyer.model.vo,
+                        com.kh.lawservice101.knowledgein.model.vo
+                        com.kh.lawservice101.client.model.vo, com.kh.lawservice101.lawyer.model.vo,
+                        com.kh.lawservice101.chat.model.vo
   configuration:
     map-underscore-to-camel-case: true # model 프로퍼티 camel case 설정
     jdbc-type-for-null: varchar # ""값 null 처리
+
+# 포트 변경
+server:
+  port: 9090
 

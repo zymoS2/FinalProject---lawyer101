@@ -1,19 +1,18 @@
 package com.kh.lawservice101.chat.model.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ChatVo {
-    private Long chatNum;
+    private Long chatRoomNum;
+    private Long userNum;
     private String chatWriter;
     private String chatContent;
     private char userType;
+    private Integer userCount;
     private String createdDate;
-    private ChatRoomVo chatRoomVo;
 }

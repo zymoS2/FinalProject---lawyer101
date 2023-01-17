@@ -13,7 +13,8 @@ public class ChatRoomVo {
     private Long chatRoomNum;
     private String chatRoomTitle;
     private char lockState;
-    private int chatRoomPwd;
+    private Integer chatRoomPwd;
     private int userCount;
     private String createdDate;
+    private ChatUserVo chatUserVo;
 }

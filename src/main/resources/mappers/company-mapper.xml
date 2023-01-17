@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.lawyer.model.dao.CompanyDao">
+    <resultMap id="CompanyResultSet" type="CompanyVo">
+        <result property="companyNum" column="COMPANY_NUM"/>
+        <result property="companyName" column="COMPANY_NAME"/>
+        <result property="companyAddress" column="COMPANY_ADDRESS"/>
+        <result property="companyPhone" column="COMPANY_PHONE"/>
+    </resultMap>
+
+
+    <insert id="insertCompany" parameterType="CompanyVo">
+
+        INSERT INTO COMPANY_TB (
+            COMPANY_NUM
+            , COMPANY_NAME
+            , COMPANY_ADDRESS
+            , COMPANY_PHONE
+        ) VALUES(
+            COMPANY_SEQ.NEXTVAL
+            , #{companyName}
+            , #{companyAddress}
+            , #{companyPhone}
+        )
+    </insert>
+
+    <select id="findCompany" parameterType="CompanyVo" resultType="CompanyVo">
+
+        SELECT COMPANY_NUM, COMPANY_NAME, COMPANY_ADDRESS, COMPANY_PHONE
+        FROM COMPANY_TB
+        WHERE 1 = 1
+        <if test="companyNum != null">
+            AND COMPANY_NUM = #{companyNum}
+        </if>
+        <if test="companyName != null">
+            AND COMPANY_NAME = #{companyName}
+        </if>
+    </select>
+</mapper>

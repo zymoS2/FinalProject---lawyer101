@@ -1,15 +1,27 @@
+header.active {
+  border-bottom: 1px solid gray;
+  background-color: #ffffff;
+  position: fixed !important;
+  width: 100%;
+  top: 0 !important;
+  height: 84px;
+}
 .category > a {
-    width: 12.5%;
+  width: 12.5%;
 }
 
 .category .fs-5 {
-    font-size: 1.1rem !important;
+  font-size: 1.1rem !important;
 }
 
 .category > a img {
-    transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .category > a:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
+.searchForm {
+  position: relative;
+}
+

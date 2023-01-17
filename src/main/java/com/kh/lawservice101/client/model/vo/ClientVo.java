@@ -2,12 +2,15 @@ package com.kh.lawservice101.client.model.vo;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class ClientVo {
+
     private Long clientNum;
     private String clientId;
     private String clientPwd;
