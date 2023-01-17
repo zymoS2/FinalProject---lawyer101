@@ -13,12 +13,12 @@ public class TestController {
 
     private final TestService testService;
 
-    @GetMapping("/")
+    @GetMapping("/test")
     public String test() {
         return "test";
     }
 
-    @PostMapping("/insert")
+    @PostMapping("/testInsert")
     public String testSave(@RequestParam String id, @RequestParam String password) {
         testService.join(id, password);
         return "redirect:/";
