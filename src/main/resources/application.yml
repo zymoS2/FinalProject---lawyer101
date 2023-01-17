@@ -14,6 +14,19 @@ spring:
     #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     #url: jdbc:log4jdbc:oracle:thin:@localhost:1521/xe
 
+  # mail 관련 설정
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 # mybatis 관련 설정
 mybatis:
   mapper-locations: /mappers/*.xml # mapper.xml 위치 지정

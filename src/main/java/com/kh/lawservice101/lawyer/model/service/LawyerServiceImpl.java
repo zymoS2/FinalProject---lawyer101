@@ -43,4 +43,19 @@ public class LawyerServiceImpl implements LawyerService {
     public ArrayList<LawyerVo> findAllLawyers() {
         return lawyerDao.selectAllLawyers();
     }
+
+    @Override
+    public LawyerVo findLawyerByEmail(String email) {
+        return lawyerDao.selectLawyerByEmail(email);
+    }
+
+    @Override
+    public LawyerVo findLawyerByIdAndEmail(String resetPwdId, String resetPwdEmail) {
+        return lawyerDao.selectLawyerByIdAndEmail(resetPwdId, resetPwdEmail);
+    }
+
+    @Override
+    public void passwordModify(String tempPwd, Long lawyerNum) {
+        lawyerDao.updatePassword(tempPwd, lawyerNum);
+    }
 }

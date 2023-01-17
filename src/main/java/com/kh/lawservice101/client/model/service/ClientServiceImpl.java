@@ -38,5 +38,20 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.selectAllClients();
     }
 
+    @Override
+    public ClientVo findClientByEmail(String email) {
+        return clientDao.selectClientByEmail(email);
+    }
+
+    @Override
+    public ClientVo findClientByIdAndEmail(String resetPwdId, String resetPwdEmail) {
+        return clientDao.selectClientByIdAndEmail(resetPwdId, resetPwdEmail);
+    }
+
+    @Override
+    public void passwordModify(String tempPwd, Long clientNum) {
+        clientDao.updatePassword(tempPwd, clientNum);
+    }
+
 
 }

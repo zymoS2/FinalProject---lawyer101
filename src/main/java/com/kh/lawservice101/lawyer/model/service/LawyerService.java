@@ -23,4 +23,9 @@ public interface LawyerService {
     ArrayList<LawyerVo> findAllLawyers();
 
 
+    LawyerVo findLawyerByEmail(String email);
+
+    LawyerVo findLawyerByIdAndEmail(String resetPwdId, String resetPwdEmail);
+
+    void passwordModify(String tempPwd, Long lawyerNum);
 }

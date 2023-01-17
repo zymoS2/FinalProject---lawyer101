@@ -22,4 +22,10 @@ public interface LawyerDao {
 
     //변호사 목록
     ArrayList<LawyerVo> selectAllLawyers();
+
+    LawyerVo selectLawyerByEmail(String email);
+
+    LawyerVo selectLawyerByIdAndEmail(String id, String email);
+
+    void updatePassword(String tempPwd, Long lawyerNum);
 }

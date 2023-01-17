@@ -50,4 +50,13 @@
         )
 
     </insert>
+    <select id="selectClientByEmail" resultType="ClientVo" resultMap="clientResultSet">
+        select * from client_TB where client_email=#{email}
+    </select>
+    <select id="selectClientByIdAndEmail" resultType="ClientVo" resultMap="clientResultSet">
+        select * from client_TB where client_id=#{id} and client_email=#{email}
+    </select>
+    <update id="updatePassword">
+        update client_TB set client_pwd = #{tempPwd} where client_num = #{clientNum}
+    </update>
 </mapper>
