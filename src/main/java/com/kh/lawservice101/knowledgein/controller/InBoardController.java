@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,6 +19,18 @@ import javax.servlet.http.HttpSession;
 public class InBoardController {
     private final InBoardService inBoardService;
 
+    //지식인글 상세페이지
+    @GetMapping("/knowledgeInDetail")
+    public String knowledgeInDetail(){
+        return "knowledgeInDetail";
+    }
+    //지식인 목록
+    @GetMapping("/knowledgeIn")
+    public String knowledgeIn() {
+        return "knowledgeIn";
+    }
+
+    //글쓰기
     @GetMapping("/knowledgeInPost")
     public String knowledgeInPost(HttpServletRequest request) {
         // 1. 세션에 클라이언트라는 이름으로 담겨져있는 값이 있는지 확인한다
@@ -51,15 +63,12 @@ public class InBoardController {
         if (loginClientSession != null) {
             // 1. 제목이 있는지 확인
             if (inBoardVo.getInBoardTitle() == null) {
-
                 return "redirect:/knowledgeInPost?false=title";
             }
-
             // 2. 내용이 있는지 확인
             if (inBoardVo.getInBoardContent() == null) {
                 return "redirect:/knowledgeInPost?false=Content";
             }
-
             // 3. 카데고리 값 확인
             if (inBoardVo.getCategoryVo() == null) {
                 return "redirect:/knowledgeInPost?false=category";
@@ -67,7 +76,7 @@ public class InBoardController {
             inBoardVo.setClientVo(loginClientSession);
 
             inBoardService.postInBoard(inBoardVo);
-            return "redirect:/knowledgeInPost";
+            return "redirect:/knowledgeIn";
         } else { // 3. 로그인 세션이 유지 되지 않았다면 다시 로그인
             return "redirect:/clientLogin";
         }

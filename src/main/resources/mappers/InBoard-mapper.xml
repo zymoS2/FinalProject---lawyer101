@@ -25,5 +25,8 @@
         )
 
     </insert>
+<!--<select id="selectAllInBoard" resultType="InBoardVo" resultMap="InBoardResultSet">-->
+<!--    SELECT * FROM IN_BOARD_TB-->
+<!--</select>-->
 
 </mapper>
