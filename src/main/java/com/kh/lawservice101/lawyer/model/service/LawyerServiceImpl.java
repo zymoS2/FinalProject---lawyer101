@@ -1,6 +1,9 @@
 package com.kh.lawservice101.lawyer.model.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.kh.lawservice101.lawyer.model.dao.LawyerDao;
+import com.kh.lawservice101.lawyer.model.vo.LawyerSearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,5 +60,11 @@ public class LawyerServiceImpl implements LawyerService {
     @Override
     public void passwordModify(String tempPwd, Long lawyerNum) {
         lawyerDao.updatePassword(tempPwd, lawyerNum);
+    }
+
+    @Override
+    public Page<LawyerVo> pagingLawyer(LawyerSearchCon lawyerSearchCon) {
+        PageHelper.startPage(lawyerSearchCon);
+        return lawyerDao.selectLawyerByKeyword(lawyerSearchCon);
     }
 }

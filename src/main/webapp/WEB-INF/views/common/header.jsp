@@ -22,15 +22,17 @@
     </div>
 
     <div class="mx-auto mt-1" style="width: 180px">
-      <a href="main.html" class="d-inline-block" style="width: 180px; height: 44px">
-        <img src="../resource/img/logo.png" alt="로고" width="100%" height="100%"/>
+      <a href="/" class="d-inline-block" style="width: 180px; height: 44px">
+        <img src="/resource/img/logo.png" alt="로고" width="100%" height="100%"/>
       </a>
     </div>
 
-    <form class="mx-auto mt-4 position-relative searchForm" role="search" style="width: 50%">
+    <form action="/product/list" method="get" class="mx-auto mt-4 position-relative searchForm" role="search" style="width: 50%">
       <div class="searchFormDiv">
-        <input type="search" class="form-control form-control-lg pe-5 fw-bold searchFormInput" placeholder="분야/사례/변호사를 검색하세요" aria-label="Search"/>
-        <button class="bg-transparent border-0 me-2 text-secondary position-absolute end-0 top-50 translate-middle-y searchFormButton">
+        <input type="hidden" name="pageNum" value="1">
+        <input type="search" name="keyword" class="form-control form-control-lg pe-5 fw-bold searchFormInput"
+               placeholder="분야/사례/변호사를 검색하세요" aria-label="Search" value="${keyword}"/>
+        <button type="button" class="bg-transparent border-0 me-2 text-secondary position-absolute end-0 top-50 translate-middle-y searchFormButton">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>

@@ -1,8 +1,11 @@
 package com.kh.lawservice101.lawyer.model.service;
 
+import com.github.pagehelper.Page;
+import com.kh.lawservice101.lawyer.model.vo.LawyerSearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface LawyerService {
 
@@ -28,4 +31,6 @@ public interface LawyerService {
     LawyerVo findLawyerByIdAndEmail(String resetPwdId, String resetPwdEmail);
 
     void passwordModify(String tempPwd, Long lawyerNum);
+
+    Page<LawyerVo> pagingLawyer(LawyerSearchCon lawyerSearchCon);
 }
