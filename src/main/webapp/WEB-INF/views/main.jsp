@@ -81,7 +81,7 @@
       <h2 class="pb-2 border-bottom fw-bold fs-3">분야로 변호사를 찾으세요.</h2>
 
       <div class="category row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4 py-3">
-        <a href="">
+        <a href="/product/list?keyword=성범죄">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/성범죄.png" alt="성범죄" class="rounded mx-auto d-block object-fit-contain"
@@ -90,7 +90,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=재산범죄">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/재산범죄.png" alt="재산범죄" class="rounded mx-auto d-block object-fit-contain"
@@ -99,7 +99,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=교통사고/범죄">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/교통사고_범죄.png" alt="교통사고/범죄" class="rounded mx-auto d-block object-fit-contain"
@@ -108,7 +108,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=형사절차">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/형사절차.png" alt="형사절차" class="rounded mx-auto d-block object-fit-contain"
@@ -117,7 +117,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=폭행/협박">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/폭행_협박.png" alt="폭행/협박" class="rounded mx-auto d-block object-fit-contain"
@@ -126,7 +126,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=명예훼손/모욕">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/명예훼손_모욕.png" alt="명예훼손/모욕" class="rounded mx-auto d-block object-fit-contain"
@@ -135,7 +135,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=기타 형사범죄">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/기타형사범죄.png" alt="기타 형사범죄" class="rounded mx-auto d-block object-fit-contain"
@@ -144,7 +144,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=부동산/임대차">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/부동산_임대차.png" alt="부동산/임대차" class="rounded mx-auto d-block object-fit-contain"
@@ -153,7 +153,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=금전/계약 문제">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/금전_계약문제.png" alt="금전/계약 문제" class="rounded mx-auto d-block object-fit-contain"
@@ -162,7 +162,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=민사절차">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/민사절차.png" alt="민사절차" class="rounded mx-auto d-block object-fit-contain"
@@ -171,7 +171,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=기타 민사문제">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/기타민사문제.png" alt="기타 민사문제" class="rounded mx-auto d-block object-fit-contain"
@@ -180,7 +180,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=가족">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/가족.png" alt="가족" class="rounded mx-auto d-block object-fit-contain" width="50px"
@@ -189,7 +189,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=회사">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/회사.png" alt="회사" class="rounded mx-auto d-block object-fit-contain" width="50px"
@@ -198,7 +198,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=의료/세금/행정">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/의료_세금_행정.png" alt="의료/세금/행정" class="rounded mx-auto d-block object-fit-contain"
@@ -207,7 +207,7 @@
             </div>
           </div>
         </a>
-        <a href="">
+        <a href="/product/list?keyword=IT/지식재산/금융">
           <div class="col d-flex align-items-start justify-content-center">
             <div>
               <img src="../resource/img/it_지식재산_금융.png" alt="IT/지식재산/금융"
