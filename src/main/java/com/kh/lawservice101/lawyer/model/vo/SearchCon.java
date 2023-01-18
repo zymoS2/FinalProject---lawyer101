@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class LawyerSearchCon {
+public class SearchCon {
     private int pageNum;
     private int pageSize;
     private String keyword;

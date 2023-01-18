@@ -24,9 +24,9 @@
 
   <div class="container">
     <ul class="category d-flex ps-0 border-bottom">
-      <li class="me-4 active"><a href="" class="d-inline-block py-3">통합</a></li>
+      <li class="me-4 active"><a href="/product/list?keyword=${keyword}" class="d-inline-block py-3">통합</a></li>
       <li class="me-4"><a href="/product/list/lawyer?&keyword=${keyword}" class="d-inline-block py-3">변호사</a></li>
-      <li class="me-4"><a href="" class="d-inline-block py-3">지식IN</a></li>
+      <li class="me-4"><a href="/product/list/knowledgeIn?keyword=${keyword}" class="d-inline-block py-3">지식IN</a></li>
     </ul>
     <h4 class="fw-bold my-5">
       <a href="/product/list/lawyer?keyword=${keyword}">변호사
@@ -76,7 +76,7 @@
 
     <div class="consulting">
       <h4 class="fw-bold mt-5">
-        <a href="#">지식인
+        <a href="/product/list/knowledgeIn?keyword=${keyword}">지식인
           <span class="text-secondary">2931
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -98,8 +98,12 @@
           </a>
         </li>
       </ul>
+      <div class="text-center">
+        <button class="btn btn-light w-100" onclick="location.href='/product/list/knowledgeIn?keyword=${keyword}'">모두보기</button>
+      </div>
     </div>
   </div>
+  <hr class="featurette-divider" />
   <!-- footer -->
   <jsp:include page="../common/footer.jsp" />
 

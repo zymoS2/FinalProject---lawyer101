@@ -27,7 +27,7 @@
     <ul class="category d-flex ps-0 border-bottom">
       <li class="me-4"><a href="/product/list?keyword=${keyword}" class="d-inline-block py-3">통합</a></li>
       <li class="me-4 active"><a href="/product/list/lawyer?keyword=${keyword}" class="d-inline-block py-3">변호사</a></li>
-      <li class="me-4"><a href="" class="d-inline-block py-3">지식IN</a></li>
+      <li class="me-4"><a href="/product/list/knowledgeIn?keyword=${keyword}" class="d-inline-block py-3">지식IN</a></li>
     </ul>
     <div class="marketing">
       <div class="lawyer-container row flex-wrap">
@@ -77,7 +77,7 @@
     });
 
     $(window).scroll(function () {
-        getList(${pageLawyer.getPages()});
+      getLawyerList(${pageLawyer.getPages()});
     })
   </script>
 </body>

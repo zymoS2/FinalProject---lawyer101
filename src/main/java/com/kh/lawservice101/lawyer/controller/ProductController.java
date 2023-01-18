@@ -2,8 +2,8 @@ package com.kh.lawservice101.lawyer.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.kh.lawservice101.lawyer.model.service.LawyerService;
-import com.kh.lawservice101.lawyer.model.vo.LawyerSearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
+import com.kh.lawservice101.lawyer.model.vo.SearchCon;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -24,38 +24,52 @@ public class ProductController {
     private final static int PAGE_SIZE = 12;
 
     @GetMapping("/list")
-    public String list(@ModelAttribute LawyerSearchCon lawyerSearchCon, Model model) {
-        lawyerSearchCon.setPageSize(PAGE_SIZE);
+    public String list(@ModelAttribute SearchCon searchCon, Model model) {
+        searchCon.setPageSize(PAGE_SIZE);
 
-        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(lawyerSearchCon));
+        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(searchCon));
 
         model.addAttribute("pageLawyer", pageLawyer);
-        model.addAttribute("keyword", lawyerSearchCon.getKeyword());
+        model.addAttribute("keyword", searchCon.getKeyword());
 
         return "list/list";
     }
 
     @GetMapping("/list/lawyer")
-    public String lawyerList(@ModelAttribute LawyerSearchCon lawyerSearchCon, Model model) {
-        lawyerSearchCon.setPageSize(PAGE_SIZE);
+    public String lawyerList(@ModelAttribute SearchCon searchCon, Model model) {
+        searchCon.setPageSize(PAGE_SIZE);
 
-        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(lawyerSearchCon));
+        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(searchCon));
 
         model.addAttribute("pageLawyer", pageLawyer);
-        model.addAttribute("keyword", lawyerSearchCon.getKeyword());
+        model.addAttribute("keyword", searchCon.getKeyword());
 
         return "list/lawyerList";
     }
 
     @GetMapping("/list/loadLawyers")
-    public String loadLawyers(@ModelAttribute LawyerSearchCon lawyerSearchCon, Model model) {
-        lawyerSearchCon.setPageSize(PAGE_SIZE);
+    public String loadLawyers(@ModelAttribute SearchCon searchCon, Model model) {
+        searchCon.setPageSize(PAGE_SIZE);
 
-        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(lawyerSearchCon));
+        PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(searchCon));
         List<LawyerVo> lawyerList = pageLawyer.getList();
 
         model.addAttribute("lawyerList", lawyerList);
 
         return "list/lawyerListAjaxPage";
+    }
+
+    @GetMapping("/list/knowledgeIn")
+    public String knowledgeInList(@ModelAttribute SearchCon searchCon, Model model) {
+        searchCon.setPageSize(PAGE_SIZE);
+
+        model.addAttribute("keyword", searchCon.getKeyword());
+        return "list/knowledgeinList";
+    }
+
+    @GetMapping("/list/loadKnowledgeIns")
+    public String loadKnowledgeIns(@ModelAttribute SearchCon lawyerSearchCon, Model model) {
+
+        return "ok";
     }
 }
