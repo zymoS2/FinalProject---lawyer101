@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.booking.model.dao.BookingDao">
+
+    <insert id="insertBooking" parameterType="BookingVo">
+        INSERT INTO booking_tb (booking_num, booking_date, counseling_content, booking_time, client_num, lawyer_num)
+            VALUES ( BOOKING_SEQ.nextval
+                    , #{bookingDate}
+                    , #{counselingContent}
+                    , #{bookingTime}
+                    , #{clientVo.clientNum}
+                    , #{lawyerVo.lawyerNum} )
+        <selectKey resultType="Long" order="AFTER" keyProperty="bookingNum">
+            select BOOKING_SEQ.currval from dual
+        </selectKey>
+    </insert>
+</mapper>
