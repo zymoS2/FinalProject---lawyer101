@@ -6,11 +6,14 @@ import java.util.ArrayList;
 
 public interface LawyerService {
 
-    // 변호사 업데이트
-    int updateLawyer(LawyerVo lawyerPram);
+    //변호사 로그인
+    LawyerVo findLawyerIdPwd(LawyerVo lawyerVo);
 
     //변호사 가입
     void saveLawyer(LawyerVo lawyerVo);
+
+    // 변호사 업데이트
+    int updateLawyer(LawyerVo lawyerPram);
 
     //변호사 조회
     LawyerVo findLawyer(LawyerVo lawyerPram);

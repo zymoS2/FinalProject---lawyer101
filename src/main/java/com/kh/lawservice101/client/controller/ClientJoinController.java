@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ClientJoinController {
     private final ClientService clientService;
 
+    // 가입 유형 선택
+   @GetMapping("/joinLanding")
+   public String joinLanding(){
+       return "joinLanding";
+   }
+
+    //의뢰인 회원가입
     @GetMapping("/clientJoin")
     public String clientJoin() {
 
