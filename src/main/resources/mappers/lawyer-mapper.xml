@@ -24,26 +24,26 @@
     </resultMap>
 
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
-        SELECT  *
-          FROM  LAWYER_TB L
-                JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
-          WHERE  LAWYER_NUM = #{lawyerNum}
+        SELECT *
+        FROM LAWYER_TB L
+        JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+        WHERE LAWYER_NUM = #{lawyerNum}
     </select>
 
     <select id="selectLawyerVo" resultType="LawyerVo" resultMap="LawyerResultSet">
-        SELECT  LAWYER_NUM
-                , LAWYER_ID
-                , LAWYER_PWD
-                , LAWYER_NAME
-                , LAWYER_BIRTHYY
-                , LAWYER_GENDER
-                , LAWYER_PHONE
-                , LAWYER_EMAIL
-                , LAWYER_LICENSE_NUM
-                , LAWYER_INTRO_MSG
-          FROM  LAWYER_TB L
-                LEFT JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
-         WHERE  1=1
+        SELECT LAWYER_NUM
+        , LAWYER_ID
+        , LAWYER_PWD
+        , LAWYER_NAME
+        , LAWYER_BIRTHYY
+        , LAWYER_GENDER
+        , LAWYER_PHONE
+        , LAWYER_EMAIL
+        , LAWYER_LICENSE_NUM
+        , LAWYER_INTRO_MSG
+        FROM LAWYER_TB L
+        LEFT JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+        WHERE 1=1
         <if test="lawyerNum != null">
             AND LAWYER_NUM = #{lawyerNum}
         </if>
@@ -59,29 +59,35 @@
     <insert id="insertLawyer" parameterType="LawyerVo">
 
         INSERT INTO LAWYER_TB (
-            LAWYER_NUM
-            , LAWYER_ID
-            , LAWYER_PWD
-            , LAWYER_NAME
-            , LAWYER_BIRTHYY
-            , LAWYER_GENDER
-            , LAWYER_PHONE
-            , LAWYER_EMAIL
-            , LAWYER_LICENSE_NUM
-            , LAWYER_INTRO_MSG
+        LAWYER_NUM
+        , LAWYER_ID
+        , LAWYER_PWD
+        , LAWYER_NAME
+        , LAWYER_BIRTHYY
+        , LAWYER_GENDER
+        , LAWYER_PHONE
+        , LAWYER_EMAIL
+        , LAWYER_LICENSE_NUM
+        , LAWYER_INTRO_MSG
         ) VALUES(
-            LAWYER_SEQ.NEXTVAL
-            , #{lawyerId}
-            , #{lawyerPwd}
-            , #{lawyerName}
-            , #{lawyerBirthyy}
-            , #{lawyerGender}
-            , #{lawyerPhone}
-            , #{lawyerEmail}
-            , #{lawyerLicenseNum}
-            , #{lawyerIntroMsg}
+        LAWYER_SEQ.NEXTVAL
+        , #{lawyerId}
+        , #{lawyerPwd}
+        , #{lawyerName}
+        , #{lawyerBirthyy}
+        , #{lawyerGender}
+        , #{lawyerPhone}
+        , #{lawyerEmail}
+        , #{lawyerLicenseNum}
+        , #{lawyerIntroMsg}
         )
     </insert>
+
+    <select id="lawyerLogin" resultType="LawyerVo">
+        SELECT * FROM LAWYER_TB
+        WHERE LAWYER_ID = #{lawyerId}
+        AND LAWYER_PWD = #{lawyerPwd}
+    </select>
 
     <update id="updateLawyer" parameterType="LawyerVo">
         UPDATE LAWYER_TB
@@ -94,7 +100,8 @@
     </select>
 
     <select id="selectLawyerByIdAndEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_id=#{id} and lawyer_email=#{email}
+        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_id=#{id} and
+        lawyer_email=#{email}
     </select>
 
     <update id="updatePassword">

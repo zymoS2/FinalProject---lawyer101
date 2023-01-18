@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LawyerJoinController {
 
     private final LawyerService lawyerService;
-
     private final CompanyService companyService;
 
 
@@ -46,7 +45,6 @@ public class LawyerJoinController {
         if (checkCompany == null || checkCompany.getCompanyNum() == null) { // 회사없음
             companyService.saveCompany(companyPram); // 회사 등록
         }
-
         CompanyVo checkCompanyAf = companyService.findCompany(companyPram); // 회사조회
 
         if (checkCompanyAf != null && checkCompanyAf.getCompanyNum() != null) { // 회사 있음
