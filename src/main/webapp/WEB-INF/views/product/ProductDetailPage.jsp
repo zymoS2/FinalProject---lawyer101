@@ -1,115 +1,28 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>김준성 변호사 | 법률서비스 101</title>
+    <title>${lawyer.lawyerName} 변호사 | 법률서비스 101</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 
-    <link href="../resource/css//sidebars.css" rel="stylesheet"/>
-    <link href="../resource/css/footer.css" rel="stylesheet"/>
-    <link href="../resource/css//common.css" rel="stylesheet"/>
-    
-    <link rel="stylesheet" href="../resource/css/productDetailPage.css" />
+    <link href="/resource/css/sidebar.css" rel="stylesheet"/>
+    <link href="/resource/css/footer.css" rel="stylesheet"/>
+    <link href="/resource/css/common.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/resource/css/productDetailPage.css" />
+    <script src="/resource/js/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="/resource/js/productDetailPage.js"></script>
   </head>
   <body>    
     <div class="container d-flex">
-825
-      <!-- sidebar -->
-      <div class="sidebar position-fixed w-100 h-100 top-0 start-0" style="z-index: 200;">
-        <div class="w-100 h-100 top-0 end-0 position-absolute bg-black opacity-25" style="z-index: 201;"></div>
-        <nav class="sidebar-container position-absolute top-0 start-0 vh-100 bg-white" style="width: 320px; z-index: 203;">
-            <div class="d-flex flex-column flex-shrink-0 p-3" style="height: 100%;">
-                <div class="text-end">
-                    <button class="btn bg-transparent text-secondary border-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
-                    </button>
-                </div>
-                <a href="main.html" class="my-3 mb-md-0 mx-auto " style="width: 180px; height: 44px;">
-                    <img src="../resource/img/logo.png" alt="로고" width="100%" height="100%">
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column ">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link text-secondary" aria-current="page">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                        변호사 찾기
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link text-secondary">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        법률 지식IN
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-                <a href="" class="d-flex justify-content-between fw-bold">
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                        </svg>
-                        <span class="small">
-                            지식IN 글쓰기
-                        </span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg>
-                    </div>
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        공지사항
-                    </a>
-                    <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        이용약관
-                    </a>
-                    <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        개인정보처리방침
-                    </a>
-                    <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        회사소개
-                    </a>
-                    <a href="#" class="nav-link text-secondary" style="font-size: 14px !important;">
-                        <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-                        로톡이야기
-                    </a>
-                </ul>
-            </div>
-            <div class="dropdown bg-custom position-absolute bottom-0 start-0 w-100 p-3 text-end">
-                <!-- login -->
-                <!-- <div>
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>mdo</strong>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow">
-                        <li><a class="dropdown-item" href="myPage.html">마이페이지</a></li>
-                        <li><a class="dropdown-item" href="chatList.html">상담 목록</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="login.html">로그아웃</a></li>
-                    </ul>
-                </div> -->
 
-                <!-- logout -->
-                <div class="d-inline-block mt-2">
-                    <a href="login.html" class="me-3 text-white fw-bold"><small>로그인</small></a>
-                    <a href="sign-up-landing.html" class="me-3 text-white fw-bold"><small>회원가입</small></a>
-                </div>
-            </div>
-        </nav>
-      </div>
 
       <div class="w-75 px-5">
         <!-- header -->
@@ -138,19 +51,18 @@
           <div class="d-flex justify-content-between py-4 border-bottom border-4">
             <table class="w-50 me-5">
               <tr>
-                <td class="fs-5 fw-bold pb-3">기성용 변호사<a href="reviewList.html" class="d-inline-block ms-3 text-body-tertiary text-decoration-underline" style="font-size: 12px;">후기 50+개</a></td>
+                <td class="fs-5 fw-bold pb-3">${lawyer.lawyerName} 변호사<a href="reviewList.html" class="d-inline-block ms-3 text-body-tertiary text-decoration-underline" style="font-size: 12px;">후기 50+개</a></td>
               </tr>
               <tr>
-                <td class="small pb-2">법무법인 공명</td>
+                <td class="small pb-2">사무실</td>
               </tr>
               <tr aria-rowspan="2">
                 <td class="small pb-2 text-secondary">
-                  서울특별시 서초구 서초중앙로 116 (서초동)
-                  성재빌딩 7층, 법무법인 공명
+                  ${lawyer.companyVo.companyAddress},<br> ${lawyer.companyVo.companyName}
                 </td>
               </tr>
               <tr aria-colspan="2">
-                <td class="small fw-bold">사무실 전화 050-7725-2537</td>
+                <td class="small fw-bold">사무실 전화 ${lawyer.companyVo.companyPhone}</td>
               </tr>
             </table>
             <table class="w-50 text-secondary">
@@ -158,13 +70,13 @@
                 <td class="fw-bold" style="width: 40px;">분야</td>
                 <td>
                   이혼, 명예훼손/모욕 일반, 성폭력/강제추행 등
-                  의료/식품의약, 기타재산범죄
+                  의료/식품의약
                 </td>
               </tr>
             </table>
           </div>
           <div class="py-3">
-            <h4 class="my-4 fw-bold"><span class="bg-warning"><span>기성용</span> 변호사</span>의 법률 활동을 확인하세요.</h4>
+            <h4 class="my-4 fw-bold"><span class="bg-warning"><span>${lawyer.lawyerName}</span> 변호사</span>의 법률 활동을 확인하세요.</h4>
             <div class="py-3">
               <a href="commentList.html" class="fs-5 d-inline-block fw-bold mb-4">지식IN 답변<span class="ms-2 text-body-tertiary"><span>42</span> 
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
@@ -327,8 +239,8 @@
             <div class="py-3">
               <h5 class="fs-5 d-inline-block fw-bold">위치</h5>
               <p class="fw-bold">법률사무소에 오셔서 <br>문제를 해결하세요.</p><br>
-              <p class="fs-5 mb-1">법무법인 공명
-                <p class="text-se">서울특별시 서초구 서초중앙로 116 (서초동) 성재빌딩 7층, 법무법인 공명</p>
+              <p class="fs-5 mb-1">${lawyer.companyVo.companyName}
+                <p class="text-se">${lawyer.companyVo.companyAddress}, ${lawyer.companyVo.companyName}</p>
               </p>
               <div>
                 <div id="map" class="w-100 bg-black" style="height: 400px;"></div>
@@ -341,8 +253,8 @@
       <!-- right -->
       <div class="pt-4" style="width: 498px;">
         <div class="text-white text-center py-5" style="background-color: #443736;">
-          <h3 class="fw-bold mb-0"><span>기성용</span> 변호사</h3>
-          <p>법무법인 공명</p>
+          <h3 class="fw-bold mb-0"><span>${lawyer.lawyerName}</span> 변호사</h3>
+          <p>${lawyer.companyVo.companyName}</p>
         </div>
         <div class="position-relative" style="height: 640px;">
           <img src="../resource//img/인물사진(상반신)1.jpg" alt="" width="100%" height="100%"/>

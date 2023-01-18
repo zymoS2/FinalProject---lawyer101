@@ -21,9 +21,16 @@
             <result property="companyAddress" column="company_address"/>
             <result property="companyPhone" column="company_phone"/>
         </association>
+        <association property="categoryVo" column="CategoryVo">
+            <result property="categoryNum" column="category_num"/>
+            <result property="categoryName" column="category_name"/>
+        </association>
     </resultMap>
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_num=#{lawyerNum}
+        select * from lawyer_TB l
+        join company_TB c on l.company_num = c.company_num
+        join category_TB ca on l.company_num = ca.category_num
+        where lawyer_num=#{lawyerNum}
     </select>
 
     <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
