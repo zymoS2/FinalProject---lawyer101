@@ -2,13 +2,11 @@ package com.kh.lawservice101.booking.model.vo;
 
 import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingVo {
