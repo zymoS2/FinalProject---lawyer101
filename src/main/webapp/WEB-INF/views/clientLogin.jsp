@@ -75,7 +75,7 @@
                   </div>
               </div>
 
-              <p class="fs-6">아직 회원이 아니신가요? <a href="/joinLanding" class="text-danger">회원가입</a></p>
+              <p class="fs-6">아직 회원이 아니신가요? <a href="/joinOption" class="text-danger">회원가입</a></p>
           </main>
 </form>
 </body>

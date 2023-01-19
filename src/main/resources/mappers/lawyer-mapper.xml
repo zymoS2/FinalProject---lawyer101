@@ -56,8 +56,42 @@
         select * from lawyer_TB l join company_TB c on l.company_num = c.company_num
     </select>
 
-    <insert id="insertLawyer" parameterType="LawyerVo">
+    <select id="lawyerLogin" resultType="LawyerVo">
+        SELECT * FROM LAWYER_TB
+        WHERE LAWYER_ID = #{lawyerId}
+        AND LAWYER_PWD = #{lawyerPwd}
+    </select>
 
+    <update id="updateLawyer" parameterType="LawyerVo">
+        UPDATE LAWYER_TB
+        SET COMPANY_NUM = #{companyVo.companyNum}
+        WHERE LAWYER_ID = #{lawyerId}
+    </update>
+
+    <select id="selectLawyerByEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT *
+        FROM LAWYER_TB l
+        JOIN company_TB c
+        ON l.COMPANY_NUM = c.COMPANY_NUM
+        WHERE LAWYER_EMAIL = #{email}
+    </select>
+
+    <select id="selectLawyerByIdAndEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT *
+        FROM LAWYER_TB l
+        JOIN company_TB c
+        ON l.COMPANY_NUM = c.COMPANY_NUM
+        WHERE LAWYER_ID = #{id}
+        AND LAWYER_EMAIL = #{email}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE LAWYER_TB
+        SET LAWYER_PWD = #{tempPwd}
+        WHERE LAWYER_NUM = #{lawyerNum}
+    </update>
+
+    <insert id="insertLawyer" parameterType="LawyerVo">
         INSERT INTO LAWYER_TB (
         LAWYER_NUM
         , LAWYER_ID
@@ -82,29 +116,4 @@
         , #{lawyerIntroMsg}
         )
     </insert>
-
-    <select id="lawyerLogin" resultType="LawyerVo">
-        SELECT * FROM LAWYER_TB
-        WHERE LAWYER_ID = #{lawyerId}
-        AND LAWYER_PWD = #{lawyerPwd}
-    </select>
-
-    <update id="updateLawyer" parameterType="LawyerVo">
-        UPDATE LAWYER_TB
-        SET COMPANY_NUM = #{companyVo.companyNum}
-        WHERE LAWYER_ID = #{lawyerId}
-    </update>
-
-    <select id="selectLawyerByEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_email=#{email}
-    </select>
-
-    <select id="selectLawyerByIdAndEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num where lawyer_id=#{id} and
-        lawyer_email=#{email}
-    </select>
-
-    <update id="updatePassword">
-        update lawyer_TB set lawyer_pwd = #{tempPwd} where lawyer_num = #{lawyerNum}
-    </update>
 </mapper>

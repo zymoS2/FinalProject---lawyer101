@@ -17,9 +17,16 @@ public class InBoardServiceImpl implements InBoardService {
     public void postInBoard(InBoardVo inBoardVo) {
         inBoardDao.inBoardUpload(inBoardVo);
     }
+
+    //게시판 단건 조회
+    @Override
+    public InBoardVo findPost(Long inBoardNum) {
+        return inBoardDao.selectPost(inBoardNum);
+    }
+
     //게시판 목록 조회
     @Override
-    public ArrayList<InBoardVo> viewAllInBoard(){
+    public ArrayList<InBoardVo> viewAllInBoard() {
         return inBoardDao.selectAllInBoard();
     }
 

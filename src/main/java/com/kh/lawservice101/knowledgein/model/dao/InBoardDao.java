@@ -7,8 +7,12 @@ import java.util.ArrayList;
 
 @Mapper
 public interface InBoardDao {
+
     //게시판 등록
     void inBoardUpload(InBoardVo inBoardVo);
+
+    //게시판 단건 조회
+    InBoardVo selectPost(Long inBoardNum);
 
     //게시판 목록
     ArrayList<InBoardVo> selectAllInBoard();

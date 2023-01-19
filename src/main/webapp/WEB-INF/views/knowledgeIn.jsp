@@ -17,7 +17,6 @@
            <link href="../resource/css/common.css" rel="stylesheet" />
 
             <link rel="stylesheet" href="../resource/css/knowledgeIN.css" />
-
     </head>
 
     <body>
@@ -34,29 +33,26 @@
                       <li class="d-inline-block me-3"><a href="">최신 질문순</a></li>
                       <li class="d-inline-block me-3"><a href="">조회수</a></li>
                   </ul>
-                  <div>
-                    <a href="/knowledgeInDetail" class="d-inline-block py-5 border-bottom">
-                      <p class="text-secondary">성범죄</p>
-                      <h4 class="mb-3">성매매 목적이 아닌 성매매 광고</h4>
-                      <p><b class="text-custom">답변</b><span class="ps-3">최지현</span> 변호사</p>
-                      <p class="text-skip">
-                        법률사무소 여정 대표변호사 최지현입니다.
-                        정확한 판단은 구체적인 사실관계를 들어보아야 할 것으로 보입니다만, 말씀하여 주신 사실관계만 놓고 보면 성매매 광고행위의 고의가 없었음을 주장 및 입증하여 무죄를 다투어 볼 만 하다고 보여집니다. 보다 상세한 사실관계를 말씀해주시면 구체적인 검토가 가능합니다.
-                      </p>
-                      <p class="text-secondary">다른 변호사 답변 <span>5</span>개</p>
-                      <small class="text-secondary">조회수 <b>90</b></small>
-                    </a>
-                    <a href="" class="d-inline-block py-5 border-bottom">
-                      <p class="text-secondary">노동/인사</p>
-                      <h4 class="mb-3">근무 중 10개월 간 약 400만 원을 횡령했습니다. 어떻게 대처해야 하나요?</h4>
-                      <p><b class="text-custom">답변</b><span class="ps-3">지세훈</span> 변호사</p>
-                      <p class="text-skip">
-                        문의주신 사안의 경우 합의금조로 퇴직금과 급여를 받지 않겠다고 하며 상대방과 합의를 해 보는 것이 최선으로 보여집니다. 만약 상대방이 합의를 해 주지 않고 고소에 나아간 경우라면 받지 못한 임금 및 퇴직금에 대하여 노동청에 진정을 제기하는 것을 고려해 보시기 바랍니다. 이상의 점 참고하셔서 필요한 경우 구체적인 사실관계를 바탕으로 자세한 상담을 받아 보실 것을 권해드립니다.
-                      </p>
-                      <p class="text-secondary">다른 변호사 답변 <span>2</span>개</p>
-                      <small class="text-secondary">조회수 <b>100</b></small>
-                    </a>
-                  </div>
+                    <div>
+                      <c:forEach var="sb" items="${showInBoard}">
+                        <a href="/knowledgeInDetail/${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
+                          <p class="text-secondary"> ${sb.categoryVo.categoryName}</p>
+                          <h4 class="mb-3">${sb.inBoardTitle}</h4>
+                          <input type="hidden" ${sb.inBoardNum}>
+
+                          <p>
+                          <b class="text-custom">답변</b><span class="ps-3">최지현</span> 변호사</p>
+                          <p class="text-skip">
+                            법률사무소 여정 대표변호사 최지현입니다.
+                            정확한 판단은 구체적인 사실관계를 들어보아야 할 것으로 보입니다만, 말씀하여 주신 사실관계만 놓고 보면 성매매 광고행위의 고의가 없었음을 주장 및 입증하여 무죄를 다투어 볼 만 하다고 보여집니다. 보다 상세한 사실관계를 말씀해주시면 구체적인 검토가 가능합니다.
+                          </p>
+                          <p class="text-secondary">다른 변호사 답변 <span>5</span>개</p>
+                          <small class="text-secondary">조회수 <b>90</b></small>
+                        </a>
+                        </c:forEach>
+                    </div>
+
+
                   <div class="pagination justify-content-center align-items-center p-3">
                     <a href="" class="small mx-3">이전 페이지</a>
                     <a href="" class="mx-3 mb-1 active">1</a>

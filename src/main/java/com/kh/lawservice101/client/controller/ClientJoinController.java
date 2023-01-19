@@ -14,9 +14,9 @@ public class ClientJoinController {
     private final ClientService clientService;
 
     // 가입 유형 선택
-   @GetMapping("/joinLanding")
-   public String joinLanding(){
-       return "joinLanding";
+   @GetMapping("/joinOption")
+   public String joinOption(){
+       return "joinOption";
    }
 
     //의뢰인 회원가입
