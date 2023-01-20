@@ -2,6 +2,7 @@ package com.kh.lawservice101.lawyer.model.vo;
 
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter @Setter
 @NoArgsConstructor

@@ -2,6 +2,8 @@ package com.kh.lawservice101.lawyer.model.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.kh.lawservice101.category.model.service.CategoryService;
+import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.lawyer.model.dao.LawyerDao;
 import com.kh.lawservice101.lawyer.model.vo.SearchCon;
 import com.kh.lawservice101.category.model.service.CategoryService;
