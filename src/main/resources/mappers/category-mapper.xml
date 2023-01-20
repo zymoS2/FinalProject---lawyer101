@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.category.model.dao.CategoryDao">
+    <resultMap id="CategoryResultSet" type="CategoryVo">
+        <result property="categoryNum" column="category_num"/>
+        <result property="categoryName" column="category_name"/>
+    </resultMap>
+
+    <select id="selectCategory" resultType="CategoryVo" resultMap="CategoryResultSet">
+        select * from category_TB ca where category_num=#{categoryNum}
+    </select>
+</mapper>

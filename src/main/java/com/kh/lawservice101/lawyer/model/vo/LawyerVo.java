@@ -1,5 +1,6 @@
 package com.kh.lawservice101.lawyer.model.vo;
 
+import com.kh.lawservice101.category.model.vo.CategoryVo;
 import lombok.*;
 
 @Getter @Setter
@@ -19,5 +20,6 @@ public class LawyerVo {
 	private String lawyerLicenseNum;
 	private String lawyerIntroMsg;
 	private CompanyVo companyVo; //외래키는 객체로
+	private CategoryVo categoryVo;
 
 }

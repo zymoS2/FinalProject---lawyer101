@@ -28,4 +28,8 @@ public interface LawyerDao {
     LawyerVo selectLawyerByIdAndEmail(String id, String email);
 
     void updatePassword(String tempPwd, Long lawyerNum);
+
+    void updateInfo(LawyerVo findLawyer);
+
+    void updateProfile(LawyerVo findLawyer);
 }

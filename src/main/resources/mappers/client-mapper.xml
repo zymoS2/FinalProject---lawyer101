@@ -59,4 +59,7 @@
     <update id="updatePassword">
         update client_TB set client_pwd = #{tempPwd} where client_num = #{clientNum}
     </update>
+    <update id="updateInfo" parameterType="ClientVo">
+        update client_TB set client_email = #{clientEmail}, client_name = #{clientName} where client_num = #{clientNum}
+    </update>
 </mapper>

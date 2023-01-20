@@ -1,6 +1,7 @@
 package com.kh.lawservice101.lawyer.model.service;
 
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
@@ -28,4 +29,8 @@ public interface LawyerService {
     LawyerVo findLawyerByIdAndEmail(String resetPwdId, String resetPwdEmail);
 
     void passwordModify(String tempPwd, Long lawyerNum);
+
+    void editInfo(LawyerVo findLawyer, LawyerVo lawyerVo);
+
+    void editProfile(LawyerVo findLawyer, MultipartFile multipartFile, LawyerVo lawyerVo);
 }
