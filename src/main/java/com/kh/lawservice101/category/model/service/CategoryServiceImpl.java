@@ -12,8 +12,9 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService{
     private final CategoryDao categoryDao;
+
     @Override
-    public ArrayList<CategoryVo> findLawyerCategory(Long lawyerNum) {
-        return categoryDao.selectCategory(lawyerNum);
+    public CategoryVo findCategory(Long categoryNum) {
+        return categoryDao.selectCategory(categoryNum);
     }
 }
