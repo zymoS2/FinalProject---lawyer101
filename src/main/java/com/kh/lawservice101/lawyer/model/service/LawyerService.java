@@ -1,5 +1,7 @@
 package com.kh.lawservice101.lawyer.model.service;
 
+import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
+import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,7 +32,9 @@ public interface LawyerService {
 
     void passwordModify(String tempPwd, Long lawyerNum);
 
-    void editInfo(LawyerVo findLawyer, LawyerVo lawyerVo);
+    // 개인정보 수정
+    void infoModify(Long lawyerNum, EditInfoDto editInfoDto);
 
-    void editProfile(LawyerVo findLawyer, MultipartFile multipartFile, LawyerVo lawyerVo);
+    // 프로필 수정
+    void profileModify(Long lawyerNum, EditProfileDto editProfileDto);
 }

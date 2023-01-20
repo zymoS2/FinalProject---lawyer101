@@ -29,7 +29,9 @@ public interface LawyerDao {
 
     void updatePassword(String tempPwd, Long lawyerNum);
 
-    void updateInfo(LawyerVo findLawyer);
+    // 개인정보 수정
+    void updateInfo(Long lawyerNum, String lawyerEmail, String lawyerName);
 
-    void updateProfile(LawyerVo findLawyer);
+    // 프로필 수정
+    void updateProfile(Long lawyerNum, String lawyerImg, String lawyerMainImg, String lawyerIntroMsg, Long categoryNum);
 }

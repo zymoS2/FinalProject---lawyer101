@@ -16,7 +16,7 @@ import java.nio.file.Files;
 
 @Controller
 @Slf4j
-public class UploadController {
+public class ImageController {
 
     @Value("${file.upload.path}")
     private String uploadPath;

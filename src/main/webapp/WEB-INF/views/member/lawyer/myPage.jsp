@@ -36,7 +36,7 @@
         
         <div class="mx-auto w-50">
             <h5 class="fw-bold mb-3">개인정보 수정</h5>
-            <form action="/lawyer/myPage/${lawyer.lawyerNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
+            <form action="/lawyer/myPage/info/${lawyer.lawyerNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
                 <div class="form-group">
                     <label for="email" class="mb-1">이메일</label>
                     <input type="text" name="lawyerEmail" id="email" value="${lawyer.lawyerEmail}" class="form-control border-1">
@@ -66,7 +66,7 @@
                     <img src="/display?fileName=${lawyer.lawyerImg}" onerror="this.src='/resource/img/profile.png';" class="rounded-circle"
                          accept="image/jpg, image/jpeg, image/png" width="100%" height="100%" id="profile-image">
                 </div>
-                <input type="file" name="multipartFile" class="d-none" id="profile-image-input">
+                <input type="file" name="profileImage" class="d-none" id="profile-image-input">
 
                 <div class="form-group">
                     <label for="intro" class="mb-1">소개</label>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="form-group">
                     <label for="category" class="mb-1">분야</label>
-                    <select name="categoryVo.categoryNum" id="category" class="form-select border-1">
+                    <select name="categoryNum" id="category" class="form-select border-1">
                         <option value="" disabled selected style="display: none;">선택</option>
                         <option value="1">성범죄</option>
                         <option value="2">재산범죄</option>
@@ -97,10 +97,23 @@
                 </div>
                 <div class="form-group">
                     <label for="intro" class="mb-1">대표사진 등록</label>
-                    <input type="file" name="lawyerMainImg" id="mainImg" class="form-control border-1">
-                    <p class="text-danger" id="mainImg-errorMsg"></p>
+                    <input type="file" name="mainImage" class="form-control border-1" id="main-image-input">
+                    <p></p>
                 </div>
-                <div class="bg-custom text-center">
+                <div>
+                    <label class="form-label d-block">대표사진</label>
+                    <c:choose>
+                        <c:when test="${lawyer.lawyerMainImg == null or lawyer.lawyerMainImg == ''}">
+                            <p class="text-danger">현재 등록된 이미지가 없습니다.</p>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="d-inline-block border border-4" style="width: 354px; height: 457px">
+                                <img src="/display?fileName=${lawyer.lawyerMainImg}" width="100%" height="100%" style="object-fit: cover">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <div class="bg-custom text-center mt-3">
                     <button type="button" class="btn py-3 fw-bold text-white" id="profile-submit-btn">[ 저장 ]</button>
                 </div>
             </form>
@@ -117,6 +130,7 @@
                 $(this).attr("selected","selected");
             }
         });
+
     </script>
 </body>
 </html>

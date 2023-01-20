@@ -15,6 +15,7 @@
         <result property="lawyerEmail" column="lawyer_email"/>
         <result property="lawyerLicenseNum" column="lawyer_license_num"/>
         <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+        <result property="LawyerMainImg" column="lawyer_main_img"/>
         <association property="companyVo" javaType="CompanyVo">
             <result property="companyNum" column="company_num"/>
             <result property="companyName" column="company_name"/>
@@ -104,10 +105,20 @@
     <update id="updatePassword">
         update lawyer_TB set lawyer_pwd = #{tempPwd} where lawyer_num = #{lawyerNum}
     </update>
-    <update id="updateInfo" parameterType="LawyerVo">
-        update lawyer_TB set lawyer_email = #{lawyerEmail}, lawyer_name = #{lawyerName} where lawyer_num = #{lawyerNum}
+
+    <!-- 개인정보 수정 -->
+    <update id="updateInfo">
+        UPDATE lawyer_TB SET lawyer_email = #{lawyerEmail},
+                             lawyer_name = #{lawyerName}
+                         WHERE lawyer_num = #{lawyerNum}
     </update>
-    <update id="updateProfile" parameterType="LawyerVo">
-        update lawyer_TB set lawyer_intro_msg = #{lawyerIntroMsg}, lawyer_img = #{lawyerImg}, category_num = #{categoryVo.categoryNum} where lawyer_num = #{lawyerNum}
+
+    <!-- 프로필 수정 -->
+    <update id="updateProfile">
+        UPDATE lawyer_TB SET lawyer_intro_msg = #{lawyerIntroMsg},
+                             lawyer_img = #{lawyerImg},
+                             lawyer_main_img = #{lawyerMainImg},
+                             category_num = #{categoryNum}
+                        WHERE lawyer_num = #{lawyerNum}
     </update>
 </mapper>

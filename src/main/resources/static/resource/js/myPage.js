@@ -40,8 +40,6 @@ $(function () {
     $("#profile-image-input").on("change", (e) => {
         let file = e.target.files[0];
 
-
-
         if (!file.type.match("image.*")) {
             alert("이미지 파일만 업로드 가능합니다.");
             return;
@@ -57,6 +55,16 @@ $(function () {
         } else {
             $("#profile-image").attr("src", "/resource/img/profile.png");
             $("#profile-image").val("");
+        }
+    })
+
+    $("#main-image-input").on("change", (e) => {
+        let file = e.target.files[0];
+
+        if (!file.type.match("image.*")) {
+            $("#main-image-input").val("");
+            alert("이미지 파일만 업로드 가능합니다.");
+            return;
         }
     })
 
