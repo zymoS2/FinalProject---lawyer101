@@ -30,14 +30,17 @@ public class PaymentServiceImpl implements PaymentService{
 
     }
 
+    //의뢰인 예약 목록조회
     @Override
     public List<PaymentVo> findPaymentList(Long clientNum) {
-
         return paymentDao.selectPayment(clientNum);
     }
 
+    //변호사 예약 목록조회
     @Override
     public List<PaymentVo> findCounselingList(Long lawyerNum) {
         return paymentDao.selectCounselingList(lawyerNum);
     }
+
+
 }

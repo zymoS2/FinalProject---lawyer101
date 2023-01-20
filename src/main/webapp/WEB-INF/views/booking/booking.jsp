@@ -19,7 +19,7 @@
         <link href="/resource/css/common.css" rel="stylesheet">
 
         <link href="/resource/css/booking.css" rel="stylesheet">
-        <script src="/resource/js/booking.js" charset="UTF-8"></script>
+        <script src="/resource/js/booking2.js" charset="UTF-8"></script>
 
         <!-- <script type="text/javascript">
             const myModal = document.getElementById('myModal')

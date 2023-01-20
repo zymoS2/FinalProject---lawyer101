@@ -1,9 +1,8 @@
 $(function() {
     const date = new Date();
     const calendarYear = date.getFullYear(); // 달력 연도
-    const calendarMonth = date.getMonth() + 1; // 달력 월  (0~11이라서) + 1
+    const calendarMonth = date.getMonth() + 1; // 달력 월
     const calendarToday = date.getDate(); // 달력 일
-    const currentDate = calendarYear + "-" + calendarMonth + "-" + calendarToday ;
 
     const monthLastDate = new Date(calendarYear, calendarMonth, 0);
     const calendarMonthLastDate = monthLastDate.getDate(); // 달력 월의 마지막 일
@@ -20,7 +19,7 @@ $(function() {
 
     // 현재 요일부터 주간 배열에 날짜를 추가
     for (let index = calendarMonthTodayDay; index < 7; index++) {
-        arWeek[index] = weekYear + "-" + weekMonth + "-" + weekDay;
+        arWeek[index] = weekYear +"-" + weekMonth + "-" + weekDay;
         weekDay++;
 
         // 날짜가 현재 월의 마지막 일보다 크면 다음 월의 1일로 변경
@@ -65,51 +64,25 @@ $(function() {
 
         $('.days').append(html);
     }
-
-//    const nowDate = new date();
-//    const nowYear = nowDate.getFullYear();
-//    const nowMonth = nowDate.getMonth();
-//    const nowDay = nowDate.getDate();
-//    const currentDate = nowYear +"-" + nowMonth + "-" + nowDay;
-//
-//    var dateList = $('.days-data').attr('data-date');
-//    console.log(dateList);
-
-
 })
 
-function(){
-
-    $(document).on('click', '.days-data', function() {
-        $('.days-data').each(function(index, item) {
-            $(item).removeClass('active');
-        })
-        var date = $(this).attr('data-date');
-            console.log(currentDate);
-            console.log(date);
-//        if( currentDate = date  ) {
-//
-//        } else {
-            $("input[name='bookingDate']").val(date);
-            checkTime(date); //메서드 호출해서 파라미터 보내기
-            $(this).addClass('active');
-       // }
+$(document).on('click', '.days-data', function() {
+    $('.days-data').each(function(index, item) {
+        $(item).removeClass('active');
     })
+    var date = $(this).attr('data-date');
+        console.log(date);
+    $("input[name='bookingDate']").val(date);
+    $(this).addClass('active');
 })
 
-function checkTime(date){
-    $(document).on('click','.time',function(){
-        $('.time').each(function(index, item) {
-            $(item).removeClass('active');
-        })
-//      if () {
-//
-//
-//      } else {
-           var time = $(this).attr('value');
-           $("input[name='bookingTime']").val(time);
 
-           $(this).addClass('active');
-      //}
+$(document).on('click','.time',function(){
+    $('.time').each(function(index, item) {
+        $(item).removeClass('active');
     })
-}
+       var time = $(this).attr('value');
+           console.log(time);
+       $("input[name='bookingTime']").val(time);
+       $(this).addClass('active');
+})

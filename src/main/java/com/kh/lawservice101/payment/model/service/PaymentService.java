@@ -9,8 +9,9 @@ public interface PaymentService {
 
     void savePayment(PaymentVo paymentVo, BookingVo bookingVo);
 
-    List<PaymentVo> findPaymentList(Long ClientNum);
+    List<PaymentVo> findPaymentList(Long clientNum);
 
-    List<PaymentVo> findCounselingList(Long lawyer);
+    List<PaymentVo> findCounselingList(Long lawyerNum);
+
 
 }

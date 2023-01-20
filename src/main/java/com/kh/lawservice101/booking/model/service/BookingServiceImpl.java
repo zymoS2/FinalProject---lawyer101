@@ -25,4 +25,18 @@ public class BookingServiceImpl implements BookingService {
          return bookingNum;
 
     }
+    //의뢰인 예약목록 페이지에서 가장 최근의 예약 리스트 찾기.
+    @Override
+    public BookingVo findLatestBooking(Long clientNum) {
+        return bookingDao.selectLatestBooking(clientNum);
+    }
+
+    public BookingVo findLatestCounseling(Long lawyerNum) {
+        return bookingDao.selectLatestCounseling(lawyerNum);
+    }
+
+    @Override
+    public BookingVo findCounselingDetail(Long bookingNum) {
+        return bookingDao.selectBookingDetail(bookingNum);
+    }
 }

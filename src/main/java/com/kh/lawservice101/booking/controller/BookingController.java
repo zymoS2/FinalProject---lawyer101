@@ -29,7 +29,7 @@ public class BookingController {
     //예약 페이지 뿌려주는 GET메서드
     @GetMapping("/{lawyerNum}")
     public String bookingList(@PathVariable Long lawyerNum, Model model){
-        lawyerNum = 4L; //임시
+        lawyerNum = 3L; //임시
         lawyerInfo = lawyerService.findLawyer(lawyerNum);
         model.addAttribute("lawyerInfo",lawyerInfo); //모델은 화면에 뿌려주는거.
         return "booking/booking";
@@ -41,7 +41,7 @@ public class BookingController {
         bookingVo.setLawyerVo(lawyerInfo);
 
          //임시, 로그인 세션으로 clientVo 값 넣어주기
-        Long clientNum = 4L;
+        Long clientNum = 2L;
         clientInfo = clientService.findClient(clientNum);
         bookingVo.setClientVo(clientInfo);
 

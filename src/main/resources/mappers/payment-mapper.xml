@@ -61,6 +61,8 @@
             join category_TB ca on ca.category_num = l.category_num
         where c.client_num=#{clientNum}
     </select>
+
+
     <select id="selectCounselingList" resultType="PaymentVo" resultMap="paymentResultSet">
         SELECT *
         from payment_TB p
@@ -69,7 +71,7 @@
         join lawyer_TB l on l.lawyer_num = b.lawyer_num
         join company_TB com on com.company_num=l.company_num
         join category_TB ca on ca.category_num = l.category_num
-        where c.client_num=#{clientNum}
+        where l.lawyer_num=#{lawyerNum}
     </select>
 
     <insert id="insertOrder" parameterType="PaymentVo">

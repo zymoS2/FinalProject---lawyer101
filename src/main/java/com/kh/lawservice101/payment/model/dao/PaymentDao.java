@@ -13,4 +13,5 @@ public interface PaymentDao {
      List<PaymentVo> selectPayment(Long clientNum);
 
      List<PaymentVo> selectCounselingList(Long lawyerNum);
+
 }
