@@ -1,18 +1,19 @@
 package com.kh.lawservice101.payment.model.vo;
 
 import com.kh.lawservice101.booking.model.vo.BookingVo;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentVo {
     private Long paymentNum;
-    private char paymentState;
+    private String paymentState;
     private int price;
     private BookingVo bookingVo;
+    private String impUid;
+    private String merchantUid;
+    private String payMethod;
 }

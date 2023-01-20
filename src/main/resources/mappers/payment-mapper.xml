@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.payment.model.dao.PaymentDao">
+    <resultMap id="paymentResultSet" type="PaymentVo">
+        <result property="paymentNum" column="payment_num"/>
+        <result property="paymentState" column="payment_state"/>
+        <result property="price" column="price"/>
+        <result property="impUid" column="imp_uid"/>
+        <result property="merchantUid" column="merchant_uid"/>
+        <result property="payMethod" column="pay_method"/>
+        <association property="bookingVo" javaType="BookingVo">
+            <result property="bookingNum" column="booking_num"/>
+            <result property="bookingDate" column="booking_date"/>
+            <result property="counselingContent" column="counseling_content"/>
+            <result property="bookingTime" column="booking_time"/>
+            <association property="clientVo" javaType="ClientVo">
+                <result property="clientNum" column="client_num"/>
+                <result property="clientId" column="client_id"/>
+                <result property="clientPwd" column="client_pwd"/>
+                <result property="clientName" column="client_name"/>
+                <result property="clientBirthyy" column="client_birthyy"/>
+                <result property="clientGender" column="client_gender"/>
+                <result property="clientEmail" column="client_email"/>
+                <result property="clientPhone" column="client_phone"/>
+            </association>
+            <association property="lawyerVo" javaType="LawyerVo">
+                <result property="lawyerNum" column="lawyer_num"/>
+                <result property="lawyerId" column="lawyer_id"/>
+                <result property="lawyerPwd" column="lawyer_pwd"/>
+                <result property="lawyerName" column="lawyer_name"/>
+                <result property="lawyerBirthyy" column="lawyer_birthyy"/>
+                <result property="lawyerGender" column="lawyer_gender"/>
+                <result property="lawyerPhone" column="lawyer_phone"/>
+                <result property="lawyerImg" column="lawyer_img"/>
+                <result property="lawyerEmail" column="lawyer_email"/>
+                <result property="lawyerLicenseNum" column="lawyer_license_num"/>
+                <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+                <association property="companyVo" javaType="CompanyVo">
+                    <result property="companyNum" column="company_num"/>
+                    <result property="companyName" column="company_name"/>
+                    <result property="companyAddress" column="company_address"/>
+                    <result property="companyPhone" column="company_phone"/>
+                </association>
+                <association property="categoryVo" column="CategoryVo">
+                    <result property="categoryNum" column="category_num"/>
+                    <result property="categoryName" column="category_name"/>
+                </association>
+            </association>
+        </association>
+    </resultMap>
+
+    <select id="selectPayment" resultType="PaymentVo" resultMap="paymentResultSet">
+        SELECT *
+        from payment_TB p
+            join booking_TB b on  b.booking_num = p.booking_num
+            join client_TB c on c.client_num = b.client_num
+            join lawyer_TB l on l.lawyer_num = b.lawyer_num
+            join company_TB com on com.company_num=l.company_num
+            join category_TB ca on ca.category_num = l.category_num
+        where c.client_num=#{clientNum}
+    </select>
+
+
+    <select id="selectCounselingList" resultType="PaymentVo" resultMap="paymentResultSet">
+        SELECT *
+        from payment_TB p
+        join booking_TB b on  b.booking_num = p.booking_num
+        join client_TB c on c.client_num = b.client_num
+        join lawyer_TB l on l.lawyer_num = b.lawyer_num
+        join company_TB com on com.company_num=l.company_num
+        join category_TB ca on ca.category_num = l.category_num
+        where l.lawyer_num=#{lawyerNum}
+    </select>
+
+    <insert id="insertOrder" parameterType="PaymentVo">
+        INSERT INTO payment_tb VALUES (PAYMENT_SEQ.nextval
+                                      , #{paymentState}
+                                      ,  default
+                                      , #{bookingVo.bookingNum}
+                                      , #{impUid}
+                                      , #{merchantUid}
+                                      , #{payMethod})
+    </insert>
+</mapper>

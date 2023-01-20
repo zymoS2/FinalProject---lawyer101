@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.booking.model.dao.BookingDao">
+    <resultMap id="bookingResultMap" type="bookingVo">
+        <result property="bookingNum" column="booking_num"/>
+        <result property="bookingDate" column="booking_date"/>
+        <result property="counselingContent" column="counseling_content"/>
+        <result property="bookingTime" column="booking_time"/>
+        <association property="clientVo" javaType="ClientVo">
+            <result property="clientNum" column="client_num"/>
+            <result property="clientId" column="client_id"/>
+            <result property="clientPwd" column="client_pwd"/>
+            <result property="clientName" column="client_name"/>
+            <result property="clientBirthyy" column="client_birthyy"/>
+            <result property="clientGender" column="client_gender"/>
+            <result property="clientEmail" column="client_email"/>
+            <result property="clientPhone" column="client_phone"/>
+        </association>
+        <association property="lawyerVo" javaType="LawyerVo">
+        <result property="lawyerNum" column="lawyer_num"/>
+        <result property="lawyerId" column="lawyer_id"/>
+        <result property="lawyerPwd" column="lawyer_pwd"/>
+        <result property="lawyerName" column="lawyer_name"/>
+        <result property="lawyerBirthyy" column="lawyer_birthyy"/>
+        <result property="lawyerGender" column="lawyer_gender"/>
+        <result property="lawyerPhone" column="lawyer_phone"/>
+        <result property="lawyerImg" column="lawyer_img"/>
+        <result property="lawyerEmail" column="lawyer_email"/>
+        <result property="lawyerLicenseNum" column="lawyer_license_num"/>
+        <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+            <association property="companyVo" javaType="CompanyVo">
+                <result property="companyNum" column="company_num"/>
+                <result property="companyName" column="company_name"/>
+                <result property="companyAddress" column="company_address"/>
+                <result property="companyPhone" column="company_phone"/>
+            </association>
+            <association property="categoryVo" column="CategoryVo">
+                <result property="categoryNum" column="category_num"/>
+                <result property="categoryName" column="category_name"/>
+            </association>
+        </association>
+    </resultMap>
+    <select id="selectLatestBooking" resultType="BookingVo"  resultMap="bookingResultMap">
+        select *
+        from
+            (select * from booking_TB b
+            join client_TB c on c.client_num = b.client_num
+            join lawyer_TB l on l.lawyer_num = b.lawyer_num
+            join company_TB com on com.company_num = l.company_num
+            join category_Tb ca on ca.category_num = l.category_num
+            where b.client_num = #{clientNum}
+            order by b.booking_date desc)
+        where rownum = 1
+    </select>
+    <select id="selectLatestCounseling" resultType="BookingVo" resultMap="bookingResultMap">
+        select *
+        from
+        (select * from booking_TB b
+        join client_TB c on c.client_num = b.client_num
+        join lawyer_TB l on l.lawyer_num = b.lawyer_num
+        join company_TB com on com.company_num = l.company_num
+        join category_Tb ca on ca.category_num = l.category_num
+        where b.lawyer_num = #{lawyerNum}
+        order by b.booking_date desc)
+        where rownum = 1
+    </select>
+
+    <select id="selectBookingDetail" resultType="bookingVo" resultMap="bookingResultMap">
+        select * from booking_TB b
+            join client_TB c on c.client_num = b.client_num
+            join lawyer_TB l on l.lawyer_num = b.lawyer_num
+            where b.booking_num = ${bookingNum}
+    </select>
+
+    <insert id="insertBooking" parameterType="BookingVo">
+        INSERT INTO booking_tb (booking_num, booking_date, counseling_content, booking_time, client_num, lawyer_num)
+            VALUES ( BOOKING_SEQ.nextval
+                    , #{bookingDate}
+                    , #{counselingContent}
+                    , #{bookingTime}
+                    , #{clientVo.clientNum}
+                    , #{lawyerVo.lawyerNum} )
+        <selectKey resultType="Long" order="AFTER" keyProperty="bookingNum">
+            select BOOKING_SEQ.currval from dual
+        </selectKey>
+    </insert>
+</mapper>

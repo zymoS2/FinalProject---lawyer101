@@ -3,16 +3,6 @@ $(function() {
     const calendarYear = date.getFullYear(); // 달력 연도
     const calendarMonth = date.getMonth() + 1; // 달력 월
     const calendarToday = date.getDate(); // 달력 일
-    const calendarHour = date.getHours();
-
-    var nowDt = "";
-     if(calendarMonth<10) {
-        nowDt += calendarYear +"0"+ calendarMonth+"" + calendarToday +"" + calendarHour;
-     } else {
-        nowDt += calendarYear +""+ calendarMonth+"" + calendarToday +"" + calendarHour;
-     }
-
-    console.log(nowDt);
 
     const monthLastDate = new Date(calendarYear, calendarMonth, 0);
     const calendarMonthLastDate = monthLastDate.getDate(); // 달력 월의 마지막 일
@@ -20,15 +10,12 @@ $(function() {
     const nextMonthStartDate = new Date(calendarYear, calendarMonth, 1); // 달력 다음 월의 시작 일
     const calendarMonthTodayDay = date.getDay(); // 달력 현재 요일
 
-
-
     // 주간 배열
     let arWeek = ["", "", "", "", "", "", ""];
 
     let weekYear = calendarYear;
     let weekMonth = calendarMonth;
     let weekDay = calendarToday;
-    let todayHour  = calendarHour;
 
     // 현재 요일부터 주간 배열에 날짜를 추가
     for (let index = calendarMonthTodayDay; index < 7; index++) {
@@ -41,13 +28,11 @@ $(function() {
             weekMonth = nextMonthStartDate.getMonth() + 1;
             weekDay = 1;
         }
-
+    }
 
     weekYear = calendarYear;
     weekMonth = calendarMonth;
     weekDay = calendarToday;
-    todayHour  = calendarHour;
-
 
     // 현재 요일부터 꺼꾸로 주간 배열에 날짜를 추가
     for (let index = calendarMonthTodayDay - 1; index >= 0; index--) {
@@ -58,53 +43,27 @@ $(function() {
             weekMonth = prevMonthLastDate.getMonth() + 1;
             weekDay = prevMonthLastDate;
         }
-        arWeek[index] = weekYear + '-' +weekMonth +  '-' + weekDay;
-
+        arWeek[index] = weekYear +"-" + weekMonth + "-" + weekDay;
     }
 
     // 오늘
     const today = new Date();
 
-
     // 달력 요일
     const calendarDays = ["일", "월", "화", "수", "목", "금", "토",];
 
     for (let index = 0; index < 7; index++) {
-        const arWeekDate2 = arWeek[index].split("-");
-        const year2 = arWeekDate2[0];
-        const month2 = arWeekDate2[1] < 10 ? "0" + arWeekDate2[1] : arWeekDate2[1];
-        const day2 = arWeekDate2[2] < 10 ? "0" + arWeekDate2[2] : arWeekDate2[2];
-
-        const calDate =year2 + month2 + day2 + todayHour;
-
         const arWeekDate = arWeek[index].split("-");
         const year = arWeekDate[0];
         const month = arWeekDate[1] < 10 ? "0" + arWeekDate[1] : arWeekDate[1];
         const day = arWeekDate[2] < 10 ? "0" + arWeekDate[2] : arWeekDate[2];
+        const html = $('<div class="days-data" data-date='+ year + '-' + month + '-' + day + '>' +
+                            '<span class="day d-block fs-4 fw-bold rounded-circle">' + day +'</span>' +
+                            '<span class="name d-block">' + (index === calendarMonthTodayDay ? "오늘" : calendarDays[index] + "요일") + '</span>' +
+                        '</div>');
 
-
-        console.log("nowDt="+nowDt);
-        console.log("calDate="+calDate);
-
-        var html = "";
-        if( nowDt != null && calDate !=null) {
-
-            if( Number(nowDt) < Number(calDate) ) {
-                html+= $('<div class="days-data" data-date='+ year + '-' + month + '-' + day + '>' +
-                        '<span class="day d-block fs-4 fw-bold rounded-circle">' + day +'</span>' +
-                        '<span class="name d-block">' + (index === calendarMonthTodayDay ? "오늘" : calendarDays[index] + "요일") + '</span>' +
-                  '</div>');
-            } else {
-                html+= $('<div class="days-data" data-date='+ year + '-' + month + '-' + day + '>' +
-                        '<span class="day bg-body-tertiary d-block  fs-4 fw-bold rounded-circle">' + day +'</span>' +
-                        '<span class="name d-block bg-body-tertiary">' + (index === calendarMonthTodayDay ? "오늘" : calendarDays[index] + "요일") + '</span>' +
-                  '</div>');
-            }
-            $('.days').append(html);
-
-        }
+        $('.days').append(html);
     }
-  }
 })
 
 $(document).on('click', '.days-data', function() {
