@@ -2,7 +2,10 @@ package com.kh.lawservice101.lawyer.model.service;
 
 import com.github.pagehelper.Page;
 import com.kh.lawservice101.lawyer.model.vo.SearchCon;
+import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
+import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
@@ -35,4 +38,10 @@ public interface LawyerService {
     void passwordModify(String tempPwd, Long lawyerNum);
 
     Page<LawyerVo> pagingLawyer(SearchCon searchCon);
+    
+    // 개인정보 수정
+    void infoModify(Long lawyerNum, EditInfoDto editInfoDto);
+
+    // 프로필 수정
+    void profileModify(Long lawyerNum, EditProfileDto editProfileDto);
 }

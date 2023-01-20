@@ -21,5 +21,5 @@ public class LawyerVo {
 	private String lawyerIntroMsg;
 	private CompanyVo companyVo; //외래키는 객체로
 	private CategoryVo categoryVo;
-
+	private String LawyerMainImg;
 }

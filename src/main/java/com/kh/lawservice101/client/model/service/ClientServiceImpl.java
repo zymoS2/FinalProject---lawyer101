@@ -53,5 +53,11 @@ public class ClientServiceImpl implements ClientService {
         clientDao.updatePassword(tempPwd, clientNum);
     }
 
+    @Override
+    public void editInfo(ClientVo findClient, ClientVo clientVo) {
+        findClient.setClientEmail(clientVo.getClientEmail());
+        findClient.setClientName(clientVo.getClientName());
 
+        clientDao.updateInfo(findClient);
+    }
 }
