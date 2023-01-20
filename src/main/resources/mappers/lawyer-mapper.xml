@@ -107,31 +107,30 @@
             OR ct.category_name LIKE '%'||#{keyword}||'%'
         </if>
     </select>
-</mapper>
 
     <insert id="insertLawyer" parameterType="LawyerVo">
         INSERT INTO LAWYER_TB (
-        LAWYER_NUM
-        , LAWYER_ID
-        , LAWYER_PWD
-        , LAWYER_NAME
-        , LAWYER_BIRTHYY
-        , LAWYER_GENDER
-        , LAWYER_PHONE
-        , LAWYER_EMAIL
-        , LAWYER_LICENSE_NUM
-        , LAWYER_INTRO_MSG
+                                LAWYER_NUM
+                              , LAWYER_ID
+                              , LAWYER_PWD
+                              , LAWYER_NAME
+                              , LAWYER_BIRTHYY
+                              , LAWYER_GENDER
+                              , LAWYER_PHONE
+                              , LAWYER_EMAIL
+                              , LAWYER_LICENSE_NUM
+                              , LAWYER_INTRO_MSG
         ) VALUES(
-        LAWYER_SEQ.NEXTVAL
-        , #{lawyerId}
-        , #{lawyerPwd}
-        , #{lawyerName}
-        , #{lawyerBirthyy}
-        , #{lawyerGender}
-        , #{lawyerPhone}
-        , #{lawyerEmail}
-        , #{lawyerLicenseNum}
-        , #{lawyerIntroMsg}
-        )
+                    LAWYER_SEQ.NEXTVAL
+                , #{lawyerId}
+                , #{lawyerPwd}
+                , #{lawyerName}
+                , #{lawyerBirthyy}
+                , #{lawyerGender}
+                , #{lawyerPhone}
+                , #{lawyerEmail}
+                , #{lawyerLicenseNum}
+                , #{lawyerIntroMsg}
+                )
     </insert>
 </mapper>

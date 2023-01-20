@@ -31,9 +31,9 @@ public class ReviewController {
         // 임시
         LawyerVo lawyer = lawyerService.findLawyer(1L);
         ClientVo client = clientService.findClient(1L);
-        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
-
-        model.addAttribute("paymentVo", paymentVo);
+//        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
+//
+//        model.addAttribute("paymentVo", paymentVo);
 
         return "review/review";
     }
@@ -44,11 +44,11 @@ public class ReviewController {
         // 임시
         LawyerVo lawyer = lawyerService.findLawyer(1L);
         ClientVo client = clientService.findClient(1L);
-        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
-
-        reviewVo.setPaymentVo(paymentVo);
-        reviewVo.setClientVo(paymentVo.getBookingVo().getClientVo());
-        reviewVo.setLawyerVo(paymentVo.getBookingVo().getLawyerVo());
+//        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
+//
+//        reviewVo.setPaymentVo(paymentVo);
+//        reviewVo.setClientVo(paymentVo.getBookingVo().getClientVo());
+//        reviewVo.setLawyerVo(paymentVo.getBookingVo().getLawyerVo());
 
         reviewService.saveReview(reviewVo);
         return "redirect:/";
