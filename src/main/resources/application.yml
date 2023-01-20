@@ -36,13 +36,23 @@ mybatis:
                         com.kh.lawservice101.client.model.vo, 
                         com.kh.lawservice101.lawyer.model.vo,
                         com.kh.lawservice101.knowledgein.model.vo
-                        com.kh.lawservice101.client.model.vo, com.kh.lawservice101.lawyer.model.vo,
                         com.kh.lawservice101.chat.model.vo
   configuration:
     map-underscore-to-camel-case: true # model 프로퍼티 camel case 설정
     jdbc-type-for-null: varchar # ""값 null 처리
 
 # 포트 변경
-server:
-  port: 9090
+#server:
+#  port: 9090
 
+# 페이징 관련 설정
+pagehelper:
+  helper-dialect: oracle # DB 종류 선택
+  auto-dialect: true # DB 자동 설정
+  page-size-zero: false # pageSize=0 으로 실행
+  reasonable: true # true 일시 0 <= pageNum <= pages 로 실행
+  offset-as-page-num: false # RowBound를 사용할 때 offset param을 pageNum으로 사용
+  row-bounds-with-count: false # RowBound를 사용할 때 Count Query 수행
+  auto-runtime-dialect: false # Runtime에 DB 자동 설정
+  close-conn: true # DB Connection을 닫을 지 여부
+  default-count: true # mapper 방식 사용시 true 설정

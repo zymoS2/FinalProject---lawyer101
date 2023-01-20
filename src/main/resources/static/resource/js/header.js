@@ -25,4 +25,27 @@ $(function() {
             );
         }
     });
+
+    // 검색
+    $(".searchFormButton").on("click", function () {
+        const keyword = $("input[type='search']").val();
+        if (keyword === null || keyword === "") {
+            return;
+        } else {
+            $(".searchForm").submit();
+        }
+    });
+
+    $("input[type='search']").on("keydown", function (e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            const keyword = $(this).val();
+
+            if (keyword === null || keyword === "") {
+                return;
+            } else {
+                $(".searchForm").submit();
+            }
+        }
+    });
 })

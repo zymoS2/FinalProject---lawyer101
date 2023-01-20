@@ -100,4 +100,14 @@
     <update id="updatePassword">
         update lawyer_TB set lawyer_pwd = #{tempPwd} where lawyer_num = #{lawyerNum}
     </update>
+    
+    <select id="selectLawyerByKeyword" resultType="LawyerVo" parameterType="SearchCon" resultMap="LawyerResultSet">
+        SELECT * FROM lawyer_TB l join company_TB c on l.company_num = c.company_num
+                                    JOIN category_tb ct ON l.category_num = ct.category_num
+                                    WHERE 1 = 1
+        <if test='keyword neq null and keyword neq ""'>
+            AND lawyer_name LIKE '%'||#{keyword}||'%'
+            OR ct.category_name LIKE '%'||#{keyword}||'%'
+        </if>
+    </select>
 </mapper>

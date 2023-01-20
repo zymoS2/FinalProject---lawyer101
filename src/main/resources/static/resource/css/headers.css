@@ -2,6 +2,15 @@ header {
   z-index: 100;
 }
 
+header.active {
+  border-bottom: 1px solid gray;
+  background-color: #ffffff;
+  position: fixed !important;
+  width: 100%;
+  top: 0 !important;
+  height: 84px;
+}
+
 .form-control-dark {
   border-color: var(--bs-gray);
 }
