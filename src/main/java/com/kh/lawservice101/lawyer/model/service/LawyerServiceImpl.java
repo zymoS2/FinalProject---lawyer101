@@ -16,17 +16,22 @@ public class LawyerServiceImpl implements LawyerService {
 
     private final LawyerDao lawyerDao;
 
+    //변호사 로그인
+    @Override
+    public LawyerVo findLawyerIdPwd(LawyerVo lawyerVo){
+        return lawyerDao.lawyerLogin(lawyerVo);
+    }
+    //변호사 가입
+    @Override
+    public void saveLawyer(LawyerVo lawyerVo) {
+        lawyerDao.insertLawyer(lawyerVo);
+    }
+
     //변호사 업데이트
     @Override
     public int updateLawyer(LawyerVo lawyerPram) {
         //실행하고 바로 반환
         return lawyerDao.updateLawyer(lawyerPram);
-    }
-
-    //변호사 가입
-    @Override
-    public void saveLawyer(LawyerVo lawyerVo) {
-        lawyerDao.insertLawyer(lawyerVo);
     }
 
     //변호사 단건 조회

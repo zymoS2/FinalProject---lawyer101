@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>법률서비스 101</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
@@ -223,7 +224,7 @@
     <div class="container px-4 py-5" id="custom-cards">
       <h2 class="pb-2 border-bottom fw-bold fs-3">법률 지식IN</h2>
       <div class="text-end mt-4 mb-2">
-        <a href="" class="text-custom">전체보기</a>
+        <a href="/knowledgeIn" class="text-custom">전체보기</a>
       </div>
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-2">
         <div class="col">
