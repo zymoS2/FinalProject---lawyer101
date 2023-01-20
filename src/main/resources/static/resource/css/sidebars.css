@@ -62,6 +62,14 @@ main {
   font-weight: bold;
 }
 
+.sidebar-container {
+  transform: translateX(-320px);
+  transition: all .5s;
+}
+.sidebarOpacity {
+  opacity: 0;
+}
 .sidebar {
-  display: none;
+  z-index: -1;
+  transition: all .5s;
 }

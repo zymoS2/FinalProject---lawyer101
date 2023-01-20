@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.knowledgein.model.dao.InBoardDao">
+    <resultMap id="InBoardResultSet" type="InBoardVo">
+        <result property="inBoardNum" column="IN_BOARD_NUM"/>
+        <result property="inBoardTitle" column="IN_BOARD_TITLE"/>
+        <result property="inBoardContent" column="IN_BOARD_CONTENT"/>
+        <result property="inBoardCount" column="IN_BOARD_COUNT"/>
+        <result property="writerDate" column="WRITE_DATE"/>
+        <association property="categoryVo" javaType="CategoryVo">
+            <result property="categoryNum" column="CATEGORY_NUM"/>
+            <result property="categoryName" column="CATEGORY_NAME"/>
+        </association>
+        <association property="clientVo" javaType="ClientVo">
+            <result property="clientNum" column="CLIENT_NUM"/>
+            <result property="clientId" column="CLIENT_ID"/>
+            <result property="clientName" column="CLIENT_NAME"/>
+        </association>
+    </resultMap>
+
+    <select id="selectPost" resultType="InBoardVo" resultMap="InBoardResultSet">
+        SELECT *
+        FROM IN_BOARD_TB
+        WHERE IN_BOARD_NUM = #{inBoardNum}
+    </select>
+
+    <select id="selectAllInBoard" resultType="InBoardVo" resultMap="InBoardResultSet">
+        SELECT *
+        FROM IN_BOARD_TB ibt
+        JOIN CATEGORY_TB ct
+        ON ibt.CATEGORY_NUM =ct.CATEGORY_NUM
+    </select>
+
+    <insert id="inBoardUpload" parameterType="InBoardVo">
+        INSERT INTO IN_BOARD_TB (
+            IN_BOARD_NUM
+            , IN_BOARD_TITLE
+            , IN_BOARD_CONTENT
+            , IN_BOARD_COUNT
+            , WRITE_DATE
+            , CATEGORY_NUM
+            , CLIENT_NUM
+        ) VALUES(
+            IN_BOARD_SEQ.NEXTVAL
+            , #{inBoardTitle}
+            , #{inBoardContent}
+            , #{inBoardCount}
+            , sysdate
+            , #{categoryVo.categoryNum}
+            , #{clientVo.clientNum}
+        )
+    </insert>
+
+</mapper>

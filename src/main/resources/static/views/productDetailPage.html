@@ -11,8 +11,11 @@
     <link href="../resource/css//sidebars.css" rel="stylesheet"/>
     <link href="../resource/css/footer.css" rel="stylesheet"/>
     <link href="../resource/css//common.css" rel="stylesheet"/>
-    
     <link rel="stylesheet" href="../resource/css/productDetailPage.css" />
+    <script src="../resource/js/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="../resource/js/productDetailPage.js"></script>
+
   </head>
   <body>    
     <div class="container d-flex">
@@ -122,10 +125,11 @@
                 </svg>
               </button>
             </li>
-            <li class="me-3 active"><button class="btn py-3 px-0 text-secondary">변호사홈</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">지식IN 답변</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">의뢰인후기</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">위치</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary" id="headerli1">변호사홈</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary" id="headerli2">변호사정보</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary" id="headerli3">지식IN 답변</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary" id="headerli4">의뢰인후기</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary" id="headerli5">위치</button></li>
           </ul>
           <a href="booking.html" class="text-secondary fw-bold">
             상담예약
@@ -134,7 +138,7 @@
 
         <!-- left -->
         <div class="mt-5">
-          <h1 class="fw-bold">[말빨 전문] 답답하면 니들이 변호하던가</h1>
+          <h1 class="fw-bold pydiv-2">[말빨 전문] 답답하면 니들이 변호하던가</h1>
           <div class="d-flex justify-content-between py-4 border-bottom border-4">
             <table class="w-50 me-5">
               <tr>
@@ -163,10 +167,10 @@
               </tr>
             </table>
           </div>
-          <div class="py-3">
+          <div class="py-3 ">
             <h4 class="my-4 fw-bold"><span class="bg-warning"><span>기성용</span> 변호사</span>의 법률 활동을 확인하세요.</h4>
             <div class="py-3">
-              <a href="commentList.html" class="fs-5 d-inline-block fw-bold mb-4">지식IN 답변<span class="ms-2 text-body-tertiary"><span>42</span> 
+              <a href="commentList.html" class="fs-5 d-inline-block fw-bold mb-4 pydiv-3">지식IN 답변<span class="ms-2 text-body-tertiary"><span>42</span> 
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                 </svg>
@@ -199,7 +203,7 @@
               </ul>
             </div>
             <hr>
-            <div class="py-3">
+            <div class="py-3 pydiv-4">
               <a href="" class="fs-5 d-inline-block fw-bold mb-4">의뢰인 후기</a>
               <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="carousel">
                 <div class="carousel-inner border p-5 bg-body-tertiary">
@@ -324,7 +328,7 @@
               </a>
             </div>
             <hr>
-            <div class="py-3">
+            <div class="py-3 pydiv-5">
               <h5 class="fs-5 d-inline-block fw-bold">위치</h5>
               <p class="fw-bold">법률사무소에 오셔서 <br>문제를 해결하세요.</p><br>
               <p class="fs-5 mb-1">법무법인 공명

@@ -21,19 +21,112 @@
             <result property="companyAddress" column="company_address"/>
             <result property="companyPhone" column="company_phone"/>
         </association>
-        <association property="categoryVo" column="CategoryVo">
-            <result property="categoryNum" column="category_num"/>
-            <result property="categoryName" column="category_name"/>
-        </association>
     </resultMap>
+
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l
-        join company_TB c on l.company_num = c.company_num
-        join category_TB ca on l.company_num = ca.category_num
-        where lawyer_num=#{lawyerNum}
+        SELECT *
+        FROM LAWYER_TB L
+        JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+        WHERE LAWYER_NUM = #{lawyerNum}
+    </select>
+
+    <select id="selectLawyerVo" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT LAWYER_NUM
+        , LAWYER_ID
+        , LAWYER_PWD
+        , LAWYER_NAME
+        , LAWYER_BIRTHYY
+        , LAWYER_GENDER
+        , LAWYER_PHONE
+        , LAWYER_EMAIL
+        , LAWYER_LICENSE_NUM
+        , LAWYER_INTRO_MSG
+        FROM LAWYER_TB L
+        LEFT JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
+        WHERE 1=1
+        <if test="lawyerNum != null">
+            AND LAWYER_NUM = #{lawyerNum}
+        </if>
+        <if test="lawyerId != null">
+            AND LAWYER_ID = #{lawyerId}
+        </if>
     </select>
 
     <select id="selectAllLawyers" resultType="LawyerVo" resultMap="LawyerResultSet">
-        select * from lawyer_TB l join company_TB c on l.company_num = c.company_num
+        select *
+            from lawyer_TB l
+                join company_TB c on l.company_num = c.company_num
+                join category_TB ca on l.category_num = ca.category_num
     </select>
+
+    <select id="lawyerLogin" resultType="LawyerVo">
+        SELECT * FROM LAWYER_TB
+        WHERE LAWYER_ID = #{lawyerId}
+        AND LAWYER_PWD = #{lawyerPwd}
+    </select>
+
+    <update id="updateLawyer" parameterType="LawyerVo">
+        UPDATE LAWYER_TB
+        SET COMPANY_NUM = #{companyVo.companyNum}
+        WHERE LAWYER_ID = #{lawyerId}
+    </update>
+
+    <select id="selectLawyerByEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT *
+        FROM LAWYER_TB l
+        JOIN company_TB c
+        ON l.COMPANY_NUM = c.COMPANY_NUM
+        WHERE LAWYER_EMAIL = #{email}
+    </select>
+
+    <select id="selectLawyerByIdAndEmail" resultType="LawyerVo" resultMap="LawyerResultSet">
+        SELECT *
+        FROM LAWYER_TB l
+        JOIN company_TB c
+        ON l.COMPANY_NUM = c.COMPANY_NUM
+        WHERE LAWYER_ID = #{id}
+        AND LAWYER_EMAIL = #{email}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE LAWYER_TB
+        SET LAWYER_PWD = #{tempPwd}
+        WHERE LAWYER_NUM = #{lawyerNum}
+    </update>
+    
+    <select id="selectLawyerByKeyword" resultType="LawyerVo" parameterType="SearchCon" resultMap="LawyerResultSet">
+        SELECT * FROM lawyer_TB l join company_TB c on l.company_num = c.company_num
+                                    JOIN category_tb ct ON l.category_num = ct.category_num
+                                    WHERE 1 = 1
+        <if test='keyword neq null and keyword neq ""'>
+            AND lawyer_name LIKE '%'||#{keyword}||'%'
+            OR ct.category_name LIKE '%'||#{keyword}||'%'
+        </if>
+    </select>
+
+    <insert id="insertLawyer" parameterType="LawyerVo">
+        INSERT INTO LAWYER_TB (
+                                LAWYER_NUM
+                              , LAWYER_ID
+                              , LAWYER_PWD
+                              , LAWYER_NAME
+                              , LAWYER_BIRTHYY
+                              , LAWYER_GENDER
+                              , LAWYER_PHONE
+                              , LAWYER_EMAIL
+                              , LAWYER_LICENSE_NUM
+                              , LAWYER_INTRO_MSG
+        ) VALUES(
+                    LAWYER_SEQ.NEXTVAL
+                , #{lawyerId}
+                , #{lawyerPwd}
+                , #{lawyerName}
+                , #{lawyerBirthyy}
+                , #{lawyerGender}
+                , #{lawyerPhone}
+                , #{lawyerEmail}
+                , #{lawyerLicenseNum}
+                , #{lawyerIntroMsg}
+                )
+    </insert>
 </mapper>
