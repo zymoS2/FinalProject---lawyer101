@@ -25,4 +25,6 @@ public interface ClientDao {
     ClientVo selectClientByIdAndEmail(String id, String email);
 
     void updatePassword(String tempPwd, Long clientNum);
+
+    void updateInfo(ClientVo findClient);
 }

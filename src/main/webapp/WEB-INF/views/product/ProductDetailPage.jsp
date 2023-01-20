@@ -26,7 +26,7 @@
 
       <div class="w-75 px-5">
         <!-- header -->
-        <header class="d-flex justify-content-between align-items-center py-4 border-bottom">
+        <header class="d-flex justify-content-between align-items-center py-4 border-bottom pydiv-2">
           <ul class="mb-0 ps-0 d-flex align-items-center">
             <li class="me-4">
               <button class="btn p-0 me-3">
@@ -35,10 +35,10 @@
                 </svg>
               </button>
             </li>
-            <li class="me-3 active"><button class="btn py-3 px-0 text-secondary">변호사홈</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">지식IN 답변</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">의뢰인후기</button></li>
-            <li class="me-3"><button class="btn py-3 px-0 text-secondary">위치</button></li>
+            <li class="me-3 active"><button class="btn py-3 px-0 text-secondary headerli2">변호사홈</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary headerli3">지식IN 답변</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary headerli4">의뢰인후기</button></li>
+            <li class="me-3"><button class="btn py-3 px-0 text-secondary headerli5">위치</button></li>
           </ul>
           <a href="booking.html" class="text-secondary fw-bold">
             상담예약
@@ -69,13 +69,12 @@
               <tr class="align-top small">
                 <td class="fw-bold" style="width: 40px;">분야</td>
                 <td>
-                  이혼, 명예훼손/모욕 일반, 성폭력/강제추행 등
-                  의료/식품의약
+                  ${categoryVo.categoryName}
                 </td>
               </tr>
             </table>
           </div>
-          <div class="py-3">
+          <div class="py-3 pydiv-3">
             <h4 class="my-4 fw-bold"><span class="bg-warning"><span>${lawyer.lawyerName}</span> 변호사</span>의 법률 활동을 확인하세요.</h4>
             <div class="py-3">
               <a href="commentList.html" class="fs-5 d-inline-block fw-bold mb-4">지식IN 답변<span class="ms-2 text-body-tertiary"><span>42</span> 
@@ -111,7 +110,7 @@
               </ul>
             </div>
             <hr>
-            <div class="py-3">
+            <div class="py-3 pydiv-4">
               <a href="" class="fs-5 d-inline-block fw-bold mb-4">의뢰인 후기</a>
               <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="carousel">
                 <div class="carousel-inner border p-5 bg-body-tertiary">
@@ -236,7 +235,7 @@
               </a>
             </div>
             <hr>
-            <div class="py-3">
+            <div class="py-3 pydiv-5">
               <h5 class="fs-5 d-inline-block fw-bold">위치</h5>
               <p class="fw-bold">법률사무소에 오셔서 <br>문제를 해결하세요.</p><br>
               <p class="fs-5 mb-1">${lawyer.companyVo.companyName}
@@ -255,15 +254,15 @@
         <div class="text-white text-center py-5" style="background-color: #443736;">
           <h3 class="fw-bold mb-0"><span>${lawyer.lawyerName}</span> 변호사</h3>
           <p>${lawyer.companyVo.companyName}</p>
-        </div>
-        <div class="position-relative" style="height: 640px;">
-          <img src="../resource//img/인물사진(상반신)1.jpg" alt="" width="100%" height="100%"/>
-          <a href="booking.html" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
-            상담예약하기
-          </a>
-        </div>
-      </div>
-    </div>
+                  </div>
+                  <div class="position-relative" style="height: 640px;">
+                    <img src="../resource//img/인물사진(상반신)1.jpg" alt="" width="100%" height="100%"/>
+                    <a href="booking.html" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
+                      상담예약하기
+                    </a>
+                  </div>
+                </div>
+              </div>
 
     <!-- footer -->
     <div class="footer-container">

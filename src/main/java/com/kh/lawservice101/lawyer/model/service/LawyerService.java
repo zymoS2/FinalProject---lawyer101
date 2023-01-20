@@ -3,6 +3,7 @@ package com.kh.lawservice101.lawyer.model.service;
 import com.github.pagehelper.Page;
 import com.kh.lawservice101.lawyer.model.vo.SearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
@@ -35,4 +36,7 @@ public interface LawyerService {
     void passwordModify(String tempPwd, Long lawyerNum);
 
     Page<LawyerVo> pagingLawyer(SearchCon searchCon);
+    void editInfo(LawyerVo findLawyer, LawyerVo lawyerVo);
+
+    void editProfile(LawyerVo findLawyer, MultipartFile multipartFile, LawyerVo lawyerVo, MultipartFile lawyerMainImg);
 }

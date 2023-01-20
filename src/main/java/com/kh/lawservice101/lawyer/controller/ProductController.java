@@ -10,10 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +28,9 @@ public class ProductController {
     @GetMapping("/detail/{num}")
     public String ProductDetailPage(@PathVariable Long num, Model model) {
         LawyerVo lawyer = lawyerService.findLawyer(num);
-        ArrayList<CategoryVo> categoryList = categoryService.findLawyerCategory(lawyer.getLawyerNum());
+        CategoryVo categoryVo = categoryService.findCategory(lawyer.getCategoryVo().getCategoryNum());
         model.addAttribute("lawyer", lawyer);
-        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("categoryVo", categoryVo);
         return "product/ProductDetailPage";
     }
 

@@ -35,4 +35,7 @@ public interface LawyerDao {
     void updatePassword(String tempPwd, Long lawyerNum);
 
     Page<LawyerVo> selectLawyerByKeyword(SearchCon searchCon);
+    void updateInfo(LawyerVo findLawyer);
+
+    void updateProfile(LawyerVo findLawyer);
 }

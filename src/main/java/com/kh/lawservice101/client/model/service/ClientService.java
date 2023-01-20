@@ -24,4 +24,6 @@ public interface ClientService {
     ClientVo findClientByIdAndEmail(String resetPwdId, String resetPwdEmail);
 
     void passwordModify(String tempPwd, Long clientNum);
+
+    void editInfo(ClientVo findClient, ClientVo clientVo);
 }

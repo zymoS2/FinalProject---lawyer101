@@ -2,6 +2,7 @@ package com.kh.lawservice101.lawyer.model.vo;
 
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -21,6 +22,5 @@ public class LawyerVo {
 	private String lawyerIntroMsg;
 	private CategoryVo categoryVo;
 	private CompanyVo companyVo; //외래키는 객체로
-	private CategoryVo categoryVo;
 
 }

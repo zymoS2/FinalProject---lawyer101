@@ -21,13 +21,17 @@
             <result property="companyAddress" column="company_address"/>
             <result property="companyPhone" column="company_phone"/>
         </association>
+        <association property="categoryVo" javaType="CategoryVo">
+            <result property="categoryNum" column="category_num"/>
+            <result property="categoryName" column="category_name"/>
+        </association>
     </resultMap>
 
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">
-        SELECT *
-        FROM LAWYER_TB L
-        JOIN COMPANY_TB C ON L.COMPANY_NUM = C.COMPANY_NUM
-        WHERE LAWYER_NUM = #{lawyerNum}
+        select * from lawyer_TB l
+                          join company_TB c on l.company_num = c.company_num
+                          join category_TB ca on l.category_num = ca.category_num
+        where lawyer_num=#{lawyerNum}
     </select>
 
     <select id="selectLawyerVo" resultType="LawyerVo" resultMap="LawyerResultSet">
@@ -129,4 +133,10 @@
                 , #{lawyerIntroMsg}
                 )
     </insert>
+    <update id="updateInfo" parameterType="LawyerVo">
+        update lawyer_TB set lawyer_email = #{lawyerEmail}, lawyer_name = #{lawyerName} where lawyer_num = #{lawyerNum}
+    </update>
+    <update id="updateProfile" parameterType="LawyerVo">
+        update lawyer_TB set lawyer_intro_msg = #{lawyerIntroMsg}, lawyer_img = #{lawyerImg}, category_num = #{categoryVo.categoryNum} where lawyer_num = #{lawyerNum}
+    </update>
 </mapper>
