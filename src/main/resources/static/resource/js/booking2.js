@@ -70,19 +70,19 @@ $(document).on('click', '.days-data', function() {
     $('.days-data').each(function(index, item) {
         $(item).removeClass('active');
     })
-    var date = $(this).attr('data-date');
-        console.log(date);
-    $("input[name='bookingDate']").val(date);
     $(this).addClass('active');
+
+    const date = $(this).attr('data-date');
+    
 })
 
 
-$(document).on('click','.time',function(){
-    $('.time').each(function(index, item) {
-        $(item).removeClass('active');
-    })
-       var time = $(this).attr('value');
-           console.log(time);
-       $("input[name='bookingTime']").val(time);
-       $(this).addClass('active');
-})
+// $(document).on('click','.time',function(){
+//     $('.time').each(function(index, item) {
+//         $(item).removeClass('active');
+//     })
+//        var time = $(this).attr('value');
+//            console.log(time);
+//        $("input[name='bookingTime']").val(time);
+//        $(this).addClass('active');
+// })

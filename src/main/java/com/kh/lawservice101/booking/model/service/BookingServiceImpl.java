@@ -5,6 +5,8 @@ import com.kh.lawservice101.booking.model.vo.BookingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BookingServiceImpl implements BookingService {
@@ -38,5 +40,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingVo findCounselingDetail(Long bookingNum) {
         return bookingDao.selectBookingDetail(bookingNum);
+    }
+
+    @Override
+    public List<BookingVo> findBookingListByDate(String date) {
+        return bookingDao.selectBookingByDate(date);
     }
 }

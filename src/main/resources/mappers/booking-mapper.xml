@@ -86,4 +86,11 @@
             select BOOKING_SEQ.currval from dual
         </selectKey>
     </insert>
+
+    <select id="selectBookingByDate" resultType="bookingVo" resultMap="bookingResultMap">
+        select * from booking_TB b
+                          join client_TB c on c.client_num = b.client_num
+                          join lawyer_TB l on l.lawyer_num = b.lawyer_num
+        where b.booking_date = #{date}
+    </select>
 </mapper>

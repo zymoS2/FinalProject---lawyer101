@@ -60,38 +60,7 @@
                 </div>
                 <p class="fs-5 fw-bold">시간 선택</p>
                 <ul class="times ps-0">
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="9">
-                    <small class="d-block">오전</small>
-                    <small class="d-block">09:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="10">
-                    <small class="d-block">오전</small>
-                    <small class="d-block">10:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="11">
-                    <small class="d-block">오전</small>
-                    <small class="d-block">11:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="13">
-                    <small class="d-block">오후</small>
-                    <small class="d-block">01:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="14">
-                    <small class="d-block">오후</small>
-                    <small class="d-block">02:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="15">
-                    <small class="d-block">오후</small>
-                    <small class="d-block">03:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="16">
-                    <small class="d-block">오후</small>
-                    <small class="d-block">04:00</small>
-                  </li>
-                  <li class="time d-inline-block bg-body-tertiary text-center p-3 me-2" value="17">
-                    <small class="d-block">오후</small>
-                    <small class="d-block">05:00</small>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -178,8 +147,6 @@
                     <form method="post">
                         <button type="button" class="btn btn-custom" onclick="#">뒤로</button>
                         <button type="submit" class="btn btn-custom">상담 내용 작성하기</button>
-                        <input type="hidden" name="bookingDate">
-                        <input type="hidden" name="bookingTime">
                     </form>/
                 </div>
             </div>
