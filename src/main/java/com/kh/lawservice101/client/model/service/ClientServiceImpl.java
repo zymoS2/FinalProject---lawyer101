@@ -53,11 +53,9 @@ public class ClientServiceImpl implements ClientService {
         clientDao.updatePassword(tempPwd, clientNum);
     }
 
+    // 개인정보 수정
     @Override
-    public void editInfo(ClientVo findClient, ClientVo clientVo) {
-        findClient.setClientEmail(clientVo.getClientEmail());
-        findClient.setClientName(clientVo.getClientName());
-
-        clientDao.updateInfo(findClient);
+    public void editInfo(Long clientNum, String clientEmail, String clientName) {
+        clientDao.updateInfo(clientNum, clientEmail, clientName);
     }
 }

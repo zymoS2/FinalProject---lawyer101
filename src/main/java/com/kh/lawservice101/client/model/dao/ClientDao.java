@@ -26,5 +26,6 @@ public interface ClientDao {
 
     void updatePassword(String tempPwd, Long clientNum);
 
-    void updateInfo(ClientVo findClient);
+    // 개인정보 수정
+    void updateInfo(Long clientNum, String clientEmail, String clientName);
 }

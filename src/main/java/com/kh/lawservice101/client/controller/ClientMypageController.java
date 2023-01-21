@@ -2,13 +2,14 @@ package com.kh.lawservice101.client.controller;
 
 import com.kh.lawservice101.booking.model.service.BookingService;
 import com.kh.lawservice101.booking.model.vo.BookingVo;
+import com.kh.lawservice101.client.model.service.ClientService;
+import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.payment.model.service.PaymentService;
 import com.kh.lawservice101.payment.model.vo.PaymentVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,6 +22,7 @@ public class ClientMypageController {
 
     private final PaymentService paymentService;
     private final BookingService bookingService;
+    private final ClientService clientService;
 
     List<PaymentVo> clientPaymentList =null ;
 
@@ -48,4 +50,23 @@ public class ClientMypageController {
 
        return "mypage/reservationList";
    }
+
+    // 마이페이지
+    @GetMapping("/{num}")
+    public String myPage(@SessionAttribute(value = "client", required = false) ClientVo loginClient, @PathVariable Long num, Model model) {
+        ClientVo client = clientService.findClient(num);
+        if (loginClient == null || loginClient.getClientNum() != client.getClientNum()) {
+            return "redirect:/";
+        }
+        model.addAttribute("client", client);
+        return "mypage/clientMyPage";
+    }
+
+    // 개인정보 수정
+    @PostMapping("/{num}")
+    public String editInfo(@PathVariable Long num, @RequestParam String clientEmail, @RequestParam String clientName) {
+        clientService.editInfo(num, clientEmail, clientName);
+
+        return "redirect:/mypage/" + num;
+    }
 }

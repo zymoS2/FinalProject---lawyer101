@@ -18,10 +18,10 @@
 </head>
 <body>
     <!-- header -->
-    <jsp:include page="../../common/header.jsp"/>
+    <jsp:include page="../common/header.jsp"/>
 
     <!-- sidebar -->
-    <jsp:include page="../../common/sidebar.jsp"/>
+    <jsp:include page="../common/sidebar.jsp"/>
 
     <div class="container px-4 py-5">
         <h2 class="pb-5 text-center">마이페이지</h2>
@@ -35,7 +35,7 @@
                     <p class="small fw-bold text-secondary mb-1">도움됐어요</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>
-                <a href="chatList.html" class="text-center" style="width: 184px;">
+                <a href="/mypage/reservation-list" class="text-center" style="width: 184px;">
                     <p class="small fw-bold text-secondary mb-1">예약목록</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>
@@ -44,7 +44,7 @@
         
         <div class="mx-auto w-50">
             <h5 class="fw-bold mb-3">개인정보 수정</h5>
-            <form action="/client/myPage/${client.clientNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
+            <form action="/mypage/${client.clientNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
                 <div class="form-group">
                     <label for="email" class="mb-1">이메일</label>
                     <input type="text" name="clientEmail" id="email" value="${client.clientEmail}" class="form-control border-1">
@@ -69,6 +69,6 @@
 
 
     <!-- footer -->
-    <jsp:include page="../../common/footer.jsp"/>
+    <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

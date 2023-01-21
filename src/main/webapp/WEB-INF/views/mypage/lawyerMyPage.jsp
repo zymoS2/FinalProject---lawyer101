@@ -18,16 +18,16 @@
 </head>
 <body>
     <!-- header -->
-    <jsp:include page="../../common/header.jsp"/>
+    <jsp:include page="../common/header.jsp"/>
 
     <!-- sidebar -->
-    <jsp:include page="../../common/sidebar.jsp"/>
+    <jsp:include page="../common/sidebar.jsp"/>
 
     <div class="container px-4 py-5">
         <h2 class="pb-5 text-center">마이페이지</h2>
         <div class="w-50 mx-auto p-5 border border-5 rounded mb-5">
             <div class="d-flex justify-content-center">
-                 <a href="chatList.html" class="text-center" style="width: 184px;">
+                 <a href="/lawyerpage/counsel-list" class="text-center" style="width: 184px;">
                     <p class="small fw-bold text-secondary mb-1">의뢰인 목록</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>
@@ -36,7 +36,7 @@
         
         <div class="mx-auto w-50">
             <h5 class="fw-bold mb-3">개인정보 수정</h5>
-            <form action="/lawyer/myPage/info/${lawyer.lawyerNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
+            <form action="/lawyerpage/info/${lawyer.lawyerNum}" method="post" class="border border-5 rounded p-4 mb-4" id="info-edit-form">
                 <div class="form-group">
                     <label for="email" class="mb-1">이메일</label>
                     <input type="text" name="lawyerEmail" id="email" value="${lawyer.lawyerEmail}" class="form-control border-1">
@@ -60,7 +60,7 @@
 
         <div class="mx-auto w-50">
             <h5 class="fw-bold mb-3">프로필</h5>
-            <form action="/lawyer/myPage/profile/${lawyer.lawyerNum}" method="post" enctype="multipart/form-data" class="border border-5 rounded p-4 mb-4" id="profile-form">
+            <form action="/lawyerpage/profile/${lawyer.lawyerNum}" method="post" enctype="multipart/form-data" class="border border-5 rounded p-4 mb-4" id="profile-form">
 
                 <div class="mx-auto" style="width: 100px; height: 100px; object-fit: cover; cursor: pointer" id="profile-image-box">
                     <img src="/display?fileName=${lawyer.lawyerImg}" onerror="this.src='/resource/img/profile.png';" class="rounded-circle"
@@ -122,7 +122,7 @@
     </div>
 
     <!-- footer -->
-    <jsp:include page="../../common/footer.jsp"/>
+    <jsp:include page="../common/footer.jsp"/>
 
     <script>
         $("#category option").each(function () {
