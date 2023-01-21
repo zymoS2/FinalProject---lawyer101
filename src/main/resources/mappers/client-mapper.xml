@@ -59,7 +59,9 @@
     <update id="updatePassword">
         update client_TB set client_pwd = #{tempPwd} where client_num = #{clientNum}
     </update>
-    <update id="updateInfo" parameterType="ClientVo">
+
+    <!-- 개인정보 수정 -->
+    <update id="updateInfo">
         update client_TB set client_email = #{clientEmail}, client_name = #{clientName} where client_num = #{clientNum}
     </update>
 </mapper>

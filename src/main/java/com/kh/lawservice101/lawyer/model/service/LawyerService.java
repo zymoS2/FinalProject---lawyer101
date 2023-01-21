@@ -1,11 +1,10 @@
 package com.kh.lawservice101.lawyer.model.service;
 
 import com.github.pagehelper.Page;
-import com.kh.lawservice101.lawyer.model.vo.SearchCon;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
-import org.springframework.web.multipart.MultipartFile;
+import com.kh.lawservice101.lawyer.model.vo.SearchCon;
 
 import java.util.ArrayList;
 

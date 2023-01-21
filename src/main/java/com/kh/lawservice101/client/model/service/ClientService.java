@@ -25,5 +25,6 @@ public interface ClientService {
 
     void passwordModify(String tempPwd, Long clientNum);
 
-    void editInfo(ClientVo findClient, ClientVo clientVo);
+    // 개인정보 수정
+    void editInfo(Long clientNum, String clientEmail, String clientName);
 }

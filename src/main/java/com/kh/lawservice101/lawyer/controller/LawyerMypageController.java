@@ -2,20 +2,20 @@ package com.kh.lawservice101.lawyer.controller;
 
 import com.kh.lawservice101.booking.model.service.BookingService;
 import com.kh.lawservice101.booking.model.vo.BookingVo;
+import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
+import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
+import com.kh.lawservice101.lawyer.model.service.LawyerService;
+import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import com.kh.lawservice101.payment.model.service.PaymentService;
 import com.kh.lawservice101.payment.model.vo.PaymentVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
 @Controller
 @RequiredArgsConstructor
@@ -24,6 +24,7 @@ public class LawyerMypageController {
 
     private final PaymentService paymentService;
     private final BookingService bookingService;
+    private final LawyerService lawyerService;
 
     List<PaymentVo> LawyerCounselList = null;
     BookingVo counselDetail;
@@ -59,6 +60,34 @@ public class LawyerMypageController {
         counselDetail = bookingService.findCounselingDetail(bookingNum);
         model.addAttribute("counselDetail",counselDetail);
         return "mypage/clientCounselListDetail";
+    }
+
+    // 마이페이지 프로필
+    @GetMapping("/info/{num}")
+    public String myPage(@SessionAttribute(value = "lawyer", required = false) LawyerVo loginLawyer, @PathVariable Long num, Model model) {
+        LawyerVo lawyer = lawyerService.findLawyer(num);
+        if (loginLawyer == null || loginLawyer.getLawyerNum() != lawyer.getLawyerNum()) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("lawyer", lawyer);
+        return "/mypage/lawyerMyPage";
+    }
+
+    // 개인정보 수정
+    @PostMapping("/info/{num}")
+    public String editInfo(@PathVariable Long num, @ModelAttribute EditInfoDto editInfoDto) {
+        lawyerService.infoModify(num, editInfoDto);
+
+        return "redirect:/lawyerpage/info/" + num;
+    }
+
+    // 프로필 수정
+    @PostMapping("/profile/{num}")
+    public String editProfile(@PathVariable Long num, @ModelAttribute EditProfileDto editProfileDto) {
+        lawyerService.profileModify(num, editProfileDto);
+
+        return "redirect:/lawyerpage/info/" + num;
     }
 
 }
