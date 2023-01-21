@@ -1,10 +1,9 @@
 package com.kh.lawservice101.review.controller;
 
 import com.kh.lawservice101.booking.model.vo.BookingVo;
-import com.kh.lawservice101.client.model.service.ClientService;
 import com.kh.lawservice101.client.model.vo.ClientVo;
-import com.kh.lawservice101.lawyer.model.service.LawyerService;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
+import com.kh.lawservice101.payment.model.service.PaymentService;
 import com.kh.lawservice101.payment.model.vo.PaymentVo;
 import com.kh.lawservice101.review.model.service.ReviewService;
 import com.kh.lawservice101.review.model.vo.ReviewVo;
@@ -21,36 +20,28 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final PaymentService paymentService;
 
-    private final ClientService clientService;
-    private final LawyerService lawyerService;
-
+    // 리뷰 작성 화면
     @GetMapping("/write/{num}")
-    public String reviewForm(@PathVariable Long num, Model model) {
+    public String reviewForm(@SessionAttribute(value = "client", required = false) ClientVo loginClient,
+                             @PathVariable Long num, Model model) {
+        PaymentVo paymentVo = paymentService.findPayment(num);
+        if (loginClient == null || loginClient.getClientNum() != paymentVo.getBookingVo().getClientVo().getClientNum()) {
+            return "redirect:/";
+        }
 
-        // 임시
-        LawyerVo lawyer = lawyerService.findLawyer(1L);
-        ClientVo client = clientService.findClient(1L);
-//        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
-//
-//        model.addAttribute("paymentVo", paymentVo);
+        model.addAttribute("paymentVo", paymentVo);
 
         return "review/review";
     }
 
+    // 리뷰 작성
     @PostMapping("/write/{num}")
     public String reviewSave(@PathVariable Long num, @ModelAttribute ReviewVo reviewVo) {
+        PaymentVo paymentVo = paymentService.findPayment(num);
 
-        // 임시
-        LawyerVo lawyer = lawyerService.findLawyer(1L);
-        ClientVo client = clientService.findClient(1L);
-//        PaymentVo paymentVo = new PaymentVo(1L, 'Y', 30000, new BookingVo(1L, "2022-12-01", "test", "15", client, lawyer));
-//
-//        reviewVo.setPaymentVo(paymentVo);
-//        reviewVo.setClientVo(paymentVo.getBookingVo().getClientVo());
-//        reviewVo.setLawyerVo(paymentVo.getBookingVo().getLawyerVo());
-
-        reviewService.saveReview(reviewVo);
+        reviewService.saveReview(reviewVo, paymentVo);
         return "redirect:/";
     }
 }

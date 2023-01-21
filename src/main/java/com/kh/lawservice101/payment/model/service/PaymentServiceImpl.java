@@ -42,5 +42,11 @@ public class PaymentServiceImpl implements PaymentService{
         return paymentDao.selectCounselingList(lawyerNum);
     }
 
+    // 결제 단건 조회
+    @Override
+    public PaymentVo findPayment(Long paymentNum) {
+        return paymentDao.selectPaymentByPaymentNum(paymentNum);
+    }
+
 
 }

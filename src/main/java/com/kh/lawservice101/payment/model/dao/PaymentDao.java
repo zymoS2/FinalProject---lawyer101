@@ -14,4 +14,6 @@ public interface PaymentDao {
 
      List<PaymentVo> selectCounselingList(Long lawyerNum);
 
+     // 결제 단건 조회
+    PaymentVo selectPaymentByPaymentNum(Long paymentNum);
 }

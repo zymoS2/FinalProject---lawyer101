@@ -5,6 +5,7 @@ $(function () {
             return;
         }
         if (validate()) {
+            alert("리뷰를 등록하였습니다.");
             $("#reviewForm").submit();
         }
     });
@@ -82,4 +83,6 @@ $(function () {
             }
         })
     }
+
+    $(".searchFormDiv").hide();
 });

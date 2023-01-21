@@ -9,11 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
-  <link rel="stylesheet" href="/resource/css/headers.css" />
-  <link rel="stylesheet" href="/resource/css/sidebars.css" />
-  <link rel="stylesheet" href="/resource/css/footer.css" />
   <link rel="stylesheet" href="/resource/css/common.css" />
-
   <link rel="stylesheet" href="/resource/css/review.css" />
   <script src="/resource/js/review.js"></script>
 
@@ -21,31 +17,18 @@
 </head>
 <body>
 
-<!-- header -->
-<header class="p-3 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-      </a>
+  <!-- header -->
+  <jsp:include page="../common/header.jsp"/>
 
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
+  <!-- sidebar -->
+  <jsp:include page="../common/sidebar.jsp"/>
 
   <div class="container">
     <h3 class="text-center my-5">리뷰 작성</h3>
     <form action="/review/write/${paymentVo.paymentNum}" method="post" id="reviewForm">
       <div class="card m-auto my-5 p-4">
         <div class="profile mb-3">
-          <img src="/resource/img/lawyer/lawyer1.jpg" width="100" class="pic" />
+          <img src="/display?fileName=${paymentVo.bookingVo.lawyerVo.lawyerImg}" width="100" height="100" class="pic" onerror="this.src='/resource/img/profile.png';" />
           <div class="rating ms-3">
             <div class="rating-star text-body-tertiary">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
@@ -156,18 +139,7 @@
     </form>
   </div>
 
-<!-- footer -->
-<div class="footer-container">
-  <footer class="py-3 my-4">
-    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-    </ul>
-    <p class="text-center text-muted">&copy; 2022 Company, Inc</p>
-  </footer>
-</div>
+  <!-- footer -->
+  <jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

@@ -3,7 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kh.lawservice101.review.model.dao.ReviewDao">
+    <!-- 리뷰 저장 -->
     <insert id="insertReview" parameterType="ReviewVo">
-        INSERT INTO review_tb VALUES (review_seq.NEXTVAL, #{reviewTitle}, #{reviewContent}, DEFAULT, #{reviewRating}, #{lawyerVo.lawyerNum}, #{paymentVo.paymentNum}, #{clientVo.clientNum} )
+        INSERT INTO review_tb VALUES (
+              review_seq.NEXTVAL, #{reviewTitle}, #{reviewContent}, DEFAULT, #{reviewRating},
+                                      #{lawyerVo.lawyerNum}, #{paymentVo.paymentNum}, #{clientVo.clientNum} )
     </insert>
 </mapper>

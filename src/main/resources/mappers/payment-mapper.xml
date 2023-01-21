@@ -83,4 +83,16 @@
                                       , #{merchantUid}
                                       , #{payMethod})
     </insert>
+
+    <!-- 결제 단건 조회  -->
+    <select id="selectPaymentByPaymentNum" resultType="PaymentVo" resultMap="paymentResultSet">
+        SELECT *
+        FROM payment_TB p
+                 JOIN booking_TB b ON  b.booking_num = p.booking_num
+                 JOIN client_TB c ON c.client_num = b.client_num
+                 JOIN lawyer_TB l ON l.lawyer_num = b.lawyer_num
+                 JOIN company_TB com ON com.company_num=l.company_num
+                 JOIN category_TB ca ON ca.category_num = l.category_num
+        WHERE p.payment_num = #{paymentNum}
+    </select>
 </mapper>

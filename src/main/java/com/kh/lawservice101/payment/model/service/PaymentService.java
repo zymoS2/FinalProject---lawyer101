@@ -13,5 +13,6 @@ public interface PaymentService {
 
     List<PaymentVo> findCounselingList(Long lawyerNum);
 
-
+    // 결제 단건 조회
+    PaymentVo findPayment(Long paymentNum);
 }

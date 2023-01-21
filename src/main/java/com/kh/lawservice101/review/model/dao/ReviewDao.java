@@ -5,5 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ReviewDao {
+    // 리뷰 저장
     void insertReview(ReviewVo reviewVo);
 }
