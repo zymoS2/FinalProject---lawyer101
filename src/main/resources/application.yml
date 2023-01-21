@@ -57,7 +57,7 @@ mybatis:
 
 # 포트 변경
 server:
- port: 9090
+# port: 9090
 
 # 페이징 관련 설정
 pagehelper:

@@ -1,4 +1,4 @@
-package com.kh.lawservice101.lawyer.model.vo;
+package com.kh.lawservice101.lawyer.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

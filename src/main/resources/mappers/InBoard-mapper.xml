@@ -53,4 +53,14 @@
         )
     </insert>
 
+    <!-- 이름 또는 카테고리에 해당하는 지식인 게시글 조회 -->
+    <select id="selectInboardByKeyword" parameterType="com.kh.lawservice101.lawyer.model.dto.SearchCon" resultType="InBoardVo" resultMap="InBoardResultSet">
+        SELECT * FROM IN_BOARD_TB ibt JOIN CATEGORY_TB ct ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
+        WHERE 1 = 1
+        <if test='keyword neq null and keyword neq ""'>
+            AND in_board_title LIKE '%'||#{keyword}||'%'
+            OR ct.category_name LIKE '%'||#{keyword}||'%'
+        </if>
+    </select>
+
 </mapper>

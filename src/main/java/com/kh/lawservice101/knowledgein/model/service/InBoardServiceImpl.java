@@ -1,7 +1,9 @@
 package com.kh.lawservice101.knowledgein.model.service;
 
+import com.github.pagehelper.PageHelper;
 import com.kh.lawservice101.knowledgein.model.dao.InBoardDao;
 import com.kh.lawservice101.knowledgein.model.vo.InBoardVo;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +30,13 @@ public class InBoardServiceImpl implements InBoardService {
     @Override
     public ArrayList<InBoardVo> viewAllInBoard() {
         return inBoardDao.selectAllInBoard();
+    }
+
+    // 페이징 검색
+    @Override
+    public ArrayList<InBoardVo> pagingInboard(SearchCon searchCon) {
+        PageHelper.startPage(searchCon);
+        return inBoardDao.selectInboardByKeyword(searchCon);
     }
 
 }

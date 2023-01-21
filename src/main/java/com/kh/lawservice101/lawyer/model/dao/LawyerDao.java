@@ -1,7 +1,7 @@
 package com.kh.lawservice101.lawyer.model.dao;
 
 import com.github.pagehelper.Page;
-import com.kh.lawservice101.lawyer.model.vo.SearchCon;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -34,6 +34,7 @@ public interface LawyerDao {
 
     void updatePassword(String tempPwd, Long lawyerNum);
 
+    // 검색 조회
     Page<LawyerVo> selectLawyerByKeyword(SearchCon searchCon);
     
     // 개인정보 수정

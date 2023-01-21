@@ -5,10 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.kh.lawservice101.category.model.service.CategoryService;
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.lawyer.model.dao.LawyerDao;
-import com.kh.lawservice101.lawyer.model.vo.SearchCon;
-import com.kh.lawservice101.category.model.service.CategoryService;
-import com.kh.lawservice101.category.model.vo.CategoryVo;
-import com.kh.lawservice101.lawyer.model.dao.LawyerDao;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
@@ -90,6 +87,7 @@ public class LawyerServiceImpl implements LawyerService {
         lawyerDao.updatePassword(tempPwd, lawyerNum);
     }
 
+    // 페이징 검색
     @Override
     public Page<LawyerVo> pagingLawyer(SearchCon searchCon) {
         PageHelper.startPage(searchCon);

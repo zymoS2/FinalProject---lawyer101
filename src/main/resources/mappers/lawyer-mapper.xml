@@ -98,8 +98,9 @@
         SET LAWYER_PWD = #{tempPwd}
         WHERE LAWYER_NUM = #{lawyerNum}
     </update>
-    
-    <select id="selectLawyerByKeyword" resultType="LawyerVo" parameterType="SearchCon" resultMap="LawyerResultSet">
+
+    <!-- 이름 또는 카테고리에 해당하는 변호사 조회 -->
+    <select id="selectLawyerByKeyword" resultType="LawyerVo" parameterType="com.kh.lawservice101.lawyer.model.dto.SearchCon" resultMap="LawyerResultSet">
         SELECT * FROM lawyer_TB l join company_TB c on l.company_num = c.company_num
                                     JOIN category_tb ct ON l.category_num = ct.category_num
                                     WHERE 1 = 1

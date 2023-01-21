@@ -1,3 +1,14 @@
+const headerHeight = $("header").height();
+$(window).scroll(function () {
+    const st = $(this).scrollTop();
+
+    if (st > headerHeight) {
+        $(".category").css("margin-top", "154px");
+    } else {
+        $(".category").css("margin-top", "0px");
+    }
+});
+
 function getScrollTop() {
     return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 };
@@ -19,6 +30,8 @@ function getFooterHeight() {
 
 let pageNum = 1;
 let isLoading = false;
+
+// 변호사 목록 페이징 요청
 function getLawyerList(totalPage) {
     const keyword = $("input[type='search']").val();
     const isBottom = getScrollTop() + window.innerHeight + 40 >= getDocumentHeight() - getFooterHeight();
@@ -48,6 +61,7 @@ function getLawyerList(totalPage) {
     }
 }
 
+// 지식인 목록 페이징 요청
 function getKnowledgeInList(totalPage) {
     const keyword = $("input[type='search']").val();
     const isBottom = getScrollTop() + window.innerHeight + 40 >= getDocumentHeight() - getFooterHeight();
