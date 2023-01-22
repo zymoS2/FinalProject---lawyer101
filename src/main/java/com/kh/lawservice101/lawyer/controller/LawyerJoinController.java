@@ -34,7 +34,7 @@ public class LawyerJoinController {
 
         LawyerVo findLawyerVo = lawyerService.findLawyer(lawyerPram);
 
-        if(findLawyerVo != null || findLawyerVo.getLawyerNum() != null) {
+        if (findLawyerVo != null || findLawyerVo.getLawyerNum() != null) {
             return "redirect:/lawyerJoin?isSuccess=" + isSuccess;
         }
 

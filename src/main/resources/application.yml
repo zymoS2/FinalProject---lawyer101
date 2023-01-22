@@ -70,3 +70,10 @@ pagehelper:
   auto-runtime-dialect: false # Runtime에 DB 자동 설정
   close-conn: true # DB Connection을 닫을 지 여부
   default-count: true # mapper 방식 사용시 true 설정
+
+# coolSMS 관련 설정
+coolsms:
+  api:
+    key: NCS98HUTRYA0SP8S
+    secret: NM66GU7WTAN2YDLBH7KQFFJOTRAIFKJK
+    fromnumber: 01027999308
