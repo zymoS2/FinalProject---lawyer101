@@ -21,10 +21,6 @@
             <result property="companyAddress" column="company_address"/>
             <result property="companyPhone" column="company_phone"/>
         </association>
-        <association property="categoryVo" column="CategoryVo">
-            <result property="categoryNum" column="category_num"/>
-            <result property="categoryName" column="category_name"/>
-        </association>
     </resultMap>
 
     <select id="selectLawyer" resultType="LawyerVo" resultMap="LawyerResultSet">

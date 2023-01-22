@@ -16,4 +16,7 @@ public interface InBoardDao {
 
     //게시판 목록
     ArrayList<InBoardVo> selectAllInBoard();
+
+    //조회수
+    void updateViewCount(Long inBoardNum);
 }

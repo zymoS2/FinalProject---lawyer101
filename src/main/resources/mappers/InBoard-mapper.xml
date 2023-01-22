@@ -30,8 +30,14 @@
         SELECT *
         FROM IN_BOARD_TB ibt
         JOIN CATEGORY_TB ct
-        ON ibt.CATEGORY_NUM =ct.CATEGORY_NUM
+        ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
     </select>
+
+    <update id="updateViewCount">
+        UPDATE IN_BOARD_TB
+        SET IN_BOARD_COUNT = IN_BOARD_COUNT + 1
+        WHERE IN_BOARD_NUM = #{inBoardNum}
+    </update>
 
     <insert id="inBoardUpload" parameterType="InBoardVo">
         INSERT INTO IN_BOARD_TB (

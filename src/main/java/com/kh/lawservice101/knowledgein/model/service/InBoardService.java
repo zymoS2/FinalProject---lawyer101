@@ -16,4 +16,6 @@ public interface InBoardService {
     //게시판 목록 조회
     ArrayList<InBoardVo> viewAllInBoard();
 
+    //조회수
+    void  viewCount(Long inBoardNum);
 }

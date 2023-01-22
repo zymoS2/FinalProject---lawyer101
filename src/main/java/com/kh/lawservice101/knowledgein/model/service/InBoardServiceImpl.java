@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class InBoardServiceImpl implements InBoardService {
     private final InBoardDao inBoardDao;
 
+
     //게시판 등록
     @Override
     public void postInBoard(InBoardVo inBoardVo) {
@@ -29,5 +30,9 @@ public class InBoardServiceImpl implements InBoardService {
     public ArrayList<InBoardVo> viewAllInBoard() {
         return inBoardDao.selectAllInBoard();
     }
-
+    //조회수
+    @Override
+    public void  viewCount(Long inBoardCount ){
+       inBoardDao.updateViewCount(inBoardCount);
+    }
 }
