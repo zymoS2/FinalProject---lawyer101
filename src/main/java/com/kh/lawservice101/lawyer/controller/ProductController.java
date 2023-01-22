@@ -5,9 +5,11 @@ import com.kh.lawservice101.category.model.service.CategoryService;
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.knowledgein.model.service.InBoardService;
 import com.kh.lawservice101.knowledgein.model.vo.InBoardVo;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.service.LawyerService;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
-import com.kh.lawservice101.lawyer.model.dto.SearchCon;
+import com.kh.lawservice101.review.model.service.ReviewService;
+import com.kh.lawservice101.review.model.vo.ReviewVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -25,15 +27,44 @@ public class ProductController {
     private final CategoryService categoryService;
     private final LawyerService lawyerService;
     private final InBoardService inBoardService;
+    private final ReviewService reviewService;
     private final static int PAGE_SIZE = 12;
+    private final static int PAGE_NUM = 1;
 
+    // 변호사 상세 페이지
     @GetMapping("/detail/{num}")
     public String ProductDetailPage(@PathVariable Long num, Model model) {
         LawyerVo lawyer = lawyerService.findLawyer(num);
         CategoryVo categoryVo = categoryService.findCategory(lawyer.getCategoryVo().getCategoryNum());
+        List<ReviewVo> reviewList = reviewService.findReviewListByLawyerNum(num);
+
         model.addAttribute("lawyer", lawyer);
         model.addAttribute("categoryVo", categoryVo);
+        model.addAttribute("reviewList", reviewList);
+
         return "product/ProductDetailPage";
+    }
+
+    // 변호사 리뷰 목록
+    @GetMapping("/detail/{num}/review")
+    public String reviewList(@PathVariable Long num, Model model) {
+        LawyerVo lawyer = lawyerService.findLawyer(num);
+        PageInfo<ReviewVo> pageReview = PageInfo.of(reviewService.pagingReview(num, PAGE_NUM, PAGE_SIZE));
+
+        model.addAttribute("lawyer", lawyer);
+        model.addAttribute("pageReview", pageReview);
+        return "product/reviewList";
+    }
+
+    // 변호사 리뷰 목록 페이징
+    @GetMapping("/detail/{num}/loadReview")
+    public String loadReview(@PathVariable Long num, @RequestParam int pageNum, Model model) {
+        PageInfo<ReviewVo> pageReview = PageInfo.of(reviewService.pagingReview(num, pageNum, PAGE_SIZE));
+        List<ReviewVo> reviewList = pageReview.getList();
+
+        model.addAttribute("reviewList", reviewList);
+
+        return "product/reviewListAjaxPage";
     }
 
     // 변호사, 지식인 검색 목록

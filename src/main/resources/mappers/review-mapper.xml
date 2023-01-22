@@ -3,10 +3,59 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kh.lawservice101.review.model.dao.ReviewDao">
+    <resultMap id="reviewResultSet" type="ReviewVo">
+        <result property="reviewNum" column="review_num"/>
+        <result property="reviewTitle" column="review_title"/>
+        <result property="reviewContent" column="review_content"/>
+        <result property="reviewDate" column="review_date"/>
+        <result property="reviewRating" column="review_rating"/>
+        <association property="lawyerVo" javaType="LawyerVo">
+            <result property="lawyerNum" column="lawyer_num"/>
+            <result property="lawyerId" column="lawyer_id"/>
+            <result property="lawyerPwd" column="lawyer_pwd"/>
+            <result property="lawyerName" column="lawyer_name"/>
+            <result property="lawyerBirthyy" column="lawyer_birthyy"/>
+            <result property="lawyerGender" column="lawyer_gender"/>
+            <result property="lawyerPhone" column="lawyer_phone"/>
+            <result property="lawyerImg" column="lawyer_img"/>
+            <result property="lawyerEmail" column="lawyer_email"/>
+            <result property="lawyerLicenseNum" column="lawyer_license_num"/>
+            <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+            <result property="LawyerMainImg" column="lawyer_main_img"/>
+        </association>
+        <association property="paymentVo" javaType="PaymentVo">
+            <result property="paymentNum" column="payment_num"/>
+            <result property="paymentState" column="payment_state"/>
+            <result property="price" column="price"/>
+            <result property="impUid" column="imp_uid"/>
+            <result property="merchantUid" column="merchant_uid"/>
+            <result property="payMethod" column="pay_method"/>
+        </association>
+        <association property="clientVo" javaType="ClientVo">
+            <result property="clientNum" column="CLIENT_NUM"/>
+            <result property="clientId" column="CLIENT_ID"/>
+            <result property="clientPwd" column="CLIENT_PWD"/>
+            <result property="clientName" column="CLIENT_NAME"/>
+            <result property="clientBirthyy" column="CLIENT_BIRTHYY"/>
+            <result property="clientGender" column="CLIENT_GENDER"/>
+            <result property="clientEmail" column="CLIENT_EMAIL"/>
+            <result property="clientPhone" column="CLIENT_PHONE"/>
+        </association>
+    </resultMap>
+
     <!-- 리뷰 저장 -->
     <insert id="insertReview" parameterType="ReviewVo">
         INSERT INTO review_tb VALUES (
               review_seq.NEXTVAL, #{reviewTitle}, #{reviewContent}, DEFAULT, #{reviewRating},
                                       #{lawyerVo.lawyerNum}, #{paymentVo.paymentNum}, #{clientVo.clientNum} )
     </insert>
+
+    <!-- 변호사 리뷰 목록 조회 -->
+    <select id="selectReviewByLawyerNum" resultType="ReviewVo" resultMap="reviewResultSet">
+        SELECT * FROM review_tb r
+                 JOIN lawyer_tb l ON r.lawyer_num = l.lawyer_num
+                 JOIN payment_tb p ON r.order_num = p.payment_num
+                 JOIN client_tb c ON r.client_num = c.client_num
+                 WHERE r.lawyer_num = ${lawyerNum}
+    </select>
 </mapper>
