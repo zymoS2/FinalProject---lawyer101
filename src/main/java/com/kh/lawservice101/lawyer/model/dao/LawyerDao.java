@@ -32,7 +32,8 @@ public interface LawyerDao {
 
     LawyerVo selectLawyerByIdAndEmail(String id, String email);
 
-    void updatePassword(String tempPwd, Long lawyerNum);
+    // 비밀번호 변경
+    void updatePassword(String password, Long lawyerNum);
 
     // 검색 조회
     Page<LawyerVo> selectLawyerByKeyword(SearchCon searchCon);

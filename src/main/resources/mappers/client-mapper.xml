@@ -56,8 +56,10 @@
     <select id="selectClientByIdAndEmail" resultType="ClientVo" resultMap="clientResultSet">
         SELECT * FROM CLIENT_TB WHERE CLIENT_ID = #{id} AND CLIENT_EMAIL = #{email}
     </select>
+
+    <!-- 비밀번호 변경  -->
     <update id="updatePassword">
-        UPDATE CLIENT_TB SET CLIENT_PWD = #{tempPwd} WHERE CLIENT_NUM = #{clientNum}
+        UPDATE CLIENT_TB SET CLIENT_PWD = #{password} WHERE CLIENT_NUM = #{clientNum}
     </update>
 
     <!-- 개인정보 수정 -->

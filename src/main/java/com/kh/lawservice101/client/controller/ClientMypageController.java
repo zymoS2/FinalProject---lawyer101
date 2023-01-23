@@ -70,4 +70,17 @@ public class ClientMypageController {
 
         return "redirect:/mypage/" + num;
     }
+
+    // 비밀번호 변경
+    @PostMapping("/{num}/pwdModify")
+    @ResponseBody
+    public Boolean pwdModify(@PathVariable Long num, @RequestParam String currPwd,
+                                 @RequestParam String editPwd) {
+        ClientVo client = clientService.findClient(num);
+        if (client.getClientPwd().equals(currPwd)) {
+            clientService.passwordModify(editPwd, num);
+            return true;
+        }
+        return false;
+    }
 }

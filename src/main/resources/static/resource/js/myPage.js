@@ -97,3 +97,40 @@ $(function () {
         return true;
     }
 });
+
+// 비밀번호 검증
+function pwdValidate(currPwd, editPwd, confirmPwd) {
+    if (currPwd === "" || currPwd === null) {
+        $("#currPwd-errorMsg").text("현재 비밀번호를 입력하세요");
+        return false;
+    } else {
+        $("#currPwd-errorMsg").text("");
+    }
+
+    if (editPwd === "" || editPwd === null) {
+        $("#editPwd-errorMsg").text("비밀번호를 입력하세요");
+        return false;
+    } else {
+        const reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,12}$/;
+        if (!reg.test(editPwd)) {
+            $("#editPwd-errorMsg").text("올바른 비밀번호 형식이 아닙니다.");
+            return false;
+        } else {
+            $("#editPwd-errorMsg").text("");
+        }
+    }
+
+    if (confirmPwd === "" || confirmPwd === null) {
+        $("#confirmPwd-errorMsg").text("비밀번호를 확인하세요.");
+        return false;
+    } else {
+        if (editPwd !== confirmPwd) {
+            $("#confirmPwd-errorMsg").text("비밀번호가 일치하지 않습니다.");
+            return false;
+        } else {
+            $("#confirmPwd-errorMsg").text("");
+        }
+    }
+
+    return true;
+}

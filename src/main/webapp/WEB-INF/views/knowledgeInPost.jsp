@@ -11,13 +11,12 @@
 
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
 
-     <link href="../resource/css/headers.css" rel="stylesheet">
-     <link href="../resource/css/sidebars.css" rel="stylesheet">
-     <link href="../resource/css/footer.css" rel="stylesheet">
-     <link href="../resource/css/common.css" rel="stylesheet">
+     <link href="/resource/css/common.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../resource/css/in_post.css">
+    <link rel="stylesheet" href="/resource/css/in_post.css">
 
     <script type="text/javascript">
         function knowledgeInPost(){
@@ -60,6 +59,13 @@
 
 </head>
 <body>
+
+<!-- header -->
+<jsp:include page="common/header.jsp"/>
+
+<!-- sidebar -->
+<jsp:include page="common/sidebar.jsp"/>
+
 <div id="counselWriteDiv" class="container">
         <h3 id="counselWriteh1" class="text-center">지식IN 글쓰기</h3>
         <form class="mx-auto" action="" id="knowledgeInPostForm"  method="post">
@@ -121,5 +127,10 @@
 
         </form>
     </div>
+
+    <script>
+        $(".searchForm").hide();
+    </script>
+    <jsp:include page="common/footer.jsp"/>
 </body>
 </html>

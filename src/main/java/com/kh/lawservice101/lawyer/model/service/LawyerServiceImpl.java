@@ -5,9 +5,9 @@ import com.github.pagehelper.PageHelper;
 import com.kh.lawservice101.category.model.service.CategoryService;
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.lawyer.model.dao.LawyerDao;
-import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -82,9 +82,10 @@ public class LawyerServiceImpl implements LawyerService {
         return lawyerDao.selectLawyerByIdAndEmail(resetPwdId, resetPwdEmail);
     }
 
+    // 비밀번호 변경
     @Override
-    public void passwordModify(String tempPwd, Long lawyerNum) {
-        lawyerDao.updatePassword(tempPwd, lawyerNum);
+    public void passwordModify(String password, Long lawyerNum) {
+        lawyerDao.updatePassword(password, lawyerNum);
     }
 
     // 페이징 검색

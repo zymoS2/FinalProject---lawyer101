@@ -48,9 +48,10 @@ public class ClientServiceImpl implements ClientService {
         return clientDao.selectClientByIdAndEmail(resetPwdId, resetPwdEmail);
     }
 
+    // 비밀번호 변경
     @Override
-    public void passwordModify(String tempPwd, Long clientNum) {
-        clientDao.updatePassword(tempPwd, clientNum);
+    public void passwordModify(String password, Long clientNum) {
+        clientDao.updatePassword(password, clientNum);
     }
 
     // 개인정보 수정

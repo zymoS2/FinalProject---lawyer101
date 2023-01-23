@@ -2,7 +2,6 @@ package com.kh.lawservice101.lawyer.controller;
 
 import com.kh.lawservice101.booking.model.service.BookingService;
 import com.kh.lawservice101.booking.model.vo.BookingVo;
-import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.service.LawyerService;
@@ -93,6 +92,19 @@ public class LawyerMypageController {
         lawyerService.profileModify(num, editProfileDto);
 
         return "redirect:/lawyerpage/info/" + num;
+    }
+
+    // 비밀번호 변경
+    @PostMapping("/profile/{num}/pwdModify")
+    @ResponseBody
+    public Boolean pwdModify(@PathVariable Long num, @RequestParam String currPwd,
+                             @RequestParam String editPwd) {
+        LawyerVo lawyer = lawyerService.findLawyer(num);
+        if (lawyer.getLawyerPwd().equals(currPwd)) {
+            lawyerService.passwordModify(editPwd, num);
+            return true;
+        }
+        return false;
     }
 
 }

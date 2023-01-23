@@ -1,9 +1,9 @@
 package com.kh.lawservice101.lawyer.model.service;
 
 import com.github.pagehelper.Page;
-import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 
 import java.util.ArrayList;
@@ -34,7 +34,8 @@ public interface LawyerService {
 
     LawyerVo findLawyerByIdAndEmail(String resetPwdId, String resetPwdEmail);
 
-    void passwordModify(String tempPwd, Long lawyerNum);
+    // 비밀번호 변경
+    void passwordModify(String password, Long lawyerNum);
 
     // 페이징 검색
     Page<LawyerVo> pagingLawyer(SearchCon searchCon);

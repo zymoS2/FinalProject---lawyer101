@@ -23,7 +23,8 @@ public interface ClientService {
 
     ClientVo findClientByIdAndEmail(String resetPwdId, String resetPwdEmail);
 
-    void passwordModify(String tempPwd, Long clientNum);
+    // 비밀번호 변경
+    void passwordModify(String password, Long clientNum);
 
     // 개인정보 수정
     void editInfo(Long clientNum, String clientEmail, String clientName);

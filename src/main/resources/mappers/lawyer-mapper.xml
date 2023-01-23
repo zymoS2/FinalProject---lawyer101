@@ -93,9 +93,10 @@
         AND LAWYER_EMAIL = #{email}
     </select>
 
+    <!-- 비밀번호 변경  -->
     <update id="updatePassword">
         UPDATE LAWYER_TB
-        SET LAWYER_PWD = #{tempPwd}
+        SET LAWYER_PWD = #{password}
         WHERE LAWYER_NUM = #{lawyerNum}
     </update>
 

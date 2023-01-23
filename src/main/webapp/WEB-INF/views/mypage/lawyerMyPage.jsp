@@ -51,6 +51,10 @@
                     <input type="text" name="lawyerName" id="name" value="${lawyer.lawyerName}" class="form-control border-1">
                     <p class="text-danger" id="name-errorMsg"></p>
                 </div>
+
+                <div class="form-group mb-3 text-end">
+                    <button type="button" class="btn btn-outline-custom border-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">비밀번호 수정</button>
+                </div>
                 
                 <div class="bg-custom text-center">
                     <button type="button" class="btn py-3 fw-bold text-white" id="info-submit-btn">[ 저장 ]</button>
@@ -118,7 +122,40 @@
                 </div>
             </form>
         </div>
+    </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">비밀번호 변경</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="pwd-edit-form">
+                        <div class="mb-3">
+                            <label for="curr-pwd" class="col-form-label">현재 비밀번호</label>
+                            <input type="password" class="form-control" name="currPwd" id="curr-pwd" placeholder="현재 비밀번호 입력">
+                            <p class="text-danger" id="currPwd-errorMsg"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-pwd" class="col-form-label">비밀번호 입력</label>
+                            <input type="password" class="form-control" name="editPwd" id="edit-pwd" placeholder="문자와 숫자, 특수문자를 포함한 8~12자로 구성">
+                            <p class="text-danger" id="editPwd-errorMsg"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-pwd" class="col-form-label">비밀번호 확인</label>
+                            <input type="password" class="form-control" id="confirm-pwd" placeholder="비밀번호 확인">
+                            <p class="text-danger" id="confirmPwd-errorMsg"></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-custom" id="pwd-edit-button">수정</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- footer -->
@@ -128,6 +165,29 @@
         $("#category option").each(function () {
             if ($(this).val() == ${lawyer.categoryVo.categoryNum}) {
                 $(this).attr("selected","selected");
+            }
+        });
+
+        // 비밀번호 수정
+        $("#pwd-edit-button").click(function () {
+            const currPwd = $("#curr-pwd").val();
+            const editPwd = $("#edit-pwd").val();
+            const confirmPwd = $("#confirm-pwd").val();
+
+            if (pwdValidate(currPwd, editPwd, confirmPwd)) {
+                $.ajax({
+                    url: "/lawyerpage/profile/${lawyer.lawyerNum}/pwdModify",
+                    method: "POST",
+                    data: {currPwd: currPwd, editPwd: editPwd},
+                    success: function (data) {
+                        if (data) {
+                            alert("비밀번호가 변경되었습니다.");
+                            location.href="/lawyerpage/info/${lawyer.lawyerNum}";
+                        } else {
+                            alert("비밀번호가 일치하지 않습니다.");
+                        }
+                    },
+                })
             }
         });
     </script>
