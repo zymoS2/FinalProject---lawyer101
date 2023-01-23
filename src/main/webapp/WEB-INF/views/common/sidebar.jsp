@@ -29,7 +29,7 @@
           </a>
         </li>
         <li>
-          <a href="counsel.html" class="nav-link text-secondary">
+          <a href="/knowledgeIn" class="nav-link text-secondary">
             <svg class="bi pe-none me-2" width="16" height="16">
               <use xlink:href="#table" />
             </svg>

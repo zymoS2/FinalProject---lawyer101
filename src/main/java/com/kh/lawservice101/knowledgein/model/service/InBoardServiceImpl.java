@@ -39,4 +39,9 @@ public class InBoardServiceImpl implements InBoardService {
         return inBoardDao.selectInboardByKeyword(searchCon);
     }
 
+    //조회수
+    @Override
+    public void  viewCount(Long inBoardCount ){
+       inBoardDao.updateViewCount(inBoardCount);
+    }
 }

@@ -22,6 +22,7 @@
     <body>
        <!-- header -->
         <jsp:include page="common/header.jsp" />
+
         <form action="" id="knowledgeInForm"  method="post">
             <div class="counseldiv2 container">
               <h3 class="counseltableh3">지식IN</h3>
@@ -35,7 +36,7 @@
                   </ul>
                     <div>
                       <c:forEach var="sb" items="${showInBoard}">
-                        <a href="/knowledgeInDetail/${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
+                        <a href="/knowledgeInDetail?num=${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
                           <p class="text-secondary"> ${sb.categoryVo.categoryName}</p>
                           <h4 class="mb-3">${sb.inBoardTitle}</h4>
                           <input type="hidden" ${sb.inBoardNum}>
@@ -47,7 +48,7 @@
                             정확한 판단은 구체적인 사실관계를 들어보아야 할 것으로 보입니다만, 말씀하여 주신 사실관계만 놓고 보면 성매매 광고행위의 고의가 없었음을 주장 및 입증하여 무죄를 다투어 볼 만 하다고 보여집니다. 보다 상세한 사실관계를 말씀해주시면 구체적인 검토가 가능합니다.
                           </p>
                           <p class="text-secondary">다른 변호사 답변 <span>5</span>개</p>
-                          <small class="text-secondary">조회수 <b>90</b></small>
+                          <small class="text-secondary">조회수 <b>${sb.inBoardCount}</b></small>
                         </a>
                         </c:forEach>
                     </div>

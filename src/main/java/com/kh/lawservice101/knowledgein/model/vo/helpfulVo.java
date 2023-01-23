@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class helpfulVo {
+public class HelpfulVo {
     private Long helpfulNum;
     private int helpfulCount;
     private InBoardVo inBoardVo;

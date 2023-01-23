@@ -51,13 +51,13 @@
 
     </insert>
     <select id="selectClientByEmail" resultType="ClientVo" resultMap="clientResultSet">
-        select * from client_TB where client_email=#{email}
+        SELECT * FROM CLIENT_TB WHERE CLIENT_EMAIL = #{email}
     </select>
     <select id="selectClientByIdAndEmail" resultType="ClientVo" resultMap="clientResultSet">
-        select * from client_TB where client_id=#{id} and client_email=#{email}
+        SELECT * FROM CLIENT_TB WHERE CLIENT_ID = #{id} AND CLIENT_EMAIL = #{email}
     </select>
     <update id="updatePassword">
-        update client_TB set client_pwd = #{tempPwd} where client_num = #{clientNum}
+        UPDATE CLIENT_TB SET CLIENT_PWD = #{tempPwd} WHERE CLIENT_NUM = #{clientNum}
     </update>
 
     <!-- 개인정보 수정 -->

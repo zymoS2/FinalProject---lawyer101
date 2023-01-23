@@ -20,27 +20,41 @@ import java.util.List;
 @RequestMapping
 @RequiredArgsConstructor
 public class InBoardController {
+
     private final InBoardService inBoardService;
-    List<InBoardVo> showInBoard;
-    InBoardVo showPost;
+
 
     //지식인 전체목록
+
+
     @GetMapping("/knowledgeIn")
     public String knowledgeIn(Model model) {
-        showInBoard = inBoardService.viewAllInBoard();
+        List<InBoardVo> showInBoard = inBoardService.viewAllInBoard();
+
         model.addAttribute("showInBoard", showInBoard);
         return "knowledgeIn";
     }
-
     //지식인글 상세페이지
-    @GetMapping("/knowledgeInDetail/{inBoardNum}")
-    public String knowledgeInDetail(@ModelAttribute InBoardVo inBoardVo, Model model) {
 
-        Long inBoardNum = inBoardVo.getInBoardNum();
-        showPost = inBoardService.findPost(inBoardNum);
-        model.addAttribute("showPost", showPost);
-        return "knowledgeInDetail";
+    @GetMapping("/knowledgeInDetail")
+    public String knowledgeInDetail(HttpServletRequest request, Model model) {
 
+        String num = request.getParameter("num");
+        //1. 없으면 만든다
+        //2. 파라미터의 객체형을 바꾼다
+        long number = Long.parseLong(num);
+        InBoardVo showPost = inBoardService.findPost(number);
+
+        //      Long inBoardNum = inBoardVo.getInBoardNum();
+        //     showPost = inBoardService.findPost(inBoardNum);
+
+        if (showPost != null) {
+            model.addAttribute("showPost", showPost);
+            inBoardService.viewCount(number);
+            return "knowledgeInDetail";
+        } else { // 게시글없으면 목록으로 돌아간다
+            return "redirect:/knowledgeIn?return=error";
+        }
     }
 
     //글쓰기 동작
@@ -85,7 +99,6 @@ public class InBoardController {
                 return "redirect:/knowledgeInPost?false=category";
             }
             inBoardVo.setClientVo(loginClientSession);
-
             inBoardService.postInBoard(inBoardVo);
             return "redirect:/knowledgeIn";
         } else { // 3. 로그인 세션이 유지 되지 않았다면 다시 로그인

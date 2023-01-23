@@ -27,21 +27,21 @@
             var content = document.getElementsByName('inBoardContent')[0].value;
             var category = document.getElementsByName('categoryNum')[0].value;
 
-            if(title == null || title.length == 0) {
+            if(title == null ) {
                 alert('제목을 입력하세요');
                 return;
             }
-             if(title == null && title.length >= 10) {
+             if(title.length <= 10) {
                  alert('제목은 10글자 이상 입력하세요');
                  return;
              }
 
-             if(content == null || content.length == 0) {
+             if(content == null) {
                  alert('내용을 입력하세요');
                  return;
              }
 
-             if(content == null && content.length >= 200) {
+             if(content.length <=200) {
                  alert('내용은 200글자 이상 입력하세요');
                  return;
              }

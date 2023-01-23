@@ -20,4 +20,7 @@ public interface InBoardDao {
 
     // 검색 조회
     ArrayList<InBoardVo> selectInboardByKeyword(SearchCon searchCon);
+    
+    //조회수
+    void updateViewCount(Long inBoardNum);
 }
