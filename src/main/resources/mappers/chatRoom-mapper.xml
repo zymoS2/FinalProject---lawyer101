@@ -24,6 +24,7 @@
                 <result property="lawyerEmail" column="lawyer_email"/>
                 <result property="lawyerLicenseNum" column="lawyer_license_num"/>
                 <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+                <result property="lawyerMainImg" column="lawyer_main_img"/>
                 <association property="companyVo" javaType="CompanyVo" >
                     <result property="companyNum" column="company_num"/>
                     <result property="companyName" column="company_name"/>

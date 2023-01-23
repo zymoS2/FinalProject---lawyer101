@@ -7,8 +7,8 @@ $(function() {
             $("header").addClass("active");
             $(".searchForm").stop().animate(
                 {
-                top: "-75",
-                left: "280",
+                top: "-82",
+                left: "261",
                 width: "140",
                 },
                 0.1

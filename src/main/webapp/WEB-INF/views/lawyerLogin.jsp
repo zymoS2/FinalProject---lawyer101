@@ -8,8 +8,8 @@
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 
        <title>${client.clientName}로그인 | 법률서비스 101</title>
-           <link href="../resource/css/sign-in.css" rel="stylesheet">
-           <link href="../resource/css/common.css" rel="stylesheet">
+           <link href="/resource/css/sign-in.css" rel="stylesheet">
+           <link href="/resource/css/common.css" rel="stylesheet">
 
    <script type="text/javascript">
      function lawyerLogin(){
@@ -31,11 +31,11 @@
      }
     </script>
 </head>
-<body>
+<body class="text-center">
 <main class="form-signin w-100 m-auto">
               <form action="" id="lawyerLoginForm"  method="post">
-                  <a href="/" class="d-inline-block mb-4" style="width: 180px; height: 44px;">
-                      <img src="../resource/img/logo.png" alt="로고" width="100%" height="100%">
+                  <a href="/" class="d-inline-block mb-4" style="width: 236px; height: 64px;">
+                      <img src="/resource/img/logo.png" alt="로고" width="100%" height="100%">
                   </a>
 
                   <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -45,11 +45,11 @@
 
                   <div class="form-floating">
                   <input type="text" class="form-control"  name="lawyerId">
-                  <label for="floatingInput">아이디</label>
+                  <label>아이디</label>
                   </div>
                   <div class="form-floating">
                   <input type="password" class="form-control" name="lawyerPwd" placeholder="Password">
-                  <label for="floatingPassword">비밀번호</label>
+                  <label>비밀번호</label>
                   </div>
 
                   <div class="checkbox mb-3 text-start">
@@ -57,7 +57,7 @@
                       <input type="checkbox" value="remember-me"> 로그인 상태 유지
                   </label>
                   <div class="float-end">
-                      <a href="find-account.html" class="text-body-tertiary fs-6 fw-bold">아이디/비밀번호 찾기</a>
+                      <a href="/auth/find-account" class="text-body-tertiary fs-6 fw-bold">아이디/비밀번호 찾기</a>
                   </div>
                   </div>
                   <button  type="button" onclick="lawyerLogin();" class="w-100 btn btn-lg btn-custom">로그인</button>

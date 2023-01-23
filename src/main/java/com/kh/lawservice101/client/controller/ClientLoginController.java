@@ -46,5 +46,12 @@ public class ClientLoginController {
             return "redirect:/clientLogin";
         }
     }
+
+    // 로그아웃
+    @GetMapping("/clientLogout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("client");
+        return "redirect:/clientLogin";
+    }
 }
 

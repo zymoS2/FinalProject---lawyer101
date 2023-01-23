@@ -1,4 +1,6 @@
 $(function() {
+    $(".searchForm").hide();
+
     // 채팅방 생성
     $("#makeRoomBtn").on("click", function() {
         $("#roomModal").show();
@@ -81,8 +83,6 @@ $(function() {
     let selectedRoomNum;
 
     if (roomNum !== null) {
-        connect(); // 소켓 연결
-
         $(".chat-room").each(function () {
             selectedRoomNum = $(this).attr("data-num");
             if (roomNum === selectedRoomNum) {
@@ -155,11 +155,4 @@ $(function() {
 
         return true;
     }
-
-    // 채팅방 나가기
-    $(".exit-btn").on("click", function () {
-        if (confirm("채팅방을 나가시겠습니까?\n채팅방을 나가면 현재 대화 내용이 사라집니다.")) {
-            location.href = "/chat/rooms";
-        }
-    });
 })

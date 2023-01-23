@@ -26,19 +26,18 @@
             alert("${msg}");
         </script>
     </c:if>
-
 </head>
 <body class="position-relative">
 
      <!-- header -->
-<%--     <jsp:include page="../common/header.jsp" />--%>
+     <jsp:include page="../common/header.jsp" />
 
     <!-- sidebar -->
-<%--     <jsp:include page="../common/sidebars.jsp" />--%>
+     <jsp:include page="../common/sidebar.jsp" />
 
     <!-- chat -->
-     <div class="bg-body-tertiary ">
-         <div class="position-relative border-bottom">
+     <div>
+         <div class="position-relative border-top border-bottom">
              <div class="d-flex flex-column align-items-stretch flex-shrink-0 h-100 border border-bottom-0 bg-body position-relative" style="width: 330px;">
                  <span class="fs-4 fw-bold p-3 py-4">오픈 채팅 목록</span>
                  <div class="chat-rooms overflow-y-scroll" style="height: 800px; margin-bottom: 70px;">
@@ -123,7 +122,7 @@
                              </div>
 
                              <div class="text-center ms-5">
-                                 <img src="/resource/img/lawyer/lawyer1.jpg" class="rounded-circle" alt="프로필" width="130px">
+                                 <img src="/display?fileName=${chatRoom.chatUserVo.lawyerVo.lawyerImg}" onerror="this.src='/resource/img/profile.png';" class="rounded-circle" alt="프로필" width="130px" height="130px">
                                  <h2 class="fw-normal mt-3">${chatRoom.chatUserVo.lawyerVo.lawyerName} 변호사</h2>
                                  <p class="mt-3">${chatRoom.chatUserVo.lawyerVo.lawyerIntroMsg}</p>
                              </div>
@@ -135,7 +134,7 @@
      </div>
 
     <!-- 채팅방 생성 modal -->
-    <div id="roomModal" class="w-100 h-100 bg-black position-absolute top-0 start-0 z-2 bg-opacity-25">
+    <div id="roomModal" class="w-100 h-100 bg-black position-absolute top-0 start-0 z-3 bg-opacity-25">
         <div class="position-absolute start-50 translate-middle bg-body rounded-4 p-4" style="width: 800px; top: 35%">
             <h3>채팅방 생성</h3>
             <hr>
@@ -169,7 +168,7 @@
         </div>
     </div>
 
-    <div id="pwdModal" class="w-100 h-100 bg-black position-absolute top-0 start-0 z-2 bg-opacity-25">
+    <div id="pwdModal" class="w-100 h-100 bg-black position-absolute top-0 start-0 z-3 bg-opacity-25">
         <div class="position-absolute start-50 translate-middle bg-body rounded-4 p-4" style="width: 400px; top: 25%">
             <div class="form-group">
                 <label for="pwdConfirm" class="form-label fw-bold">비밀번호 입력</label>
@@ -184,28 +183,67 @@
     </div>
 
     <!-- footer -->
-<%--    <jsp:include page="../common/footer.jsp"/>--%>
+    <jsp:include page="../common/footer.jsp"/>
 
      <!-- Stomp -->
      <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
     <script>
-        let stomp;
-        const loginUser = "${loginUser}";
+        const sch = location.search;
+        const params = new URLSearchParams(sch);
+        const roomNum = params.get('roomNum');
 
-        function connect() {
+        if (roomNum != null) {
+            let userNum;
+            let userType;
+
+            if (${!empty lawyer}) {
+                userNum = "${lawyer.lawyerNum}";
+                userType = "L";
+            }
+
+            if (${!empty client}) {
+                userNum = "${client.clientNum}";
+                userType = "C";
+            }
+
+            const userCount = "${chatRoom.userCount}";
+
+            console.log("roomNum = " + roomNum);
+            console.log("userNum = " + userNum);
+            console.log("userType = " + userType);
+            console.log("userCount = " + userCount);
+
+            // 소켓 연결
+            let stomp;
+            stomp = connect(roomNum, userNum, userType, userCount);
+
+            // 채팅방 퇴장시 소켓 연결 해제 및 채팅방 제거
+            window.onbeforeunload = (e) => {
+                e.preventDefault();
+                disConnect(stomp, roomNum, userType);
+            };
+
+            // 채팅방 퇴장
+            $(".exit-btn").on("click", function () {
+                if (userType === "L") {
+                    if (confirm("상담을 종료하시겠습니까?\n채팅방을 나가면 현재 채팅방이 사라집니다.")) {
+                        location.href = "/chat/rooms";
+                    }
+                } else {
+                    if (confirm("상담을 종료하시겠습니까?\n채팅방을 나가면 현재 대화 내용이 사라집니다.")) {
+                        location.href = "/chat/rooms";
+                    }
+                }
+            });
+        }
+
+        function connect(roomNum, userNum, userType, userCount) {
             const sockJs = new SockJS("/stomp/chat");
 
             //1. SockJS를 내부에 들고있는 stomp를 내어줌
-            stomp = Stomp.over(sockJs);
-
-            const lawyer = "${chatRoom.chatUserVo.lawyerVo}";
-
-            const roomNum = "${chatRoom.chatRoomNum}";
-            const userNum = loginUser === lawyer ? "${chatRoom.chatUserVo.lawyerVo.lawyerNum}" : "${chatRoom.chatUserVo.clientVo.clientNum}";
-            const userType = loginUser === lawyer ? "L" : "C";
-            const userCount = "${chatRoom.userCount}";
+            const stomp = Stomp.over(sockJs);
 
             //2. connection이 맺어지면 실행
             stomp.connect({}, function (){
@@ -222,32 +260,32 @@
                     const writer = content.chatWriter;
                     const message = content.chatContent;
                     const userType = content.userType;
-                    const writeTime = content.createdDate;
                     const userCount = content.userCount;
+                    const writeTime = content.createdDate;
 
                     let str = "";
                     if(userType === "L") {
                         str = $("<div class='d-flex flex-row p-3 justify-content-end' id='chat'>" +
-                                    "<div class='mx-1 text-end'>" +
-                                        "<div class='small text-end'>" + writer + " 변호사</div>" +
-                                        "<div style='display: flex'>" +
-                                            "<span class='d-inline-block mx-1 small text-secondary' style='min-width: 16%; margin-top: auto; font-size: 12px;'>" + writeTime + "</span>" +
-                                            "<div class='bg-white mr-2 p-3 d-inline-block text-start' style='max-width: 80%'><span class='fs-6 text-muted text-break'>" + message +"</span></div>" +
-                                         "</div>" +
-                                    "</div>" +
-                                    "<img src='/resource/img/lawyer/lawyer1.jpg' class='rounded-circle' width='40' height='40'>" +
-                                "</div>")
+                            "<div class='mx-1 text-end'>" +
+                            "<div class='small text-end'>" + writer + " 변호사</div>" +
+                            "<div style='display: flex'>" +
+                            "<span class='d-inline-block mx-1 small text-secondary' style='min-width: 16%; margin-top: auto; font-size: 12px;'>" + writeTime + "</span>" +
+                            "<div class='bg-light mr-2 p-3 d-inline-block text-start' style='max-width: 80%; border-radius: 20px'><span class='fs-6 text-muted text-break'>" + message +"</span></div>" +
+                            "</div>" +
+                            "</div>" +
+                            "<img src='/display?fileName=" + "${chatRoom.chatUserVo.lawyerVo.lawyerImg}" + "' onerror=\"this.src='/resource/img/profile.png'\"; class=\"rounded-circle\" width=\"40\" height=\"40\">" +
+                            "</div>")
                     } else {
                         str = $("<div class='d-flex flex-row p-3' id='chat'>" +
-                                    "<img src='/resource/img/profile.png' class='rounded-circle' width='40' height='40'>" +
-                                    "<div class='mx-1'>" +
-                                        "<div class='small'>" + writer + "</div>" +
-                                        "<div style='display: flex'>" +
-                                             "<div class='chat ml-2 p-3 fs-6 text-break d-inline-block text-break' style='max-width: 80%'>" + message + "</div>" +
-                                             "<span class='d-inline-block mx-1 small text-secondary' style='min-width: 16%; margin-top: auto; font-size: 12px;'>" + writeTime + "</span>" +
-                                        "</div>" +
-                                    "</div>" +
-                                "</div>")
+                            "<img src='/resource/img/profile.png' class='rounded-circle' width='40' height='40'>" +
+                            "<div class='mx-1'>" +
+                            "<div class='small'>" + writer + "</div>" +
+                            "<div style='display: flex'>" +
+                            "<div class='chat ml-2 p-3 fs-6 d-inline-block text-break' style='max-width: 80%'>" + message + "</div>" +
+                            "<span class='d-inline-block mx-1 small text-secondary' style='min-width: 16%; margin-top: auto; font-size: 12px;'>" + writeTime + "</span>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>")
                     }
                     $(".chat-box").append(str);
 
@@ -286,18 +324,32 @@
                 $(".message").val("");
                 $(".message").focus();
             };
+
+            return stomp;
         }
 
-        function disConnect(stomp) {
+        // 소켓 연결 해제
+        function disConnect(stomp, roomNum, userType) {
             if (stomp != null) {
                 console.log("Disconnect");
+
+                // 채팅방을 나간 유저가 변호사인 경우 채팅방 삭제
+                if (userType === "L") {
+                    $.ajax({
+                        url: "/chat/room/",
+                        method: "DELETE",
+                        data: {roomNum: roomNum},
+                        success: function () {
+                            console.log("ajax 통신 성공");
+                        },
+                        error: function () {
+                            console.log("ajax 통신 실패");
+                        },
+                    })
+                }
                 stomp.disconnect();
             }
         }
-
-        window.onbeforeunload = () => {
-            disConnect(stomp);
-        };
     </script>
 </body>
 </html>

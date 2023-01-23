@@ -2,6 +2,7 @@ package com.kh.lawservice101.lawyer.controller;
 
 import com.kh.lawservice101.booking.model.service.BookingService;
 import com.kh.lawservice101.booking.model.vo.BookingVo;
+import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.lawyer.model.dto.EditInfoDto;
 import com.kh.lawservice101.lawyer.model.dto.EditProfileDto;
 import com.kh.lawservice101.lawyer.model.service.LawyerService;
@@ -31,10 +32,14 @@ public class LawyerMypageController {
 
 
     //clientCounselList.jsp 로 가는
-    @GetMapping("/counsel-list")
-    public String counselList (Model model) {
-        //임시
-        Long lawyerNum = 4L;
+    @GetMapping("/counsel-list/{num}")
+    public String counselList (@SessionAttribute(value = "lawyer", required = false) LawyerVo loginLawyer,
+                               @PathVariable("num") Long lawyerNum, Model model) {
+        LawyerVo lawyer = lawyerService.findLawyer(lawyerNum);
+        if (loginLawyer == null || loginLawyer.getLawyerNum() != lawyer.getLawyerNum()) {
+            return "redirect:/";
+        }
+
         LawyerCounselList = paymentService.findPaymentList(lawyerNum);
         model.addAttribute("lawyerCounselList",LawyerCounselList);
 

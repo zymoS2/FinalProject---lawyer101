@@ -230,7 +230,9 @@
                         </li>
                     </c:forEach>
                 </ul>
-                <button class="btn btn-outline-custom w-100" id="moreButton">더 보기</button>
+                <c:if test="${pageReview.getTotal() > pageReview.getPageSize()}">
+                    <button class="btn btn-outline-custom w-100" id="moreButton">더 보기</button>
+                </c:if>
             </div>
         </div>
 

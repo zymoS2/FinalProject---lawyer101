@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,5 +44,12 @@ public class LawyerLoginController {
         } else {
             return "redirect:/lawyerLogin";
         }
+    }
+
+    // 로그아웃
+    @GetMapping("/lawyerLogout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("lawyer");
+        return "redirect:/lawyerLogin";
     }
 }

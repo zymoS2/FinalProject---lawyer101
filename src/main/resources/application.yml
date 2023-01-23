@@ -11,15 +11,13 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521/xe
     username: finalpro
     password: 1234
-    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    #url: jdbc:log4jdbc:oracle:thin:@localhost:1521/xe
 
   # mail 관련 설정
   mail:
     host: smtp.gmail.com
     port: 587
     username:
-    password: 
+    password:
     properties:
       mail:
         smtp:
@@ -57,7 +55,7 @@ mybatis:
 
 # 포트 변경
 server:
-# port: 9090
+ port: 9090
 
 # 페이징 관련 설정
 pagehelper:
@@ -75,5 +73,5 @@ pagehelper:
 coolsms:
   api:
     key: NCS98HUTRYA0SP8S
-    secret: NM66GU7WTAN2YDLBH7KQFFJOTRAIFKJK
-    fromnumber: 01027999308
+    secret:
+    fromnumber: 

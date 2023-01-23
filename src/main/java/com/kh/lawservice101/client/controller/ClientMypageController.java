@@ -26,15 +26,16 @@ public class ClientMypageController {
 
     List<PaymentVo> clientPaymentList =null ;
 
-   @GetMapping("/reservation-list")
-   public String bookingList(Model model){
+   @GetMapping("/reservation-list/{num}")
+   public String bookingList(@SessionAttribute(value = "client", required = false) ClientVo loginClient,
+                             @PathVariable("num") Long clientNum, Model model){
+       ClientVo client = clientService.findClient(clientNum);
+       if (loginClient == null || loginClient.getClientNum() != client.getClientNum()) {
+           return "redirect:/";
+       }
 
-       //임시
-       Long clientNum = 4L;
        clientPaymentList = paymentService.findPaymentList(clientNum);
        model.addAttribute("clientPaymentList",clientPaymentList);
-
-
 
        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
        Date now = new Date();

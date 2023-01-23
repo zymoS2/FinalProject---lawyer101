@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
   <link href="/resource/css/sidebars.css" rel="stylesheet" />
   <script src="/resource/js/sidebars.js"></script>
@@ -15,13 +16,13 @@
           </svg>
         </button>
       </div>
-      <a href="main.html" class="my-3 mb-md-0 mx-auto" style="width: 180px; height: 44px">
-        <img src="../resource/img/logo.png" alt="로고" width="100%" height="100%"/>
+      <a href="/" class="my-3 mb-md-0 mx-auto" style="width: 208px; height: 58px">
+        <img src="/resource/img/logo.png" alt="로고" width="100%" height="100%"/>
       </a>
       <hr />
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a href="#" class="nav-link text-secondary" aria-current="page">
+          <a href="/product/list" class="nav-link text-secondary" aria-current="page">
             <svg class="bi pe-none me-2" width="16" height="16">
               <use xlink:href="#home" />
             </svg>
@@ -37,7 +38,7 @@
           </a>
         </li>
         <li>
-          <a href="counsel.html" class="nav-link text-secondary">
+          <a href="/chat/rooms" class="nav-link text-secondary">
             <svg class="bi pe-none me-2" width="16" height="16">
               <use xlink:href="#table" />
             </svg>
@@ -46,7 +47,7 @@
         </li>
       </ul>
       <hr />
-      <a href="" class="d-flex justify-content-between fw-bold">
+      <a href="/knowledgeInPost" class="d-flex justify-content-between fw-bold">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
             <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
@@ -92,34 +93,57 @@
           <svg class="bi pe-none me-2" width="16" height="16">
             <use xlink:href="#table" />
           </svg>
-          로톡이야기
+          법률서비스101 이야기
         </a>
       </ul>
     </div>
     <div class="dropdown bg-custom position-absolute bottom-0 start-0 w-100 p-3 text-end">
-      <!-- login -->
-      <div>
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
-          <strong>mdo</strong>
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-          <li>
-            <a class="dropdown-item" href="myPage.html">마이페이지</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="chatList.html">상담 목록</a>
-          </li>
-          <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" href="login.html">로그아웃</a></li>
-        </ul>
-      </div>
-
-      <!-- logout -->
-      <!-- <div class="d-inline-block mt-2">
-                    <a href="login.html" class="me-3 text-white fw-bold"><small>로그인</small></a>
-                    <a href="sign-up-landing.html" class="me-3 text-white fw-bold"><small>회원가입</small></a>
-                </div> -->
+      <c:choose>
+        <%-- login --%>
+        <c:when test="${!empty client}">
+          <div>
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/resource/img/profile.png" alt="" width="32" height="32" class="rounded-circle me-2"/>
+              <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+              <li>
+                <a class="dropdown-item" href="/mypage/${client.clientNum}">마이페이지</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/mypage/reservation-list/${client.clientNum}">예약 목록</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="/clientLogout">로그아웃</a></li>
+            </ul>
+          </div>
+        </c:when>
+        <c:when test="${!empty lawyer}">
+          <div>
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/display?fileName=${lawyer.lawyerImg}" alt="" width="32" height="32" class="rounded-circle me-2"/>
+              <strong>mdo</strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+              <li>
+                <a class="dropdown-item" href="/lawyerpage/info/${lawyer.lawyerNum}">마이페이지</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/lawyerpage/counsel-list/${lawyer.lawyerNum}">상담 목록</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="/lawyerLogout">로그아웃</a></li>
+            </ul>
+          </div>
+        </c:when>
+        <c:otherwise>
+          <%-- logout --%>
+          <div class="d-inline-block mt-2">
+            <a href="/clientLogin" class="me-3 text-white fw-bold"><small>로그인</small></a>
+            <a href="/joinOption" class="me-3 text-white fw-bold"><small>회원가입</small></a>
+          </div>
+        </c:otherwise>
+      </c:choose>
     </div>
   </nav>
 </div>

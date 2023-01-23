@@ -27,7 +27,7 @@
         <h2 class="pb-5 text-center">마이페이지</h2>
         <div class="w-50 mx-auto p-5 border border-5 rounded mb-5">
             <div class="d-flex justify-content-center">
-                 <a href="/lawyerpage/counsel-list" class="text-center" style="width: 184px;">
+                 <a href="/lawyerpage/counsel-list/${lawyer.lawyerNum}" class="text-center" style="width: 184px;">
                     <p class="small fw-bold text-secondary mb-1">의뢰인 목록</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>

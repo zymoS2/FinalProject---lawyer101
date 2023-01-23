@@ -8,18 +8,20 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+       <link href="/resource/css/common.css" rel="stylesheet" />
 
-       <link href="../resource/css/headers.css" rel="stylesheet" />
-       <link href="../resource/css/footer.css" rel="stylesheet" />
-       <link href="../resource/css/sidebars.css" rel="stylesheet" />
-       <link href="../resource/css/common.css" rel="stylesheet" />
-
-       <link rel="stylesheet" href="../resource/css/knowledgeIN.css" />
+       <link rel="stylesheet" href="/resource/css/knowledgeIN.css" />
        <title>지식IN - 상세 보기 | 법률서비스 101</title>
 </head>
 <body>
     <!-- header -->
-        <jsp:include page="common/header.jsp" />
+    <jsp:include page="common/header.jsp" />
+
+    <!-- sidebar -->
+    <jsp:include page="common/sidebar.jsp"/>
+
     <form action="" id="knowledgeInDetailForm" method="post">
        <div class="container" style="width: 1080px;">
 
@@ -78,7 +80,11 @@
               </div>
           </div>
     </form>
- <!-- footer -->
-            <jsp:include page="common/footer.jsp" />
+    <!-- footer -->
+    <jsp:include page="common/footer.jsp" />
+
+    <script>
+        $(".searchForm").hide();
+    </script>
 </body>
 </html>

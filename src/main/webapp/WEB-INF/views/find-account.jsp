@@ -24,7 +24,7 @@
 
             <h2 class="py-5 border-bottom text-center">아이디/비밀번호 찾기</h2>
 
-            <form action="/auth/find-account/find-id" method="post" id="findIdForm">
+            <form id="findIdForm">
                 <label for="find-id-email" class="fw-bold mt-4 mb-2">아이디 찾기</label>
                 <div class="form-group py-3 px-4 bg-white border">
                     <small id="findIdHelp" class="d-block form-text text-muted py-4">가입 시 등록하신 이메일을 입력하세요. <br> 이메일로 아이디를 알려드립니다.</small>
@@ -53,8 +53,8 @@
             </form>
 
             <div class="text-center mt-3">
-                <a href="login.html" class="fs-6 text-body-tertiary fw-bold me-2">로그인</a>
-                <a href="sign-up-landing.html" class="fs-6 text-body-tertiary fw-bold ms-2">회원가입</a>
+                <a href="/clientLogin" class="fs-6 text-body-tertiary fw-bold me-2">로그인</a>
+                <a href="/joinOption" class="fs-6 text-body-tertiary fw-bold ms-2">회원가입</a>
             </div>
         </main>
     </body>

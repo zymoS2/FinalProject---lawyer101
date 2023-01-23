@@ -4,7 +4,7 @@
 <c:forEach var="lawyer" items="${lawyerList}">
   <div class="col-lg-4 text-center my-5">
     <a href="/product/detail/${lawyer.lawyerNum}" class="profile rounded-circle d-inline-block">
-      <img src="/resource/img/profile.png" alt="" width="100%" height="100%">
+      <img src="/display?fileName=${lawyer.lawyerImg}" onerror="this.src='/resource/img/profile.png';" alt="프로필사진" width="100%" height="100%">
     </a>
     <div class="card-body">
       <h3 class="t-name">${lawyer.lawyerName} 변호사</h3>

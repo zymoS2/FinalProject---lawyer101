@@ -35,7 +35,7 @@
                     <p class="small fw-bold text-secondary mb-1">도움됐어요</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>
-                <a href="/mypage/reservation-list" class="text-center" style="width: 184px;">
+                <a href="/mypage/reservation-list/${client.clientNum}" class="text-center" style="width: 184px;">
                     <p class="small fw-bold text-secondary mb-1">예약목록</p>
                     <p class="fs-2 fw-bold text-secondary">0</p>
                 </a>
@@ -67,8 +67,11 @@
         </div>
     </div>
 
-
     <!-- footer -->
     <jsp:include page="../common/footer.jsp"/>
+
+    <script>
+        $(".searchForm").hide();
+    </script>
 </body>
 </html>

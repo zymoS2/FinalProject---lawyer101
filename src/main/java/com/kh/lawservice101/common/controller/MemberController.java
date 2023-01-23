@@ -4,10 +4,7 @@ import com.kh.lawservice101.common.model.sevice.MailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,15 +20,16 @@ public class MemberController {
     }
 
     @PostMapping("/find-account/find-id")
-    public String findIdEmailSend(@RequestParam String findIdEmail) {
+    @ResponseBody
+    public String findIdEmailSend(@RequestParam("email") String findIdEmail) {
         mailService.findIdMailSend(findIdEmail);
-
-        return "redirect:/";
+        return "";
     }
 
     @PostMapping("/find-account/reset-pwd")
-    public String resetPwdEmailSend(@RequestParam String resetPwdId, @RequestParam String resetPwdEmail) {
+    @ResponseBody
+    public String resetPwdEmailSend(@RequestParam("id") String resetPwdId, @RequestParam("email") String resetPwdEmail) {
         mailService.resetPwdEmailSend(resetPwdId, resetPwdEmail);
-        return "redirect:/";
+        return "";
     }
 }

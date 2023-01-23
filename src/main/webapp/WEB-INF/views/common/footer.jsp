@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
   <link href="/resource/css/footer.css" rel="stylesheet" />
 </head>
@@ -27,11 +28,31 @@
           <th>고객센터</th>
         </tr>
         <tr>
-          <td><a href="">내 상담 내역</a></td>
+          <c:choose>
+            <c:when test="${!empty client}">
+              <td><a href="/mypage/reservation-list/${client.clientNum}">내 예약 목록</a></td>
+            </c:when>
+            <c:when test="${!empty lawyer}">
+              <td><a href="/lawyerpage/counsel-list/${lawyer.lawyerNum}">내 상담 목록</a></td>
+            </c:when>
+            <c:otherwise>
+              <td><a href="/clientLogin">내 상담 목록</a></td>
+            </c:otherwise>
+          </c:choose>
           <td><a href="">공지사항</a></td>
         </tr>
         <tr>
-          <td><a href="">회원정보수정</a></td>
+          <c:choose>
+            <c:when test="${!empty client}">
+              <td><a href="/mypage/${client.clientNum}">회원정보수정</a></td>
+            </c:when>
+            <c:when test="${!empty lawyer}">
+              <td><a href="/lawyerpage/info/${lawyer.lawyerNum}">회원정보수정</a></td>
+            </c:when>
+            <c:otherwise>
+              <td><a href="/clientLogin">회원정보수정</a></td>
+            </c:otherwise>
+          </c:choose>
           <td><a href="">자주묻는 질문</a></td>
         </tr>
       </table>
@@ -82,7 +103,7 @@
     </div>
     <div class="mt-5 d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-end">
-        <img src="../resource/img/logo.png" alt="로고" width="240px" height="60px"/>
+        <img src="/resource/img/logo.png" alt="로고" width="236px" height="64px"/>
         <span class="text-center text-muted d-inline-block ms-3 fw-bold">(C) Law&Company Co., Ltd. ALL RIGHTS RESERVED.</span>
       </div>
       <ul class="mb-0 ps-0">

@@ -10,8 +10,8 @@
 
     <title>lawyerJoin</title>
 
-        <link href="../resource/css/sign-up.css" rel="stylesheet">
-        <link href="../resource/css/common.css" rel="stylesheet">
+        <link href="/resource/css/sign-up.css" rel="stylesheet">
+        <link href="/resource/css/common.css" rel="stylesheet">
         <script src="/resource/js/sendSMS.js"></script>
 
     <script type="text/javascript">

@@ -27,100 +27,90 @@ public class ChatRoomController {
 
     // 채팅 리스트
     @GetMapping("/rooms")
-    public String chatList(@SessionAttribute(required = false) Object loginUser, Model model,
-                           @RequestParam(required = false, defaultValue = "false") Boolean error,
+    public String chatList(Model model, @RequestParam(required = false, defaultValue = "false") Boolean error,
                            @RequestParam(required = false) String msg) {
-        if (loginUser instanceof LawyerVo) {
-            LawyerVo lawyerVo = (LawyerVo) loginUser;
-            model.addAttribute("lawyer", lawyerVo);
-        } else {
-            ClientVo clientVo = (ClientVo) loginUser;
-            model.addAttribute("client", clientVo);
-        }
-
         List<ChatRoomVo> chatRoomList = chatRoomService.findAllChatRooms();
-        for (ChatRoomVo chatRoomVo : chatRoomList) {
-            if (chatRoomVo.getChatUserVo().getLawyerVo() == null) {
-                chatRoomService.removeChatRoom(chatRoomVo.getChatRoomNum());
-            }
-        }
-
-        chatRoomList = chatRoomService.findAllChatRooms();
         model.addAttribute("chatRoomList", chatRoomList);
 
         if (error) {
             model.addAttribute("msg", msg);
         }
-
         return "chat/chat";
     }
 
     // 채팅방 생성
     @PostMapping("/room")
     @ResponseBody
-    public Long createChatRoom(@SessionAttribute("loginUser") LawyerVo lawyerVo,
-                               @ModelAttribute ChatRoomVo chatRoomVo) {
+    public Long createChatRoom(@ModelAttribute ChatRoomVo chatRoomVo) {
         chatRoomService.saveChatRoom(chatRoomVo);
         Long chatRoomNum = chatRoomVo.getChatRoomNum();
         log.info("chatRoomNum={}", chatRoomNum);
 
         chatUserService.saveChatUser(chatRoomNum);
-        chatUserService.addLawyer(chatRoomNum, lawyerVo);
 
         return chatRoomNum;
     }
 
     // 채팅방 입장
     @GetMapping("/room")
-    public String chatDetail(@SessionAttribute(required = false) Object loginUser,
-                             @RequestParam Long roomNum, Model model,
+    public String chatDetail(@RequestParam Long roomNum, Model model,
+                             @SessionAttribute(value = "client", required = false) ClientVo clientVo,
+                             @SessionAttribute(value = "lawyer", required = false) LawyerVo lawyerVo,
                              RedirectAttributes redirectAttributes) {
 
         // 로그인 검증
-        if (loginUser == "" || loginUser == null) {
+        if (lawyerVo == null && clientVo == null) {
             ERROR_MSG = "무료 상담은 로그인 후 이용가능합니다.";
             redirectAttributes.addFlashAttribute("error", true);
             redirectAttributes.addFlashAttribute("msg", ERROR_MSG);
             return "redirect:/chat/rooms";
         }
 
-        ChatRoomVo chatRoomVo = chatRoomService.findChatRoom(roomNum);
-        log.info("chatRoomVo={}", chatRoomVo);
-
-        // 상담중인 인원 검증
-        if (chatRoomVo.getUserCount() >= 2) {
-            ERROR_MSG = "상담중인 의뢰인이 있습니다.";
+        ChatRoomVo chatRoom = chatRoomService.findChatRoom(roomNum);
+        if (chatRoom == null) {
+            ERROR_MSG = "상담이 종료되었습니다.";
             redirectAttributes.addFlashAttribute("error", true);
             redirectAttributes.addFlashAttribute("msg", ERROR_MSG);
             return "redirect:/chat/rooms";
         }
 
-        if (loginUser instanceof LawyerVo) {
-            // 로그인한 유저가 변호사인 경우 방을 개설한 변호사인지 검증
-            LawyerVo lawyerVo = (LawyerVo) loginUser;
-
-            if (lawyerVo.getLawyerNum() != chatRoomVo.getChatUserVo().getLawyerVo().getLawyerNum()) {
-                ERROR_MSG = "다른 변호사는 입장할 수 없습니다.";
-                redirectAttributes.addFlashAttribute("error", true);
-                redirectAttributes.addFlashAttribute("msg", ERROR_MSG);
-                return "redirect:/chat/rooms";
+        // 변호사가 채팅방에 입장하는 경우
+        if (lawyerVo != null) {
+            // 채팅방에 변호사가 등록되어 있지 않으면 변호사를 등록
+            if (chatRoom.getChatUserVo().getLawyerVo() == null) {
+                chatUserService.addLawyer(roomNum, lawyerVo);
+            } else {
+                // 채팅방에 변호사가 등록되어 있으면 방을 개설한 변호사인지 검증
+                if (lawyerVo.getLawyerNum() != chatRoom.getChatUserVo().getLawyerVo().getLawyerNum()) {
+                    ERROR_MSG = "다른 변호사는 입장할 수 없습니다.";
+                    redirectAttributes.addFlashAttribute("error", true);
+                    redirectAttributes.addFlashAttribute("msg", ERROR_MSG);
+                    return "redirect:/chat/rooms";
+                }
             }
+        }
 
-            model.addAttribute("loginUser", lawyerVo);
-
-        } else {
-            // 로그인한 유저가 의뢰인인 경우 채팅방 유저로 등록
-            ClientVo clientVo = (ClientVo) loginUser;
-            chatUserService.addClient(chatRoomVo.getChatRoomNum(), clientVo);
-
-            chatRoomVo = chatRoomService.findChatRoom(roomNum);
-            model.addAttribute("loginUser", clientVo);
+        // 의뢰인이 채팅방에 입장하는 경우
+        if (clientVo != null) {
+            // 채팅방에 의뢰인이 등록되어 있지 않으면 의뢰인을 등록
+            if (chatRoom.getChatUserVo().getClientVo() == null) {
+                chatUserService.addClient(roomNum, clientVo);
+            } else {
+                // 채팅방에 의뢰인이 등록되어 있으면 입장 불가
+                if (clientVo.getClientNum() != chatRoom.getChatUserVo().getClientVo().getClientNum()) {
+                    ERROR_MSG = "상담중인 의뢰인이 있습니다. 조금만 기다려 주세요.";
+                    redirectAttributes.addFlashAttribute("error", true);
+                    redirectAttributes.addFlashAttribute("msg", ERROR_MSG);
+                    return "redirect:/chat/rooms";
+                }
+            }
         }
 
         List<ChatRoomVo> chatRoomList = chatRoomService.findAllChatRooms();
+        chatRoom = chatRoomService.findChatRoom(roomNum);
 
         model.addAttribute("chatRoomList", chatRoomList);
-        model.addAttribute("chatRoom", chatRoomVo);
+        model.addAttribute("chatRoom", chatRoom);
 
         return "chat/chat";
     }
@@ -145,5 +135,10 @@ public class ChatRoomController {
         log.info("result={}", chatRoomVo.getChatRoomPwd().equals(pwd));
 
         return chatRoomVo.getChatRoomPwd().equals(pwd);
+    }
+
+    @DeleteMapping("/room")
+    public void chatRoomRemove(@RequestParam Long roomNum) {
+        chatRoomService.removeChatRoom(roomNum);
     }
 }

@@ -70,7 +70,7 @@ public class MailService {
                     mailHelper.setText("<h2>이메일과 일치하는 아이디가 없습니다.", true);
                 } else {
                     clientService.passwordModify(tempPwd, clientVo.getClientNum());
-                    mailHelper.setText("<h2>법률서비스101</h2><p>회원 임시 비밀번호 : <strong>" + tempPwd + "</strong></p>", true);
+                    mailHelper.setText("<h2>법률서비스101</h2><p>임시 비밀번호 : <strong>" + tempPwd + "</strong></p>", true);
                 }
             } else {
                 lawyerService.passwordModify(tempPwd, lawyerVo.getLawyerNum());

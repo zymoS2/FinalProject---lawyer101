@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
   <link href="/resource/css/headers.css" rel="stylesheet" />
   <script src="/resource/js/header.js"></script>
 </head>
-<header class="p-3 top-0 position-relative z-3">
+<header class="p-2 top-0 position-relative z-3">
   <div class="container">
     <button class="bg-transparent border-0 text-secondary float-start headerButton">
       <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -11,18 +12,30 @@
       </svg>
     </button>
 
-    <div class="nav d-inline-block float-end">
-      <a href="/clientLogin" class="me-3 text-secondary fw-bold"><small>로그인</small></a>
-      <a href="/joinOption" class="me-3 text-secondary fw-bold"><small>회원가입</small></a>
-      <a href="" class="fw-bold position-relative"><small>변호사찾기</small>
+    <div class="nav d-inline-block float-end mt-2">
+      <c:choose>
+        <c:when test="${!empty client}">
+          <a href="/clientLogout" class="me-3 text-secondary fw-bold"><small>로그아웃</small></a>
+          <a href="/mypage/${client.clientNum}" class="me-3 text-secondary fw-bold"><small>마이페이지</small></a>
+        </c:when>
+        <c:when test="${!empty lawyer}">
+          <a href="/lawyerLogout" class="me-3 text-secondary fw-bold"><small>로그아웃</small></a>
+          <a href="/lawyerpage/info/${lawyer.lawyerNum}" class="me-3 text-secondary fw-bold"><small>마이페이지</small></a>
+        </c:when>
+        <c:otherwise>
+          <a href="/clientLogin" class="me-3 text-secondary fw-bold"><small>로그인</small></a>
+          <a href="/joinOption" class="me-3 text-secondary fw-bold"><small>회원가입</small></a>
+        </c:otherwise>
+      </c:choose>
+      <a href="/product/list" class="fw-bold position-relative"><small>변호사찾기</small>
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search position-absolute bottom-0" viewBox="0 0 16 16">
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
         </svg>
       </a>
     </div>
 
-    <div class="mx-auto mt-1" style="width: 180px">
-      <a href="/" class="d-inline-block" style="width: 180px; height: 44px">
+    <div class="mx-auto mt-1" style="width: 236px">
+      <a href="/" class="d-inline-block" style="width: 236px; height: 64px">
         <img src="/resource/img/logo.png" alt="로고" width="100%" height="100%"/>
       </a>
     </div>

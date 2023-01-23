@@ -3,7 +3,7 @@ $(window).scroll(function () {
     const st = $(this).scrollTop();
 
     if (st > headerHeight) {
-        $(".category").css("margin-top", "154px");
+        $(".category").css("margin-top", "156px");
     } else {
         $(".category").css("margin-top", "0px");
     }

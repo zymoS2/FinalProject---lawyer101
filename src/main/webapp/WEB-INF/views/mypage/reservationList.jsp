@@ -125,5 +125,9 @@
 
     <!-- footer -->
     <jsp:include page="../common/footer.jsp"/>
+
+    <script>
+        $(".searchForm").hide();
+    </script>
 </body>
 </html>

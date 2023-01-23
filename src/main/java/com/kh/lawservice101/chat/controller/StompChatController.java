@@ -36,6 +36,7 @@ public class StompChatController {
 
         ChatRoomVo chatRoomVo = chatRoomService.findChatRoom(chatVo.getChatRoomNum());
         ChatUserVo chatUserVo = chatRoomVo.getChatUserVo();
+
         if (chatUserVo.getLawyerVo() == null || chatUserVo.getClientVo() == null) {
             chatUserService.addChatUser(chatVo); // 채팅 유저 등록
         }

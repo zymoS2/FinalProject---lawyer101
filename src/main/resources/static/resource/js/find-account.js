@@ -1,15 +1,27 @@
 $(function () {
     $("#find-email-btn").on("click", function () {
-        if (emailValidate()) {
+        const email = $("#find-id-email").val();
+        if (emailValidate(email)) {
             alert("메일이 전송되었습니다.");
-            $("#findIdForm").submit();
+
+            $.ajax({
+                url: "/auth/find-account/find-id",
+                method: "POST",
+                data: {email: email},
+                success: function () {
+                    console.log("ajax 통신 성공");
+                },
+                error: function () {
+                    console.log("ajax 통신 실패");
+                },
+            })
+
+            location.href="/clientLogin";
         }
     });
 
     const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    function emailValidate() {
-        const email = $("#find-id-email").val();
-
+    function emailValidate(email) {
         if (email === "" || email === null) {
             $("#email-errorMsg").text("이메일을 입력해주세요.");
             return false;
@@ -26,14 +38,29 @@ $(function () {
     }
 
     $("#reset-pwd-btn").on("click", function () {
-        if (idValidate() && emailValidate2()) {
+        const id = $("#reset-pwd-id").val();
+        const email = $("#reset-pwd-email").val();
+
+        if (idValidate(id) && emailValidate2(email)) {
             alert("메일이 전송되었습니다.");
-            $("#resetPwdForm").submit();
+
+            $.ajax({
+                url: "/auth/find-account/reset-pwd",
+                method: "POST",
+                data: {id: id, email: email},
+                success: function () {
+                    console.log("ajax 통신 성공");
+                },
+                error: function () {
+                    console.log("ajax 통신 실패");
+                },
+            })
+
+            location.href="/clientLogin";
         }
     });
 
-    function idValidate() {
-        const id = $("#reset-pwd-id").val();
+    function idValidate(id) {
         if (id === "" || id === null) {
             $("#id-errorMsg").text("아이디를 입력하세요.");
             return false;
@@ -44,9 +71,7 @@ $(function () {
         return true;
     }
 
-    function emailValidate2() {
-        const email = $("#reset-pwd-email").val();
-
+    function emailValidate2(email) {
         if (email === "" || email === null) {
             $("#email-errorMsg2").text("이메일을 입력해주세요.");
             return false;
