@@ -3,13 +3,16 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
     <title>로그인 | 법률서비스 101</title>
 
         <link href="/resource/css/sign-up.css" rel="stylesheet">
         <link href="/resource/css/common.css" rel="stylesheet">
+        <script src="/resource/js/sendSMS.js"></script>
 
     <script type="text/javascript">
     function clientJoin(){
@@ -94,7 +97,7 @@
                         <div class="input-group">
                             <input id="phone" type="text" name="clientPhone" class="form-control col me-3 rounded-2" placeholder="휴대폰 번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col">인증번호 발송</button>
+                                <button type="button" class="btn btn-custom col" id="send-sms-button">인증번호 발송</button>
                             </span>
                         </div>
                         <small id="phoneHelp" class="form-text text-muted">예) 01012345678</small>
@@ -104,9 +107,9 @@
                     <div class="form-group">
                         <label for="auth-code" class="form-label">인증번호</label>
                         <div class="input-group">
-                            <input id="auth-code" type="text" class="form-control me-3 rounded-2" placeholder="인증번호를 입력하세요" required>
+                            <input id="auth-code" type="text" class="form-control me-3 rounded-2" placeholder="인증번호를 입력하세요" required disabled>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col">인증</button>
+                                <button type="button" class="btn btn-custom col" id="auth-button">인증</button>
                             </span>
                         </div>
                         <p class="form-text text-danger">인증번호가 일치하지않습니다</p>
