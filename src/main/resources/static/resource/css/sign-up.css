@@ -43,3 +43,30 @@ ul.join_box {
 .info-text {
     font-size: 14px !important;
 }
+.spinning {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: #00d8ff;
+    top: 1830px;
+    left: 730px;
+}
+.fa-spinner {
+    width: 25px;
+    height: 25px;
+}
+.lawyerEmail,
+.lawyerId,
+.lawyerName,
+.lawyerPassword,
+.lawyerPasswordConfirm,
+.lawyerPhoneText1 {
+    opacity: 0;
+}
+.spinningDisplay{
+    display: none;
+}
+#sample6_extraAddress{
+    display: none;
+}

@@ -3,14 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 
     <title>lawyerJoin</title>
 
-        <link href="../resource/css/sign-up.css" rel="stylesheet">
-        <link href="../resource/css/common.css" rel="stylesheet">
-
+    <link href="../resource/css/sign-up.css" rel="stylesheet">
+    <link href="../resource/css/common.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/resource/js/jquery-3.6.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="/resource/js/lawyerJoin.js"></script>
     <script type="text/javascript">
 
         function lawyerJoin(){
@@ -19,9 +22,9 @@
         document.getElementById('lawyerJoinForm').setAttribute('action', '/lawyerJoin/insert.do');
         document.getElementById('lawyerJoinForm').submit();
 
-         }
         }
-        </script>
+        }
+    </script>
 
 </head>
 <body>
@@ -39,35 +42,45 @@
 
                     <div class="form-group">
                         <label for="email" class="form-label">이메일</label>
-                        <input id="email" type="text" name="lawyerEmail" class="form-control" placeholder="이메일을 입력하세요" required>
+                        <input id="email" type="email" name="lawyerEmail" class="form-control" placeholder="이메일을 입력하세요" required>
                         <small id="emailHelp" class="form-text text-muted">예) name@example.com</small>
-                        <p class="form-text text-danger">이메일을 입력하세요</p>
+                        <p class="form-text text-danger lawyerEmail">
+                            이메일 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="id" class="form-label">아이디</label>
                         <input id="id" type="text" name="lawyerId" class="form-control" placeholder="이메일을 입력하세요" required>
                         <small id="idHelp" class="form-text text-muted">6~10자, 영문, 숫자</small>
-                        <p class="form-text text-danger">아이디를 입력하세요</p>
+                        <p class="form-text text-danger lawyerId">
+                            아이디 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="form-label">이름</label>
                         <input id="name" type="text" name="lawyerName" class="form-control" placeholder="이름을 입력하세요" required>
-                        <p class="form-text text-danger">이름을 입력하세요</p>
+                        <p class="form-text text-danger lawyerName">
+                            이름 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="form-label">비밀번호</label>
                         <input id="password" type="password" name="lawyerPwd" class="form-control" placeholder="비밀번호를 입력하세요" required>
                         <small id="passwordHelp" class="form-text text-muted">8~12자, 영문, 숫자, 특수문자(_-!@#$%^&*.,)</small>
-                        <p class="form-text text-danger">비밀번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerPassword">
+                            비밀번호가 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="password-confirm" class="form-label">비밀번호 재확인</label>
                         <input id="password-confirm" type="password" name="lawyerRepwd" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요" required>
-                        <p class="form-text text-danger">비밀번호가 일치하지않습니다</p>
+                        <p class="form-text text-danger lawyerPasswordConfirm">
+                            비밀번호가 일치하지않습니다
+                        </p>
                     </div>
 
                     <div class="form-group">
@@ -82,9 +95,9 @@
                     <div class="form-group">
                         <label for="birth-year" class="form-label">출생년도</label>
                         <select id="birth-year" name="lawyerBirthyy" class="form-select">
-                           <%for (int i=1930; i<=2023;i++){%>
-                           <option value="<%=i%>"><%=i+"년"%></option>
-                           <%}%>
+                            <%for (int i=1930; i<=2023;i++){%>
+                                <option value="<%=i%>"><%=i+"년"%></option>
+                            <%}%>
                         </select>
                     </div>
                     <p></p>
@@ -94,11 +107,12 @@
                         <div class="input-group">
                             <input id="phone" type="text" name="lawyerPhone" class="form-control col me-3 rounded-2" placeholder="휴대폰 번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col">인증번호 발송</button>
+                                <button type="button" class="btn btn-custom col lawyerButton">인증번호 발송</button>
                             </span>
                         </div>
-                        <small id="phoneHelp" class="form-text text-muted">예) 01012345678</small>
-                        <p class="form-text text-danger">휴대폰 번호를 입력하세요</p>
+                        <small id="phoneHelp" class="form-text text-muted ">예) 01012345678</small>
+                        <p class="form-text text-danger lawyerPhoneText">휴대폰 번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerPhoneText1">휴대폰 번호 형식으로 입력해주세요</p>
                     </div>
 
                     <div class="form-group">
@@ -117,26 +131,76 @@
                     <div class="form-group">
                         <label for="company" class="form-label">소속(사무소, 회사명)</label>
                         <input id="company" type="text" name="companyName" class="form-control" placeholder="사무소명을 입력하세요" required>
-                        <p class="form-text text-danger">사무소명을 입력하세요</p>
+                        <p class="form-text text-danger lawyerCompany">사무소명을 입력하세요</p>
                     </div>
 
                     <div class="form-group">
                         <label for="tel" class="form-label">소속 전화번호</label>
                         <input id="tel" type="text" name="ompanyPhone" class="form-control" placeholder="소속 전화번호를 입력하세요" required>
-                        <p class="form-text text-danger">소속 전화번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerTel">소속 전화번호를 입력하세요</p>
                     </div>
+                    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                    <script>
+                        function sample6_execDaumPostcode() {
+                            new daum.Postcode({
+                                oncomplete: function(data) {
+                                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
+                                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                    var addr = ''; // 주소 변수
+                                    var extraAddr = ''; // 참고항목 변수
+
+                                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                                        addr = data.roadAddress;
+                                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                                        addr = data.jibunAddress;
+                                    }
+
+                                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                                    if(data.userSelectedType === 'R'){
+                                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                            extraAddr += data.bname;
+                                        }
+                                        // 건물명이 있고, 공동주택일 경우 추가한다.
+                                        if(data.buildingName !== '' && data.apartment === 'Y'){
+                                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                        }
+                                        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                        if(extraAddr !== ''){
+                                            extraAddr = ' (' + extraAddr + ')';
+                                        }
+                                        // 조합된 참고항목을 해당 필드에 넣는다.
+                                        document.getElementById("sample6_extraAddress").value = extraAddr;
+                                    
+                                    } else {
+                                        document.getElementById("sample6_extraAddress").value = '';
+                                    }
+
+                                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                    document.getElementById('sample6_postcode').value = data.zonecode;
+                                    document.getElementById("sample6_address").value = addr;
+                                    // 커서를 상세주소 필드로 이동한다.
+                                    document.getElementById("sample6_detailAddress").focus();
+                                }
+                            }).open();
+                        }
+                    </script>
                     <div class="form-group">
                         <label class="form-label">소속 주소</label>
                         <div class="input-group">
-                            <input id="zipcode" type="text" name="zipcode" class="form-control mb-1 me-3 rounded-2" placeholder="우편번호" required readonly>
+                            <input id="sample6_postcode" type="text" name="zipcode" class="form-control mb-1 me-3 rounded-2" placeholder="우편번호" required readonly>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col">주소검색</button>
+                                <input type="button" class="btn btn-custom col" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
                             </span>
                         </div>
-                        <input id="addr" type="text" name="addr" class="form-control mb-1" placeholder="주소" required readonly>
-                        <input id="detail-addr" type="text" name="companyAddress" class="form-control" placeholder="상세주소" required>
-                        <p class="form-text text-danger">사무소명을 입력하세요</p>
+                        <input id="sample6_address" type="text" name="addr" class="form-control mb-1" placeholder="주소" required readonly>
+                        <input id="sample6_detailAddress" type="text" name="companyAddress" class="form-control" placeholder="상세주소" required>
+                        <input type="text" id="sample6_extraAddress" class="form-control" placeholder="참고항목">
+                        <p class="form-text text-danger lawyerAddr">사무소명을 입력하세요</p>
                     </div>
 
                     <div class="form-group">
@@ -144,13 +208,14 @@
                         <div class="input-group">
                             <input id="registNum" type="text" name="lawyerLicenseNum" class="form-control me-3 rounded-2" placeholder="변호사 등록번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col">인증</button>
+                                <button type="button" class="btn btn-custom col spinnerButton" disabled>인증</button>
                             </span>
                         </div>
-                        <p class="form-text text-danger">변호사 등록번호를 입력하세요</p>
+                        <p class="form-text text-danger spinnerText">변호사 등록번호를 입력하세요</p>
+                        <p class="form-text text-danger spinningDisplay">인증중입니다.</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group formCheck">
                         <h5><strong>약관동의</strong></h5>
                         <ul class="join_box">
                             <li class="checkBox check01">
@@ -160,7 +225,7 @@
                                         <small>서비스 이용약관, 개인정보 취급방침, 개인정보 이용/수집, 프로모션 정보 수신에 모두 동의함을 의미합니다.</small>
                                         </li>
                                         <li class="checkAllBtn">
-                                            <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                            <input type="checkbox" name="chkAll" id="chkAll" class="chkAll">
                                         </li>
                                     </label>
                                 </ul>
@@ -170,7 +235,7 @@
                                     <label>
                                         <li>이용약관 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -422,7 +487,7 @@
                                     <label>
                                         <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk1" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -496,7 +561,7 @@ PC웹, 모바일웹/앱 이용과정에서의 단말기정보(OS, 화면사이�
                                     <label>
                                         <li>개인정보 취급방침 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk2" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -847,7 +912,7 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                                     <label>
                                         <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk3" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -856,9 +921,12 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                     </div>
 
                     <p class="info-text text-body-secondary">* 가입 신청을 하시면 변호사 자격 확인 후 가입이 완료됩니다.</p>
-                    <button type="button" onclick="lawyerJoin();" class="btn btn-custom" style="width: 100%;">가입신청</button>
+                    <button type="button" onclick="lawyerJoin();" class="btn btn-custom lawyerButton" style="width: 100%;" disabled>가입신청</button>
                 </form>
             </div>
+        </div>
+        <div class="spinning">
+            <i class="fas fa-spinner fa-10x fa-spin spinningDisplay"></i>
         </div>
     </main>
 
