@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.knowledgein.model.dao.HelpfulDao">
+    <resultMap id="HelpfulResultSet" type="HelpfulVo">
+        <result property="helpfulNum" column="HELPFUL_NUM"/>
+        <result property="helpfulCount" column="HELPFUL_COUNT"/>
+        <association property="inBoardVo" javaType="InBoardVo">
+            <result property="inBoardNum" column="IN_BOARD_NUM"/>
+        </association>
+        <association property="clientVo" javaType="ClientVo">
+            <result property="clientNum" column="CLIENT_NUM"/>
+            <result property="clientId" column="CLIENT_ID"/>
+        </association>
+    </resultMap>
+
+    <update id="clickHelpful" parameterType="HashMap">
+        UPDATE HELPFUL_TB
+        SET HELPFUL_COUNT = HELPFUL_COUNT + 1
+        WHERE IN_BOARD_NUM = #{inBoardNum}
+    </update>
+</mapper>

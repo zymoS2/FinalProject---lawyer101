@@ -5,7 +5,7 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
 
-   # oracle 관련 설정
+    # oracle 관련 설정
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521/xe
@@ -41,7 +41,7 @@ mybatis:
   mapper-locations: /mappers/*.xml # mapper.xml 위치 지정
   type-aliases-package: com.kh.lawservice101.test.model.vo,
                         com.kh.lawservice101.review.model.vo
-                        com.kh.lawservice101.client.model.vo, 
+                        com.kh.lawservice101.client.model.vo,
                         com.kh.lawservice101.lawyer.model.vo,
                         com.kh.lawservice101.chat.model.vo,
                         com.kh.lawservice101.knowledgein.model.vo,
@@ -49,13 +49,15 @@ mybatis:
                         com.kh.lawservice101.booking.model.vo,
                         com.kh.lawservice101.payment.model.vo
 
+
+
   configuration:
     map-underscore-to-camel-case: true # model 프로퍼티 camel case 설정
     jdbc-type-for-null: varchar # ""값 null 처리
 
 # 포트 변경
 server:
- port: 9090
+  port: 9090
 
 # 페이징 관련 설정
 pagehelper:

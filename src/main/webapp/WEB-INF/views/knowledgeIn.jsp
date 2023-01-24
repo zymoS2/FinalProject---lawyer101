@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
+
      <head>
            <meta charset="UTF-8" />
            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,6 +18,23 @@
 
             <link rel="stylesheet" href="/resource/css/knowledgeIN.css" />
          <script src="/resource/js/knowledgeIn.js"></script>
+
+         <script type="text/javascript">
+         function setSortType(sortType){
+            console.log('sortType : ' + sortType);
+            document.getElementsByName('sortType')[0].value = sortType;
+            document.getElementById('knowledgeInForm').setAttribute('action', '/knowledgeIn');
+            document.getElementById('knowledgeInForm').submit();
+         }
+
+         function setPage(page){
+            console.log('page : ' + page);
+            document.getElementsByName('page')[0].value = page;
+            document.getElementById('knowledgeInForm').setAttribute('action', '/knowledgeIn');
+            document.getElementById('knowledgeInForm').submit();
+         }
+         </script>
+
     </head>
 
     <body>
@@ -26,19 +44,23 @@
        <!-- sidebar -->
        <jsp:include page="common/sidebar.jsp"/>
 
-        <form action="" id="knowledgeInForm"  method="post">
+        <form action="" id="knowledgeInForm"  method="get">
+            <input type="hidden" name="sortType" />
+            <input type="hidden" name="page" />
+
             <div class="counseldiv2 container">
               <h3 class="counseltableh3">지식IN</h3>
               <div class="d-flex">
                 <div style="width: 65%;">
                   <ul class="counseltable py-3 ps-0 mb-0 border-top border-bottom">
-                      <li class="d-inline-block me-3"><a href="" class="active">정확도순</a></li>
+                      <li class="d-inline-block me-3"><a href="">정확도순</a></li>
                       <li class="d-inline-block me-3"><a href="">최신 답변순</a></li>
-                      <li class="d-inline-block me-3"><a href="">최신 질문순</a></li>
-                      <li class="d-inline-block me-3"><a href="">조회수</a></li>
+                      <li class="d-inline-block me-3"><a href="javascript:setSortType('boardNum');" class="<c:if test="${sortType eq 'boardNum'}">active</c:if>">최신 질문순</a></li>
+                      <li class="d-inline-block me-3"><a href="javascript:setSortType('boardCount');" class="<c:if test="${sortType eq 'boardCount'}">active</c:if>">조회수</a></li>
                   </ul>
+
                     <div>
-                      <c:forEach var="sb" items="${showInBoard}">
+                      <c:forEach var="sb" items="${pagePost.getList()}">
                         <a href="/knowledgeInDetail?num=${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
                           <p class="text-secondary"> ${sb.categoryVo.categoryName}</p>
                           <h4 class="mb-3">${sb.inBoardTitle}</h4>
@@ -59,16 +81,16 @@
 
                   <div class="pagination justify-content-center align-items-center p-3">
                     <a href="" class="small mx-3">이전 페이지</a>
-                    <a href="" class="mx-3 mb-1 active">1</a>
-                    <a href="" class="mx-3 mb-1">2</a>
-                    <a href="" class="mx-3 mb-1">3</a>
-                    <a href="" class="mx-3 mb-1">4</a>
-                    <a href="" class="mx-3 mb-1">5</a>
-                    <a href="" class="mx-3 mb-1">6</a>
-                    <a href="" class="mx-3 mb-1">7</a>
-                    <a href="" class="mx-3 mb-1">8</a>
-                    <a href="" class="mx-3 mb-1">9</a>
-                    <a href="" class="mx-3 mb-1">10</a>
+                    <a href="javascript:setPage('1');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '1'}">active</c:if>">1</a>
+                    <a href="javascript:setPage('2');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '2'}">active</c:if>">2</a>
+                    <a href="javascript:setPage('3');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '3'}">active</c:if>">3</a>
+                    <a href="javascript:setPage('4');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '4'}">active</c:if>">4</a>
+                    <a href="javascript:setPage('5');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '5'}">active</c:if>">5</a>
+                    <a href="javascript:setPage('6');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '6'}">active</c:if>">6</a>
+                    <a href="/knowledgeIn?page=7" class="mx-3 mb-1">7</a>
+                    <a href="/knowledgeIn?page=8" class="mx-3 mb-1">8</a>
+                    <a href="/knowledgeIn?page=9" class="mx-3 mb-1">9</a>
+                    <a href="/knowledgeIn?page=10" class="mx-3 mb-1">10</a>
                     <a href="" class="small mx-3">다음 페이지</a>
                   </div>
                 </div>

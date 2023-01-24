@@ -33,7 +33,25 @@
                       </p>
                       <p class="small text-secondary"><span class="d-inline-block me-2">${showPost.writerDate}</span>조회수 <span>${showPost.inBoardCount}</span></p>
 
-                     <form action="" id="helpfulForm"  method="post">
+                   <script>
+                       function clickHelpful(){
+
+                        src='../resource/img/emoji-smile.png';
+                       $.ajax({
+                       		url:"helpfulCheck",
+                       		data:{
+
+                       		},
+                       		success:function(result) {
+                       		console.log(result);
+                       		},
+                       		error:function() {
+                       				console.log("도움됐어요 동작 실패");
+                       		}
+                       });
+                   </script>
+
+
                       <button onclick="location.href='/helpful'" class="px-0 bg-transparent border-0">
                          <img src="../resource/img/emoji-smile.png" width="23px" height="23px">
                           도움됐어요
