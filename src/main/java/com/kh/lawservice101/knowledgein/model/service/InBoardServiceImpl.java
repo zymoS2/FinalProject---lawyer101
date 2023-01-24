@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -39,9 +40,18 @@ public class InBoardServiceImpl implements InBoardService {
         return inBoardDao.selectInboardByKeyword(searchCon);
     }
 
+    //페이징 게시글 목록
+    @Override
+    public List<InBoardVo> PagingPost(int pageNum, int pageSize, String sortType) {
+        PageHelper.startPage(pageNum, pageSize);
+        return inBoardDao.selectInboard(sortType);
+    }
     //조회수
     @Override
-    public void  viewCount(Long inBoardCount ){
-       inBoardDao.updateViewCount(inBoardCount);
+    public void viewCount(Long inBoardCount) {
+        inBoardDao.updateViewCount(inBoardCount);
     }
+
+
 }
+

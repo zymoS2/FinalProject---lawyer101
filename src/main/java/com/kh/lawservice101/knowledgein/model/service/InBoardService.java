@@ -5,6 +5,7 @@ import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface InBoardService {
 
@@ -22,4 +23,7 @@ public interface InBoardService {
     
     //조회수
     void  viewCount(Long inBoardNum);
+
+    //페이징 게시글 목록
+    List<InBoardVo> PagingPost(int pageNum, int pageSize, String sortType);
 }

@@ -1,41 +1,62 @@
 package com.kh.lawservice101.knowledgein.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.knowledgein.model.service.InBoardService;
 import com.kh.lawservice101.knowledgein.model.vo.InBoardVo;
+import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 @Controller
 @RequestMapping
 @RequiredArgsConstructor
+@Slf4j
 public class InBoardController {
 
     private final InBoardService inBoardService;
 
+    private final static int PAGE_SIZE = 5;
+    private final static int PAGE_NUM = 1;
+
+
 
     //지식인 전체목록
-
-
     @GetMapping("/knowledgeIn")
-    public String knowledgeIn(Model model) {
-        List<InBoardVo> showInBoard = inBoardService.viewAllInBoard();
+    public String knowledgeIn(HttpServletRequest request, Model model) {
 
-        model.addAttribute("showInBoard", showInBoard);
+        String page = request.getParameter("page"); // 현재 보는 페이지의 번호
+        String sortType = request.getParameter("sortType");
+
+        if (sortType == null || sortType.length() == 0) {
+            sortType = "boardNum";
+        }
+
+        if (page == null || page.length() == 0) {
+            page = "1";
+        }
+
+        PageInfo<InBoardVo> pagePost = PageInfo.of(inBoardService.PagingPost(Integer.valueOf(page), PAGE_SIZE, sortType));
+
+        //List<InBoardVo> showInBoard = inBoardService.viewAllInBoard();
+        //model.addAttribute("showInBoard", showInBoard);
+        model.addAttribute("pagePost", pagePost);
+        model.addAttribute("sortType", sortType);
+        //model.addAttribute("page", page);
+
         return "knowledgeIn";
     }
-    //지식인글 상세페이지
 
+    //지식인글 상세페이지
     @GetMapping("/knowledgeInDetail")
     public String knowledgeInDetail(HttpServletRequest request, Model model) {
 

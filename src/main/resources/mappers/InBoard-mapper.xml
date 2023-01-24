@@ -33,40 +33,56 @@
         ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
     </select>
 
-    <update id="updateViewCount">
-        UPDATE IN_BOARD_TB
-        SET IN_BOARD_COUNT = IN_BOARD_COUNT + 1
-        WHERE IN_BOARD_NUM = #{inBoardNum}
-    </update>
-
-    <insert id="inBoardUpload" parameterType="InBoardVo">
-        INSERT INTO IN_BOARD_TB (
-            IN_BOARD_NUM
-            , IN_BOARD_TITLE
-            , IN_BOARD_CONTENT
-            , IN_BOARD_COUNT
-            , WRITE_DATE
-            , CATEGORY_NUM
-            , CLIENT_NUM
-        ) VALUES(
-            IN_BOARD_SEQ.NEXTVAL
-            , #{inBoardTitle}
-            , #{inBoardContent}
-            , #{inBoardCount}
-            , sysdate
-            , #{categoryVo.categoryNum}
-            , #{clientVo.clientNum}
-        )
-    </insert>
-
-    <!-- 이름 또는 카테고리에 해당하는 지식인 게시글 조회 -->
-    <select id="selectInboardByKeyword" parameterType="com.kh.lawservice101.lawyer.model.dto.SearchCon" resultType="InBoardVo" resultMap="InBoardResultSet">
-        SELECT * FROM IN_BOARD_TB ibt JOIN CATEGORY_TB ct ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
-        WHERE 1 = 1
-        <if test='keyword neq null and keyword neq ""'>
-            AND in_board_title LIKE '%'||#{keyword}||'%'
-            OR ct.category_name LIKE '%'||#{keyword}||'%'
+    <select id="selectInboard" resultMap="InBoardResultSet">
+        SELECT *
+        FROM IN_BOARD_TB
+        <if test="sortType == 'boardNum'">
+        ORDER BY IN_BOARD_NUM DESC
         </if>
-    </select>
 
-</mapper>
+        <if test="sortType == 'boardCount'">
+        ORDER BY IN_BOARD_COUNT DESC
+        </if>
+
+        </select>
+
+<update id="updateViewCount">
+UPDATE IN_BOARD_TB
+SET IN_BOARD_COUNT = IN_BOARD_COUNT + 1
+WHERE IN_BOARD_NUM = #{inBoardNum}
+</update>
+
+
+<insert id="inBoardUpload" parameterType="InBoardVo">
+INSERT INTO IN_BOARD_TB (
+IN_BOARD_NUM
+, IN_BOARD_TITLE
+, IN_BOARD_CONTENT
+, IN_BOARD_COUNT
+, WRITE_DATE
+, CATEGORY_NUM
+, CLIENT_NUM
+) VALUES(
+IN_BOARD_SEQ.NEXTVAL
+, #{inBoardTitle}
+, #{inBoardContent}
+, #{inBoardCount}
+, sysdate
+, #{categoryVo.categoryNum}
+, #{clientVo.clientNum}
+)
+</insert>
+
+        <!-- 이름 또는 카테고리에 해당하는 지식인 게시글 조회 -->
+<select id="selectInboardByKeyword" parameterType="com.kh.lawservice101.lawyer.model.dto.SearchCon"
+        resultType="InBoardVo" resultMap="InBoardResultSet">
+SELECT * FROM IN_BOARD_TB ibt JOIN CATEGORY_TB ct ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
+WHERE 1 = 1
+<if test='keyword neq null and keyword neq ""'>
+    AND in_board_title LIKE '%'||#{keyword}||'%'
+    OR ct.category_name LIKE '%'||#{keyword}||'%'
+</if>
+</select>
+
+
+        </mapper>
