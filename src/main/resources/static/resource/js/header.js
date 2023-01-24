@@ -19,7 +19,7 @@ $(function() {
                 {
                 top: "0",
                 left: "0",
-                width: "648",
+                width: "50%",
                 },
                 0.1
             );

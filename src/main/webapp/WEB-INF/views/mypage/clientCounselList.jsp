@@ -52,7 +52,7 @@
                                                             <div class="small text-skip-2">${lc.bookingVo.counselingContent}</div>
                                                         </div>
                                                         <div>
-                                                            <div class="small text-muted">예약일<span class="ms-2">${lc.bookingVo.bookingDate}</span></div>
+                                                            <div class="small text-muted">예약일<span class="ms-2">${fn:substring(lc.bookingVo.bookingDate,0,10)}</span></div>
                                                             <div class="small text-muted">예약시간<span class="ms-2">${lc.bookingVo.bookingTime} : 00 </span></div>
                                                         </div>
                                                     </div>

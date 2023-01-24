@@ -1,23 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-     <head>
-           <meta charset="UTF-8" />
-           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-           <title>지식IN | 법률서비스 101</title>
-
-           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
-           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
-           <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-           <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
-
-           <link href="/resource/css/common.css" rel="stylesheet" />
-
-            <link rel="stylesheet" href="/resource/css/knowledgeIN.css" />
-         <script src="/resource/js/knowledgeIn.js"></script>
+        <title>지식IN | 법률서비스 101</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+        <link href="/resource/css/common.css" rel="stylesheet" />
+        <link href="/resource/css/common.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/resource/css/knowledgeIN.css" />
+        <script src="/resource/js/knowledgeIn.js"></script>
 
          <script type="text/javascript">
          function setSortType(sortType){
@@ -34,12 +32,10 @@
             document.getElementById('knowledgeInForm').submit();
          }
          </script>
-
     </head>
-
     <body>
        <!-- header -->
-        <jsp:include page="common/header.jsp" />
+       <jsp:include page="common/header.jsp"/>
 
        <!-- sidebar -->
        <jsp:include page="common/sidebar.jsp"/>
