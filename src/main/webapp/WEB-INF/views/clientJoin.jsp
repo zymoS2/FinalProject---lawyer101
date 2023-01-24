@@ -10,19 +10,21 @@
 
     <title>로그인 | 법률서비스 101</title>
 
-        <link href="/resource/css/sign-up.css" rel="stylesheet">
-        <link href="/resource/css/common.css" rel="stylesheet">
-        <script src="/resource/js/sendSMS.js"></script>
-
+    <link href="/resource/css/common.css" rel="stylesheet">
+    <link href="/resource/css/sign-up.css" rel="stylesheet">    
+    <script src="/resource/js/sendSMS.js"></script>
+    <script src="/resource/js/lawyerJoin.js"></script>
+    
     <script type="text/javascript">
-    function clientJoin(){
-    if(confirm('가입하시겠습니까?')){
+        function clientJoin(){
+            if(confirm('가입하시겠습니까?')){
 
-    document.getElementById('clientJoinForm').setAttribute('action', '/clientJoin/insert.do');
-    document.getElementById('clientJoinForm').submit();
+            document.getElementById('clientJoinForm').setAttribute('action', '/clientJoin/insert.do');
+            document.getElementById('clientJoinForm').submit();
 
-     }
-    }
+            }
+        }
+    
     </script>
 
 </head>
@@ -42,33 +44,41 @@
                         <label for="email" class="form-label">이메일</label>
                         <input id="email" type="text" name="clientEmail" class="form-control" placeholder="이메일을 입력하세요" required>
                         <small id="emailHelp" class="form-text text-muted">예) name@example.com</small>
-                        <p class="form-text text-danger">이메일을 입력하세요</p>
+                        <p class="form-text text-danger lawyerEmail">이메일 형식에 맞지 않습니다.</p>
                     </div>
 
                     <div class="form-group">
                         <label for="id" class="form-label">아이디</label>
                         <input id="id" type="text" name="clientId" class="form-control" placeholder="이메일을 입력하세요" required>
                         <small id="idHelp" class="form-text text-muted">6~10자, 영문, 숫자</small>
-                        <p class="form-text text-danger">아이디를 입력하세요</p>
+                        <p class="form-text text-danger lawyerId">
+                            아이디 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="form-label">이름</label>
                         <input id="name" type="text" name="clientName" class="form-control" placeholder="이름을 입력하세요" required>
-                        <p class="form-text text-danger">이름을 입력하세요</p>
+                        <p class="form-text text-danger lawyerName">
+                            이름 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="password" class="form-label">비밀번호</label>
                         <input id="password" type="password" name="clientPwd" class="form-control" placeholder="비밀번호를 입력하세요" required>
                         <small id="passwordHelp" class="form-text text-muted">8~12자, 영문, 숫자, 특수문자(_-!@#$%^&*.,)</small>
-                        <p class="form-text text-danger">비밀번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerPassword">
+                            비밀번호가 형식에 맞지 않습니다.
+                        </p>
                     </div>
 
                     <div class="form-group">
                         <label for="password-confirm" class="form-label">비밀번호 재확인</label>
                         <input id="password-confirm" type="password"  name="clientRepwd" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요" required>
-                        <p class="form-text text-danger">비밀번호가 일치하지않습니다</p>
+                        <p class="form-text text-danger lawyerPasswordConfirm">
+                            비밀번호가 일치하지않습니다
+                        </p>
                     </div>
 
                     <div class="form-group">
@@ -97,11 +107,12 @@
                         <div class="input-group">
                             <input id="phone" type="text" name="clientPhone" class="form-control col me-3 rounded-2" placeholder="휴대폰 번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col" id="send-sms-button">인증번호 발송</button>
+                                <button type="button" class="btn btn-custom col lawyerButton">인증번호 발송</button>
                             </span>
                         </div>
                         <small id="phoneHelp" class="form-text text-muted">예) 01012345678</small>
-                        <p class="form-text text-danger">휴대폰 번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerPhoneText">휴대폰 번호를 입력하세요</p>
+                        <p class="form-text text-danger lawyerPhoneText1">휴대폰 번호 형식으로 입력해주세요</p>
                     </div>
 
                     <div class="form-group">
@@ -127,7 +138,7 @@
                                         <small>서비스 이용약관, 개인정보 취급방침, 개인정보 이용/수집, 프로모션 정보 수신에 모두 동의함을 의미합니다.</small>
                                         </li>
                                         <li class="checkAllBtn">
-                                            <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                                            <input type="checkbox" name="chkAll" id="chkAll" class="chkAll">
                                         </li>
                                     </label>
                                 </ul>
@@ -137,7 +148,7 @@
                                     <label>
                                         <li>이용약관 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -389,7 +400,7 @@
                                     <label>
                                         <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk1" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -463,7 +474,7 @@ PC웹, 모바일웹/앱 이용과정에서의 단말기정보(OS, 화면사이�
                                     <label>
                                         <li>개인정보 취급방침 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk2" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -814,7 +825,7 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                                     <label>
                                         <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chk">
+                                            <input type="checkbox" name="chkAgree" id="chk3" class="chkSame"">
                                         </li>
                                     </label>
                                 </ul>
@@ -822,12 +833,12 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                         </ul>
                     </div>
 
-                    <button type="button" onclick="clientJoin();" class="btn btn-custom" style="width: 100%;">가입하기</button>
+                    <button type="button" onclick="clientJoin();" class="btn btn-custom" style="width: 100%;" disabled>가입하기</button>
                 </form>
             </div>
         </div>
     </main>
     <!-- footer -->
-
+<script src="/resource/js/clientJoin.js"></script>
 </body>
 </html>
