@@ -29,7 +29,6 @@ public class InBoardController {
     private final static int PAGE_NUM = 1;
 
 
-
     //지식인 전체목록
     @GetMapping("/knowledgeIn")
     public String knowledgeIn(HttpServletRequest request, Model model) {

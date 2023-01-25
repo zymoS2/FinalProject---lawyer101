@@ -83,10 +83,10 @@
                     <a href="javascript:setPage('4');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '4'}">active</c:if>">4</a>
                     <a href="javascript:setPage('5');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '5'}">active</c:if>">5</a>
                     <a href="javascript:setPage('6');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '6'}">active</c:if>">6</a>
-                    <a href="/knowledgeIn?page=7" class="mx-3 mb-1">7</a>
-                    <a href="/knowledgeIn?page=8" class="mx-3 mb-1">8</a>
-                    <a href="/knowledgeIn?page=9" class="mx-3 mb-1">9</a>
-                    <a href="/knowledgeIn?page=10" class="mx-3 mb-1">10</a>
+                    <a href="javascript:setPage('7');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '7'}">active</c:if>">7</a>
+                    <a href="javascript:setPage('8');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '8'}">active</c:if>">8</a>
+                    <a href="javascript:setPage('9');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '9'}">active</c:if>">9</a>
+                    <a href="javascript:setPage('10');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '10'}">active</c:if>">10</a>
                     <a href="" class="small mx-3">다음 페이지</a>
                   </div>
                 </div>
