@@ -100,9 +100,6 @@
                                     </div>
                                 </div>
                               </c:when>
-                              <c:otherwise>
-                                  <h5> 현재 지난 목록이 없습니다. </h5>
-                              </c:otherwise>
                             </c:choose>
                         </c:forEach>
                     </c:otherwise>

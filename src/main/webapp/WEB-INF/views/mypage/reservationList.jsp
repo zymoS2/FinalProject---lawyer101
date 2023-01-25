@@ -63,6 +63,7 @@
                                                    </div>
                                                </a>
                                            </div>
+                                           <div>
                                                <button type= "submit" class="btn btn-danger btn-sm" style="width: 90px; height: 30px; color:white;"
                                                        onclick="cancelPay('${cp.merchantUid}','${cp.impUid}','${cp.paymentNum}')">환불 신청</button>
                                            </div>
@@ -114,9 +115,6 @@
                                         </div>
                                     </div>
                                 </c:when>
-                                <c:otherwise>
-                                    <h5> 현재 지난 목록이 없습니다. </h5>
-                                </c:otherwise>
                             </c:choose>
                         </c:forEach>
                     </c:otherwise>
@@ -132,7 +130,6 @@
 
     <script>
         $(".searchForm").hide();
-
       function cancelPay(merchantUid,impUid,paymentNum) {
 
         jQuery.ajax({
