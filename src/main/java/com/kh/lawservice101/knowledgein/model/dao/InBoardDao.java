@@ -27,4 +27,7 @@ public interface InBoardDao {
 
     //게시글 목록 조회
     List<InBoardVo> selectInboard(String sortType);
+
+    //도움됐어요 증가
+    void updateHelpCount(Long inBoardNum);
 }

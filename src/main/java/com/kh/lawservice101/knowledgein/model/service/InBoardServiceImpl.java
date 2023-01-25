@@ -40,6 +40,8 @@ public class InBoardServiceImpl implements InBoardService {
         return inBoardDao.selectInboardByKeyword(searchCon);
     }
 
+
+
     //페이징 게시글 목록
     @Override
     public List<InBoardVo> PagingPost(int pageNum, int pageSize, String sortType) {
@@ -52,6 +54,10 @@ public class InBoardServiceImpl implements InBoardService {
         inBoardDao.updateViewCount(inBoardCount);
     }
 
-
+    //도움됐어요 증가
+    @Override
+    public void helpCount(Long inBoardNum) {
+        inBoardDao.updateHelpCount(inBoardNum);
+    }
 }
 

@@ -4,6 +4,7 @@ import com.kh.lawservice101.knowledgein.model.vo.HelpfulVo;
 
 public interface HelpfulService {
 
-    // 도움됐어요 동작
-    void checkHelpful(HelpfulVo helpfulPram);
+
+    //도움됐어요 카운트 저장
+    HelpfulVo saveHelpful(HelpfulVo helpfulVo);
 }

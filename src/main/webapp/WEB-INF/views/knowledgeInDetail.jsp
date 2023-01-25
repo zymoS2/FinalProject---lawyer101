@@ -24,7 +24,7 @@
     <!-- sidebar -->
     <jsp:include page="common/sidebar.jsp"/>
 
-    <form action="" id="knowledgeInDetailForm" method="post">
+
        <div class="container" style="width: 1080px;">
 
 
@@ -38,27 +38,37 @@
                    <script>
                        function clickHelpful(){
 
-                        src='../resource/img/emoji-smile.png';
-                       $.ajax({
-                       		url:"helpfulCheck",
-                       		data:{
+                           if(${empty client}) {
+                                alert("회원만 가능합니다");
+                           } else {
+                                let src='../resource/img/emoji-smile-fill.png';
 
-                       		},
-                       		success:function(result) {
-                       		console.log(result);
-                       		},
-                       		error:function() {
-                       				console.log("도움됐어요 동작 실패");
-                       		}
-                       });
+                                $.ajax({
+                                    url:"helpfulCheck",
+                                    data: {
+                                        inBoardNum: ${showPost.inBoardNum},
+                                        clientNum: ${showPost.clientVo.clientNum}
+                                    },
+                                    success: function(result) {
+                                      console.log(result);
+                                      $(".helpCount").text(result);
+                                    },
+                                    error: function() {
+                                     console.log("도움됐어요 동작 실패");
+                                    }
+                                });
+
+                                $(".smile").attr("src", src);
+                           }
+                       }
                    </script>
 
 
-                      <button onclick="location.href='/helpful'" class="px-0 bg-transparent border-0">
-                         <img src="../resource/img/emoji-smile.png" width="23px" height="23px">
+                      <button onclick="clickHelpful();" class="px-0 bg-transparent border-0">
+                         <img class="smile" src="../resource/img/emoji-smile.png" width="23px" height="23px">
                           도움됐어요
-                      </button>
-                      </form>
+                      </button><span class="helpCount">${showPost.inBoardHelpCount}</span>
+
                     </div>
 
 
@@ -99,7 +109,7 @@
                   </ul>
               </div>
           </div>
-    </form>
+
     <!-- footer -->
     <jsp:include page="common/footer.jsp" />
 

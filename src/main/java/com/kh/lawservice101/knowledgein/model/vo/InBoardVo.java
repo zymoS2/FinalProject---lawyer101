@@ -18,4 +18,5 @@ public class InBoardVo {
     private CategoryVo categoryVo;
     private ClientVo clientVo;
     private String writerDate;
+    private int inBoardHelpCount;
 }

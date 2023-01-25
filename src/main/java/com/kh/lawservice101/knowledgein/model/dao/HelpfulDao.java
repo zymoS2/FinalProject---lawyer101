@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface HelpfulDao {
-    //도움됐어요 동작
-    void clickHelpful(HelpfulVo helpfulPram);
+
+
+    //도움됐어요 카운트 저장
+    void insertHelpful(HelpfulVo helpfulVo);
+
 }

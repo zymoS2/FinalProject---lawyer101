@@ -5,7 +5,6 @@
 <mapper namespace="com.kh.lawservice101.knowledgein.model.dao.HelpfulDao">
     <resultMap id="HelpfulResultSet" type="HelpfulVo">
         <result property="helpfulNum" column="HELPFUL_NUM"/>
-        <result property="helpfulCount" column="HELPFUL_COUNT"/>
         <association property="inBoardVo" javaType="InBoardVo">
             <result property="inBoardNum" column="IN_BOARD_NUM"/>
         </association>
@@ -15,9 +14,11 @@
         </association>
     </resultMap>
 
-    <update id="clickHelpful" parameterType="HashMap">
-        UPDATE HELPFUL_TB
-        SET HELPFUL_COUNT = HELPFUL_COUNT + 1
-        WHERE IN_BOARD_NUM = #{inBoardNum}
-    </update>
+
+
+    <insert id="insertHelpful" parameterType="HelpfulVo">
+        insert into helpful_tb values (helpful_seq.nextval, #{inBoardVo.inBoardNum}, #{clientVo.clientNum})
+    </insert>
+
+
 </mapper>

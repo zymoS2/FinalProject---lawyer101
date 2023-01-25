@@ -20,7 +20,10 @@ public interface InBoardService {
 
     // 페이징 검색
     ArrayList<InBoardVo> pagingInboard(SearchCon searchCon);
-    
+
+    //도움됐어요 증가
+    void  helpCount(Long inBoardNum);
+
     //조회수
     void  viewCount(Long inBoardNum);
 

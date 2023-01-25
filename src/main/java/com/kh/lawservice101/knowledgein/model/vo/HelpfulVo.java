@@ -12,7 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class HelpfulVo {
     private Long helpfulNum;
-    private int helpfulCount;
     private InBoardVo inBoardVo;
     private ClientVo clientVo;
 }

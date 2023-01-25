@@ -49,9 +49,8 @@
               <div class="d-flex">
                 <div style="width: 65%;">
                   <ul class="counseltable py-3 ps-0 mb-0 border-top border-bottom">
-                      <li class="d-inline-block me-3"><a href="">정확도순</a></li>
-                      <li class="d-inline-block me-3"><a href="">최신 답변순</a></li>
                       <li class="d-inline-block me-3"><a href="javascript:setSortType('boardNum');" class="<c:if test="${sortType eq 'boardNum'}">active</c:if>">최신 질문순</a></li>
+                      <li class="d-inline-block me-3"><a href="">최신 답변순</a></li>
                       <li class="d-inline-block me-3"><a href="javascript:setSortType('boardCount');" class="<c:if test="${sortType eq 'boardCount'}">active</c:if>">조회수</a></li>
                   </ul>
 
@@ -74,9 +73,8 @@
                         </c:forEach>
                     </div>
 
-
                   <div class="pagination justify-content-center align-items-center p-3">
-                    <a href="" class="small mx-3">이전 페이지</a>
+                    <a href="" class="small mx-3" >이전 페이지</a>
                     <a href="javascript:setPage('1');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '1'}">active</c:if>">1</a>
                     <a href="javascript:setPage('2');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '2'}">active</c:if>">2</a>
                     <a href="javascript:setPage('3');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '3'}">active</c:if>">3</a>
