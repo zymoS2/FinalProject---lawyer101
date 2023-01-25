@@ -42,6 +42,6 @@ public class ReviewController {
         PaymentVo paymentVo = paymentService.findPayment(num);
 
         reviewService.saveReview(reviewVo, paymentVo);
-        return "redirect:/";
+        return "redirect:/product/detail/" + paymentVo.getBookingVo().getLawyerVo().getLawyerNum();
     }
 }

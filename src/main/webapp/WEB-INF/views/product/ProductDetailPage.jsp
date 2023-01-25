@@ -114,7 +114,7 @@
                     <c:forEach var="inReply" items="${inReplyList}" begin="0" end="2">
                       <li class="me-3" style="width: 33%;">
                         <a href="/knowledgeInDetail?num=${inReply.inBoardVo.inBoardNum}" class="text-body-tertiary">
-                          <h6 class="text-black">${inReply.inBoardVo.inBoardTitle}</h6>
+                          <h6 class="text-black text-skip">${inReply.inBoardVo.inBoardTitle}</h6>
                           <p class="small mb-2 text-skip"><b class="me-2 text-custom">답변</b>${inReply.replyContent}</p>
                           <p class="small">작성일<span class="ms-2">${fn:substring(inReply.replyDate,0,10)}</span></p>
                         </a>

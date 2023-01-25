@@ -234,7 +234,7 @@
               <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
                    style="background-image: url('unsplash-photo-1.jpg')">
                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                  <h3 class="pt-3 mt-5 mb-4 display-6 lh-1 fw-bold">
+                  <h3 class="pt-3 mt-5 mb-4 display-6 lh-1 fw-bold text-skip">
                     ${inBoard.inBoardTitle}
                   </h3>
                   <ul class="d-flex list-unstyled mt-auto">

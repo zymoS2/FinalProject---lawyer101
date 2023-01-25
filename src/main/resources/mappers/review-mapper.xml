@@ -57,5 +57,6 @@
                  JOIN payment_tb p ON r.order_num = p.payment_num
                  JOIN client_tb c ON r.client_num = c.client_num
                  WHERE r.lawyer_num = ${lawyerNum}
+                    ORDER BY review_date DESC
     </select>
 </mapper>

@@ -58,7 +58,7 @@
                       <c:forEach var="sb" items="${pagePost.getList()}">
                         <a href="/knowledgeInDetail?num=${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
                           <p class="text-secondary"> ${sb.categoryVo.categoryName}</p>
-                          <h4 class="mb-3">${sb.inBoardTitle}</h4>
+                          <h4 class="mb-3 text-skip-2">${sb.inBoardTitle}</h4>
                           <input type="hidden" ${sb.inBoardNum}>
 
                           <p>

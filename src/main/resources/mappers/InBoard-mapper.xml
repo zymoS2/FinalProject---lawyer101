@@ -32,6 +32,7 @@
         FROM IN_BOARD_TB ibt
         JOIN CATEGORY_TB ct
         ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
+        ORDER BY write_date desc
     </select>
 
     <select id="selectInboard" resultMap="InBoardResultSet">
@@ -88,6 +89,7 @@
             AND in_board_title LIKE '%'||#{keyword}||'%'
             OR ct.category_name LIKE '%'||#{keyword}||'%'
         </if>
+        ORDER BY write_date DESC
     </select>
 
 
