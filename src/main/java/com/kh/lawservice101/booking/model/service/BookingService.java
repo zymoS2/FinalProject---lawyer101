@@ -18,5 +18,7 @@ public interface BookingService {
     //
     BookingVo findCounselingDetail(Long bookingNum);
 
-    List<BookingVo> findBookingListByDate(String date);
+    List<String> findBookingListByDate(String selectDate);
+
+
 }

@@ -51,6 +51,29 @@ function checkCompletion() {
   initButton();
 }
 
+//글자수 증가
+function counter(text,length) {
+    var limit = length;
+    var str = text.value.length;
+    if(str>limit) {
+        document.getElementById("reCount").innerHTML = "1500자 이상 입력했습니다.";
+        text.value=text.value.substring(0,limit);
+        text.focus();
+    }
+    document.getElementById("reCount").innerHTML = text.value.length + " 자 / 최대 " + limit + " 자";
+}
+
+//뒤로 버튼 경고창 날라기
+function goBack(){
+    var result = confirm("지금 뒤로 가기 버튼을 누르면, 현재까지 작성한 내용들이 사라집니다.");
+    if (result == true){
+        alert("예약 페이지로 넘어갑니다.");
+        window.history.back();
+    } else {
+        alert("상담 페이지에 머무릅니다.");
+    }
+}
+
 // function test5(e) {
 //   const value = document.getElementById("checkPhoneNuminput").value;
 //   console.log(value);

@@ -1,48 +1,70 @@
-.days-data {
-    cursor: pointer;
-    margin-right: 14px;
-}
 
-.day {
-    width: 50px; 
-    height: 50px; 
-    line-height: 50px;
-    color: #000;
-}
 
-.days-data.active > .day {
-    color: #fff;
-    background-color: #00bbff;
-}
+        td {
+            width: 50px;
+            height: 50px;
+        }
 
-.days-data.active > .name {
-    color: #00bbff;
-}
+        .Calendar {
+            text-align: center;
+        }
 
-.days-data.disabled {
-    pointer-events: none; 
-}
+        .Calendar>thead>tr:first-child>td {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
 
-.days-data.disabled > .day {
-    color: #b7b7b7;
-}
+        .Calendar>thead>tr:last-child>td {
+            font-weight: 600;
+        }
 
-.days-data.disabled > .name {
-    color: #b7b7b7;
-}
+        .Calendar>tbody>tr>td>p {
+            height: 45px;
+            width: 45px;
+            border-radius: 45px;
+            transition-duration: .2s;
+            line-height: 45px;
+            margin: 2.5px;
+            display: block;
+            text-align: center;
+        }
 
-.times > .time {
-    cursor: pointer;
-}
+        .pastDay {
+            color: lightgray;
+        }
 
-.times > .time.active,
-.times > .time:hover {
-    color: #00bbff;
-    outline: 2px solid #00bbff;
-    background-color: #fff !important;
-    font-weight: bold;
-}
+        .today {
+            background-color: #F5D042;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-.times > .time > small {
-    font-size: 12px;
-}
+        .futureDay {
+            background-color: #FFFFFF;
+            cursor: pointer;
+        }
+        .futureDay:hover{
+            background:#eee;
+        }
+
+        .futureDay.selectThatDay,
+        .today.selectThatDay {
+            background: #0A174E;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        .times > .time {
+            cursor: pointer;
+        }
+
+        .times > .time.active,
+        .times > .time:hover {
+            color: #00bbff;
+            outline: 2px solid #00bbff;
+            background-color: #fff !important;
+            font-weight: bold;
+        }

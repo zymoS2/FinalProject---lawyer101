@@ -7,6 +7,7 @@ import com.kh.lawservice101.client.model.vo.ClientVo;
 import com.kh.lawservice101.lawyer.model.service.LawyerService;
 import com.kh.lawservice101.lawyer.model.vo.LawyerVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class BookingController {
     //예약 페이지 뿌려주는 GET메서드
     @GetMapping("/{lawyerNum}")
     public String bookingList(@PathVariable Long lawyerNum, Model model) {
-        lawyerNum = 3L; //임시
+        lawyerNum = 2L; //임시
         lawyerInfo = lawyerService.findLawyer(lawyerNum);
         model.addAttribute("lawyerInfo", lawyerInfo); //모델은 화면에 뿌려주는거.
         return "booking/booking";
@@ -71,17 +72,18 @@ public class BookingController {
         return "redirect:/payment/pay"; // controller간의 이동
     }
 
-    @PostMapping("/getTimeByDate")
-    public String getTimeByDate(@RequestParam String date) {
-        System.out.println("date = " + date);
+    @PostMapping(value = "/getTimeByDate", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<String> getTimeByDate(@RequestParam String selectDate) {
         int hour = LocalDateTime.now().getHour();
-        System.out.println("hour = " + hour);
+        System.out.println("date = " + selectDate); //클릭한 날짜
+        System.out.println("hour = " + hour); //현재 시간
 
-        List<BookingVo> bookingListByDate = bookingService.findBookingListByDate(date);
-        for (BookingVo bookingVo : bookingListByDate) {
-            System.out.println("bookingVo.getBookingTime() = " + bookingVo.getBookingTime());
-        }
-        [9, 10, 13]
-        return "ok";
+        List<String> bookingListByDate = bookingService.findBookingListByDate(selectDate); //클릭한 날짜의 예약 목록들을 가져옴.
+        System.out.println("bookingListByDate : " + bookingListByDate);
+
+
+
+        return bookingListByDate;
     }
 }

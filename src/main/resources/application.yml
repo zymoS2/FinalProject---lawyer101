@@ -70,3 +70,8 @@ pagehelper:
   auto-runtime-dialect: false # Runtime에 DB 자동 설정
   close-conn: true # DB Connection을 닫을 지 여부
   default-count: true # mapper 방식 사용시 true 설정
+
+
+#
+imp_key: 1548401157108344
+imp_secret: A8uzxb0JZbSQqovNButHMUZMqmaWzxX95AVFKlFCK8sywCPFtM5JNEjl4Tr2xGj6wyuZVxyeWExDAsNA

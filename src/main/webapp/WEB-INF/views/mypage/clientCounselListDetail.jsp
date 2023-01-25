@@ -113,6 +113,7 @@
                 </p>
             </div>
         </div>
+        <button type="button" class="btn btn-custom" onclick="history.back()">뒤로</button>
     </div>
 </body>
 </html>

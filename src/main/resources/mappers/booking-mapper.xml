@@ -92,5 +92,6 @@
                           join client_TB c on c.client_num = b.client_num
                           join lawyer_TB l on l.lawyer_num = b.lawyer_num
         where b.booking_date = #{date}
+        order by to_number(BOOKING_TIME) asc
     </select>
 </mapper>

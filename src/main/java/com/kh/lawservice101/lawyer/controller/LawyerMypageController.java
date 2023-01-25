@@ -33,7 +33,7 @@ public class LawyerMypageController {
     @GetMapping("/counsel-list")
     public String counselList (Model model) {
         //임시
-        Long lawyerNum = 4L;
+        Long lawyerNum = 2L;
         LawyerCounselList = paymentService.findPaymentList(lawyerNum);
         model.addAttribute("lawyerCounselList",LawyerCounselList);
 

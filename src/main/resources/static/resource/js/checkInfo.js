@@ -44,7 +44,7 @@ function requestCard(params) {
       name: params.lawyerName + " 변호사 [일시 : " + params.bookingDate + " ]" ,
       amount: 200,
       buyer_email: "okmail@mail.com",
-      buyer_name: "다솜3",
+      buyer_name: "다솜2",
       buyer_tel: "010-3333-3333"
 
     },function (rsp) { //승인
@@ -94,7 +94,7 @@ function requestKakaoPay(params) {
       name: params.lawyerName + " 변호사 [일시 : " + params.bookingDate + " ]" ,
       amount: 200,
       buyer_email: "okmail@mail.com",
-      buyer_name: "다솜3",
+      buyer_name: "다솜2",
       buyer_tel: "010-3333-3333"
 
     },function (rsp) { //승인

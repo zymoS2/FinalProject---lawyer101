@@ -172,22 +172,19 @@
                                             <input class="form-check-input" type="radio" name="payment" value="kakaopay" > &nbsp; 카카오 페이 결제
                                         </label>
                                     </li>
-                                    <li>
-                                        <label class="form-label">
-                                            <input class="form-check-input" type="radio" name="payment" value="naverpay" > &nbsp; 네이버 페이 결제
-                                        </label>
-                                    </li>
                                 </ul>
                         </div>
                         <hr>
                         <div class="m-4">
                             <h4 id="scrollspyHeading3" class="fs-5 mb-3"><b>결제 정보</b></h4>
-                            <h5 class="mb-3">상담료 <b>50,000원</b></h5>
+                            <h5 class="mb-3">상담료 <span style="background : #ffe900"><b>50,000원</b></span></h5>
                             <p class="small mb-2 text-secondary">
-                            예약취소는 15분 전화상담 1시간 전까지만 마이페이지에서 취소 가능하며, 이후에는 취소 및 환불이 불가능합니다.<br/>
-                            예약날짜 및 시간변경은 15분 전화상담 1시간 전까지만 가능하며, 로톡 고객센터로 문의주시면 됩니다.<br/>
-                            변호사 사정으로 상담을 하지 못한 경우에는 100% 환불해드립니다.<br/>
-                            의뢰인 사정으로 상담을 하지 못한 경우 또는 상담이 이루어진 경우에는 환불해드리지 않습니다.<br/>
+                            <strong>법률 서비스 101에서 지정한 1회 법적 자문 비용은 50,000원으로, 모든 변호사의 상담료는 동일합니다.<br></strong>
+                            변호사의 법률 자문 이후 계약서 검토, 자문, 소송 등 추가적인 법률 서비스는 <strong>추가 상담료가 발생</strong>할 수 있습니다.<br>
+                            추가적인 법률 서비스는 담당 변호사와 진행되고, 추가 자문 제공 및 상담료에 있어,  <strong>법률 서비스101 측 과는 무관 </strong>합니다.<br><br>
+                            예약 날짜는 <Strong>마이페이지에서 확인</strong> 할 수 있습니다.<br>
+                            <strong>변호사 사정</strong> 으로 상담을 하지 못한 경우에는 <strong>100% 환불</strong> 해드립니다.<br/>
+                            <strong>의뢰인 사정</strong> 으로 상담을 하지 못한 경우 또는 상담이 이루어진 경우에는 <strong>환불해드리지 않습니다.</strong><br/>
                             </p>
                         </div>
                         <hr>
@@ -216,7 +213,7 @@
                     </div>
             </div>
             <div class="d-flex justify-content-between">
-                <input type="button" class="btn btn-custom mt-4" name="BackButton" value="뒤로" onclick="history.back(-1)"></input>
+                <input type="button" class="btn btn-custom mt-4" name="BackButton" value="뒤로" onclick="history.back()"></input>
                 <input type="button" class="btn btn-custom mt-4" name="checkButton" value="결제하기" id="checkButton" disabled></input>
                 <input type="hidden" value="payment" id="paymentVal">
             </div>

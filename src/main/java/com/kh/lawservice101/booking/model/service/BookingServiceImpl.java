@@ -5,7 +5,11 @@ import com.kh.lawservice101.booking.model.vo.BookingVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +47,26 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<BookingVo> findBookingListByDate(String date) {
-        return bookingDao.selectBookingByDate(date);
+    public List<String> findBookingListByDate(String selectDate) {
+
+         //클릭한 예약 목록을 가져옴.
+        List<BookingVo> bookingListByDate = bookingDao.selectBookingByDate(selectDate);
+
+        ArrayList<String> alreadyBookingTime = new ArrayList<>(); //이미 예약 완료된 시간을 담는 변수.
+
+        for (BookingVo bookingVo : bookingListByDate) {
+            alreadyBookingTime.add(bookingVo.getBookingTime()); //bookingVo의 bookingTime만 for문을 이용해 담는다.
+        }
+
+        //System.out.println("alreadyBookingTime" + alreadyBookingTime);
+
+        String[] bookingTime = {"9", "10", "11", "13", "14", "15", "16", "17"}; //비교군
+        List<String> bookingTimeList = new ArrayList<>(Arrays.asList(bookingTime)); // remove를하기 위해서는Arrays.asList코드를 감싸서 리스트를생성해야 리스트 원소를 삭제할수있음.
+        //System.out.println("bookingTimeList : " + bookingTimeList );
+        bookingTimeList.removeAll(alreadyBookingTime);
+        //System.out.println("차집합 : " +  bookingTimeList.toString());
+
+
+        return bookingTimeList;
     }
 }

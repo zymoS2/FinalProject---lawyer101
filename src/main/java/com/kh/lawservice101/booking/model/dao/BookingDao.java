@@ -17,5 +17,5 @@ public interface BookingDao {
 
     BookingVo selectBookingDetail(Long bookingNum);
 
-    List<BookingVo> selectBookingByDate(String date);
+    List<BookingVo> selectBookingByDate(String selectDate);
 }

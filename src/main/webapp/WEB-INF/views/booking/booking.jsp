@@ -19,7 +19,7 @@
         <link href="/resource/css/common.css" rel="stylesheet">
 
         <link href="/resource/css/booking.css" rel="stylesheet">
-        <script src="/resource/js/booking2.js" charset="UTF-8"></script>
+        <script src="/resource/js/booking.js" charset="UTF-8"></script>
 
         <!-- <script type="text/javascript">
             const myModal = document.getElementById('myModal')
@@ -29,6 +29,7 @@
               myInput.focus()
             })
         </> -->
+
     </head>
 
     <body>
@@ -49,14 +50,38 @@
                 <button type="button" class="position-absolute top-0 start-100 translate-middle btn btn-sm btn-secondary rounded-pill" style="width: 2rem; height:2rem;">3</button>
             </div>
 
-
-
             <!-- calendar  -->
             <h3 class="text-center mb-5">${lawyerInfo.lawyerName} 변호사와 상담예약</h3>
             <div id="reservation">
               <div class="date-table">
                 <p class="fs-5 fw-bold">날짜선택</p>
-                <div class="days d-flex justify-content-start mb-4 text-center">
+                        <table class="Calendar">
+                            <thead>
+                                <tr>
+                                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                                    <td colspan="5">
+                                        <span id="calYear"></span>년
+                                        <span id="calMonth"></span>월
+                                    </td>
+                                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                                </tr>
+                                <tr>
+                                    <td>일</td>
+                                    <td>월</td>
+                                    <td>화</td>
+                                    <td>수</td>
+                                    <td>목</td>
+                                    <td>금</td>
+                                    <td>토</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <form>
+                                <input type="hidden" name="bookingDate">
+                                <input type="hidden" name="bookingTime">
+                            </form>
+                            </tbody>
+                        </table>
                 </div>
                 <p class="fs-5 fw-bold">시간 선택</p>
                 <ul class="times ps-0">
@@ -100,15 +125,15 @@
                       <table class="table table-borderless">
                           <tr>
                             <td>변호사</td>
-                            <td>${lawyerInfo.lawyerName}</td>
+                            <td><strong>${lawyerInfo.lawyerName}</strong></td>
                           </tr>
                           <tr>
                             <td>법률사무소/법무법인</td>
-                            <td>${lawyerInfo.companyVo.companyName}</td>
+                            <td><strong>${lawyerInfo.companyVo.companyName}</strong></td>
                           </tr>
                           <tr>
                             <td>주소</td>
-                            <td>${lawyerInfo.companyVo.companyAddress}</td>
+                            <td><strong>${lawyerInfo.companyVo.companyAddress}</strong></td>
                           </tr>
                       </table>
                     </div>
@@ -122,31 +147,35 @@
                   </h2>
                   <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div class="accordion-body">
-                      예약한 날짜에 변호사와 채팅으로 상담이 진행 됩니다. <br>
-                      예약 시 작성한 상담글을 변호사가 사전검토합니다.<br>
-                      상담예약 및 작성한 상담내용은 <strong>‘변호사의 비밀유지’</strong>에 의해 비밀보호됩니다.<br>
-                      계약서 검토, 자문 등의 추가적인 법률 서비스는 추가 상담료가 발생할 수 있습니다.<br>
+                      <strong>1. 법률 서비스는 <span style="background : #ffe900">방문 상담</span>을 기본 원칙으로 법적 서비스가 제공 됩니다.</strong><br><br>
+                      <strong>2. 예약 시 작성한 상담글을 변호사가 사전검토합니다.</strong><br>
+                      &emsp;상담예약 및 작성한 상담내용은 <span style="background : #ffe900">‘변호사의 비밀유지’</span>에 의해 비밀보호됩니다.<br><br>
+                      <strong>3. 법률 서비스 101에서 지정한 1회 법적 자문 비용은 50,000원으로, 모든 변호사의 상담료는 동일합니다.<br></strong><br>
+                      &emsp;변호사의 법률 자문 이후 계약서 검토, 자문, 소송 등 추가적인 법률 서비스는 추가 상담료가 발생할 수 있습니다.<br>
+                      &emsp;추가적인 법률 서비스는 담당 변호사와 진행되고, 추가 자문 제공 및 상담료에 있어,  <span style="background : #ffe900">법률 서비스101 측 과는 무관 </span>합니다.<br>
                     </div>
                   </div>
                 </div>
                 <div class="accordion-item bg-body-tertiary">
                   <h2 class="accordion-header" id="panelsStayOpen-headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                      예약취소 및 환불 규정
+                      예약확인 및 환불 규정
                     </button>
                   </h2>
                   <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                     <div class="accordion-body">
-                      예약 날짜 및 시간 변경, 예약 취소는 <strong>3일 전</strong>까지만 마이페이지에서 취소 가능하며, 이후에는 취소 및 환불이 불가능합니다. <br>
-                      변호사 사정으로 상담을 하지 못한 경우에는 100% 환불해드립니다. <br>
+                      예약 날짜는 마이페이지에서 확인 할 수 있습니다.<br>
+                      변호사 사정으로 상담을 하지 못한 경우, 법률서비스101 고객센터에 연락 주시면 100% 환불해드립니다. <br>
                       의뢰인 사정으로 상담을 하지 못한 경우 또는 상담이 이루어진 경우에는 환불해드리지 않습니다. <br>
                     </div>
                   </div>
                 </div>
                 <div class="text-end mt-4">
                     <form method="post">
-                        <button type="button" class="btn btn-custom" onclick="#">뒤로</button>
-                        <button type="submit" class="btn btn-custom">상담 내용 작성하기</button>
+                        <button type="button" class="btn btn-custom" onclick="history.back()">뒤로</button>
+                        <button type="submit" class="btn btn-custom" id="goCounselbtn" >상담 내용 작성하기</button>
+                        <input type="hidden" name="bookingDate">
+                        <input type="hidden" name="bookingTime">
                     </form>/
                 </div>
             </div>
@@ -154,5 +183,12 @@
 
         <!-- footer -->
 
+
+
+    <script>
+        window.onload = function() {
+           showCalendar();
+        }
+    </script>
     </body>
 </html>
