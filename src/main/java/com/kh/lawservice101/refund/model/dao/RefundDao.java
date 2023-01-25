@@ -1,4 +1,4 @@
-package com.kh.lawservice101.refund.model.Dao;
+package com.kh.lawservice101.refund.model.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

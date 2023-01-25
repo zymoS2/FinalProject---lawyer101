@@ -2,7 +2,7 @@ package com.kh.lawservice101.refund.model.service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.kh.lawservice101.refund.model.Dao.RefundDao;
+import com.kh.lawservice101.refund.model.dao.RefundDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
