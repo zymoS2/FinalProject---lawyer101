@@ -13,9 +13,6 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
-        <link href="/resource/css//headers.css" rel="stylesheet">
-        <link href="/resource/css/sidebars.css" rel="stylesheet">
-        <link href="/resource/css/footer.css" rel="stylesheet">
         <link href="/resource/css/common.css" rel="stylesheet">
 
         <link href="/resource/css/booking.css" rel="stylesheet">
@@ -34,10 +31,10 @@
 
     <body>
       <!-- header -->
-
+      <jsp:include page="../common/header.jsp"/>
 
       <!-- sidebar -->
-
+      <jsp:include page="../common/sidebar.jsp"/>
 
         <!-- main -->
         <div class="container" style="width: 800px;">
@@ -52,10 +49,10 @@
 
             <!-- calendar  -->
             <h3 class="text-center mb-5">${lawyerInfo.lawyerName} 변호사와 상담예약</h3>
-            <div id="reservation">
+            <div class="mb-4" id="reservation">
               <div class="date-table">
                 <p class="fs-5 fw-bold">날짜선택</p>
-                        <table class="Calendar">
+                        <table class="Calendar mx-auto">
                             <thead>
                                 <tr>
                                     <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
@@ -90,30 +87,8 @@
               </div>
             </div>
 
-            <div class="text-end my-3">
-              <a href="" class="link-primary text-decoration-underline" id="question" data-bs-toggle="modal" data-bs-target="#exampleModal">혹시 해외에서 이용 중이신가요?</a>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">이용하지마세요</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-custom">확인</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- info -->
-            <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion container" id="accordionPanelsStayOpenExample" style="max-width: 800px;">
                 <div class="accordion-item bg-body-tertiary">
                   <h2 class="accordion-header" id="panelsStayOpen-headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -176,13 +151,13 @@
                         <button type="submit" class="btn btn-custom" id="goCounselbtn" >상담 내용 작성하기</button>
                         <input type="hidden" name="bookingDate">
                         <input type="hidden" name="bookingTime">
-                    </form>/
+                    </form>
                 </div>
             </div>
         </div>
 
         <!-- footer -->
-
+      <jsp:include page="../common/footer.jsp"/>
 
 
     <script>

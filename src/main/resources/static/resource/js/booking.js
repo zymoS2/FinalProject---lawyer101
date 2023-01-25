@@ -164,4 +164,6 @@
          $(document).ready(function() {
                          $('#goCounselbtn').attr('disabled', 'disabled');
 
+                         $(".searchForm").hide();
+
           });

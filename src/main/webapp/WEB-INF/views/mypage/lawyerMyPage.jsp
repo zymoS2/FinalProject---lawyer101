@@ -190,6 +190,7 @@
                 })
             }
         });
+        $(".searchForm").hide();
     </script>
 </body>
 </html>

@@ -152,7 +152,7 @@ function paymentComplete(params) {
                   msg += "결제 승인 시각 : " + params.paidAt +"\n";
 
               alert (msg);
-              location.href="/mypage/reservation-list";
+              location.href="/mypage/reservation-list/";
          }
       }).fail(function() {
                console.log("통신 실패");
