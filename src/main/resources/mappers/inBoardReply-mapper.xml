@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kh.lawservice101.knowledgein.model.dao.InBoardReplyDao">
+    <resultMap id="inReplyResultMap" type="InReplyVo">
+        <result property="replyNum" column="reply_num"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyDate" column="reply_date"/>
+        <association property="lawyerVo" javaType="LawyerVo">
+            <result property="lawyerNum" column="lawyer_num"/>
+            <result property="lawyerId" column="lawyer_id"/>
+            <result property="lawyerPwd" column="lawyer_pwd"/>
+            <result property="lawyerName" column="lawyer_name"/>
+            <result property="lawyerBirthyy" column="lawyer_birthyy"/>
+            <result property="lawyerGender" column="lawyer_gender"/>
+            <result property="lawyerPhone" column="lawyer_phone"/>
+            <result property="lawyerImg" column="lawyer_img"/>
+            <result property="lawyerEmail" column="lawyer_email"/>
+            <result property="lawyerLicenseNum" column="lawyer_license_num"/>
+            <result property="lawyerIntroMsg" column="lawyer_intro_msg"/>
+            <result property="LawyerMainImg" column="lawyer_main_img"/>
+            <association property="companyVo" javaType="CompanyVo">
+                <result property="companyNum" column="company_num"/>
+                <result property="companyName" column="company_name"/>
+                <result property="companyAddress" column="company_address"/>
+                <result property="companyPhone" column="company_phone"/>
+            </association>
+            <association property="categoryVo" javaType="CategoryVo">
+                <result property="categoryNum" column="category_num"/>
+                <result property="categoryName" column="category_name"/>
+            </association>
+        </association>
+        <association property="inBoardVo" javaType="InBoardVo">
+            <result property="inBoardNum" column="IN_BOARD_NUM"/>
+            <result property="inBoardTitle" column="IN_BOARD_TITLE"/>
+            <result property="inBoardContent" column="IN_BOARD_CONTENT"/>
+            <result property="inBoardCount" column="IN_BOARD_COUNT"/>
+            <result property="writerDate" column="WRITE_DATE"/>
+            <association property="categoryVo" javaType="CategoryVo">
+                <result property="categoryNum" column="CATEGORY_NUM"/>
+                <result property="categoryName" column="CATEGORY_NAME"/>
+            </association>
+            <association property="clientVo" javaType="ClientVo">
+                <result property="clientNum" column="CLIENT_NUM"/>
+                <result property="clientId" column="CLIENT_ID"/>
+                <result property="clientName" column="CLIENT_NAME"/>
+            </association>
+        </association>
+    </resultMap>
+
+    <insert id="insertReply" parameterType="InReplyVo">
+        <selectKey keyProperty="replyNum" resultType="Long" order="AFTER">
+            SELECT IN_REPLY_SEQ.CURRVAL FROM DUAL
+        </selectKey>
+        INSERT INTO IN_REPLY_TB (
+        REPLY_NUM
+        , REPLY_CONTENT
+        , REPLY_DATE
+        , LAWYER_NUM
+        , IN_BOARD_NUM
+        ) VALUES(
+        IN_REPLY_SEQ.NEXTVAL
+        , #{replyContent}
+        , default
+        , #{lawyerVo.lawyerNum}
+        , #{inBoardVo.inBoardNum}
+        )
+    </insert>
+
+    <select id="selectInReply" resultMap="inReplyResultMap" resultType="InReplyVo">
+        SELECT * FROM in_reply_tb r
+        JOIN lawyer_tb l ON r.lawyer_num = l.lawyer_num
+            JOIN company_tb c ON l.company_num = c.company_num
+            JOIN category_tb ca ON l.category_num = ca.category_num
+        JOIN in_board_tb i ON r.in_board_num = i.in_board_num
+        WHERE r.reply_num = #{replyNum}
+    </select>
+
+    <select id="selectAllInReplyByInBoardNum" resultMap="inReplyResultMap" resultType="InReplyVo">
+        SELECT * FROM in_reply_tb r
+        JOIN lawyer_tb l ON r.lawyer_num = l.lawyer_num
+            JOIN company_tb c ON l.company_num = c.company_num
+            JOIN category_tb ca ON l.category_num = ca.category_num
+        JOIN in_board_tb i ON r.in_board_num = i.in_board_num
+        WHERE r.in_board_num = #{inBoardNum}
+        ORDER BY reply_date DESC
+    </select>
+</mapper>

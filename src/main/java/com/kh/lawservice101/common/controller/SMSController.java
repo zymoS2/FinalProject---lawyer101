@@ -16,7 +16,7 @@ public class SMSController {
     public String SMSSend(@RequestParam String phoneNum) {
         int randomNumber = (int)((Math.random() * (9999 - 1000 + 1)) + 1000); // 난수 생성
 
-        smsService.certifiedPhoneNumber(phoneNum, randomNumber);
+//        smsService.certifiedPhoneNumber(phoneNum, randomNumber);
         System.out.println("randomNumber = " + randomNumber);
         return Integer.toString(randomNumber); // data 반환
     }

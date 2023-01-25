@@ -26,3 +26,6 @@
   bottom: 33px;
   cursor: pointer;
 }
+.phoneText{
+  opacity: 0;
+}

@@ -15,6 +15,7 @@
     <link href="/resource/css/common.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/resource/css/knowledgeIN.css" />
+    <script src="/resource/js/knowledgeInDetail.js"></script>
 
 </head>
 <body>
@@ -36,7 +37,7 @@
                       <p class="small text-secondary"><span class="d-inline-block me-2">${showPost.writerDate}</span>조회수 <span>${showPost.inBoardCount}</span></p>
 
                    <script>
-                       function clickHelpful(){
+                    function clickHelpful(){
 
                            if(${empty client}) {
                                 alert("회원만 가능합니다");
@@ -71,41 +72,39 @@
 
                     </div>
 
-
+                    
               <hr>
+
+                <c:if test="${!empty lawyer}">
+                    <form class="mb-3">
+                        <h6 class="fw-bold">댓글 등록</h6>
+                        <textarea name="replyContent" id="replyContent" cols="30" rows="5" class="form-control mb-2" style="resize: none;"></textarea>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-custom" id="replyButton">등록</button>
+                        </div>
+                    </form>
+                </c:if>
+
               <div class="py-3">
-                  <h6 class="fw-bold">변호사 답변 총 <span class="text-custom">2건</span></h6>
-                  <ul class="ps-0 py-4">
-                      <li>
-                          <div class="d-flex align-items-center bg-body-tertiary py-4 px-3 rounded-3">
-                              <a href="productDetailPage.html" style="width: 64px; height: 64px;">
-                                  <img src="../resource/img/profile.png" alt="" width="100%" height="100%">
-                              </a>
-                              <div class="ms-3">
-                                  <p class="mb-1 text-secondary small">기성용법률사무소</p>
-                                  <a href="productDetailPage.html" class="mb-0 fw-bold">기성용 변호사</a>
-                              </div>
-                          </div>
-                          <div class="p-4">
-                              <p>문의주신 사안의 경우 경찰이 모든 자료를 검찰에 보내버린 상태라면 정보공개청구를 통해 열람이 어려울 것입니다. 이 경우 가까운 검찰청 민원실에 방문하셔서 열람신청을 하실 수 있을 것이니 참고하시기 바라겠습니다.</p>
-                              <p class="small text-secondary">2023.01.01</p>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="d-flex align-items-center bg-body-tertiary py-4 px-3 rounded-3">
-                              <a href="productDetailPage.html" style="width: 64px; height: 64px;">
-                                  <img src="../resource/img/profile.png" alt="" width="100%" height="100%">
-                              </a>
-                              <div class="ms-3">
-                                  <p class="mb-1 text-secondary small">한바다 법무법인</p>
-                                  <a href="productDetailPage.html" class="mb-0 fw-bold">우영우 변호사</a>
-                              </div>
-                          </div>
-                          <div class="p-4">
-                              <p>문의주신 사안의 경우 경찰이 모든 자료를 검찰에 보내버린 상태라면 정보공개청구를 통해 열람이 어려울 것입니다. 이 경우 가까운 검찰청 민원실에 방문하셔서 열람신청을 하실 수 있을 것이니 참고하시기 바라겠습니다.</p>
-                              <p class="small text-secondary">2023.01.01</p>
-                          </div>
-                      </li>
+                  <h6 class="fw-bold">변호사 답변 총 <span class="text-custom replyCount">${inReplyList.size()}</span></h6>
+                  <ul class="ps-0 py-4 replyList">
+                   <c:forEach var="inReplyVo" items="${inReplyList}">
+                        <li>
+                            <div class="d-flex align-items-center bg-body-tertiary py-4 px-3 rounded-3">
+                                <a href="/product/detail/${inReplyVo.lawyerVo.lawyerNum}" style="width: 64px; height: 64px;">
+                                    <img src="/display?fileName=${inReplyVo.lawyerVo.lawyerImg}" onerror="this.src='/resource/img/profile.png';" class="rounded-circle" alt="" width="100%" height="100%">
+                                </a>
+                                <div class="ms-3">
+                                    <p class="mb-1 text-secondary small">${inReplyVo.lawyerVo.companyVo.companyName}</p>
+                                    <a href="/product/detail/${inReplyVo.lawyerVo.lawyerNum}" class="mb-0 fw-bold">${inReplyVo.lawyerVo.lawyerName} 변호사</a>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <p>${inReplyVo.replyContent}</p>
+                                <p class="small text-secondary">${inReplyVo.replyDate}</p>
+                            </div>
+                        </li>
+                   </c:forEach>
                   </ul>
               </div>
           </div>
@@ -115,6 +114,45 @@
 
     <script>
         $(".searchForm").hide();
+
+        $("#replyButton").click(function() {
+            const replyContent = $("#replyContent").val();
+
+            if(validate(replyContent)) {
+                $.ajax({
+                    url: "/knowledgeInDetail/reply",
+                    method: "POST",
+                    data: {"replyContent": replyContent,
+                            "num": ${showPost.inBoardNum}
+                            },
+                    success: function(data) {
+                        const html = $(
+                         "<li>" +
+                              "<div class='d-flex align-items-center bg-body-tertiary py-4 px-3 rounded-3'>" +
+                                  "<a href='/product/detail/" + data.lawyerNum +"' style='width: 64px; height: 64px;'>" +
+                                      "<img src='/display?fileName=" + data.lawyerImg + "' alt='' class='rounded-circle' width='100%' height='100%'>" +
+                                  "</a>" +
+                                  "<div class='ms-3'>" +
+                                      "<p class='mb-1 text-secondary small'>" + data.companyName + "</p>" +
+                                      "<a href='/product/detail/" + data.lawyerNum +"' class='mb-0 fw-bold'>" + data.lawyerName + " 변호사</a>" +
+                                  "</div>" +
+                              "</div>" +
+                              "<div class='p-4'>" +
+                                  "<p>" + data.replyContent + "</p>" +
+                                  "<p class='small text-secondary'>" + data.replyDate + "</p>" +
+                              "</div>" +
+                          "</li>");
+                        $(".replyList").prepend(html);
+                        $(".replyCount").text(data.replySize);
+                        $("#replyContent").val("");
+                        $("#replyContent").focus();
+                    },
+                    error: function() {
+                        console.log("ajax 통신 실패");
+                    }
+                })
+            }
+            })
     </script>
 </body>
 </html>

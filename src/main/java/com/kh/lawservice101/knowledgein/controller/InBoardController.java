@@ -3,8 +3,10 @@ package com.kh.lawservice101.knowledgein.controller;
 import com.github.pagehelper.PageInfo;
 import com.kh.lawservice101.category.model.vo.CategoryVo;
 import com.kh.lawservice101.client.model.vo.ClientVo;
+import com.kh.lawservice101.knowledgein.model.service.InBoardReplyService;
 import com.kh.lawservice101.knowledgein.model.service.InBoardService;
 import com.kh.lawservice101.knowledgein.model.vo.InBoardVo;
+import com.kh.lawservice101.knowledgein.model.vo.InReplyVo;
 import com.kh.lawservice101.lawyer.model.dto.SearchCon;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,7 @@ import java.util.List;
 public class InBoardController {
 
     private final InBoardService inBoardService;
+    private final InBoardReplyService inBoardReplyService;
 
     private final static int PAGE_SIZE = 5;
     private final static int PAGE_NUM = 1;
@@ -64,12 +67,14 @@ public class InBoardController {
         //2. 파라미터의 객체형을 바꾼다
         long number = Long.parseLong(num);
         InBoardVo showPost = inBoardService.findPost(number);
+        List<InReplyVo> inReplyList = inBoardReplyService.findAllInReplyByInBoardNum(number);
 
         //      Long inBoardNum = inBoardVo.getInBoardNum();
         //     showPost = inBoardService.findPost(inBoardNum);
 
         if (showPost != null) {
             model.addAttribute("showPost", showPost);
+            model.addAttribute("inReplyList", inReplyList);
             inBoardService.viewCount(number);
             return "knowledgeInDetail";
         } else { // 게시글없으면 목록으로 돌아간다
