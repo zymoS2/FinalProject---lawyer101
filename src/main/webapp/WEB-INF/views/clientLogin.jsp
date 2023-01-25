@@ -66,15 +66,6 @@
 
               <hr>
 
-              <div class="sns-login">
-                  <div class="sns-login-prov kakao">
-                      <a href=""><img src="/resource/img/kakao_login.png" alt="kakao"></a>
-                  </div>
-                  <div class="sns-login-prov naver">
-                      <a href=""><img src="/resource/img/naver_login.png" alt="naver"></a>
-                  </div>
-              </div>
-
               <p class="fs-6">아직 회원이 아니신가요? <a href="/joinOption" class="text-danger">회원가입</a></p>
           </main>
 </form>
