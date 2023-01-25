@@ -53,7 +53,7 @@
                 <div class="mb-3">
                     <div id="inputInfo">
                         <label for="exampleFormControlInput1" class="form-label fw-bold">예약자 정보</label>
-                        <input type="text" class="form-control mb-3 shadow-sm bg-body-tertiary rounded-rounded" id="exampleFormControlInput1" placeholder="${clientInfo.clientName}" readonly>
+                        <input type="text" class="form-control mb-3 shadow-sm bg-body-tertiary rounded-rounded" id="exampleFormControlInput1" placeholder="${client.clientName}" readonly>
                         <div style="display : flex;">
                             <div style="width: 45%;">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">예약 날짜</label>

@@ -43,9 +43,9 @@ function requestCard(params) {
       merchant_uid: "merchant_" + makeMerchantUid,
       name: params.lawyerName + " 변호사 [일시 : " + params.bookingDate + " ]" ,
       amount: 200,
-      buyer_email: "okmail@mail.com",
-      buyer_name: "다솜2",
-      buyer_tel: "010-3333-3333"
+      buyer_email: params.clientEmail,
+      buyer_name: params.clientName,
+      buyer_tel: params.clientPhone
 
     },function (rsp) { //승인
        if (rsp.success) {
@@ -93,9 +93,9 @@ function requestKakaoPay(params) {
       merchant_uid: "merchant_" + makeMerchantUid,
       name: params.lawyerName + " 변호사 [일시 : " + params.bookingDate + " ]" ,
       amount: 200,
-      buyer_email: "okmail@mail.com",
-      buyer_name: "다솜2",
-      buyer_tel: "010-3333-3333"
+      buyer_email: params.clientEmail,
+      buyer_name: params.clientName,
+      buyer_tel: params.clientPhone
 
     },function (rsp) { //승인
        if (rsp.success) {
@@ -152,7 +152,7 @@ function paymentComplete(params) {
                   msg += "결제 승인 시각 : " + params.paidAt +"\n";
 
               alert (msg);
-              location.href="/mypage/reservation-list/";
+              location.href="/mypage/reservation-list/" + params.clientNum;
          }
       }).fail(function() {
                console.log("통신 실패");

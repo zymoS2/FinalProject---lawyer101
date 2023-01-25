@@ -75,7 +75,7 @@
                                 </tr>
                                 <tr>
                                     <th style="width: 30%">상담 종류</th>
-                                    <td>${categoryName}</td>
+                                    <td>${categoryName} </td>
                                 </tr>
                             </table>
                         </div>
@@ -129,6 +129,7 @@
                                     의뢰인과 변호사는 서로의 명예를 해치거나 과장광고와 같은 서로의 동의를 얻지 아니한 약속을 다른사람에게 할 수 없으며 이로 인한 책임은 고의 또는 과실 있는 당사자가 부담합니다.<br/>
                                     의뢰인과 변호사는 상담과 관련된 기타 사항에 관하여는 일반 민법의 규정에 따라 권리와 의무를 부담합니다.<br/>
                                     의뢰인과 변호사는 법률상담에 관하여 위 사항에 서로 동의합니다.<br/>
+
                             </p>
                         </div>
                     </div>
@@ -153,7 +154,11 @@
             payMethod : "",
             buyerName : "",
             paidAmount : "",
-            paidAt : ""
+            paidAt : "",
+            clientName : "${client.clientName}",
+            clientEmail : "${client.clientEmail}",
+            clientPhone : "${client.clientPhone}",
+            clientNum :"${client.clientNum}"
         }
 
 
@@ -166,9 +171,6 @@
                       break;
                 case "kakaopay" :
                       requestKakaoPay(params);
-                      break;
-                case "naverpay" :
-                      requestNaverPay(params);
                       break;
             }
         });
