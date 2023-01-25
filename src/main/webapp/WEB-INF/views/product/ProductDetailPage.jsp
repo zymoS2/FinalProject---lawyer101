@@ -20,6 +20,24 @@
 
     <link rel="stylesheet" href="/resource/css/productDetailPage.css" />
     <script src="/resource/js/productDetailPage.js"></script>
+    <script>
+        $(window).scroll(function () {
+          getLawyerList(${pageLawyer.getPages()});
+        })
+
+        function checkLogin(lawyerNum){
+            if ( ${empty client} ) {
+                var result = confirm('로그인 후 예약 바랍니다.');
+                if(result) {
+                    window.location.href="/lawyerLogin";
+                } else {
+                    history.go(0);
+                }
+            } else {
+                window.location.href="/booking/"+lawyerNum ;
+            }
+        }
+    </script>
   </head>
   <body>    
     <div class="container d-flex">
@@ -43,7 +61,7 @@
             <li class="me-3"><button class="btn py-3 px-0 text-secondary headerli4">의뢰인후기</button></li>
             <li class="me-3"><button class="btn py-3 px-0 text-secondary headerli5">위치</button></li>
           </ul>
-          <a href="/booking/${lawyer.lawyerNum}" class="text-secondary fw-bold">
+          <a href="javascript:checkLogin(${lawyer.lawyerNum});" class="text-secondary fw-bold" onli>
             상담예약
           </a>
         </header>
@@ -347,7 +365,7 @@
           </div>
           <div class="position-relative" style="height: 640px;">
             <img src="/display?fileName=${lawyer.lawyerMainImg}" alt="" width="100%" height="100%"/>
-            <a href="/booking/${lawyer.lawyerNum}" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
+            <a href="javascript:void(0);" onclick="checkLogin(${lawyer.lawyerNum});" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
               상담예약하기
             </a>
           </div>

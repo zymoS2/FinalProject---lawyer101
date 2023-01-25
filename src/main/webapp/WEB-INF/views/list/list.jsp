@@ -16,6 +16,24 @@
   <link href="/resource/css/common.css" rel="stylesheet" />
   <link href="/resource/css/list.css" rel="stylesheet" />
 </head>
+    <script>
+        $(window).scroll(function () {
+          getLawyerList(${pageLawyer.getPages()});
+        })
+
+        function checkLogin(lawyerNum){
+            if ( ${empty client} ) {
+                var result = confirm('로그인 후 예약 바랍니다.');
+                if(result) {
+                    window.location.href="/lawyerLogin";
+                } else {
+                    history.go(0);
+                }
+            } else {
+                window.location.href="/booking/"+lawyerNum ;
+            }
+        }
+    </script>
 
 <body>
   <!-- header -->
@@ -58,7 +76,7 @@
                           onclick="location.href='/product/detail/' + ${lawyer.lawyerNum}">더보기
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-custom"
-                          onclick="location.href='/booking/' + ${lawyer.lawyerNum}">예약하기
+                          onclick="checkLogin(${lawyer.lawyerNum})">예약하기
                   </button>
                 </div>
               </div>
@@ -110,6 +128,7 @@
   <hr class="featurette-divider" />
   <!-- footer -->
   <jsp:include page="../common/footer.jsp" />
+
 </body>
 
 </html>
