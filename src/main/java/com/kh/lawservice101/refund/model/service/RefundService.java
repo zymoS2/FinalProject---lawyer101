@@ -6,5 +6,9 @@ public interface RefundService {
 
     public String getToken() throws IOException;
 
-    void paymentCancle(String access_token, String merchanUid, String impUid, int productPrice) throws IOException;
+    void paymentCancel(String access_token, String merchantUid, String impUid, int productPrice) throws IOException;
+
+    void saveRefund(Long paymentNum, String impUid);
+
 }
+

@@ -16,4 +16,7 @@ public interface PaymentService {
 
     // 결제 단건 조회
     PaymentVo findPayment(Long paymentNum);
+
+    //환불 시에 결제 상태 변경.
+    void modifyPaymentState(Long paymentNum);
 }

@@ -2,6 +2,7 @@ package com.kh.lawservice101.refund.model.service;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.kh.lawservice101.refund.model.Dao.RefundDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RefundServiceImpl implements RefundService {
 
+    private final RefundDao refundDao;
 
     @Override
     public String getToken() throws IOException {
@@ -55,7 +57,7 @@ public class RefundServiceImpl implements RefundService {
     }
 
     @Override
-    public void paymentCancle(String access_token, String merchanUid, String impUid,  int productPrice) throws IOException {
+    public void paymentCancel(String access_token, String merchantUid, String impUid,  int productPrice) throws IOException {
 
         System.out.println("결제 취소");
         System.out.println("서비스에서 access_token : "+ access_token);
@@ -84,8 +86,11 @@ public class RefundServiceImpl implements RefundService {
 
         JsonObject json = new JsonObject();
 
-        json.addProperty("impUid", impUid);
-        json.addProperty("merchanUid", merchanUid);
+        json.addProperty("imp_uid", impUid);
+    //    json.addProperty("merchant_uid", merchantUid);
+        json.addProperty("amount", productPrice);
+        json.addProperty("checksum", productPrice);
+
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 
@@ -99,10 +104,10 @@ public class RefundServiceImpl implements RefundService {
         conn.disconnect();
     }
 
-
-
-
-
+    @Override
+    public void saveRefund(Long paymentNum, String impUid) {
+        refundDao.insertRefund(paymentNum, impUid);
+    }
 
 
 }

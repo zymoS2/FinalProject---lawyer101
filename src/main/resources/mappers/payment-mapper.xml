@@ -60,6 +60,7 @@
             join company_TB com on com.company_num=l.company_num
             join category_TB ca on ca.category_num = l.category_num
         where c.client_num=#{clientNum}
+            AND payment_state='paid'
     </select>
 
 
@@ -95,4 +96,10 @@
                  JOIN category_TB ca ON ca.category_num = l.category_num
         WHERE p.payment_num = #{paymentNum}
     </select>
+
+     <update id="updatePaymentState">
+         UPDATE payment_tb
+         SET payment_state = 'refund'
+         WHERE payment_num = #{paymentNum}
+     </update>
 </mapper>

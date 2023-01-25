@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,12 +37,6 @@ public class ClientMypageController {
        }
 
        clientPaymentList = paymentService.findPaymentList(clientNum);
-      // for (PaymentVo paymentVo : clientPaymentList) {
-      //     String bookingDate = paymentVo.getBookingVo().getBookingDate();
-      //     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-      //     String newBookingDate = format.format(bookingDate);
-      //     paymentVo.getBookingVo().setBookingDate(newBookingDate);
-      // }
 
        model.addAttribute("clientPaymentList",clientPaymentList);
 
@@ -59,6 +54,7 @@ public class ClientMypageController {
 
        return "mypage/reservationList";
    }
+
 
     // 마이페이지
     @GetMapping("/{num}")
@@ -91,4 +87,6 @@ public class ClientMypageController {
         }
         return false;
     }
+
+
 }

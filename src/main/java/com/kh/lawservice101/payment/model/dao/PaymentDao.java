@@ -16,4 +16,6 @@ public interface PaymentDao {
 
      // 결제 단건 조회
     PaymentVo selectPaymentByPaymentNum(Long paymentNum);
+
+    void updatePaymentState(Long paymentNum);
 }

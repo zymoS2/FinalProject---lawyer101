@@ -63,7 +63,8 @@
                                                    </div>
                                                </a>
                                            </div>
-                                               <button type= "submit" class="btn btn-danger btn-sm" style="width: 90px; height: 30px; color:white;" onclick="cancelPay('${cp.merchantUid}','${cp.impUid}')">환불 신청</button>
+                                               <button type= "submit" class="btn btn-danger btn-sm" style="width: 90px; height: 30px; color:white;"
+                                                       onclick="cancelPay('${cp.merchantUid}','${cp.impUid}','${cp.paymentNum}')">환불 신청</button>
                                            </div>
                                        </div>
                                     </c:when>
@@ -132,21 +133,20 @@
     <script>
         $(".searchForm").hide();
 
-      function cancelPay(merchantUid,impUid) {
-      console.log("응답");
-      console.log(merchantUid);
-      console.log(impUid);
+      function cancelPay(merchantUid,impUid,paymentNum) {
+
         jQuery.ajax({
           "url": "/paymentRefund",
           "type": "POST",
-          "dataType": "json",
           "data": {
             "merchant_uid": merchantUid, //주문 목록
             "cancel_request_amount": 200, // 환불금액
-            "imp_uid" : impUid
+            "imp_uid" : impUid,
+            "paymentNum" : paymentNum
            }
         }).done(function(result) { // 환불 성공시 로직
                 alert("환불 성공");
+                history.go(0);
         }).fail(function(error) { // 환불 실패시 로직
                 alert("환불 실패");
         });

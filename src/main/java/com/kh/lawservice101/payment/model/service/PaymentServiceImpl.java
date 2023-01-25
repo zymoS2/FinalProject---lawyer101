@@ -62,7 +62,10 @@ public class PaymentServiceImpl implements PaymentService{
         return paymentDao.selectPaymentByPaymentNum(paymentNum);
     }
 
-
+    @Override
+    public void modifyPaymentState(Long paymentNum) {
+        paymentDao.updatePaymentState(paymentNum);
+    }
 
 
 }
