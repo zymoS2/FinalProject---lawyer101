@@ -73,6 +73,7 @@
         join company_TB com on com.company_num=l.company_num
         join category_TB ca on ca.category_num = l.category_num
         where l.lawyer_num=#{lawyerNum}
+            AND payment_state='paid'
     </select>
 
     <insert id="insertOrder" parameterType="PaymentVo">
