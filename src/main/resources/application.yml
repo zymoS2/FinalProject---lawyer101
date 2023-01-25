@@ -77,3 +77,7 @@ coolsms:
     key: NCS98HUTRYA0SP8S
     secret:
     fromnumber: 
+
+# 아임포트 관련 설정
+imp_key: 1548401157108344
+imp_secret: A8uzxb0JZbSQqovNButHMUZMqmaWzxX95AVFKlFCK8sywCPFtM5JNEjl4Tr2xGj6wyuZVxyeWExDAsNA

@@ -2,6 +2,8 @@ package com.kh.lawservice101.booking.model.service;
 
 import com.kh.lawservice101.booking.model.vo.BookingVo;
 
+import java.util.List;
+
 
 public interface BookingService {
 
@@ -15,4 +17,8 @@ public interface BookingService {
 
     //
     BookingVo findCounselingDetail(Long bookingNum);
+
+    List<String> findBookingListByDate(String selectDate);
+
+
 }

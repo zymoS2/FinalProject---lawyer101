@@ -11,8 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RefundVo {
-    private Long refundNum;
+    private Long refundNum; //seq
     private char cancelState;
-    private String cancelDate;
+    private String cancelDate;  //sysdate
     private PaymentVo paymentVo;
+    private String impUid; // 아임포트 결제번호 추가
 }

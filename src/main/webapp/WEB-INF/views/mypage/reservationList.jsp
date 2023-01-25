@@ -14,7 +14,6 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
     <link rel="stylesheet" href="/resource/css/common.css">
-    <script src="/resource/js/reservationList.js"></script>
 </head>
 <body>
     <!-- header -->
@@ -64,8 +63,7 @@
                                                    </div>
                                                </a>
                                            </div>
-                                           <div>
-                                               <button class="btn btn-danger btn-sm" style="width: 90px; height: 30px; color:white;" id="refund-button">환불 신청</button>
+                                               <button type= "submit" class="btn btn-danger btn-sm" style="width: 90px; height: 30px; color:white;" onclick="cancelPay('${cp.merchantUid}','${cp.impUid}')">환불 신청</button>
                                            </div>
                                        </div>
                                     </c:when>
@@ -115,6 +113,9 @@
                                         </div>
                                     </div>
                                 </c:when>
+                                <c:otherwise>
+                                    <h5> 현재 지난 목록이 없습니다. </h5>
+                                </c:otherwise>
                             </c:choose>
                         </c:forEach>
                     </c:otherwise>
@@ -130,6 +131,26 @@
 
     <script>
         $(".searchForm").hide();
+
+      function cancelPay(merchantUid,impUid) {
+      console.log("응답");
+      console.log(merchantUid);
+      console.log(impUid);
+        jQuery.ajax({
+          "url": "/paymentRefund",
+          "type": "POST",
+          "dataType": "json",
+          "data": {
+            "merchant_uid": merchantUid, //주문 목록
+            "cancel_request_amount": 200, // 환불금액
+            "imp_uid" : impUid
+           }
+        }).done(function(result) { // 환불 성공시 로직
+                alert("환불 성공");
+        }).fail(function(error) { // 환불 실패시 로직
+                alert("환불 실패");
+        });
+      }
     </script>
 </body>
 </html>

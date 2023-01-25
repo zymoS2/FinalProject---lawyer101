@@ -25,7 +25,11 @@
        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
        <!-- iamport.payment.js -->
        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
-
+       <style>
+       ul,ol {
+          list-style:none;
+          }
+       </style>
     </head>
     <body>
         <!-- header -->
@@ -166,10 +170,10 @@
             <div>
             <form method="post">
                 <label for="exampleFormControlTextarea1" class="form-label fw-bold">상담 요청 내용</label>
-                <textarea name="counselingContent" class="form-control shadow-sm p-3 mb-2 bg-body rounded-rounded" id="exampleFormControlTextarea1" rows="3" placeholder="궁금한 질문과 사건 내용을 작성해주세요."></textarea>
-                <small class="d-block text-end">0자/최대 1000자</small>
+                <textarea name="counselingContent" class="form-control shadow-sm p-3 mb-2 bg-body rounded-rounded" id="exampleFormControlTextarea1" rows="3" onKeyup="counter(this,1500)",placeholder="궁금한 질문과 사건 내용을 작성해주세요."></textarea>
+                <span class="d-block text-end" id="reCount">0자/최대 1500자</span>
                 <div class="mt-5 d-flex justify-content-between">
-                    <button type="button" class="btn btn-custom" onclick="location.href='/${lawyerNum}'">뒤로</button>
+                    <button type="button" class="btn btn-custom" onclick="goBack()">뒤로</button>
                     <button type="submit" class="btn btn-custom">제출하기</button>
                 </div>
             </form>
@@ -223,17 +227,21 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center">
-                        받지 못하셨다면, 아래 내용을 확인해 주세요. <br/>
-                        <ul class="mt-2">
+                        <strong><span style="color : red">!</span>받지 못하셨다면, 아래 내용을 확인해 주세요.</strong> <br/>
+                        <ol class="mt-2">
                             <li>
-                                -입력된 휴대 전화번호가 정확한지 확인해주세요.
+                                입력된 휴대 전화번호가 정확한지 확인해주세요.
                             </li>
                             <li>
-                                -스팸 차단 앱에 수신이 차단되어 있는지 확인해주세요.
+                                스팸 차단 앱에 수신이 차단되어 있는지 확인해주세요.
                             </li>
-                        </ul>
+                        </ol>
                         <hr>
-                        위의 방법으로도 문제가 해결되지 않는다면 <br/> 아래 '법률 서비스101' 운영팀으로 연락주세요.
+                        위의 방법으로도 문제가 해결되지 않는다면 <br/> 아래 '법률 서비스101' 운영팀으로 연락주세요.<br>
+                        <img src="../resource/img/code1.png" style="width:200px;" alt="법률서비스101 qr"/> <br>
+                            혹은<br>
+                            <h5>고객 센터 번호 : 1566-8282</h5>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-custom" data-bs-dismiss="modal">확인</button>

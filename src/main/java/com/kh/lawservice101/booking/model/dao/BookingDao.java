@@ -4,6 +4,8 @@ import com.kh.lawservice101.booking.model.vo.BookingVo;
 import com.kh.lawservice101.payment.model.vo.PaymentVo;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface BookingDao {
 
@@ -15,4 +17,5 @@ public interface BookingDao {
 
     BookingVo selectBookingDetail(Long bookingNum);
 
+    List<BookingVo> selectBookingByDate(String selectDate);
 }
