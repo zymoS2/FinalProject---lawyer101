@@ -36,7 +36,7 @@
                     </button>
                 </li>
                 <li class="me-3"><button class="btn py-3 px-0 text-secondary" onclick="location.href='/product/detail/${lawyer.lawyerNum}'">변호사홈</button></li>
-                <li class="me-3"><button class="btn py-3 px-0 text-secondary" onclick="location.href='commentList.html'">지식IN 답변</button></li>
+                <li class="me-3"><button class="btn py-3 px-0 text-secondary" onclick="location.href='/product/detail/${lawyer.lawyerNum}/reply'">지식IN 답변</button></li>
                 <li class="me-3 active"><button class="btn py-3 px-0 text-secondary" onclick="location.href='/product/detail/${lawyer.lawyerNum}/review'">의뢰인후기</button></li>
                 </ul>
                 <a href="/booking/${lawyer.lawyerNum}" class="text-secondary fw-bold">
@@ -238,18 +238,17 @@
 
         <!-- right -->
         <div class="pt-4" style="width: 30%;">
-        <div class="text-white text-center py-5" style="background-color: #443736;">
-            <h3 class="fw-bold mb-0"><span>${lawyer.lawyerName}</span> 변호사</h3>
-            <p>${lawyer.companyVo.companyName}</p>
+            <div class="text-white text-center py-5" style="background-color: #443736;">
+                <h3 class="fw-bold mb-0"><span>${lawyer.lawyerName}</span> 변호사</h3>
+                <p>${lawyer.companyVo.companyName}</p>
+            </div>
+            <div class="position-relative" style="height: 640px;">
+                <img src="/display?fileName=${lawyer.lawyerMainImg}" alt="" width="100%" height="100%"/>
+                <a href="/booking/${lawyer.lawyerNum}" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
+                상담예약하기
+                </a>
+            </div>
         </div>
-        <div class="position-relative" style="height: 640px;">
-            <img src="/display?fileName=${lawyer.lawyerMainImg}" alt="" width="100%" height="100%"/>
-            <a href="/booking/${lawyer.lawyerNum}" class="d-inline-block position-absolute bottom-0 end-0 p-3 px-5 bg-custom text-white fw-bold m-4">
-            상담예약하기
-            </a>
-        </div>
-        </div>
-    </div>
     </div>
 
     <jsp:include page="../common/footer.jsp"/>

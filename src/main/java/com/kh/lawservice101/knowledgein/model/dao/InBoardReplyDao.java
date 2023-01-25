@@ -13,10 +13,5 @@ public interface InBoardReplyDao {
 
     List<InReplyVo> selectAllInReplyByInBoardNum(Long inBoardNum);
 
-//    void save(InReplyVo params);
-
-
-//    void (InReplyVo params);
-
-
+    List<InReplyVo> selectAllInReplyByLawyerNum(Long lawyerNum);
 }

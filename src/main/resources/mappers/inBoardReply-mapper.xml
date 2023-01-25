@@ -37,6 +37,7 @@
             <result property="inBoardContent" column="IN_BOARD_CONTENT"/>
             <result property="inBoardCount" column="IN_BOARD_COUNT"/>
             <result property="writerDate" column="WRITE_DATE"/>
+            <result property="inBoardHelpCount" column="IN_BOARD_HELPCOUNT"/>
             <association property="categoryVo" javaType="CategoryVo">
                 <result property="categoryNum" column="CATEGORY_NUM"/>
                 <result property="categoryName" column="CATEGORY_NAME"/>
@@ -84,6 +85,16 @@
             JOIN category_tb ca ON l.category_num = ca.category_num
         JOIN in_board_tb i ON r.in_board_num = i.in_board_num
         WHERE r.in_board_num = #{inBoardNum}
+        ORDER BY reply_date DESC
+    </select>
+
+    <select id="selectAllInReplyByLawyerNum" resultMap="inReplyResultMap" resultType="InReplyVo">
+        SELECT * FROM in_reply_tb r
+          JOIN lawyer_tb l ON r.lawyer_num = l.lawyer_num
+              JOIN company_tb c ON l.company_num = c.company_num
+              JOIN category_tb ca ON l.category_num = ca.category_num
+          JOIN in_board_tb i ON r.in_board_num = i.in_board_num
+        WHERE r.lawyer_num = #{lawyerNum}
         ORDER BY reply_date DESC
     </select>
 </mapper>

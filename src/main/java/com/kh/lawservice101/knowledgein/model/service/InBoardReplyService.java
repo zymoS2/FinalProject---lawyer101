@@ -12,7 +12,15 @@ public interface InBoardReplyService {
     //댓글삭제
     void DeleteInboardReply();
 
+    // 답변 단건 조회
     InReplyVo findInReply(Long replyNum);
 
+    // 지식인 게시글 답변 목록 조회
     List<InReplyVo> findAllInReplyByInBoardNum(Long inBoardNum);
+
+    // 변호사 지식인 답변 목록 조회
+    List<InReplyVo> findAllInReplyByLawyerNum(Long lawyerNum);
+
+    // 페이징 변호사 지식인 답변 목록
+    List<InReplyVo> pagingInReply(Long lawyerNum, int pageNum, int pageSize);
 }

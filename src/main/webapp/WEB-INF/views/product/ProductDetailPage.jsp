@@ -98,36 +98,30 @@
           <div class="py-3 pydiv-3">
             <h4 class="my-4 fw-bold"><span class="bg-warning"><span>${lawyer.lawyerName}</span> 변호사</span>의 법률 활동을 확인하세요.</h4>
             <div class="py-3">
-              <a href="commentList.html" class="fs-5 d-inline-block fw-bold mb-4">지식IN 답변<span class="ms-2 text-body-tertiary"><span>42</span> 
+              <a href="/product/detail/${lawyer.lawyerNum}/reply" class="fs-5 d-inline-block fw-bold mb-4">지식IN 답변<span class="ms-2 text-body-tertiary">${inReplyList.size()}</span>
+              <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                 </svg>
               </span>
               </a>
-              <ul class="d-flex justify-content-between ps-0">
-                <li class="me-3">
-                  <a href="" class="text-body-tertiary">
-                    <h6 class="text-black">아청법 자동재생도 처벌받나요?</h6>
-                    <p class="small mb-2 text-skip"><b class="me-2 text-custom">답변</b>아청물에대한 시청의 고의없이 우연히 일부가 재생된것이라면 처벌받지않습니다 사건화되는경우 변호사의 도움을받아 방어를진행하세요 전화주세요 도와드리겠습니다 좀더자세한상담을 위해서 전화로 연락주시면 앞으로의 대응방향에 대해 자세히 설명드리겠습니다 다수의 아청물사건을 처리하였습니다</p>
-                    <p class="small">작성일<span class="ms-2">2023.01.01</span></p>
-                  </a>
-                </li>
-                <li class="me-3">
-                  <a href="" class="text-body-tertiary">
-                    <h6 class="text-black">아청법 자동재생도 처벌받나요?</h6>
-                    <p class="small mb-2 text-skip"><b class="me-2 text-custom">답변</b>아청물에대한 시청의 고의없이 우연히 일부가 재생된것이라면 처벌받지않습니다 사건화되는경우 변호사의 도움을받아 방어를진행하세요 전화주세요 도와드리겠습니다 좀더자세한상담을 위해서 전화로 연락주시면 앞으로의 대응방향에 대해 자세히 설명드리겠습니다 다수의 아청물사건을 처리하였습니다</p>
-                    <p class="small">작성일<span class="ms-2">2023.01.01</span></p>
-                  </a>
-                </li>
-                <li class="me-3">
-                  <a href="" class="text-body-tertiary">
-                    <h6 class="text-black">지하철에서 공밀추 문의드립니다
-                    </h6>
-                    <p class="small mb-2 text-skip"><b class="me-2 text-custom">답변</b>지하철 출퇴근 길에 사람이 너무 많아서 밀집한 상태에서 주위 여성과 몸이 밀착 되어 있었던 탓에 불필요한 신체접촉이 발생하여 잠복근무 중인 사복 경찰관에게 적발이 되거나, 피해자로부터 신고를 당하여 성폭력처벌법 위반 공중밀집장소 추행죄 혐의로 경찰조사를 받고 형사처벌을 받게 되는 경우도 빈번하니 주의해야 합니다.
-                    </p>
-                    <p class="small">작성일<span class="ms-2">2023.01.01</span></p>
-                  </a>
-                </li>
+              <ul class="d-flex justify-content-start ps-0">
+                <c:choose>
+                  <c:when test="${empty inReplyList}">
+                    <p class="text-secondary">등록된 답변이 없습니다.</p>
+                  </c:when>
+                  <c:otherwise>
+                    <c:forEach var="inReply" items="${inReplyList}" begin="0" end="2">
+                      <li class="me-3" style="width: 33%;">
+                        <a href="/knowledgeInDetail?num=${inReply.inBoardVo.inBoardNum}" class="text-body-tertiary">
+                          <h6 class="text-black">${inReply.inBoardVo.inBoardTitle}</h6>
+                          <p class="small mb-2 text-skip"><b class="me-2 text-custom">답변</b>${inReply.replyContent}</p>
+                          <p class="small">작성일<span class="ms-2">${fn:substring(inReply.replyDate,0,10)}</span></p>
+                        </a>
+                      </li>
+                    </c:forEach>
+                  </c:otherwise>
+                </c:choose>
               </ul>
             </div>
             <hr>
