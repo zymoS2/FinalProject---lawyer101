@@ -25,19 +25,37 @@ public class HelpfulController {
     //도움됐어요 동작
     @ResponseBody
     @RequestMapping("/helpfulCheck")
-    public int updateHelpful(@RequestParam Long inBoardNum, @RequestParam Long clientNum, @ModelAttribute HelpfulVo helpfulVo, Model model) {
+    public int updateHelpful(@RequestParam Long inBoardNum, @RequestParam Long clientNum, Model model) {
 
+        InBoardVo inBoardVo = new InBoardVo();
+        inBoardVo.setInBoardNum(inBoardNum);
 
-        inBoardService.helpCount(inBoardNum);
-        InBoardVo post = inBoardService.findPost(inBoardNum);
-        ClientVo clientVo = clientService.findClient(clientNum);
+        ClientVo clientVo = new ClientVo();
+        clientVo.setClientNum(clientNum);
 
+        HelpfulVo helpfulVo = new HelpfulVo();
+        helpfulVo.setInBoardVo(inBoardVo);
         helpfulVo.setClientVo(clientVo);
-        helpfulVo.setInBoardVo(post);
 
-        HelpfulVo helpfulClick = helpfulService.saveHelpful(helpfulVo);
-        model.addAttribute("helpfulClick", helpfulClick);
+        //1. 좋아요 이력테이블에서 유저시퀀스와 게시글 번호 조회한다
+        HelpfulVo helpfulFind = helpfulService.selectHelpful(helpfulVo);
+        //   helpfulVo.setInBoardVo(post);
+        //1-1. 있다면  이미 눌러서 끝
+        if (helpfulFind != null) {
+            return 0;
+        } else {
+            //좋아요 카운트 올라감
+            inBoardService.helpCount(inBoardNum);
+            //   InBoardVo post = inBoardService.findPost(inBoardNum);
+            //     ClientVo clientVo = clientService.findClient(clientNum);
+            //   helpfulVo.setClientVo(clientVo);
+            //좋아요 이력 들어감
+            helpfulService.saveHelpful(helpfulVo);
+            return 1;
+        }
 
-        return post.getInBoardHelpCount();
+        // 좋아요 버튼을 눌렀다면
+
+        // return post.getInBoardHelpCount();
     }
 }

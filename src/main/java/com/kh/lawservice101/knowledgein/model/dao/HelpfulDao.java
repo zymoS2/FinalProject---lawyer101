@@ -10,4 +10,6 @@ public interface HelpfulDao {
     //도움됐어요 카운트 저장
     void insertHelpful(HelpfulVo helpfulVo);
 
+    //도움됐어요 찾기
+    HelpfulVo selectHelpful(HelpfulVo helpfulVo);
 }

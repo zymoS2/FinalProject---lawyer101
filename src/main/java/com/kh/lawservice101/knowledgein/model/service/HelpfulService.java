@@ -6,5 +6,8 @@ public interface HelpfulService {
 
 
     //도움됐어요 카운트 저장
-    HelpfulVo saveHelpful(HelpfulVo helpfulVo);
+    void saveHelpful(HelpfulVo helpfulVo);
+
+    //도움됐어요 찾기
+    HelpfulVo selectHelpful(HelpfulVo helpfulVo);
 }
