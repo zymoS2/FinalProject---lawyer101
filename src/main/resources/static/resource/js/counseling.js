@@ -46,10 +46,59 @@ const getToken = () => {
   }, 50);
 };
 
+$(function () {
+    let code;
+
+    $("#sendMessage").click(function () {
+        const phoneNum = $('#checkPhoneNuminput').val();
+
+        if (phoneValidator(phoneNum)) {
+            alert("인증번호가 발송되었습니다.");
+            $.ajax({
+                type: "GET",
+                url: "/join/sendSMS",
+                data: {phoneNum: phoneNum},
+
+                success: function(data) {
+                    code = data;
+                    $("#checkPhoneNuminput").attr("readonly", true);
+                    $("#sendMessage").attr("disabled", true);
+                    $("#certiNum").attr("disabled", false);
+                },
+                error: function () {
+                    console.log("ajax 통신 실패");
+                },
+            });
+        } else {
+            alert("유효하지 않는 전화번호입니다.");
+        }
+    });
+
+    $("#completion").click(function () {
+        const authCode = $("#certiNum").val();
+        if (authCode === "" || !authCode) {
+            return;
+        }
+
+        if (authCode === code) {
+            alert("인증에 성공하였습니다.");
+            $("#certiNum").attr("disabled", true);
+            $("#certiNum").attr("readonly", true);
+        } else {
+            alert("인증번호가 일치하지 않습니다. 다시 시도하세요.");
+        }
+    });
+});
+
+
+
 function checkCompletion() {
   alert("문자 인증이 완료되었습니다.");
   initButton();
 }
+
+
+
 
 //글자수 증가
 function counter(text,length) {
@@ -60,8 +109,15 @@ function counter(text,length) {
         text.value=text.value.substring(0,limit);
         text.focus();
     }
-    document.getElementById("reCount").innerHTML = text.value.length + " 자 / 최대 " + limit + " 자";
+    document.getElementById("reCount").innerHTML = str + " 자 / 최대 " + limit + " 자";
+    if(str>0) {
+        submitBtnActive();
+    } else {
+        submitBtnDisabled();
+    }
 }
+
+
 
 //뒤로 버튼 경고창 날라기
 function goBack(){
@@ -73,6 +129,14 @@ function goBack(){
         alert("상담 페이지에 머무릅니다.");
     }
 }
+
+function submitBtnActive(){
+      $("#submitBtn").attr("disabled", false);
+}
+
+function submitBtnDisabled() {
+      $("#submitBtn").attr("disabled", true);
+};
 
 // function test5(e) {
 //   const value = document.getElementById("checkPhoneNuminput").value;

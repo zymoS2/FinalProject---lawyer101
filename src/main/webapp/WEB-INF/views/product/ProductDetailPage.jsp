@@ -20,7 +20,8 @@
 
     <link rel="stylesheet" href="/resource/css/productDetailPage.css" />
     <script src="/resource/js/productDetailPage.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=94279abd0abc7f29f6dba4f9d665333d&libraries=services"></script>
+<%--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=94279abd0abc7f29f6dba4f9d665333d&libraries=services"></script>--%>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35a126d9615f944036a7884668c732d3&libraries=services"></script>
     <script>
 
         function checkLogin(lawyerNum){

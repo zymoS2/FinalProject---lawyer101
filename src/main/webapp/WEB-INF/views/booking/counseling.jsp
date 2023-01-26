@@ -75,6 +75,7 @@
                             <div style="width: 35%;">
                                 <input type="text" class="form-control shadow-sm bg-body rounded-end-0" id="certiNum" >
                             </div>
+
                             <button disabled id="completion" class="btn btn-custom"  onClick="checkCompletion()">인증 확인</button>
                         </div>
                         <!-- 비동기/정규표현식 -->
@@ -92,7 +93,7 @@
                 <span class="d-block text-end" id="reCount">0자/최대 1500자</span>
                 <div class="mt-5 d-flex justify-content-between">
                     <button type="button" class="btn btn-custom" onclick="goBack()">뒤로</button>
-                    <button type="submit" class="btn btn-custom">제출하기</button>
+                    <button type="submit" class="btn btn-custom" id="submitBtn" disabled>제출하기</button>
                 </div>
             </form>
             </div>

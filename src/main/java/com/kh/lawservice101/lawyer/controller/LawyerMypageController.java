@@ -39,7 +39,7 @@ public class LawyerMypageController {
             return "redirect:/";
         }
 
-        LawyerCounselList = paymentService.findPaymentList(lawyerNum);
+        LawyerCounselList = paymentService.findCounselingList(lawyerNum);
         model.addAttribute("lawyerCounselList",LawyerCounselList);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

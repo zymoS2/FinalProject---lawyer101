@@ -32,11 +32,11 @@ public class LawyerJoinController {
 
         boolean isSuccess = false;
 
-        LawyerVo findLawyerVo = lawyerService.findLawyer(lawyerPram);
-
-        if (findLawyerVo != null || findLawyerVo.getLawyerNum() != null) {
-            return "redirect:/lawyerJoin?isSuccess=" + isSuccess;
-        }
+//        LawyerVo findLawyerVo = lawyerService.findLawyer(lawyerPram);
+//
+//        if (findLawyerVo != null || findLawyerVo.getLawyerNum() != null) {
+//            return "redirect:/lawyerJoin?isSuccess=" + isSuccess;
+//        }
 
         lawyerService.saveLawyer(lawyerPram); // 변호사 등록
 
@@ -70,6 +70,6 @@ public class LawyerJoinController {
 //            }
 //        }
 
-        return "redirect:/lawyerJoin?isSuccess=" + isSuccess;
+        return "redirect:/lawyerLogin";
     }
 }
