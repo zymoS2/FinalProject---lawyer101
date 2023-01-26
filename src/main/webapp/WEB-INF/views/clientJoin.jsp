@@ -107,7 +107,7 @@
                         <div class="input-group">
                             <input id="phone" type="text" name="clientPhone" class="form-control col me-3 rounded-2" placeholder="휴대폰 번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col lawyerButton">인증번호 발송</button>
+                                <button type="button" class="btn btn-custom col" id="send-sms-button">인증번호 발송</button>
                             </span>
                         </div>
                         <small id="phoneHelp" class="form-text text-muted">예) 01012345678</small>
@@ -833,7 +833,7 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                         </ul>
                     </div>
 
-                    <button type="button" onclick="clientJoin();" class="btn btn-custom" style="width: 100%;" disabled>가입하기</button>
+                    <button type="button" onclick="clientJoin();" class="btn btn-custom lawyerButton" style="width: 100%;" disabled>가입하기</button>
                 </form>
             </div>
         </div>
