@@ -25,8 +25,9 @@
             document.getElementById('knowledgeInForm').submit();
          }
 
-         function setPage(page){
+         function setPage(sortType, page){
             console.log('page : ' + page);
+            document.getElementsByName('sortType')[0].value = sortType;
             document.getElementsByName('page')[0].value = page;
             document.getElementById('knowledgeInForm').setAttribute('action', '/knowledgeIn');
             document.getElementById('knowledgeInForm').submit();
@@ -50,7 +51,6 @@
                 <div style="width: 65%;">
                   <ul class="counseltable py-3 ps-0 mb-0 border-top border-bottom">
                       <li class="d-inline-block me-3"><a href="javascript:setSortType('boardNum');" class="<c:if test="${sortType eq 'boardNum'}">active</c:if>">최신 질문순</a></li>
-                      <li class="d-inline-block me-3"><a href="">최신 답변순</a></li>
                       <li class="d-inline-block me-3"><a href="javascript:setSortType('boardCount');" class="<c:if test="${sortType eq 'boardCount'}">active</c:if>">조회수</a></li>
                   </ul>
 
@@ -72,21 +72,42 @@
                         </a>
                         </c:forEach>
                     </div>
+                    
+                    <c:choose>
+                        <c:when test="${sortType == 'boardNum'}">
+                            <div class="pagination justify-content-center align-items-center p-3">
+                                <a href="" class="small mx-3" >이전 페이지</a>
+                                <a href="javascript:setPage('boardNum', '1');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '1'}">active</c:if>">1</a>
+                                <a href="javascript:setPage('boardNum', '2');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '2'}">active</c:if>">2</a>
+                                <a href="javascript:setPage('boardNum', '3');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '3'}">active</c:if>">3</a>
+                                <a href="javascript:setPage('boardNum', '4');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '4'}">active</c:if>">4</a>
+                                <a href="javascript:setPage('boardNum', '5');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '5'}">active</c:if>">5</a>
+                                <a href="javascript:setPage('boardNum', '6');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '6'}">active</c:if>">6</a>
+                                <a href="javascript:setPage('boardNum', '7');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '7'}">active</c:if>">7</a>
+                                <a href="javascript:setPage('boardNum', '8');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '8'}">active</c:if>">8</a>
+                                <a href="javascript:setPage('boardNum', '9');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '9'}">active</c:if>">9</a>
+                                <a href="javascript:setPage('boardNum', '10');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '10'}">active</c:if>">10</a>
+                                <a href="" class="small mx-3">다음 페이지</a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="pagination justify-content-center align-items-center p-3">
+                                <a href="" class="small mx-3" >이전 페이지</a>
+                                <a href="javascript:setPage('boardCount', '1');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '1'}">active</c:if>">1</a>
+                                <a href="javascript:setPage('boardCount', '2');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '2'}">active</c:if>">2</a>
+                                <a href="javascript:setPage('boardCount', '3');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '3'}">active</c:if>">3</a>
+                                <a href="javascript:setPage('boardCount', '4');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '4'}">active</c:if>">4</a>
+                                <a href="javascript:setPage('boardCount', '5');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '5'}">active</c:if>">5</a>
+                                <a href="javascript:setPage('boardCount', '6');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '6'}">active</c:if>">6</a>
+                                <a href="javascript:setPage('boardCount', '7');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '7'}">active</c:if>">7</a>
+                                <a href="javascript:setPage('boardCount', '8');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '8'}">active</c:if>">8</a>
+                                <a href="javascript:setPage('boardCount', '9');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '9'}">active</c:if>">9</a>
+                                <a href="javascript:setPage('boardCount', '10');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '10'}">active</c:if>">10</a>
+                                <a href="" class="small mx-3">다음 페이지</a>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
 
-                  <div class="pagination justify-content-center align-items-center p-3">
-                    <a href="" class="small mx-3" >이전 페이지</a>
-                    <a href="javascript:setPage('1');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '1'}">active</c:if>">1</a>
-                    <a href="javascript:setPage('2');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '2'}">active</c:if>">2</a>
-                    <a href="javascript:setPage('3');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '3'}">active</c:if>">3</a>
-                    <a href="javascript:setPage('4');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '4'}">active</c:if>">4</a>
-                    <a href="javascript:setPage('5');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '5'}">active</c:if>">5</a>
-                    <a href="javascript:setPage('6');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '6'}">active</c:if>">6</a>
-                    <a href="javascript:setPage('7');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '7'}">active</c:if>">7</a>
-                    <a href="javascript:setPage('8');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '8'}">active</c:if>">8</a>
-                    <a href="javascript:setPage('9');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '9'}">active</c:if>">9</a>
-                    <a href="javascript:setPage('10');" class="mx-3 mb-1 <c:if test="${pagePost.pageNum == '10'}">active</c:if>">10</a>
-                    <a href="" class="small mx-3">다음 페이지</a>
-                  </div>
                 </div>
                 <div class="h-100 ps-5 border-top" style="width: 35%;">
                   <div class="border-bottom py-5">
