@@ -29,6 +29,6 @@ public class ClientJoinController {
     @PostMapping("/clientJoin/insert.do")
     public String insert(@ModelAttribute ClientVo clientVo) {
         clientService.saveClient(clientVo);
-        return "redirect:/clientJoin";
+        return "redirect:/clientLogin";
     }
 }
