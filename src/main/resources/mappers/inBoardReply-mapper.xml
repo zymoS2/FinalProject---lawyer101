@@ -97,4 +97,11 @@
         WHERE r.lawyer_num = #{lawyerNum}
         ORDER BY reply_date DESC
     </select>
+
+    <select id="selectInReplyOrderByLawyerCount" resultMap="inReplyResultMap" resultType="InReplyVo">
+        SELECT count(ir.lawyer_num), ir.lawyer_num, lawyer_name, lawyer_intro_msg, lawyer_img FROM IN_REPLY_TB ir
+            JOIN LAWYER_TB l ON ir.lawyer_num = l.lawyer_num
+                GROUP BY ir.lawyer_num, lawyer_name, lawyer_intro_msg, lawyer_img
+                ORDER BY count(ir.lawyer_num) DESC
+    </select>
 </mapper>

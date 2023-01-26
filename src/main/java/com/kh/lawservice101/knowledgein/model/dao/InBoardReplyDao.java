@@ -14,4 +14,6 @@ public interface InBoardReplyDao {
     List<InReplyVo> selectAllInReplyByInBoardNum(Long inBoardNum);
 
     List<InReplyVo> selectAllInReplyByLawyerNum(Long lawyerNum);
+
+    List<InReplyVo> selectInReplyOrderByLawyerCount();
 }

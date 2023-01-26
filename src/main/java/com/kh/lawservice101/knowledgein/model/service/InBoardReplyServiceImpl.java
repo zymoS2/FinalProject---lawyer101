@@ -50,6 +50,12 @@ public class InBoardReplyServiceImpl implements InBoardReplyService {
         return inBoardReplyDao.selectAllInReplyByLawyerNum(lawyerNum);
     }
 
+    // 최근 답변이 활발한 변호사 목록
+    @Override
+    public List<InReplyVo> findRecentlyReplyLawyer() {
+        return inBoardReplyDao.selectInReplyOrderByLawyerCount();
+    }
+
 
 }
 

@@ -67,7 +67,7 @@
                                 <p class="text-skip">${allInReply.get(status.index).get(0).replyContent}</p>
                             </c:if>
                             <p class="text-secondary">다른 변호사 답변 ${allInReply.get(status.index).size()}개</p>
-                            <small class="text-secondary">조회수 <b>${inBoard.inBoardCount}</b></small>
+                            <small class="text-secondary">조회수 <b>${sb.inBoardCount}</b></small>
                         </a>
                         </c:forEach>
                     </div>
@@ -111,46 +111,25 @@
                 <div class="h-100 ps-5 border-top" style="width: 35%;">
                   <div class="border-bottom py-5">
                     <p class="">최근 답변이 활발한 변호사</p>
-                    <ul class="p-0">
-                      <li>
-                        <a href="" class="d-flex align-items-center mb-3">
-                          <div class="text-custom fw-bold" style="width: 20%;">1위</div>
-                          <div style="width: 54px; height: 54px;">
-                            <img src="../resource/img/profile.png" alt="" width="100%" height="100%" class="object-fit-contain">
-                          </div>
-                          <div class="px-3 w-100">
-                            <p class="small fw-bold mb-1"><span>김현중</span> 변호사</p>
-                            <small>사시출신,1810개 만점후기,합리적비용,입소문,다수승소</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="" class="d-flex align-items-center mb-3">
-                          <div class="text-custom fw-bold" style="width: 20%;">2위</div>
-                          <div style="width: 54px; height: 54px;">
-                            <img src="../resource/img/profile.png" alt="" width="100%" height="100%" class="object-fit-contain">
-                          </div>
-                          <div class="px-3 w-100">
-                            <p class="small fw-bold mb-1"><span>조승연</span> 변호사</p>
-                            <small>대형 법무법인 출신 형사전문변호사 (수사 공판 고소)</small>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="" class="d-flex align-items-center mb-3">
-                          <div class="text-custom fw-bold" style="width: 20%;">3위</div>
-                          <div style="width: 54px; height: 54px;">
-                            <img src="../resource/img/profile.png" alt="" width="100%" height="100%" class="object-fit-contain">
-                          </div>
-                          <div class="px-3 w-100">
-                            <p class="small fw-bold mb-1"><span>이동규</span> 변호사</p>
-                            <small>이혼/형사/부동산/상속, 대표변호사 1대1 논스톱 해결</small>
-                          </div>
-                        </a>
-                      </li>
+                    <ul class="p-0 overflow-hidden recentlyLawyerReplyList" style="height: 189px">
+                        <c:forEach var="recentlyLawyerReply" items="${recentlyLawyerReplyList}" varStatus="status" begin="0" end="9">
+                            <li>
+                                <a href="/product/detail/${recentlyLawyerReply.lawyerVo.lawyerNum}" class="d-flex align-items-center mb-3">
+                                    <div class="text-custom fw-bold" style="width: 20%;">${status.count}위</div>
+                                    <div>
+                                        <img src="/display?fileName=${recentlyLawyerReply.lawyerVo.lawyerImg}" onerror="this.src='/resource/img/profile.png';"
+                                             alt="프로필사진" width="48" height="48" class="rounded-circle">
+                                    </div>
+                                    <div class="px-3 w-100">
+                                        <p class="small fw-bold mb-1">${recentlyLawyerReply.lawyerVo.lawyerName} 변호사</p>
+                                        <small>${recentlyLawyerReply.lawyerVo.lawyerIntroMsg} </small>
+                                    </div>
+                                </a>
+                            </li>
+                        </c:forEach>
                     </ul>
                     <div>
-                      <button class="btn p-0">10위까지 보기
+                      <button type="button" class="btn p-0" id="moreButton">10위까지 보기
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                           <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                         </svg>
@@ -172,5 +151,20 @@
 
         <!-- footer -->
         <jsp:include page="common/footer.jsp" />
+
+        <script>
+            let more = false;
+            $("#moreButton").click(function () {
+                if (!more) {
+                    $(".recentlyLawyerReplyList").animate({height:"645px"}, 200);
+                    $(".bi-chevron-down").animate({rotate:"180deg"}, 100);
+                    more = true;
+                } else {
+                    $(".recentlyLawyerReplyList").animate({height:"189px"}, 200);
+                    $(".bi-chevron-down").animate({rotate:"0deg"}, 100);
+                    more = false;
+                }
+            });
+        </script>
     </body>
 </html>

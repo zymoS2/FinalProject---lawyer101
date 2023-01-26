@@ -23,4 +23,7 @@ public interface InBoardReplyService {
 
     // 페이징 변호사 지식인 답변 목록
     List<InReplyVo> pagingInReply(Long lawyerNum, int pageNum, int pageSize);
+
+    // 최근 답변이 활발한 변호사 목록
+    List<InReplyVo> findRecentlyReplyLawyer();
 }

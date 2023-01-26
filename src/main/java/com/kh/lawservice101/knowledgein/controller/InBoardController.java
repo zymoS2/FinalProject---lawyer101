@@ -56,11 +56,14 @@ public class InBoardController {
             allInReply.add(inReplyList);
         }
 
+        List<InReplyVo> recentlyLawyerReplyList = inBoardReplyService.findRecentlyReplyLawyer();
+
         //List<InBoardVo> showInBoard = inBoardService.viewAllInBoard();
         //model.addAttribute("showInBoard", showInBoard);
         model.addAttribute("pagePost", pagePost);
         model.addAttribute("sortType", sortType);
         model.addAttribute("allInReply", allInReply);
+        model.addAttribute("recentlyLawyerReplyList", recentlyLawyerReplyList);
         //model.addAttribute("page", page);
 
         return "knowledgeIn";
