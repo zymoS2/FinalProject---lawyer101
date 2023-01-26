@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,10 +50,17 @@ public class InBoardController {
 
         PageInfo<InBoardVo> pagePost = PageInfo.of(inBoardService.PagingPost(Integer.valueOf(page), PAGE_SIZE, sortType));
 
+        List<List<InReplyVo>> allInReply = new ArrayList<>();
+        for (InBoardVo inBoardVo : pagePost.getList()) {
+            List<InReplyVo> inReplyList = inBoardReplyService.findAllInReplyByInBoardNum(inBoardVo.getInBoardNum());
+            allInReply.add(inReplyList);
+        }
+
         //List<InBoardVo> showInBoard = inBoardService.viewAllInBoard();
         //model.addAttribute("showInBoard", showInBoard);
         model.addAttribute("pagePost", pagePost);
         model.addAttribute("sortType", sortType);
+        model.addAttribute("allInReply", allInReply);
         //model.addAttribute("page", page);
 
         return "knowledgeIn";

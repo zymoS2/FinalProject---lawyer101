@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:forEach var="inBoard" items="${inBoardList}">
+<c:forEach var="inBoard" items="${inBoardList}" varStatus="status">
   <li>
     <a href="/knowledgeInDetail?num=${inBoard.inBoardNum}" class="d-block py-5 border-bottom">
       <p class="text-secondary">${inBoard.categoryVo.categoryName}</p>

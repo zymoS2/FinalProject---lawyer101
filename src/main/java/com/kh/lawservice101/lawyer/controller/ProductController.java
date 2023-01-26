@@ -143,8 +143,6 @@ public class ProductController {
     // 지식인 목록 스크롤 페이징
     @GetMapping("/list/loadKnowledgeIns")
     public String loadKnowledgeIns(@ModelAttribute SearchCon searchCon, Model model) {
-        System.out.println("searchCon = " + searchCon.getKeyword());
-        System.out.println("searchCon = " + searchCon.getPageNum());
         searchCon.setPageSize(PAGE_SIZE);
 
         PageInfo<InBoardVo> pageLawyer = PageInfo.of(inBoardService.pagingInboard(searchCon));
@@ -157,6 +155,7 @@ public class ProductController {
         }
 
         model.addAttribute("inBoardList", inBoardList);
+        model.addAttribute("allInReply", allInReply);
 
         return "list/knowledgeInListAjaxPage";
     }

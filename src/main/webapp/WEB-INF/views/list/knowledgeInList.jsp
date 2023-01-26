@@ -31,7 +31,7 @@
     </ul>
 
     <ul class="ps-0 knowledgeIn-container">
-      <c:forEach var="inBoard" items="${pageInBoard.getList()}">
+      <c:forEach var="inBoard" items="${pageInBoard.getList()}" varStatus="status">
         <li>
           <a href="/knowledgeInDetail?num=${inBoard.inBoardNum}" class="d-block py-5 border-bottom">
             <p class="text-secondary">${inBoard.categoryVo.categoryName}</p>

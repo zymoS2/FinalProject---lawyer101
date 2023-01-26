@@ -55,20 +55,19 @@
                   </ul>
 
                     <div>
-                      <c:forEach var="sb" items="${pagePost.getList()}">
-                        <a href="/knowledgeInDetail?num=${sb.inBoardNum}" class="d-inline-block py-5 border-bottom">
+                      <c:forEach var="sb" items="${pagePost.getList()}" varStatus="status">
+                        <a href="/knowledgeInDetail?num=${sb.inBoardNum}" class="d-block py-5 border-bottom">
                           <p class="text-secondary"> ${sb.categoryVo.categoryName}</p>
                           <h4 class="mb-3 text-skip-2">${sb.inBoardTitle}</h4>
                           <input type="hidden" ${sb.inBoardNum}>
 
                           <p>
-                          <b class="text-custom">답변</b><span class="ps-3">최지현</span> 변호사</p>
-                          <p class="text-skip">
-                            법률사무소 여정 대표변호사 최지현입니다.
-                            정확한 판단은 구체적인 사실관계를 들어보아야 할 것으로 보입니다만, 말씀하여 주신 사실관계만 놓고 보면 성매매 광고행위의 고의가 없었음을 주장 및 입증하여 무죄를 다투어 볼 만 하다고 보여집니다. 보다 상세한 사실관계를 말씀해주시면 구체적인 검토가 가능합니다.
-                          </p>
-                          <p class="text-secondary">다른 변호사 답변 <span>5</span>개</p>
-                          <small class="text-secondary">조회수 <b>${sb.inBoardCount}</b></small>
+                            <c:if test="${!empty allInReply.get(status.index)}">
+                                <p><b class="text-custom">답변</b><span class="ps-3">${allInReply.get(status.index).get(0).lawyerVo.lawyerName}</span> 변호사</p>
+                                <p class="text-skip">${allInReply.get(status.index).get(0).replyContent}</p>
+                            </c:if>
+                            <p class="text-secondary">다른 변호사 답변 ${allInReply.get(status.index).size()}개</p>
+                            <small class="text-secondary">조회수 <b>${inBoard.inBoardCount}</b></small>
                         </a>
                         </c:forEach>
                     </div>
