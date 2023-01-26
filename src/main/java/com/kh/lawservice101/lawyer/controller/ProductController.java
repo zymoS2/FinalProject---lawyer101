@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -102,8 +103,15 @@ public class ProductController {
         PageInfo<LawyerVo> pageLawyer = PageInfo.of(lawyerService.pagingLawyer(searchCon));
         PageInfo<InBoardVo> pageInBoard = PageInfo.of(inBoardService.pagingInboard(searchCon));
 
+        List<List<InReplyVo>> allInReply = new ArrayList<>();
+        for (InBoardVo inBoardVo :pageInBoard.getList()) {
+            List<InReplyVo> inReplyList = inBoardReplyService.findAllInReplyByInBoardNum(inBoardVo.getInBoardNum());
+            allInReply.add(inReplyList);
+        }
+
         model.addAttribute("pageLawyer", pageLawyer);
         model.addAttribute("pageInBoard", pageInBoard);
+        model.addAttribute("allInReply", allInReply);
         model.addAttribute("keyword", searchCon.getKeyword());
 
         // type 이 lawyer 인 경우 변호사 목록
@@ -141,6 +149,12 @@ public class ProductController {
 
         PageInfo<InBoardVo> pageLawyer = PageInfo.of(inBoardService.pagingInboard(searchCon));
         List<InBoardVo> inBoardList = pageLawyer.getList();
+
+        List<List<InReplyVo>> allInReply = new ArrayList<>();
+        for (InBoardVo inBoardVo : inBoardList) {
+            List<InReplyVo> inReplyList = inBoardReplyService.findAllInReplyByInBoardNum(inBoardVo.getInBoardNum());
+            allInReply.add(inReplyList);
+        }
 
         model.addAttribute("inBoardList", inBoardList);
 
