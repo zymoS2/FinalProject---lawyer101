@@ -36,29 +36,33 @@
                       </p>
                       <p class="small text-secondary"><span class="d-inline-block me-2">${showPost.writerDate}</span>조회수 <span>${showPost.inBoardCount}</span></p>
 
-                   <script type="text/javascript">
-                    function clickHelpful(){
+                   <script>
 
-                           if(${empty client}) {
-                                alert("의뢰인회원만 가능합니다");
+                       function clickHelpful(){
+
+                           if (${empty client}) {
+                               alert("의뢰인 회원만 가능합니다.");
                            } else {
-                                let src='../resource/img/emoji-smile-fill.png';
-                                $.ajax({
-                                    url:"helpfulCheck",
-                                    data: {
-                                        inBoardNum: ${showPost.inBoardNum},
-                                        clientNum: ${showPost.clientVo.clientNum}
-                                    },
-                                    success: function(result) {
-                                      console.log(result);
-                                      $(".helpCount").text(result);
-                                    },
-                                    error: function() {
-                                     console.log("도움됐어요 동작 실패");
-                                    }
-                                });
+                               let src='../resource/img/emoji-smile-fill.png';
+                               $.ajax({
+                                   url: "helpfulCheck",
+                                   data: {
+                                       inBoardNum: ${showPost.inBoardNum},
+                                       clientNum: ${client.clientNum}
+                                   },
+                                   success: function (result) {
+                                       if (result.isHelpFul) {
+                                           $(".helpCount").text(result.count);
+                                           $(".smile").attr("src", src);
+                                       } else {
+                                           alert("한번만 가능합니다");
+                                       }
 
-                                $(".smile").attr("src", src);
+                                   },
+                                   error: function () {
+                                       console.log("도움됐어요 동작 실패");
+                                   },
+                               })
                            }
                        }
                    </script>
