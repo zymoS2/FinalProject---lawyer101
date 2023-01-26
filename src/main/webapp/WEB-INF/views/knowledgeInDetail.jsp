@@ -36,14 +36,13 @@
                       </p>
                       <p class="small text-secondary"><span class="d-inline-block me-2">${showPost.writerDate}</span>조회수 <span>${showPost.inBoardCount}</span></p>
 
-                   <script>
+                   <script type="text/javascript">
                     function clickHelpful(){
 
                            if(${empty client}) {
-                                alert("회원만 가능합니다");
+                                alert("의뢰인회원만 가능합니다");
                            } else {
                                 let src='../resource/img/emoji-smile-fill.png';
-
                                 $.ajax({
                                     url:"helpfulCheck",
                                     data: {

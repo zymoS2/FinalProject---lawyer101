@@ -68,7 +68,6 @@ public class InBoardController {
         long number = Long.parseLong(num);
         InBoardVo showPost = inBoardService.findPost(number);
         List<InReplyVo> inReplyList = inBoardReplyService.findAllInReplyByInBoardNum(number);
-
         //      Long inBoardNum = inBoardVo.getInBoardNum();
         //     showPost = inBoardService.findPost(inBoardNum);
 
