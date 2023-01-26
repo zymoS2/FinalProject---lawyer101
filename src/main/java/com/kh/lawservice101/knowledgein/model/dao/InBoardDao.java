@@ -25,6 +25,7 @@ public interface InBoardDao {
     //조회수
     void updateViewCount(Long inBoardNum);
 
+
     //게시글 목록 조회
     List<InBoardVo> selectInboard(String sortType);
 

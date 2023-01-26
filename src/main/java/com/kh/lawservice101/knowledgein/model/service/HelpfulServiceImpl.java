@@ -11,13 +11,18 @@ public class HelpfulServiceImpl implements HelpfulService {
     private final HelpfulDao helpfulDao;
 
 
-
     //도움됐어요 카운트 저장
     @Override
-    public HelpfulVo saveHelpful(HelpfulVo helpfulVo) {
+    public void saveHelpful(HelpfulVo helpfulVo) {
         helpfulDao.insertHelpful(helpfulVo);
 
-        return helpfulVo;
     }
+
+    //도움됐어요 찾기
+    @Override
+    public HelpfulVo selectHelpful(HelpfulVo helpfulVo) {
+        return helpfulDao.selectHelpful(helpfulVo);
+    }
+
 
 }

@@ -60,6 +60,9 @@
         WHERE IN_BOARD_NUM = #{inBoardNum}
     </update>
 
+
+
+
     <insert id="inBoardUpload" parameterType="InBoardVo">
         INSERT INTO IN_BOARD_TB (
             IN_BOARD_NUM
@@ -83,7 +86,10 @@
     <!-- 이름 또는 카테고리에 해당하는 지식인 게시글 조회 -->
     <select id="selectInboardByKeyword" parameterType="com.kh.lawservice101.lawyer.model.dto.SearchCon"
             resultType="InBoardVo" resultMap="InBoardResultSet">
-        SELECT * FROM IN_BOARD_TB ibt JOIN CATEGORY_TB ct ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
+        SELECT *
+        FROM IN_BOARD_TB ibt
+        JOIN CATEGORY_TB ct
+        ON ibt.CATEGORY_NUM = ct.CATEGORY_NUM
         WHERE 1 = 1
         <if test='keyword neq null and keyword neq ""'>
             AND in_board_title LIKE '%'||#{keyword}||'%'

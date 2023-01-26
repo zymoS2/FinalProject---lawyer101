@@ -17,8 +17,18 @@
 
 
     <insert id="insertHelpful" parameterType="HelpfulVo">
-        insert into helpful_tb values (helpful_seq.nextval, #{inBoardVo.inBoardNum}, #{clientVo.clientNum})
+        INSERT INTO HELPFUL_TB
+        VALUES (helpful_seq.nextval
+        , #{inBoardVo.inBoardNum}
+        , #{clientVo.clientNum})
     </insert>
 
+
+    <select id="selectHelpful" parameterType="HelpfulVo"  resultMap="HelpfulResultSet">
+        SELECT HELPFUL_NUM, IN_BOARD_NUM, CLIENT_NUM
+        FROM HELPFUL_TB
+        WHERE IN_BOARD_NUM = #{inBoardVo.inBoardNum}
+        AND  CLIENT_NUM = #{clientVo.clientNum}
+    </select>
 
 </mapper>

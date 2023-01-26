@@ -9,10 +9,12 @@ import com.kh.lawservice101.knowledgein.model.vo.InBoardVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,19 +27,44 @@ public class HelpfulController {
     //도움됐어요 동작
     @ResponseBody
     @RequestMapping("/helpfulCheck")
-    public int updateHelpful(@RequestParam Long inBoardNum, @RequestParam Long clientNum, @ModelAttribute HelpfulVo helpfulVo, Model model) {
+    public Map<String, Object> updateHelpful(@RequestParam Long inBoardNum, @RequestParam Long clientNum, Model model) {
 
+        InBoardVo inBoardVo = new InBoardVo();
+        inBoardVo.setInBoardNum(inBoardNum);
 
-        inBoardService.helpCount(inBoardNum);
-        InBoardVo post = inBoardService.findPost(inBoardNum);
-        ClientVo clientVo = clientService.findClient(clientNum);
+        ClientVo clientVo = new ClientVo();
+        clientVo.setClientNum(clientNum);
 
+        HelpfulVo helpfulVo = new HelpfulVo();
+        helpfulVo.setInBoardVo(inBoardVo);
         helpfulVo.setClientVo(clientVo);
-        helpfulVo.setInBoardVo(post);
 
-        HelpfulVo helpfulClick = helpfulService.saveHelpful(helpfulVo);
-        model.addAttribute("helpfulClick", helpfulClick);
+        //1. 좋아요 이력테이블에서 유저시퀀스와 게시글 번호 조회한다
+        HelpfulVo helpfulFind = helpfulService.selectHelpful(helpfulVo);
+        //   helpfulVo.setInBoardVo(post);
 
-        return post.getInBoardHelpCount();
+        Map<String, Object> map = new HashMap<>();
+
+        //1-1. 있다면  이미 눌러서 끝
+        if (helpfulFind != null) {
+            map.put("isHelpFul", false);
+            return map;
+        } else {
+            //좋아요 카운트 올라감
+            inBoardService.helpCount(inBoardNum);
+            //     ClientVo clientVo = clientService.findClient(clientNum);
+            //   helpfulVo.setClientVo(clientVo);
+            //좋아요 이력 들어감
+            helpfulService.saveHelpful(helpfulVo);
+
+           InBoardVo post = inBoardService.findPost(inBoardNum);
+
+            map.put("isHelpFul", true);
+            map.put("count", post.getInBoardHelpCount());
+            return map;
+        }
+
+        // 좋아요 버튼을 눌렀다면
+        // return post.getInBoardHelpCount();
     }
 }
