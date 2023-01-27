@@ -53,8 +53,9 @@ ul.join_box {
     left: 730px;
 }
 .fa-spinner {
-    width: 25px;
-    height: 25px;
+    display: block;
+    width: 50px;
+    height: 50px;
 }
 .lawyerEmail,
 .lawyerId,
@@ -68,5 +69,8 @@ ul.join_box {
     display: none;
 }
 #sample6_extraAddress{
+    display: none;
+}
+.phoneText{
     display: none;
 }
