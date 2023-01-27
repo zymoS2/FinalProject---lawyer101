@@ -38,30 +38,18 @@
         </div>
         <div class="carousel-inner h-100">
           <div class="carousel-item active h-100">
-            <img src="/resource/img/주먹은법보다빠르다.jpg" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
+            <img src="/resource/img/화면 캡처 2023-01-27 140148.png" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h1 class="fw-bold" style="font-size: 50px">주먹은 법보다 빠르다</h1>
-              <p class="fw-bold" style="font-size: 24px">
-                멘트는 너가 짜
-              </p>
             </div>
           </div>
           <div class="carousel-item h-100">
-            <img src="/resource/img/sample1.jpg" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
+            <img src="/resource/img/화면 캡처 2023-01-27 135323.png" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5>Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
             </div>
           </div>
           <div class="carousel-item h-100">
-            <img src="/resource/img/sample1.jpg" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
+            <img src="/resource/img/화면 캡처 2023-01-27 135437.png" class="d-block w-100 h-100 object-fit-cover" 50lt="..." />
             <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
-              </p>
             </div>
           </div>
         </div>

@@ -111,7 +111,7 @@
                 <div class="h-100 ps-5 border-top" style="width: 35%;">
                   <div class="border-bottom py-5">
                     <p class="">최근 답변이 활발한 변호사</p>
-                    <ul class="p-0 overflow-hidden recentlyLawyerReplyList" style="height: 189px">
+                    <ul class="p-0 overflow-hidden recentlyLawyerReplyList" style="height: 208px">
                         <c:forEach var="recentlyLawyerReply" items="${recentlyLawyerReplyList}" varStatus="status" begin="0" end="9">
                             <li>
                                 <a href="/product/detail/${recentlyLawyerReply.lawyerVo.lawyerNum}" class="d-flex align-items-center mb-3">
@@ -156,11 +156,11 @@
             let more = false;
             $("#moreButton").click(function () {
                 if (!more) {
-                    $(".recentlyLawyerReplyList").animate({height:"645px"}, 200);
+                    $(".recentlyLawyerReplyList").animate({height:"660px"}, 200);
                     $(".bi-chevron-down").animate({rotate:"180deg"}, 100);
                     more = true;
                 } else {
-                    $(".recentlyLawyerReplyList").animate({height:"189px"}, 200);
+                    $(".recentlyLawyerReplyList").animate({height:"208px"}, 200);
                     $(".bi-chevron-down").animate({rotate:"0deg"}, 100);
                     more = false;
                 }
