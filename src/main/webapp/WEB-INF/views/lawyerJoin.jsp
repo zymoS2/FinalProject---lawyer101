@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                         <label for="email" class="form-label">이메일</label>
-                        <input id="email" type="email" name="lawyerEmail" class="form-control" placeholder="이메일을 입력하세요" required>
+                        <input id="email" type="email" name="lawyerEmail" class="form-control scriptCommonText" placeholder="이메일을 입력하세요" required>
                         <small id="emailHelp" class="form-text text-muted">예) name@example.com</small>
                         <p class="form-text text-danger lawyerEmail">
                             이메일 형식에 맞지 않습니다.
@@ -50,7 +50,7 @@
 
                     <div class="form-group">
                         <label for="id" class="form-label">아이디</label>
-                        <input id="id" type="text" name="lawyerId" class="form-control" placeholder="이메일을 입력하세요" required>
+                        <input id="id" type="text" name="lawyerId" class="form-control scriptCommonText" placeholder="이메일을 입력하세요" required>
                         <small id="idHelp" class="form-text text-muted">6~10자, 영문, 숫자</small>
                         <p class="form-text text-danger lawyerId">
                             아이디 형식에 맞지 않습니다.
@@ -59,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="name" class="form-label">이름</label>
-                        <input id="name" type="text" name="lawyerName" class="form-control" placeholder="이름을 입력하세요" required>
+                        <input id="name" type="text" name="lawyerName" class="form-control scriptCommonText" placeholder="이름을 입력하세요" required>
                         <p class="form-text text-danger lawyerName">
                             이름 형식에 맞지 않습니다.
                         </p>
@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label for="password" class="form-label">비밀번호</label>
-                        <input id="password" type="password" name="lawyerPwd" class="form-control" placeholder="비밀번호를 입력하세요" required>
+                        <input id="password" type="password" name="lawyerPwd" class="form-control scriptCommonText" placeholder="비밀번호를 입력하세요" required>
                         <small id="passwordHelp" class="form-text text-muted">8~12자, 영문, 숫자, 특수문자(_-!@#$%^&*.,)</small>
                         <p class="form-text text-danger lawyerPassword">
                             비밀번호가 형식에 맞지 않습니다.
@@ -76,7 +76,7 @@
 
                     <div class="form-group">
                         <label for="password-confirm" class="form-label">비밀번호 재확인</label>
-                        <input id="password-confirm" type="password" name="lawyerRepwd" class="form-control" placeholder="비밀번호를 다시 한 번 입력하세요" required>
+                        <input id="password-confirm" type="password" name="lawyerRepwd" class="form-control scriptCommonText" placeholder="비밀번호를 다시 한 번 입력하세요" required>
                         <p class="form-text text-danger lawyerPasswordConfirm">
                             비밀번호가 일치하지않습니다
                         </p>
@@ -104,13 +104,12 @@
                     <div class="form-group">
                         <label for="phone" class="form-label">전화번호</label>
                         <div class="input-group">
-                            <input id="phone" type="text" name="lawyerPhone" class="form-control col me-3 rounded-2" placeholder="휴대폰 번호를 입력하세요" required>
+                            <input id="phone" type="text" name="lawyerPhone" class="form-control col me-3 rounded-2 scriptCommonText" placeholder="휴대폰 번호를 입력하세요" required>
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-custom col" id="send-sms-button">인증번호 발송</button>
+                                <button type="button" class="btn btn-custom col phoneButton" id="send-sms-button">인증번호 발송</button>
                             </span>
                         </div>
-                        <small id="phoneHelp" class="form-text text-muted ">예) 01012345678</small>
-                        <p class="form-text text-danger lawyerPhoneText">휴대폰 번호를 입력하세요</p>
+                        <small id="phoneHelp" class="form-text text-muted">예) 01012345678</small>
                         <p class="form-text text-danger lawyerPhoneText1">휴대폰 번호 형식으로 입력해주세요</p>
                     </div>
 
@@ -122,22 +121,21 @@
                                 <button type="button" class="btn btn-custom col">인증</button>
                             </span>
                         </div>
-                        <p class="form-text text-danger">인증번호가 일치하지않습니다</p>
+                        <p class="form-text text-danger phoneText">인증번호가 일치하지않습니다</p>
                     </div>
-
+                    <br>
                     <h5><strong>인증정보</strong></h5>
 
                     <div class="form-group">
                         <label for="company" class="form-label">소속(사무소, 회사명)</label>
-                        <input id="company" type="text" name="companyName" class="form-control" placeholder="사무소명을 입력하세요" required>
-                        <p class="form-text text-danger lawyerCompany">사무소명을 입력하세요</p>
+                        <input id="company" type="text" name="companyName" class="form-control scriptCommonText" placeholder="사무소명을 입력하세요" required>
                     </div>
-
+                    <br>
                     <div class="form-group">
                         <label for="tel" class="form-label">소속 전화번호</label>
-                        <input id="tel" type="text" name="ompanyPhone" class="form-control" placeholder="소속 전화번호를 입력하세요" required>
-                        <p class="form-text text-danger lawyerTel">소속 전화번호를 입력하세요</p>
+                        <input id="tel" type="text" name="ompanyPhone" class="form-control scriptCommonText" placeholder="소속 전화번호를 입력하세요" required>
                     </div>
+                    <br>
                     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                     <script>
                         function sample6_execDaumPostcode() {
@@ -197,20 +195,20 @@
                             </span>
                         </div>
                         <input id="sample6_address" type="text" name="addr" class="form-control mb-1" placeholder="주소" required readonly>
-                        <input id="sample6_detailAddress" type="text" name="companyAddress" class="form-control" placeholder="상세주소" required>
-                        <input type="text" id="sample6_extraAddress" class="form-control" placeholder="참고항목">
-                        <p class="form-text text-danger lawyerAddr">사무소명을 입력하세요</p>
+                        <input id="sample6_detailAddress" type="text" name="companyAddress" class="form-control scriptCommonText" placeholder="상세주소" required>
+                        <input type="text" id="sample6_extraAddress" class="form-control scriptCommonText" placeholder="참고항목">
+                        <br>
                     </div>
 
                     <div class="form-group">
                         <label for="" class="form-label">변호사 등록번호</label>
                         <div class="input-group">
-                            <input id="registNum" type="text" name="lawyerLicenseNum" class="form-control me-3 rounded-2" placeholder="변호사 등록번호를 입력하세요" required>
+                            <input id="registNum" type="text" name="lawyerLicenseNum" class="form-control me-3 rounded-2 scriptCommonText" placeholder="변호사 등록번호를 입력하세요" required>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-custom col spinnerButton" disabled>인증</button>
                             </span>
                         </div>
-                        <p class="form-text text-danger spinnerText">변호사 등록번호를 입력하세요</p>
+                        <br>
                         <p class="form-text text-danger spinningDisplay">인증중입니다.</p>
                     </div>
 
@@ -234,7 +232,7 @@
                                     <label>
                                         <li>이용약관 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chkAgree" id="chk" class="chkSame">
+                                            <input type="checkbox" name="chkAgree" id="chk" class="chkSame accept_btn">
                                         </li>
                                     </label>
                                 </ul>
@@ -486,7 +484,7 @@
                                     <label>
                                         <li>개인정보 수집 및 이용에 대한 안내(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chkAgree" id="chk1" class="chkSame">
+                                            <input type="checkbox" name="chkAgree" id="chk1" class="chkSame accept_btn">
                                         </li>
                                     </label>
                                 </ul>
@@ -560,7 +558,7 @@ PC웹, 모바일웹/앱 이용과정에서의 단말기정보(OS, 화면사이�
                                     <label>
                                         <li>개인정보 취급방침 동의(필수)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chkAgree" id="chk2" class="chkSame">
+                                            <input type="checkbox" name="chkAgree" id="chk2" class="chkSame accept_btn">
                                         </li>
                                     </label>
                                 </ul>
@@ -911,7 +909,7 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                                     <label>
                                         <li>이벤트 등 프로모션 알림 메일 수신(선택)</li>
                                         <li class="checkBtn">
-                                            <input type="checkbox" name="chkAgree" id="chk3" class="chkSame">
+                                            <input type="checkbox" name="chkAgreeSelect" id="chk3" class="chkSame">
                                         </li>
                                     </label>
                                 </ul>
@@ -920,7 +918,7 @@ Chrome의 경우: 웹 브라우저 우측의 설정 메뉴 > 화면 하단의 �
                     </div>
 
                     <p class="info-text text-body-secondary">* 가입 신청을 하시면 변호사 자격 확인 후 가입이 완료됩니다.</p>
-                    <button type="button" onclick="lawyerJoin();" class="btn btn-custom lawyerButton" style="width: 100%;" disabled>가입신청</button>
+                    <button type="button" onclick="lawyerJoin(); " class="btn btn-custom lawyerButton" style="width: 100%;" disabled>가입신청</button>
                 </form>
             </div>
         </div>
