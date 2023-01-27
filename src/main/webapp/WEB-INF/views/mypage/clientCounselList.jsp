@@ -48,7 +48,7 @@
                                                 <div class="list-group-item list-group-item-action py-3 lh-sm me-3" aria-current="true">
                                                     <div class="d-flex w-100 align-items-center justify-content-between">
                                                         <div class="ms-2">
-                                                            <strong class="mb-1">${lc.bookingVo.clientVo.clientName}</strong>
+                                                            <strong class="mb-1">${lc.bookingVo.clientVo.clientName}</strong><small class="text-secondary"> | ${lc.bookingVo.clientVo.clientPhone}</small>
                                                             <div class="small text-skip-2">${lc.bookingVo.counselingContent}</div>
                                                         </div>
                                                         <div>
@@ -86,7 +86,7 @@
                                                 <div class="d-flex w-100 align-items-center justify-content-between">
                                                     <div class="w-75">
                                                         <div class="ms-2">
-                                                            <strong class="mb-1">${lc.bookingVo.clientVo.clientName}</strong>
+                                                            <strong class="mb-1">${lc.bookingVo.clientVo.clientName}</strong><small class="text-secondary"> | ${lc.bookingVo.clientVo.clientPhone}</small>
                                                             <div class="small text-skip-2">${lc.bookingVo.counselingContent}</div>
                                                         </div>
                                                     </div>
